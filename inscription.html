@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Inscrivez vous</title>
+		<link rel="stylesheet" href="css\attable.css">
+		<link rel="stylesheet" href="css\footer.css">
+		<script src="js\valid.js" type="text/javascript"></script>
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<div id="logo">
+				<a href="index.html">
+					<img src="images\attable_logo.png" alt="monlogo" id="lelogo">
+				</a>
+			</div>
+
+			<div id="titre_page">
+				Passez ATTABLE - Inscrivez vous
+			</div>
+
+			<div id="panier">
+				<a href="panier.html">
+					<img src="images\logo_panier.png" alt="MonPanier" id="lepanier">
+				</a>
+			</div>
+
+			<div id="authentification">
+				<a href="authentification.html">
+					<img src="images\login.png" alt="Authentification" id="lesids">
+				</a>
+			</div>
+
+			<div id="recherche">
+				<input type="search" id="site-search" name="q" aria-label="Search through site content" value="Rechercher..." onFocus="javascript:this.value=''">
+			</div>
+
+		</header>
+
+		<section id="main">
+
+			<form action="/action_page.php">
+					<fieldset class="form1">
+						<a href="index.html" id="retour">RETOUR AU SITE</a>
+						<p id="titreformu"><b>Formulaire d'inscription</b></p>
+						<div id="formu">
+							<label for="nom">Civilité</label>
+							<input type="text" id="civil" name="name" required="required" class="central" >
+							<br>
+						</div>
+						<div id="formu">
+							<label for="nom">Votre prénom</label>
+							<input type="text" id="firstname" name="name" required="required" class="central">
+							<br>
+						</div>
+						<div id="formu">
+							<label for="nom">Votre nom</label>
+							<input type="text" id="name" name="name" required="required" class="central">
+							<br>
+						</div>
+						<div id="formu">
+							<label for="nom">Votre adresse</label>
+							<input type="text" id="adress" name="name" required="required" class="central">
+							<br>
+						</div>
+						<div id="formu">
+							<label for="nom">Votre code postal</label>
+							<input type="text" id="codepostal" name="name" required="required" class="central">
+							<br>
+						</div>
+						<div id="formu">
+							<label for="nom">Votre ville</label>
+							<input type="text" id="city" name="name" required="required" class="central">
+							<br>
+						</div>
+						<div id="formu">
+							<label for="email">Votre email</label>
+							<input type="email" id="email" name="email" required="required" class="central">
+							<br>
+						</div>
+						<div id="formu">
+							<label for="mdp">Votre mot de passe</label>
+							<input type="password" id="mdp" name="mdp" required="required" class="central">
+							<br>
+						</div>
+						<div id="formu">
+							<label for="confirmmdp">Confirmez votre mot de passe</label>
+							<input type="password" id="confirmmdp" name="confirmmdp" required="required" class="central">
+						</div>
+						<div id="bouton">
+							<input style="width:100px;" type="submit" value="S'inscrire" class="central" id="submit" onclick="verif_form_inscription()" >
+						</div>
+
+					</fieldset>
+			</form>
+
+			<script src="js\cookie.js" type="text/javascript"></script>
+
+		</section>
+
+		<footer>
+
+			<div id="menu" class="head1">
+				<ul id="menus">
+				<li><a href="index.html">Accueil</a></li>
+				<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+				<li><a href="noustrouver.html">Nous trouver</a></li>
+				<li><a href="newsletter.html">Mailing List</a></li>
+				<li><a href="panier.html">Commande</a></li>
+				<li><a href="mentionslegales.html">Mentions légales</a></li>
+				<li><a href="cgu.html">CGU</a></li>
+				</ul>
+			</div>
+
+		</footer>
+
+
+	</body>
+</html>
