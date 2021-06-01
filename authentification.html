@@ -12,7 +12,7 @@
 
 	</head>
 
-	<body>
+	<body onload="validate_password()">
 
 		<header>
 
@@ -58,11 +58,19 @@
 						</div>
 						<div id="formu">
 							<label for="mdp">Votre mot de passe</label>
-							<input type="password" id="mdp" name="mdp" required="required">
+							<input type="password" id="mdp" name="mdp" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z\d]).{6,}" required="required">
 							<br>
 						</div>
 						<div id="bouton">
-							<input type="submit" value="Connexion" id="submit" onclick="verif_form_connexion()">
+							<input type="submit" value="Connexion" id="submit">
+							<div id="message">
+								<h3>Password must contain the following:</h3>
+								<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+								<p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+								<p id="number" class="invalid">A <b>number</b></p>
+								<p id="special" class="invalid">A <b>special</b> character</p>
+								<p id="length" class="invalid">Minimum <b>6 characters</b></p>
+							  </div>
 						</div>
 
 						<hr>
@@ -82,7 +90,7 @@
 					</fieldset>
 			</form>
 
-
+		<script src="js\valid.js" type="text/javascript"></script>
 		<script src="js\cookie.js" type="text/javascript"></script>
 
 
