@@ -177,10 +177,11 @@ window.plus = function plus(catindex){
 
 
 //Fonction Retire quantité d'untel produit
-window.minus = function minus(catindex){
-	var produit = document.getElementById('plus'+catindex);
+window.minus = function minus(cat_index){
+	var produit = document.getElementById('moins'+cat_index);
 
     var id = produit.dataset.id;
+    console.log(id);
 
 
 	liste = defrag_cookie("list_achat");
@@ -190,8 +191,8 @@ window.minus = function minus(catindex){
         console.log(id);
         console.log(liste[i][0]);
 
-		if (id == liste[i][0]) {		
-			var comptage2 = document.getElementById('count'+catindex).value;
+		if (liste[i][0] == id) {		
+			var comptage2 = document.getElementById('count'+cat_index).value;
 
 			if (comptage2 > 1) {
                 console.log(comptage2);
@@ -202,19 +203,18 @@ window.minus = function minus(catindex){
 			}
 			else if (comptage2 == 1) {
                 comptage2--;
-                document.getElementById("moins"+catindex).style.visibility = 'hidden';
-                document.getElementById("count"+catindex).style.visibility = 'hidden';
+                document.getElementById("moins"+cat_index).style.visibility = 'hidden';
+                document.getElementById("count"+cat_index).style.visibility = 'hidden';
                 liste[i][4] = comptage2.toString();
 				var new_apport = remontage(liste);
                 comptage2 = 0;
 			}
 		}
         else {
-            alert("alerte");
-            return false;
+            var comptage2 = document.getElementById('count'+cat_index).value;
         }
 
-		document.getElementById("count"+catindex).value = comptage2;
+		document.getElementById("count"+cat_index).value = comptage2;
 
 		createCookie("list_achat", new_apport, 15);
 	}
