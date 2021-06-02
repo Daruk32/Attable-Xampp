@@ -154,8 +154,6 @@ window.chargement = function chargement() {
         var id = (pre_id).toString()+cat_index.toString();
         
 
-
-
         if (readCookie("list_achat") != null){
             var controle = defrag_cookie("list_achat");
             for (let i = 0 ; i < controle.length ; i++) {
@@ -172,6 +170,13 @@ window.chargement = function chargement() {
         }
 
 
+        if (tab_categorie[number][cat_index].prix == 0) {
+            var champs_prix = "Prix : &Agrave; voir en magasin";
+        }
+        else {
+            var champs_prix = tab_categorie[number][cat_index].prix + " €";
+        }
+
 
         if (longueur == 0) {
             document.getElementById("descriptif_cat").innerHTML+="";
@@ -186,8 +191,8 @@ window.chargement = function chargement() {
             var mid6 = ")'></a><div class='legend_produit'>";
             var mid7 = tab_categorie[number][cat_index].libelle;
             var mid8 = "</div><div id='descriptif_prix'>";
-            var mid9 = tab_categorie[number][cat_index].prix;
-            var mid10 = " €</div><div id='modul_quantity'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
+            var mid9 = champs_prix;
+            var mid10 = "</div><div id='modul_quantity'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
             var mid11 = cat_index;
             var mid12 = "' data-id='";
             var mid13 = pre_id.toString()+cat_index.toString();
@@ -255,7 +260,13 @@ window.changeCategorie = function changeCategorie(number) {
             var valeur = "";
         }
 
-
+        
+        if (tab_categorie[number][cat_index].prix == 0) {
+            var champs_prix = "Prix : &Agrave; voir en magasin";
+        }
+        else {
+            var champs_prix = tab_categorie[number][cat_index].prix + " €";
+        }
 
 
         if (longueur == 0) {
@@ -271,8 +282,8 @@ window.changeCategorie = function changeCategorie(number) {
             var mid6 = ")'></a><div class='legend_produit'>";
             var mid7 = tab_categorie[number][cat_index].libelle;
             var mid8 = "</div><div id='descriptif_prix'>";
-            var mid9 = tab_categorie[number][cat_index].prix;
-            var mid10 = " €</div><div id='modul_quantity'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
+            var mid9 = champs_prix;
+            var mid10 = "</div><div id='modul_quantity'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
             var mid11 = cat_index;
             var mid12 = "' data-id='";
             var mid13 = pre_id.toString()+cat_index.toString();
@@ -318,6 +329,13 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
 	
 	document.getElementById('fiche_produit').style.display = 'block';
 
+    if (tab_categorie[number][cat_index].prix == 0) {
+        var champs_prix = "Prix : &Agrave; voir en magasin";
+    }
+    else {
+        var champs_prix = tab_categorie[number][cat_index].prix + " €";
+    }
+
     var fd1 = "<div id='description_produit'><img src='";
     var fd2 = tab_categorie[number][cat_index].url;
     var fd3 = "' alt='Conserves' class='cats'></div><div id='description_produit2'><p>";
@@ -325,8 +343,8 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
     var fd5 = "<p>";
     var fd51 = tab_categorie[number][cat_index].texte;
     var fd52 = "</p><div id='produit_action'><span id='id_prix_produit'>Prix : "
-    var fd6 = tab_categorie[number][cat_index].prix;
-    var fd7 = "</span><span id='id_quantite_produit'>Quantité : </span><input type='number' id='quantite_article' name='nombrearticle' min='0' max='100'><button id='id_bouton_ajout_produit'>Ajouter au panier</button></div></div>";
+    var fd6 = champs_prix;
+    var fd7 = " €</span><span id='id_quantite_produit'>Quantité : </span><input type='number' id='quantite_article' name='nombrearticle' min='0' max='100'><button id='id_bouton_ajout_produit'>Ajouter au panier</button></div></div>";
     document.getElementById("fiche_produit").innerHTML=fd1+fd2+fd3+fd4+fd5+fd51+fd52+fd6+fd7;
 }
 

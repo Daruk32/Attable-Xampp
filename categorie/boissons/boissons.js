@@ -56,3 +56,11 @@ var boisson5 = {
     texte: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 };
 tab_boisson.push(boisson5);
+
+var boisson6 = {
+    url: 'categorie/boissons/boisson6.png',
+    libelle: 'Essai Prix 0',
+    prix: 0,
+    texte: "Un test pour voir"
+};
+tab_boisson.push(boisson6);
