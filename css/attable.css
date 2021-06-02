@@ -260,8 +260,13 @@ h3 {
 	color:black;
 	font-weight:bold;
 	font-size: 20px;
-
 }
+
+.affich_valeur, .bmoins {
+	visibility: hidden;
+}
+
+
 
 .add-to-cart {
 	height: 35px;

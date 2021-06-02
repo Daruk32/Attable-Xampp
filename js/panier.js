@@ -151,7 +151,6 @@ window.plus = function plus(catindex){
 			document.getElementById("count"+catindex).value = count3;
 
 			}
-			console.log(count);
 
 		}
 		//Affichage de la valeur sur la page HTML
@@ -160,22 +159,12 @@ window.plus = function plus(catindex){
 		//On enregistre la chaîne de caractères dans le cookie.
 		createCookie("list_achat", new_apport, 15);
 
-		//Calcul, MAJ et affichage du panier.
-		var total_panier = total_panier + panier(liste, 1);
 
-
-		//Créer ici la ligne html du tableau
-		//Mettre les appels au span pour afficher la quantité
-
-
-		return total_panier;
 	}
 
+    document.getElementById("count"+catindex).style.visibility = 'visible';
+    document.getElementById("moins"+catindex).style.visibility = 'visible';
 
-
-
-
-	return total_panier;
 //Stockage de la quantité de produit/Affichage dans le widget
 
 //Ici, pour mettre à jour le nombre d'éléments dans le widget panier.
@@ -190,33 +179,42 @@ window.plus = function plus(catindex){
 //Fonction Retire quantité d'untel produit
 window.minus = function minus(catindex){
 	var produit = document.getElementById('plus'+catindex);
-	if (produit == null) {
-    	return false;
-    }
+
     var id = produit.dataset.id;
-    var name = produit.dataset.name;
-    var price = produit.dataset.price;
-    var url = produit.dataset.url;
+
 
 	liste = defrag_cookie("list_achat");
 
 	for (let i=0 ; i < liste.length ; i++) {
     	//Diminue la quantité du produit tant qu'elle est >0.
-		if (id == liste[i][0]) {		
-			var count = document.getElementById('count'+catindex).value;
+        console.log(id);
+        console.log(liste[i][0]);
 
-			if (count > 0) {
-				count--;
-				liste[i][4] = count.toString();
+		if (id == liste[i][0]) {		
+			var comptage2 = document.getElementById('count'+catindex).value;
+
+			if (comptage2 > 1) {
+                console.log(comptage2);
+                comptage2--;
+                console.log(comptage2);
+				liste[i][4] = comptage2.toString();
 				var new_apport = remontage(liste);
 			}
-			else if (count == 0) {
-				delete liste[i]; 
+			else if (comptage2 == 1) {
+                comptage2--;
+                document.getElementById("moins"+catindex).style.visibility = 'hidden';
+                document.getElementById("count"+catindex).style.visibility = 'hidden';
+                liste[i][4] = comptage2.toString();
 				var new_apport = remontage(liste);
+                comptage2 = 0;
 			}
 		}
+        else {
+            alert("alerte");
+            return false;
+        }
 
-		document.getElementById("count"+catindex).value = count;
+		document.getElementById("count"+catindex).value = comptage2;
 
 		createCookie("list_achat", new_apport, 15);
 	}
@@ -226,11 +224,7 @@ window.minus = function minus(catindex){
 
 	//Créer ici la ligne html du tableau
 
-	//Mettre les appels au span pour afficher la quantité
-
-	var total_panier = total_panier + panier(liste, 2);
-
-	return total_panier;	
+	//Mettre les appels au span pour afficher la quantité	
 }
 
 
