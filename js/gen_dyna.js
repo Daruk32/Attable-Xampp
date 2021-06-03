@@ -230,6 +230,8 @@ window.chargement = function chargement() {
         if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
             document.getElementById("plus"+cat_index).style.visibility = 'hidden';
         }
+
+
     }
 }
 
@@ -326,6 +328,9 @@ window.changeCategorie = function changeCategorie(number) {
         if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
             document.getElementById("plus"+cat_index).style.visibility = 'hidden';
         }
+
+
+         
     }
 
 	document.getElementById('fiche_produit').style.display = 'none';

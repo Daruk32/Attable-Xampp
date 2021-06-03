@@ -173,17 +173,20 @@ window.minus = function minus(cat_index){
 //fonction de calcul du total du panier
 window.panier = function panier() {
     var total = 0;
+    var nb_article = 0;
 
     if (readCookie("list_achat") != null) {
 		var commande = defrag_cookie("list_achat");
+        console.log(commande);
         for (let i=0 ; i < commande.length ; i++) {
             total = total + parseFloat(commande[i][4]) * parseFloat(commande[i][2]);
+            nb_article = nb_article + parseFloat(commande[i][4]);
         }
         total = (Math.round(total*100))/100;
     }
-
-    console.log(total);
     document.getElementById("total_commande").innerHTML = total+" €";
+    document.getElementById("total_articles").innerHTML = nb_article;
+
     createCookie("Somme", total, 15);
     return total;
 }
