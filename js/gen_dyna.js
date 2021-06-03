@@ -154,6 +154,7 @@ window.chargement = function chargement() {
         var id = (pre_id).toString()+cat_index.toString();
         
 
+        //Met à jour et affiche la quantité de chaque produit
         if (readCookie("list_achat") != null){
             var controle = defrag_cookie("list_achat");
             for (let i = 0 ; i < controle.length ; i++) {
@@ -169,7 +170,7 @@ window.chargement = function chargement() {
             var valeur = "";
         }
 
-
+        //Affiche ou non le prix et les fonctionnalités d'ajout/retrait
         if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
             var champs_prix = "Prix : &Agrave; voir en magasin";
         }
@@ -248,7 +249,7 @@ window.changeCategorie = function changeCategorie(number) {
 
 
 
-
+        //Met à jour et affiche la quantité de chaque produit
         if (readCookie("list_achat") != null){
             var controle = defrag_cookie("list_achat");
             for (let i = 0 ; i < controle.length ; i++) {
@@ -265,6 +266,7 @@ window.changeCategorie = function changeCategorie(number) {
         }
 
         
+        //Affiche ou non le prix et les fonctionnalités d'ajout/retrait  
         if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
             var champs_prix = "Prix : &Agrave; voir en magasin";
         }
