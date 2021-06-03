@@ -171,7 +171,7 @@ window.minus = function minus(cat_index){
 
 
 //fonction de calcul du total du panier
-function panier() {
+window.panier = function panier() {
     var total = 0;
 
     if (readCookie("list_achat") != null) {
