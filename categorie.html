@@ -18,7 +18,7 @@
 		
 	</head>
 	
-	<body onload="chargement(), bandeau(), plus(), minus()">
+	<body onload="chargement(), bandeau(), plus(), minus(), panier()">
 		
 		<header>
 
@@ -31,13 +31,9 @@
 
 <div class="dropdown">
     <div id="cart">
-        <p><span id="in-cart-items-num">0</span> Articles</p>
+        <p><span id="total_commande">0</span> €</p>
     </div>
 
-    <ul id="cart-dropdown" hidden>
-        <li id="empty-cart-msg"><a>Votre panier est vide</a></li>
-        <li class="go-to-cart hidden"><a href="/panier/">Voir le panier</a></li>
-    </ul>
 </div>
 
 

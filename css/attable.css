@@ -262,10 +262,13 @@ h3 {
 	font-size: 20px;
 }
 
-.affich_valeur, .bmoins {
+.affich_valeur, .bmoins, .bplus {
 	visibility: hidden;
 }
 
+.bplus {
+	visibility: visible;
+}
 
 
 .add-to-cart {
