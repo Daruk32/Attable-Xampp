@@ -74,7 +74,6 @@ window.plus = function plus(catindex){
 		var total_panier = count*price;
 
 		createCookie("list_achat", new_apport, 15);
-		createCookie("Somme", total_panier, 15);
 	}
 
 	//S'il existe déjà :
@@ -177,16 +176,15 @@ function panier() {
 
     if (readCookie("list_achat") != null) {
 		var commande = defrag_cookie("list_achat");
-
         for (let i=0 ; i < commande.length ; i++) {
             total = total + parseFloat(commande[i][4]) * parseFloat(commande[i][2]);
         }
-        console.log(total);
         total = (Math.round(total*100))/100;
     }
 
     console.log(total);
-    document.getElementById("total_commande").innerHTML = total;
+    document.getElementById("total_commande").innerHTML = total+" €";
+    createCookie("Somme", total, 15);
     return total;
 }
 

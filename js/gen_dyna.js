@@ -265,7 +265,7 @@ window.changeCategorie = function changeCategorie(number) {
             var valeur = "";
         }
 
-        
+
         //Affiche ou non le prix et les fonctionnalités d'ajout/retrait  
         if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
             var champs_prix = "Prix : &Agrave; voir en magasin";
@@ -384,3 +384,9 @@ window.crea_panier = function crea_panier() {
         }
     }
 }
+
+
+
+
+
+

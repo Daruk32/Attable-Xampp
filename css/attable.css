@@ -22,7 +22,6 @@ header div {
 	width:120px;
 	position:relative;
 	float:left;
-	margin: 20px 20px 0px 0px;
 }
 #lelogo {
 	width: 100%;
@@ -43,13 +42,13 @@ header div {
 #authentification {
 	position:relative;
 	float:right;
-	width:54px;
+	width:80px;
 	margin: 0px 0px 20px 0px;
-	top : 11px;
+	top:5px;
 }
 
 #lesids {
-	width: 100%;
+	width: 71%;
 }
 
 
@@ -57,13 +56,33 @@ header div {
 #panier {
 	position:relative;
 	float:right;
-	width:60px;
+	width:80px;
 	margin: 0px 0px 5px 0px;
-	top:9px;
+	bottom:18px;
+	text-align: center;
 }
 #lepanier {
-	width: 100%;	
+	width: 80%;
+	position:relative;
+	z-index: 3;
 }
+#total_articles {
+	position:relative;
+	top: 25px;
+	z-index: 4;
+	font-weight:bold;
+	color : white;	
+}
+#total_commande {
+	position:relative;
+	z-index: 4;
+	bottom: 17px;
+	font-weight:bold;
+	background: rgba(255, 255, 255, 0.5);
+	padding : 0px 5px 0px 5px;
+	border-radius: 10px;
+}
+
 
 /* La barre de recherche */
 #recherche {
