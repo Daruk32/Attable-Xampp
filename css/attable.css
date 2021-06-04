@@ -708,10 +708,11 @@ thead th:nth-child(54) {
 	width : 50%;
 	height :auto;
 	border: none;
+	cursor: pointer;
 }
 
 #totalsomme {
-	width : 9%;
+	width : 10%;
 	margin-left:80%;
 	padding: 5px;
 	background-color: red;
