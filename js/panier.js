@@ -186,11 +186,26 @@ window.panier = function panier() {
     }
     document.getElementById("total_commande").innerHTML = total+" €";
     document.getElementById("total_articles").innerHTML = nb_article;
-    document.getElementById("sous_total").innerHTML = total+" €";
 
+	if (window.location == "http://localhost:1234/Attable-Xampp/panier.html") {
+    	document.getElementById("sous_total").innerHTML = total+" €";
+	}
     createCookie("Somme", total, 15);
     return total;
 }
 
-
-
+/*
+//Fonction pour supprimer une ligne du tableau de commande
+window.supp = function supp(article) {
+	if (readCookie("list_achat") != null) {
+		var lotcommande = defrag_cookie("list_achat");
+		delete lotcommande[article];
+		if (lotcommande.length > 0) {
+			var supp = lotcommande.filter( function(val){return val !== ''} );
+		}
+		var reimport = remontage(supp);
+		createCookie("list_achat", reimport, 15);
+		location.reload();
+	}
+}
+*/

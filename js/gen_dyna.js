@@ -322,7 +322,9 @@ window.changeCategorie = function changeCategorie(number) {
             var fin = ")'></div></div>";
 
             document.getElementById("descriptif_cat").innerHTML+=pre+mid1+mid2+mid3+mid4+mid5+mid6+mid7+mid8+mid9+mid10+mid11+mid12+mid13+mid14+mid15+mid16+mid17+mid171+mid172+mid18+mid19+mid20+mid201+mid202+mid21+mid22+mid23+mid24+mid25+mid26+mid27+mid28+mid29+mid291+mid292+mid30+mid31+fin;
-            document.getElementById("ajout_titre_categorie").innerHTML=titre;
+            if (window.location == "http://localhost:1234/Attable-Xampp/categorie.html") {
+                document.getElementById("ajout_titre_categorie").innerHTML=titre;
+            }
         }
 
         if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
@@ -423,7 +425,6 @@ window.crea_panier = function crea_panier() {
     }
     else {
         var liste_panier = defrag_cookie("list_achat");
-        console.log(liste_panier);
         for (let i=0 ; i < liste_panier.length ; i++) {
             var ch1 = '<tr class="line_panier"><td><img src="';
             var ch2 = liste_panier[i][3];
@@ -433,8 +434,10 @@ window.crea_panier = function crea_panier() {
             var ch6 = liste_panier[i][2];
             var ch7 = ' €</td><td>';
             var ch8 = liste_panier[i][4];
-            var ch9 = '</td><td><img src="images/corbeille.jpg" alt="Delete" id="trashcan"></td></tr>';
-            document.getElementById("cart_tablebody").innerHTML+=ch1+ch2+ch3+ch4+ch5+ch6+ch7+ch8+ch9;
+            var ch9 = '</td><td><img src="images/corbeille.jpg" alt="Delete" id="trashcan" onclick="supp(';
+            var ch10 = i;
+            var ch11 = ')"></td></tr>';
+            document.getElementById("cart_tablebody").innerHTML+=ch1+ch2+ch3+ch4+ch5+ch6+ch7+ch8+ch9+ch10+ch11;
         }
     }
 }
