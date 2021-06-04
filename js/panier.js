@@ -59,8 +59,6 @@ window.plus = function plus(catindex){
 	var new_apport;
 	//Sert à contrôler la quantité d'un article modifié dans le panier
 	var count;
-	//Sert à contrôler l'existence d'un article dans le panier
-	var newArticle = true;
 
 	//On lit les cookies pour savoir le produit existe déjà ou non
 	//C'est un nouveau produit avec initialisation de la liste et du cookie :
@@ -178,11 +176,19 @@ window.panier = function panier() {
     if (readCookie("list_achat") != null) {
 		var commande = defrag_cookie("list_achat");
         console.log(commande);
-        for (let i=0 ; i < commande.length ; i++) {
-            total = total + parseFloat(commande[i][4]) * parseFloat(commande[i][2]);
-            nb_article = nb_article + parseFloat(commande[i][4]);
-        }
+		if (commande == "") {
+			total = 0;
+			nb_article = 0;
+			console.log("test1");
+			eraseCookie("list_achat");
+		}
+        else {
+			for (let i=0 ; i < commande.length ; i++) {
+            	total = total + parseFloat(commande[i][4]) * parseFloat(commande[i][2]);
+            	nb_article = nb_article + parseFloat(commande[i][4]);
+        	}
         total = (Math.round(total*100))/100;
+		}
     }
     document.getElementById("total_commande").innerHTML = total+" €";
     document.getElementById("total_articles").innerHTML = nb_article;
@@ -194,7 +200,7 @@ window.panier = function panier() {
     return total;
 }
 
-/*
+
 //Fonction pour supprimer une ligne du tableau de commande
 window.supp = function supp(article) {
 	if (readCookie("list_achat") != null) {
@@ -207,5 +213,5 @@ window.supp = function supp(article) {
 		createCookie("list_achat", reimport, 15);
 		location.reload();
 	}
+	console.log(supp);
 }
-*/
