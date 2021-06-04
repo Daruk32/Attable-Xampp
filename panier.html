@@ -16,7 +16,7 @@
 		<script src="js/panier.js" type="module"></script>
 	</head>
 
-	<body onload="bandeau(), crea_panier(), panier()">
+	<body onload="bandeau(), panier(), crea_panier()">
 
 		<header>
 
@@ -76,9 +76,9 @@
 			    <tbody id="cart_tablebody"></tbody>
 			</table>
 
-			<p>Sous total : <span class="subtotal"></span>€</p>
+			<p id="totalsomme">Total : <span id="sous_total">0 €</span></p>
 
-			<button id="confirm-command">Passer la commande</button>
+			<div id="confirm-command"><button>Passer la commande</button></div>
 
 			
 		</section>

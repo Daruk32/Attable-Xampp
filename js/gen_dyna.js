@@ -427,16 +427,14 @@ window.crea_panier = function crea_panier() {
         for (let i=0 ; i < liste_panier.length ; i++) {
             var ch1 = '<tr class="line_panier"><td><img src="';
             var ch2 = liste_panier[i][3];
-            var ch3 = '" alt="img_product"></td><td>';
+            var ch3 = '" alt="img_product id="echantillon"></td><td>';
             var ch4 = liste_panier[i][1];
             var ch5 = '</td><td>';
             var ch6 = liste_panier[i][2];
-            var ch7 = '</td><td>';
+            var ch7 = ' €</td><td>';
             var ch8 = liste_panier[i][4];
-            var ch9 = '</td><td>';
-            var ch10 = 'poubelle';
-            var ch11 = '</td></tr>';
-            document.getElementById("cart_tablebody").innerHTML+=ch1+ch2+ch3+ch4+ch5+ch6+ch7+ch8+ch9+ch10+ch11;
+            var ch9 = '</td><td><img src="images/corbeille.jpg" alt="Delete" id="trashcan"></td></tr>';
+            document.getElementById("cart_tablebody").innerHTML+=ch1+ch2+ch3+ch4+ch5+ch6+ch7+ch8+ch9;
         }
     }
 }

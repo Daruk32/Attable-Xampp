@@ -186,9 +186,11 @@ window.panier = function panier() {
     }
     document.getElementById("total_commande").innerHTML = total+" €";
     document.getElementById("total_articles").innerHTML = nb_article;
+    document.getElementById("sous_total").innerHTML = total+" €";
 
     createCookie("Somme", total, 15);
     return total;
 }
+
 
 
