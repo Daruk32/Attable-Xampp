@@ -23,7 +23,7 @@ var boisson1 = {
     prix: 1,
     texte: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 };
-tab_boisson.push(boisson1);
+//tab_boisson.push(boisson1);
 
 var boisson2 = {
     url: 'categorie/boissons/boisson2.png',
@@ -64,3 +64,11 @@ var boisson6 = {
     texte: "Un test pour voir"
 };
 tab_boisson.push(boisson6);
+
+var boisson7 = {
+    url: 'categorie/boissons/fanta.jpg',
+    libelle: 'Fanta',
+    prix: 0.50,
+    texte: "Une boisson râfraichissante"
+};
+tab_boisson.push(boisson7);
