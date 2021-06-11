@@ -443,7 +443,51 @@ window.crea_panier = function crea_panier() {
 }
 
 
+window.valid_command = function valid_command() {
+    if (readCookie("list_achat").length == "") {
+        document.getElementById("valid-command").innerHTML="";
+    }
+    else {
+        var liste_panier = defrag_cookie("list_achat");
+
+        var m1 = "<a href='mailto:attable@gmail.com?subject=Votre commande - N° Commande&body=Bonjour,%0A%0AVoici le récapitulatif de votre commande :%0A%0A";
+        var m2 = "|-------------------------------------------------------------------------------------------------------------------|%0A";
+        var m3 = "|%09%09Désignation%09%09|     Quantité     |%09Prix%09|    Sous-total    |%0A";
+        var m4 = "|-------------------------------------------------------------------------------------------------------------------|%0A";
+        var m5 = "";
+        for (let i=0 ; i < liste_panier.length ; i++) {
+            var mesure = liste_panier[i][1].length;
+            if (mesure < 5) {
+                m5 = m5 + "| " + liste_panier[i][1] +"%09%09%09%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";
+            }
+            else if (mesure > 5 && mesure < 9) {
+                m5 = m5 + "| " + liste_panier[i][1] +"%09%09%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";
+            }
+            else if (mesure > 9 && mesure < 13) {
+                m5 = m5 + "| " + liste_panier[i][1] +"%09%09%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";
+            }
+            else if (mesure > 13 && mesure < 17) {
+                m5 = m5 + "| " + liste_panier[i][1] +"%09%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";
+            }
+            else if (mesure > 17 && mesure < 21) {
+                    m5 = m5 + "| " + liste_panier[i][1] +"%09%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";              
+            }
+            else if (mesure > 21 && mesure < 25) {
+                m5 = m5 + "| " + liste_panier[i][1] +"%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";              
+            }               
+            else if (mesure > 25 && mesure < 29) {
+                m5 = m5 + "| " + liste_panier[i][1] +"%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";              
+            }                 
+            else if (mesure > 29 && mesure < 33) {
+                m5 = m5 + "| " + liste_panier[i][1] +"%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";              
+            }          
+        }
+        var m6 = "|-------------------------------------------------------------------------------------------------------------------|%0A";
+        var m7 = "%0A%0AVotre total : " + readCookie("Somme") +"€%0A";
+        var m8 = "%0A%0A Merci pour commande !%0A%0ACordialement,%0A%0AAssociation Attable, le Collectif du goût'>Passer la commande</a>";
+    }
+    
 
 
-
-
+    document.getElementById("valid-command").innerHTML=m1+m2+m3+m4+m5+m6+m7+m8;
+}
