@@ -335,12 +335,7 @@ h3 {
 #description_produit img {
 	height: 200px;
 }
-#description_produit img:hover {
-	height: 390px;
-	width:auto;
-	transition: width 1s, height 1s;
-	bottom:auto;
-}
+
 
 /* Le texte */
 #description_produit2 {

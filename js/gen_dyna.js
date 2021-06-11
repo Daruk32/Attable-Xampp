@@ -126,9 +126,16 @@ window.bandeau = function bandeau() {
             document.getElementById("bande").innerHTML+="";
         }
         else {
-            var pre = "<li><a onclick='changeCategorie(";
-            var mid1 = categ;
-            var mid2 = ")'>";
+            if (window.location == "http://localhost:1234/Attable-Xampp/panier.html" || window.location == "http://johan.giroux.free.fr/attable/panier.html") {
+                var pre = "<li><a onClick=\"window.location.href='categorie.html?categorie=";
+                var mid1 = categ;
+                var mid2 = "'\">";
+            }
+            else {
+                var pre = "<li><a onclick='changeCategorie(";
+                var mid1 = categ;
+                var mid2 = ")'>";
+            }
             var mid3 = tabtitre[categ];
             var mid4 = "</a></li>";
 
