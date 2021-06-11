@@ -452,35 +452,11 @@ window.valid_command = function valid_command() {
 
         var m1 = "<a href='mailto:attable@gmail.com?subject=Votre commande - N° Commande&body=Bonjour,%0A%0AVoici le récapitulatif de votre commande :%0A%0A";
         var m2 = "|-------------------------------------------------------------------------------------------------------------------|%0A";
-        var m3 = "|%09%09Désignation%09%09|     Quantité     |%09Prix%09|    Sous-total    |%0A";
+        var m3 = "|%09Désignation%09|%09Quantité%09|%09Prix (€)%09|%0A";
         var m4 = "|-------------------------------------------------------------------------------------------------------------------|%0A";
         var m5 = "";
         for (let i=0 ; i < liste_panier.length ; i++) {
-            var mesure = liste_panier[i][1].length;
-            if (mesure < 5) {
-                m5 = m5 + "| " + liste_panier[i][1] +"%09%09%09%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";
-            }
-            else if (mesure > 5 && mesure < 9) {
-                m5 = m5 + "| " + liste_panier[i][1] +"%09%09%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";
-            }
-            else if (mesure > 9 && mesure < 13) {
-                m5 = m5 + "| " + liste_panier[i][1] +"%09%09%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";
-            }
-            else if (mesure > 13 && mesure < 17) {
-                m5 = m5 + "| " + liste_panier[i][1] +"%09%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";
-            }
-            else if (mesure > 17 && mesure < 21) {
-                    m5 = m5 + "| " + liste_panier[i][1] +"%09%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";              
-            }
-            else if (mesure > 21 && mesure < 25) {
-                m5 = m5 + "| " + liste_panier[i][1] +"%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";              
-            }               
-            else if (mesure > 25 && mesure < 29) {
-                m5 = m5 + "| " + liste_panier[i][1] +"%09%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";              
-            }                 
-            else if (mesure > 29 && mesure < 33) {
-                m5 = m5 + "| " + liste_panier[i][1] +"%09|%09"+ liste_panier[i][4] +"%09|%09"+ liste_panier[i][2] +"%09|%09"+ liste_panier[i][4]*liste_panier[i][2] + "%09|%0A";              
-            }          
+                m5 = m5 + liste_panier[i][1] +" | "+ liste_panier[i][4] +" | "+ liste_panier[i][2] +"€%0A";                   
         }
         var m6 = "|-------------------------------------------------------------------------------------------------------------------|%0A";
         var m7 = "%0A%0AVotre total : " + readCookie("Somme") +"€%0A";
