@@ -723,7 +723,8 @@ thead th:nth-child(54) {
 #confirm-command {
 	width :5%;
 	margin : auto;
-
+	cursor:pointer;
+	text-decoration: none;
 }
 #confirm-command button{
 	background-color: green;
@@ -733,8 +734,13 @@ thead th:nth-child(54) {
 	border: 1px solid black;
 	border-radius: 5px;
 	vertical-align: middle;
+	cursor:pointer;
+	text-decoration: none;
 }
-
+#confirm-command button a, #confirm-command button a:hover {
+	text-decoration: none;
+	color:white;
+}
 
 
 /* ------------------------------------------------------------Page NewsLetter et QuitMailingList----------------------------------------- */

@@ -420,7 +420,7 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
 
 //Fonction de génération du panier à la page panier.html à partir du cookie
 window.crea_panier = function crea_panier() {
-    if (readCookie("list_achat").length == "") {
+    if (readCookie("list_achat") == null) {
         document.getElementById("cart_tablebody").innerHTML="";
     }
     else {
@@ -442,12 +442,9 @@ window.crea_panier = function crea_panier() {
     }
 }
 
-
+//Création du Mail pour la commande
 window.valid_command = function valid_command() {
-    if (readCookie("list_achat").length == "") {
-        document.getElementById("valid-command").innerHTML="";
-    }
-    else {
+    if (readCookie("list_achat") != null) {
         var liste_panier = defrag_cookie("list_achat");
 
         var m1 = "<a href='mailto:attable@gmail.com?subject=Votre commande - N° Commande&body=Bonjour,%0A%0AVoici le récapitulatif de votre commande :%0A%0A";
@@ -461,9 +458,12 @@ window.valid_command = function valid_command() {
         var m6 = "|-------------------------------------------------------------------------------------------------------------------|%0A";
         var m7 = "%0A%0AVotre total : " + readCookie("Somme") +"€%0A";
         var m8 = "%0A%0A Merci pour commande !%0A%0ACordialement,%0A%0AAssociation Attable, le Collectif du goût'>Passer la commande</a>";
-    }
+        document.getElementById("valid-command").innerHTML=m1+m2+m3+m4+m5+m6+m7+m8;
     
+    }
+    else {
+        document.getElementById("valid-command").innerHTML="<a onclick='alert(\"Votre panier est vide !\")'>Passer la commande</a>";
+    }    
 
 
-    document.getElementById("valid-command").innerHTML=m1+m2+m3+m4+m5+m6+m7+m8;
 }
