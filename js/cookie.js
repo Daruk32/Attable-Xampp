@@ -6,9 +6,8 @@ function createCookie(name,value,days) {
 	}
 	else var expires = "";
 	document.cookie = name+"="+value+expires+"; path=/"+'; sameSite=Strict;secure=TRUE;';
-
-	console.log(value);
 }
+
 
 function readCookie(name) {
 	var nameEQ = name + "=";
@@ -20,6 +19,7 @@ function readCookie(name) {
 	}
 	return null;
 }
+
 
 function eraseCookie(name) {
 	createCookie(name,"",-1);

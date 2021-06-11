@@ -123,7 +123,9 @@ window.plus = function plus(catindex){
 //Fonction Retire quantité d'untel produit
 window.minus = function minus(cat_index){
 	var produit = document.getElementById('moins'+cat_index);
-
+    if (produit == null) {
+    	return false;
+    }
     var id = produit.dataset.id;
 
 	liste = defrag_cookie("list_achat");
