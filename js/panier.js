@@ -199,6 +199,8 @@ window.panier = function panier() {
     	document.getElementById("sous_total").innerHTML = total+" €";
 	}
     createCookie("Somme", total, 15);
+	console.log(readCookie("list_achat").length);
+
     return total;
 }
 
