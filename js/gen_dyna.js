@@ -339,9 +339,7 @@ window.changeCategorie = function changeCategorie(number) {
         }
 
 
-         
     }
-
 	document.getElementById('fiche_produit').style.display = 'none';
 }
 
@@ -457,20 +455,27 @@ window.crea_panier = function crea_panier() {
 
 //Création du Mail pour la commande
 window.valid_command = function valid_command() {
+    var d = new Date();
+    var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+    var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    var fullDate = date+' '+hours;
+
     if (readCookie("list_achat") != null) {
         var liste_panier = defrag_cookie("list_achat");
 
-        var m1 = "<a href='mailto:attable@gmail.com?subject=Votre commande - N° Commande&body=Bonjour,%0A%0AVoici le récapitulatif de votre commande :%0A%0A";
-        var m2 = "|-------------------------------------------------------------------------------------------------------------------|%0A";
-        var m3 = "|%09Désignation%09|%09Quantité%09|%09Prix (€)%09|%0A";
-        var m4 = "|-------------------------------------------------------------------------------------------------------------------|%0A";
+        var m1 = "<a href='mailto:attable@gmail.com?subject=Votre commande - N° Commande&body=Identifiant client :%0ADate : "+fullDate+"%0A%0ABonjour,%0A%0AVoici le récapitulatif de votre commande :%0A%0A";
+        var m2 = "|-------------------------------------------------------------------------------------|%0A";
+        var m3 = "|%09Désignation%09|%09Quantité%09|        Prix (€)        |%0A";
+        var m4 = "|-------------------------------------------------------------------------------------|%0A";
         var m5 = "";
         for (let i=0 ; i < liste_panier.length ; i++) {
-                m5 = m5 + liste_panier[i][1] +" | "+ liste_panier[i][4] +" | "+ liste_panier[i][2] +"€%0A";                   
+            if (liste_panier[i][4] > 0) {
+                m5 = m5 + liste_panier[i][1] +" | "+ liste_panier[i][4] +" | "+ liste_panier[i][2] +"€%0A";  
+            }                 
         }
-        var m6 = "|-------------------------------------------------------------------------------------------------------------------|%0A";
+        var m6 = "|-------------------------------------------------------------------------------------|%0A";
         var m7 = "%0A%0AVotre total : " + readCookie("Somme") +"€%0A";
-        var m8 = "%0A%0A Merci pour commande !%0A%0ACordialement,%0A%0AAssociation Attable, le Collectif du goût'>Passer la commande</a>";
+        var m8 = "%0A%0A Merci pour votre commande !%0A%0ACordialement,%0A%0AAssociation Attable, le Collectif du goût'>Passer la commande</a>";
         document.getElementById("valid-command").innerHTML=m1+m2+m3+m4+m5+m6+m7+m8;
     
     }
