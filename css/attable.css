@@ -110,6 +110,7 @@ header a {
 	background-color:white;
 	z-index:1;
 	padding: 1% 0 2% 0;
+	text-align: center;
 }
 
 hr {
@@ -318,32 +319,36 @@ h3 {
 /*---------------La fiche produit--------------*/
 #fiche_produit {
 	display:none;
+	width: 50%;
+	height: 50%;
 	border: 2px solid red;
-	padding: 2% 0 2% 0;
-	margin: 2% auto 2% auto;
-	width: 60%;
-	height:auto;
+	padding: 10px;
+	margin: 20px;
 }
 
 /* La photo */
 #description_produit {
+	width: 50%;
+	display : block ;
 	float: left;
-	padding: 0px 5% 0px 5%;
-	position:relative;
 }
 
 #description_produit img {
-	height: 200px;
+	width: 100%;
+	border: none;
 }
 
 
 /* Le texte */
 #description_produit2 {
-	padding: 0px 5% 0px 5%;
+	width: 40%;
+	display : block;
+	float: right;
 }
 
 #description_produit2 p{
 	margin-bottom: 6%;
+	text-align: left;
 }
 
 #produit_action {
@@ -351,7 +356,7 @@ h3 {
 }
 
 #id_prix_produit {
-	margin-right: 60px;
+	text-align: left;
 }
 
 #produit_action input {
@@ -359,9 +364,14 @@ h3 {
 }
 
 #produit_action button {
-	float:right;
+	margin-top: 8%;
 }
 
+#produit_action #modul_quantity {
+	text-align: center;
+	margin-top: 20px;
+	margin-right: 37px;
+}
 
 /* Le champ de texte en bas de la page Catégorie */
 #info_categorie {
@@ -373,7 +383,7 @@ h3 {
 #ancre1{
 	display: block; 
 	height: 100px;
-	margin-top: -100px;
+	margin: -100px 0 20px 0;
 	visibility: hidden;
 }
 
@@ -762,3 +772,4 @@ thead th:nth-child(54) {
 	width:150px;
 }
 
+.overlay { margin: 0; padding: 0 5px; position: absolute; top: 0; left: 0; background: rgba(0,0,0,.25);z-index: 1; max-width: 400px; line-height: 30px; text-align: center; color: #fff;}

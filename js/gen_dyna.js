@@ -354,7 +354,7 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
     var pre_id = number*1000;
     var id = (pre_id).toString()+cat_index.toString();
 
-	document.getElementById('fiche_produit').style.display = 'block';
+	document.getElementById('fiche_produit').style.display = 'inline-block';
 
         //Met à jour et affiche la quantité de chaque produit
         if (readCookie("list_achat") != null){
@@ -379,7 +379,7 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
         var champs_prix = "Prix :" + tab_categorie[number][cat_index].prix + " €";
     }
 
-    var fd1 = "<div id='description_produit'><img src='";
+    var fd1 = "<div id='description_produit' class='example'><div class='overlay'>🔎 Zoom</div><img src='";
     var fd2 = tab_categorie[number][cat_index].url;
     var fd3 = "' alt='Conserves' class='cats'></div><div id='description_produit2'><p>";
     var fd4 = tab_categorie[number][cat_index].libelle;
@@ -421,6 +421,10 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
     if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
         document.getElementById("plus"+cat_index).style.visibility = 'hidden';
     }
+
+    $(document).ready(function () {
+        $('.example').izoomify();
+    });
 }
 
 
