@@ -465,7 +465,7 @@ window.valid_command = function valid_command() {
 
         var m1 = "<a href='mailto:attable@gmail.com?subject=Votre commande - N° Commande&body=Identifiant client :%0ADate : "+fullDate+"%0A%0ABonjour,%0A%0AVoici le récapitulatif de votre commande :%0A%0A";
         var m2 = "|-------------------------------------------------------------------------------------|%0A";
-        var m3 = "|%09Désignation%09|%09Quantité%09|        Prix (€)        |%0A";
+        var m3 = "|            Désignation            |         Quantité         |         Prix (€)         |%0A";
         var m4 = "|-------------------------------------------------------------------------------------|%0A";
         var m5 = "";
         for (let i=0 ; i < liste_panier.length ; i++) {
