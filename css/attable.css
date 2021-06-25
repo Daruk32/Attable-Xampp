@@ -217,6 +217,22 @@ h3 {
 	cursor: pointer;
 }
 
+
+.icon-bar {
+	background: #CC8B65 !important;	
+}
+.navbar-toggle {
+	border-style: none;
+}
+.navbar-collapse {
+	text-align: center;
+}
+.navbar .navbar-nav {
+	display: inline-block;
+	float: none;
+	vertical-align: top;
+}
+
 /* La présentation des différents produits de la catégorie */
 #descriptif_cat {
 	width: 100%;
@@ -4107,7 +4123,7 @@ textarea.form-control-lg {
   opacity: 0;
 }
 
-.collapse:not(.show) {
+.navbar-toggle:not(.show) {
   display: none;
 }
 
@@ -4653,8 +4669,6 @@ textarea.form-control-lg {
   white-space: nowrap;
 }
 .navbar-nav {
-  display: flex;
-  flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
   list-style-type: none;
