@@ -100,6 +100,18 @@ window.liste_categorie = function liste_categorie() {
                 document.getElementById("tableau_image_categorie").innerHTML+="";
             }
             else {
+
+                var pre ="<div class='col mb-5'><div class='card h-100' onClick=\"window.location.href='categorie.html?categorie=";
+                var mid1 = categ;
+                var mid2 = "'\"><img class='card-img-top cats' src='";
+                var mid3 = tab_categorie[categ][0].url;
+                var mid4 = "' alt='...' /><div class='card-body p-4'><div class='text-center'><h5 class='fw-bolder'>";
+                var mid5 = tabtitre[categ];
+                var fin = "</h5></div></div></div></div>";
+
+
+
+/*
                 var pre = "<div class='categs'><a onClick=\"window.location.href='categorie.html?categorie=";
                 var mid1 = categ;
                 var mid2 = "'\"><img src='";
@@ -107,6 +119,7 @@ window.liste_categorie = function liste_categorie() {
                 var mid4 = "' alt='presentation' class='cats'></a><div class='nomcats'>";
                 var mid5 = tabtitre[categ];
                 var fin = "</div></div>";
+*/
 
                 document.getElementById("tableau_image_categorie").innerHTML+=pre+mid1+mid2+mid3+mid4+mid5+fin;
             }
