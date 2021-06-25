@@ -192,7 +192,7 @@ window.chargement = function chargement() {
         }
         else {
 
-        var pre = "<div class='col mb-5 un_produit'><a class='card h-100' id=togg1' href=\"#ancre1\"><img class='card-img-top produit' src='";
+        var pre = "<div class='col mb-5 un_produit'><a class='card h-50' href=\"#ancre1\"><img class='card-img-top produit' src='";
         var mid1 = tab_categorie[number][cat_index].url;
         var mid2 ="' alt='...' onclick='fiche_detaillee(";
         var mid3 = number;
@@ -200,7 +200,7 @@ window.chargement = function chargement() {
         var mid5 = cat_index;
         var mid6 = ")'></a><div class='card-body p-4'><div class='text-center'><h5 class='fw-bolder legend_produit'>";
         var mid7 = tab_categorie[number][cat_index].libelle;
-        var mid8 = "</h5><div id='descriptif_prix'>";
+        var mid8 = "</h5><div>";
         var mid9 = champs_prix;
         var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer p-4 pt-0 border-top-0 bg-transparent'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
         var mid11 = cat_index;
@@ -333,7 +333,7 @@ window.changeCategorie = function changeCategorie(number) {
             document.getElementById("descriptif_cat").innerHTML+="";
         }
         else {
-            var pre = "<div class='col mb-5 un_produit'><a class='card h-100' id=togg1' href=\"#ancre1\"><img class='card-img-top produit' src='";
+            var pre = "<div class='col mb-5 un_produit'><a class='card h-50' href=\"#ancre1\"><img class='card-img-top produit' src='";
             var mid1 = tab_categorie[number][cat_index].url;
             var mid2 ="' alt='...' onclick='fiche_detaillee(";
             var mid3 = number;
@@ -341,7 +341,7 @@ window.changeCategorie = function changeCategorie(number) {
             var mid5 = cat_index;
             var mid6 = ")'></a><div class='card-body p-4'><div class='text-center'><h5 class='fw-bolder legend_produit'>";
             var mid7 = tab_categorie[number][cat_index].libelle;
-            var mid8 = "</h5><div id='descriptif_prix'>";
+            var mid8 = "</h5><div>";
             var mid9 = champs_prix;
             var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer p-4 pt-0 border-top-0 bg-transparent'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
             var mid11 = cat_index;
