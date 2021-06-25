@@ -109,18 +109,6 @@ window.liste_categorie = function liste_categorie() {
                 var mid5 = tabtitre[categ];
                 var fin = "</h5></div></div></div></div>";
 
-
-
-/*
-                var pre = "<div class='categs'><a onClick=\"window.location.href='categorie.html?categorie=";
-                var mid1 = categ;
-                var mid2 = "'\"><img src='";
-                var mid3 = tab_categorie[categ][0].url;
-                var mid4 = "' alt='presentation' class='cats'></a><div class='nomcats'>";
-                var mid5 = tabtitre[categ];
-                var fin = "</div></div>";
-*/
-
                 document.getElementById("tableau_image_categorie").innerHTML+=pre+mid1+mid2+mid3+mid4+mid5+fin;
             }
         }

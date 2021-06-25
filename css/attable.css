@@ -1,3 +1,13 @@
+/* Charte Graphique 
+Noisette : rgba(193,122,61,255)
+Vert : rgba(34,135,40,255)
+Rouge : rgba(216,40,76,255)
+Noir : rgba(20,32,30,255)
+Gris clair : rgba(226,226,226,255)
+
+*/
+#151f1e
+
 body {
 	background-color:lightgrey;	
 }
@@ -31,7 +41,7 @@ header div {
 
 /* Le titre des pages */
 #titre_page {
-	color:#d8284c;
+	color:rgba(216,40,76,255);
 	font-size:37px;
 	font-family:Brush Script MT, Brush Script Std, cursive;
 	padding-left: 1rem;
