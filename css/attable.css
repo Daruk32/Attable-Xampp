@@ -208,6 +208,9 @@ h3 {
   color :rgba(34,135,40,255);
 }
 
+#top {
+  background-color: black;
+}
 
 .icon-bar {
 	background: #CC8B65 !important;	

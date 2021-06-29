@@ -1,41 +1,43 @@
 /* Les éléments du footer */
 footer {
-	background-color:grey;
+	background-color: rgba(20,32,30,255);
 	position: relative;
-	height:50px;
-	width:100%;
-	left:0px;
-	right:0px;
 	color:white;
-	bottom:auto;
 	z-index:2;
-	border: 2px solid red;
+	border-top: 2px solid rgba(216,40,76,255);
 }
 
 /* Les menus */
-#menus {
-	padding:0;
-	margin:0;
-	text-align:center;
-	margin-top:4px;
+#menu {
+	margin-top:2rem;
 }
 
-#menus li{
-	display:inline-block;
-	margin-right: 15px;
-	margin-left: 15px;
+
+#menus {
+	list-style-type: none;
+	margin-left:0;
+	padding-left:0;
 }
 
 #menus a{
 	text-decoration:none;
 	display:block;
-	padding:10px 20px;
 	color:white;
-	font-family:arial;
-	border-radius: 20px;
 }
 
 #menus li:hover a {
-	color:red;
-	background-color: white;
+	color:rgba(216,40,76,255);
+}
+
+
+footer .glyphicon {
+	font-size: 25px;
+	margin: 10px;
+	color: rgba(193,122,61,255);
+	height: 30px;
+}
+
+footer .glyphicon:hover {
+	font-size: 27px;
+	color: rgba(216,40,76,255);
 }

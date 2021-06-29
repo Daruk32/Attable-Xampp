@@ -16,11 +16,17 @@
 		<script type="module" src="js\gen_dyna.js"></script>
 
 		<script src="js/panier.js" type="module"></script>
+
+		<!-- Bootstrap core JS-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	</head>
 
 	<body onload="Captcha(), panier()">
 
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <nav class="navbar navbar-expand-md" id="top">
             <div class="container-fluid px-2 px-lg-5 d-flex flex-row">
 				<a class="navbar-brand" href="index.html"><img src="images\attable_logo.png" alt="monlogo" id="lelogo"></a>
 				<div id="titre_page" class="collapse navbar-collapse">
@@ -90,21 +96,35 @@
 
 		</section>
 
-		<footer>
+		<footer class="py-4 text-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4 links" id="menu">
+						<ul id="menus">
+							<li><a href="index.html">Accueil</a></li>
+							<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+							<li><a href="noustrouver.html">Nous trouver</a></li>
+							<li><a href="panier.html">Commande</a></li>
+						</ul>
+					</div>
 
-			<div id="menu" class="head1">
-				<ul id="menus">
-				<li><a href="index.html">Accueil</a></li>
-				<li><a href="quisommesnous.html">Qui sommes nous</a></li>
-				<li><a href="noustrouver.html">Nous trouver</a></li>
-				<li><a href="newsletter.html">Mailing List</a></li>
-				<li><a href="panier.html">Commande</a></li>
-				<li><a href="mentionslegales.html">Mentions légales</a></li>
-				<li><a href="cgu.html">CGU</a></li>
-				</ul>
+					<div class="col-sm-4 text-center ancre">
+						<a href="#top">
+							<span class="glyphicon glyphicon-chevron-up"></span>
+						</a>
+						<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+					</div>
+
+					<div class="col-sm-4 links" id="menu">
+						<ul id="menus">
+							<li><a href="newsletter.html">Mailing List</a></li>
+							<li><a href="mentionslegales.html">Mentions légales</a></li>
+							<li><a href="cgu.html">CGU</a></li>
+						</ul>
+					</div>
+				</div>			
 			</div>
-
-		</footer>
+        </footer>
 
 
 	</body>
