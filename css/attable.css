@@ -14,42 +14,50 @@ body {
 
 
 /* ------------------------------------------Les éléments du header------------------------------------------------------ */
-header {
-	background-color:#a6a6a6;
-	height:75px;
-	position:relative;
-	border:2px solid rgba(216,40,76,255);
-	border-bottom: 5px solid rgba(216,40,76,255);
-	z-index:3;
-}
-header div {
-	margin-right: 20px;
-	margin-left: 20px;
+#top {
+  background-color: rgba(20,32,30,255);
 }
 
+#top ul {
+  vertical-align: middle;
+}
+
+#top a:hover {
+  background-color: inherit !important;
+}
 
 /* Le logo */
-#logo {
-	width:8.75rem;
-	position:relative;
-	float:left;
-	margin-top: 8px;
-}
 #lelogo {
 	width: 100%;
+  margin-top: 1rem;
 }
 
 /* Le titre des pages */
 #titre_page {
 	color:rgba(216,40,76,255);
 	font-size:37px;
-	padding-left: 1rem;
+  width: 100%;
+  margin-top: 3rem;
 }
+
+
+/* La barre de recherche */
+#site-search {
+	font-size: 1.5rem;
+	height: 3rem;
+	width: 15rem;
+	border:1px solid rgba(216,40,76,255);
+  margin-top: 4.5rem;
+}
+
+
+
 
 /* Le bouton d'authentification */
 #authentification {
-	width: 5rem;
-	float:right;
+	width: 10.75rem;
+  text-align: center;
+  margin-top: 1.8rem;
 }
 
 #lesids {
@@ -59,9 +67,9 @@ header div {
 
 /* Le bouton panier */
 #panier {
-	float:right;
-	width:4.25rem;
+	width:9.5rem;
 	text-align: center;
+  margin-left: -3rem;
 }
 #panier a {
 	text-decoration: none;
@@ -94,15 +102,6 @@ header a {
 }
 
 
-
-/* La barre de recherche */
-#site-search {
-	margin-left: 3rem;
-	font-size: 1rem;
-	height: 2rem;
-	width: 10rem;
-	border:1px solid rgba(216,40,76,255);
-}
 
 
 /* ------------------------------------------La section principale------------------------------------------------------ */
@@ -208,9 +207,7 @@ h3 {
   color :rgba(34,135,40,255);
 }
 
-#top {
-  background-color: black;
-}
+
 
 .icon-bar {
 	background: #CC8B65 !important;	
@@ -219,10 +216,6 @@ h3 {
 	border-style: none;
 }
 
-.navbar .navbar-nav {
-	display: inline-block;
-	vertical-align: bottom;
-}
 
 /* La présentation des différents produits de la catégorie */
 #descriptif_cat {
@@ -4636,6 +4629,7 @@ textarea.form-control-lg {
   padding-top: 0.5rem;
   padding-bottom: 1rem;
   border-bottom: 5px solid rgba(216,40,76,255);
+  border-radius: unset !important;
 }
 .navbar > .container,
 .navbar > .container-fluid,
