@@ -128,12 +128,12 @@ window.bandeau = function bandeau() {
         }
         else {
             if (window.location == "http://localhost:1234/Attable-Xampp/panier.html" || window.location == "http://johan.giroux.free.fr/attable/panier.html") {
-                var pre = "<li class='nav-item'><a  class='nav-link' onClick=\"window.location.href='categorie.html?categorie=";
+                var pre = "<li class='nav-item'><a class='nav-link' onClick=\"window.location.href='categorie.html?categorie=";
                 var mid1 = categ;
                 var mid2 = "'\">";
             }
             else {
-                var pre = "<li class='nav-item'><a  class='nav-link' onclick='changeCategorie(";
+                var pre = "<li class='nav-item'><a class='nav-link' onclick='changeCategorie(";
                 var mid1 = categ;
                 var mid2 = ")'>";
             }

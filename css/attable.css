@@ -177,29 +177,21 @@ h3 {
 
 /* ------------------------------------------Page Catégorie------------------------------------------------------ */
 
-/* La bande centrale de produits */
+/* La bande centrale de produits */ 
 #bandeau {
 	background-color:grey;
-	height:100%;
-	width:100%;
 	color:white;
 	z-index:2;
 	border: 2px solid rgba(216,40,76,255);
 	top: 0;
 	position: sticky;
 }
-#bande {
-	padding:0;
-	margin:10px 10px;
-}
 #bande li{
 	display:inline-block;
 	width:165px;
-  margin:0;
 }
 #bande a{
 	text-decoration:none;
-	display:block;
 	padding:10px 20px;
 	color:black;
   border:2px solid rgba(216,40,76,255);
@@ -226,8 +218,7 @@ h3 {
 
 .navbar .navbar-nav {
 	display: inline-block;
-	float: none;
-	vertical-align: top;
+	vertical-align: bottom;
 }
 
 /* La présentation des différents produits de la catégorie */
@@ -4120,7 +4111,7 @@ textarea.form-control-lg {
   opacity: 0;
 }
 
-.navbar-toggler:not(.show) {
+.collapse:not(.show) {
   display: none;
 }
 

@@ -25,13 +25,13 @@
 	<body onload="chargement(), panier(), bandeau(), plus(), minus()">
 		
 		
-				<nav class="navbar navbar-expand-md navbar-light bg-light">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
 					<div class="container-fluid px-2 px-lg-5 d-flex flex-row">
 						<a class="navbar-brand" href="index.html"><img src="images\attable_logo.png" alt="monlogo" id="lelogo"></a>
 						<div id="titre_page" class="collapse navbar-collapse">
 							Nos gammes -&nbsp;<span id="ajout_titre_categorie"></span>
 						</div>
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<div class="collapse navbar-collapse">
 							<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 								<li class="nav-item"><input type="search" id="site-search" name="q" aria-label="Search through site content" value="Rechercher..." onFocus="javascript:this.value=''"></li>
 							</ul>
@@ -52,16 +52,16 @@
 									</a>
 								</div>
 						</div>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
 					</div>
 				</nav>
 
 		
 		<section id="main">
 			
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div id="bandeau" class="container-fluid">
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
+			<nav class="navbar navbar-expand-lg navbar-light d-none d-sm-none d-md-block" id="bandeau">
+				<div class="container-fluid px-4 px-lg-5">
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="nav navbar-nav" id="bande"></ul>
 					</div>
