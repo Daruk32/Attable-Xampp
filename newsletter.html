@@ -56,40 +56,41 @@
 
 		<section id="main">
 
-			<form>
-					<fieldset class="form1">
-						<a href="index.html" id="retour">RETOUR AU SITE</a>									
-						<p id="titreformu"><b>Vous tenir informé</b></p>
-						<div id="formu">
-							<label for="email">Votre email</label>
-							<input type="email" id="email" name="email" required="required">
-							<br>
-						</div>
-
-						<div id="emplacement_recaptcha">
+			<div class="container w-75" id="joinmail">
+				<h1 class="text-center w-100">Abonnez-vous à la Newsletter !</h1>
+				<form>
+				  <fieldset>
+					
+					<div class="form-group text-center">
+						<label for="email">Entrez votre mail</label>
+						<input type="email" class="form-control w-75" id="email" required="required">
+					  </div>						
+					  
+					  <div class="form-group text-center">
+						<div id="emplacement_recaptcha" class="text-center container w-75">
 							<label>Confirmez que vous n'êtes pas un robot !</label>
-							<div class="capcha">
-								<input type="text" id="mainCaptcha" disabled/>
-								<input type="button" id="refresh" value="Refresh" onclick="Captcha();" />
+							<div id="table-capcha">
+								<input type="text" id="mainCaptcha" class="text_capcha" disabled/>
+								<input type="text" id="txtInput" class="text_capcha" required="required" />
+								<input type="button" id="refresh" value="Refresh" class="butt_capcha" onclick="Captcha();" />
 							</div>
-							<div class="capcha">
-								<input type="text" id="txtInput" required="required" />
-							</div>	
 						</div>
+					</div>
+					
+					<div id="bouton">
+						<input style="width:100px;" type="submit" value="S'inscrire" id="submit" onclick="alert(ValidCaptcha2());">
+					</div>
 
-						<div id="bouton">
-							<input style="width:100px;" type="submit" value="S'inscrire" id="submit" onclick="alert(ValidCaptcha2());">
-						</div>
+					<hr>
 
-						<hr>
+					<div id="formu2">Vous voulez vous désinscrire de la Mailing List ?</div>
+					<div id="bouton">
+						<a href="quitmailinglist.html"><input type="button" value="Se désinscrire" id="submit2"></a>
+					</div>
 
-						<div id="formu2">Vous voulez vous désinscrire de la Mailing List ?</div>
-						<div id="bouton">
-							<a href="quitmailinglist.html"><input type="button" value="Se désinscrire" id="submit2"></a>
-						</div>
-
-					</fieldset>
-			</form>
+				  </fieldset>
+				</form>
+			</div>
 
 		</section>
 
