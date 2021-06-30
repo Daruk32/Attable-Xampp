@@ -13,6 +13,8 @@ body {
 }
 
 
+
+
 /* ------------------------------------------Les éléments du header------------------------------------------------------ */
 #top {
   background-color: rgba(20,32,30,255);
@@ -106,12 +108,15 @@ header a {
 
 /* ------------------------------------------La section principale------------------------------------------------------ */
 #main {
-	margin: 0 3% 0 3%;
 	background-color:white;
 	z-index:1;
-	padding: 1% 0 2% 0;
-	text-align: center;
 }
+
+
+footer {
+  bottom: 0 !important;
+}
+
 
 hr {
 	width:95%;
@@ -371,7 +376,7 @@ h3 {
 	height:100%;
 	width:420px;
 	background-color:#808080;
-	color:white;
+	color:black !important;
 	border-radius:30px;
 	margin-right:auto;
 	margin-left:auto;
@@ -660,27 +665,32 @@ thead th:nth-child(54) {
 
 /* ------------------------------------------------------------Page NewsLetter et QuitMailingList----------------------------------------- */
 
+#quitmail {
+  padding: 1rem;
+  border: 1px solid rgba(216,40,76,255);
+  margin-bottom: 7rem;
+}
+
 #emplacement_recaptcha {
 	border: 3px dotted rgba(216,40,76,255);
-	width: 400px;
 	text-align: center;
-	margin-bottom: 20px;
-	margin-left:auto;
-	margin-right:auto;
-	padding: 10px 10px;
+	padding: 10px;
 }
 
-#emplacement_recaptcha label {
-	font-weight: bold;
+.butt_capcha {
+  margin: 1rem;
 }
 
-.butt_capcha #mainCaptcha {
-	width:100px;
+#table-capcha, #email {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.text_capcha #txtInput {
-	width:150px;
+
+.text_capcha {
+  text-align: center;
 }
+
 
 .overlay { margin: 0; padding: 0 5px; position: absolute; top: 0; left: 0; background: rgba(0,0,0,.25);z-index: 1; max-width: 400px; line-height: 30px; text-align: center; color: #fff;}
 

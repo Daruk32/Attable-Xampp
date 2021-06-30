@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Qui Mailing List</title>
+		<title>Newsletter - Se désabonner</title>
 		<link rel="stylesheet" href="css\attable.css">
 		<link rel="stylesheet" href="css\footer.css">
 		<script src="js\valid.js" type="text/javascript"></script>
@@ -34,7 +34,7 @@
 						<a class="navbar-brand" href="index.html"><img src="images\attable_logo2.png" class="img-responsive" alt="monlogo" id="lelogo"></a>
 					</li>
 					<li class="collapse navbar-collapse mx-md-5">
-						<div id="titre_page">Passez ATTABLE - Se désabonner</div>
+						<div id="titre_page">Newsletter - Se désabonner</div>
 					</li>
 					<li class="collapse navbar-collapse mx-md-5">
 						<input type="search" id="site-search" name="q" aria-label="Search through site content" value="Rechercher..." onFocus="javascript:this.value=''">
@@ -57,35 +57,39 @@
 
 		<section id="main">
 
-			<form>
-					<fieldset class="form1">
-						<a href="index.html" id="retour">RETOUR AU SITE</a>									
-						<p id="titreformu"><b>Nous quitter</b></p>
-						<div id="formu">
-							<label for="email">Votre email</label>
-							<input type="email" id="email" name="email" required="required">
-							<br>
-						</div>
-
-						<div id="emplacement_recaptcha">
-							<label>Confirmez que vous n'êtes pas un robot !</label>
-							<div class="capcha">
-								<input type="text" id="mainCaptcha" class="text_capcha" disabled/>
-								<input type="button" id="refresh" value="Refresh" class="butt_capcha" onclick="Captcha();" />
+				<div class="container w-50" id="quitmail">
+					<h1 class="text-center">Se désabonner</h1>
+					<form>
+					  <fieldset>
+						
+						<div class="form-group text-center">
+							<label for="email">Entrez votre mail</label>
+							<input type="email" class="form-control w-75" id="email" required="required">
+						  </div>						
+						  
+						  <div class="form-group text-center">
+							<div id="emplacement_recaptcha" class="text-center container w-75">
+								<label>Confirmez que vous n'êtes pas un robot !</label>
+								<table id="table-capcha">
+									<tr class="capcha">
+										<td><input type="text" id="mainCaptcha" class="text_capcha" disabled/></td>
+										<td rowspan="2"><input type="button" id="refresh" value="Refresh" class="butt_capcha" onclick="Captcha();" /></td>
+									</tr>
+									<tr class="capcha">
+										<td><input type="text" id="txtInput" class="text_capcha" required="required" /></td>
+									</tr>	
+								</table>
 							</div>
-							<div class="capcha">
-								<input type="text" id="txtInput" class="text_capcha" required="required" />
-							</div>	
 						</div>
-
+						
 						<div id="bouton">
 							<input style="width:100px;" type="submit" value="Désinscrire" id="submit" onclick="alert(ValidCaptcha());">
 						</div>
 
+					  </fieldset>
+					</form>
+				</div>
 
-					</fieldset>
-			
-				</form>
 
 		</section>
 
