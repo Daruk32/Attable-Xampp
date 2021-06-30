@@ -145,36 +145,7 @@ h3 {
 	padding-bottom: 2%;
 	text-align: center;
 }
-.categs {
-	width:24%;
-	padding: 10px;
-	text-align: center;
-	border: 1px solid rgba(216,40,76,255);
-	border-radius: 5px;
-	display:inline-block;
-	margin: 3px;
-}
-.categs img {
-	height:200px;
-  	opacity: 0.8;	
-  	border-radius:5px;
-}
-.categs img:hover {
-	height:200px;
-  	opacity: 1;
-  	border-radius:5px;
-	cursor: pointer;
-}
-.nomcats {
-	color: black;
-  	font-weight:bold;
-  	font-size: 15px;
-  	padding: 8px 12px;
-	width: 100%;
-	opacity:0.8;
-	background-color: white;
-	position:relative;
-}
+
 .cats {
 	border:1px solid black;
 }

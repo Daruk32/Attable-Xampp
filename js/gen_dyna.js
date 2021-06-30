@@ -101,13 +101,13 @@ window.liste_categorie = function liste_categorie() {
             }
             else {
 
-                var pre ="<div class='col mb-5'><div class='card h-100' onClick=\"window.location.href='categorie.html?categorie=";
+                var pre ="<div class='col mb-5'><div class='card' onClick=\"window.location.href='categorie.html?categorie=";
                 var mid1 = categ;
-                var mid2 = "'\"><img class='card-img-top cats' src='";
+                var mid2 = "'\"><img class='card-img-top img-responsive cats' src='";
                 var mid3 = tab_categorie[categ][0].url;
-                var mid4 = "' alt='...' /><div class='card-body p-4'><div class='text-center'><h5 class='fw-bolder'>";
+                var mid4 = "' alt='...' /></div><div class='card-body p-4'><div class='text-center'><h5 class='fw-bolder'>";
                 var mid5 = tabtitre[categ];
-                var fin = "</h5></div></div></div></div>";
+                var fin = "</h5></div></div></div>";
 
                 document.getElementById("tableau_image_categorie").innerHTML+=pre+mid1+mid2+mid3+mid4+mid5+fin;
             }
@@ -128,12 +128,12 @@ window.bandeau = function bandeau() {
         }
         else {
             if (window.location == "http://localhost:1234/Attable-Xampp/panier.html" || window.location == "http://johan.giroux.free.fr/attable/panier.html") {
-                var pre = "<li class='nav-item'><a class='nav-link' onClick=\"window.location.href='categorie.html?categorie=";
+                var pre = "<li class='nav-item text-center'><a class='nav-link' onClick=\"window.location.href='categorie.html?categorie=";
                 var mid1 = categ;
                 var mid2 = "'\">";
             }
             else {
-                var pre = "<li class='nav-item'><a class='nav-link' onclick='changeCategorie(";
+                var pre = "<li class='nav-item text-center'><a class='nav-link' onclick='changeCategorie(";
                 var mid1 = categ;
                 var mid2 = ")'>";
             }
