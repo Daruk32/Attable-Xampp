@@ -521,24 +521,11 @@ h3 {
 
 /* ------------------------------------------------------------Page Qui sommes nous------------------------------------------------------ */
 #devanture {
-	height:100%;
+	height: 39rem;
 }
 
 #devanture p {
 	text-align: center;
-}
-
-#devanture img {
-	border: 1px solid black;
-}
-
-#devanture #slideshow-container .mySlides{
-	height:300px;
-	text-align: center;
-}
-
-#devanture .dot {
-	margin-top:20px;
 }
 
 
