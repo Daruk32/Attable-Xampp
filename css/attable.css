@@ -530,9 +530,13 @@ h3 {
 
 
 /* ------------------------------------------------------------Page Où nous trouver------------------------------------------------------ */
+
+#noutrouver {
+  margin-bottom: 2rem;
+}
+
 #iframe {
-	position:relative;
-	left:50%;
+	text-align: center;
 }
 
 
