@@ -653,16 +653,11 @@ thead th:nth-child(54) {
 	color:white;
 }
 
-/* ------------------------------------------------------------Page Mentions légales----------------------------------------- */
+/* ------------------------------------------------------------Page Mentions légales / CGU ----------------------------------------- */
 
-#mentionleg {
+#mentionleg, #cgu {
   padding-bottom: 3rem;
 }
-
-
-
-
-
 
 
 /* ------------------------------------------------------------Page NewsLetter et QuitMailingList----------------------------------------- */
@@ -685,7 +680,7 @@ thead th:nth-child(54) {
   margin-right: auto;
 }
 
-#table-capcha, #email {
+#table-capcha, #email, #mdp {
   margin-left: auto;
   margin-right: auto;
   width:15rem;
