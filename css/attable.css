@@ -678,12 +678,15 @@ thead th:nth-child(54) {
 }
 
 .butt_capcha {
-  margin: 1rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #table-capcha, #email {
   margin-left: auto;
   margin-right: auto;
+  width:15rem;
 }
 
 

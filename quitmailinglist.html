@@ -57,8 +57,8 @@
 
 		<section id="main">
 
-				<div class="container w-50" id="quitmail">
-					<h1 class="text-center">Se désabonner</h1>
+				<div class="container w-75" id="quitmail">
+					<h1 class="text-center w-100">Se désabonner</h1>
 					<form>
 					  <fieldset>
 						
@@ -70,15 +70,11 @@
 						  <div class="form-group text-center">
 							<div id="emplacement_recaptcha" class="text-center container w-75">
 								<label>Confirmez que vous n'êtes pas un robot !</label>
-								<table id="table-capcha">
-									<tr class="capcha">
-										<td><input type="text" id="mainCaptcha" class="text_capcha" disabled/></td>
-										<td rowspan="2"><input type="button" id="refresh" value="Refresh" class="butt_capcha" onclick="Captcha();" /></td>
-									</tr>
-									<tr class="capcha">
-										<td><input type="text" id="txtInput" class="text_capcha" required="required" /></td>
-									</tr>	
-								</table>
+								<div id="table-capcha">
+									<input type="text" id="mainCaptcha" class="text_capcha" disabled/>
+									<input type="text" id="txtInput" class="text_capcha" required="required" />
+									<input type="button" id="refresh" value="Refresh" class="butt_capcha" onclick="Captcha();" />
+								</div>
 							</div>
 						</div>
 						
