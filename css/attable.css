@@ -161,14 +161,27 @@ h3 {
 	top: 0;
 	position: sticky;
   margin-top: -20px;
+  padding: 1rem 0;
 }
+
 #bande li{
 	display:inline-block;
-	width:165px;
+  font-size: 1vw;
+  white-space: pre;
+  margin: auto;
+  width:12.5%;
+}
+
+.test14 {
+  width: 20% !important;
+}
+
+#but-cent {
+  margin: auto;
 }
 #bande a{
 	text-decoration:none;
-	padding:10px 20px;
+	padding:1vw 2vw;
 	color:black;
   border:2px solid rgba(216,40,76,255);
 	border-radius: 5px;
@@ -184,14 +197,15 @@ h3 {
   color :rgba(34,135,40,255);
 }
 
-
+#test12 {
+  margin-right: auto;
+  margin-left: auto;
+}
 
 .icon-bar {
 	background: #CC8B65 !important;	
 }
-.navbar-toggle {
-	border-style: none;
-}
+
 
 
 /* La présentation des différents produits de la catégorie */

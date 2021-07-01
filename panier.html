@@ -57,31 +57,35 @@
 
 		<section id="main">
 
-			<nav class="navbar navbar-light d-none d-sm-none d-md-block" id="bandeau">
-				<div class="container-fluid px-4 px-lg-5">
+			<nav class="navbar" id="bandeau">
+				<div class="container-fluid px-4 px-lg-5 navbar-dark">
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="nav navbar-nav" id="bande"></ul>
+					</div>
+					<div id="but-cent">
+						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 					</div>
 				</div>
 			</nav>
 
-			<table class="table">
-			    <thead>
-			        <tr>
-			        	<th>Aperçu</th>
-			        	<th>Article</th>
-			        	<th>Prix</th>
-			        	<th>Quantité</th>
-			        	<th>Supprimer</th>
-			        </tr>
-			    </thead>
-			    <tbody id="cart_tablebody"></tbody>
-			</table>
+			<div class="container">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Aperçu</th>
+							<th>Article</th>
+							<th>Prix</th>
+							<th>Quantité</th>
+							<th>Supprimer</th>
+						</tr>
+					</thead>
+					<tbody id="cart_tablebody"></tbody>
+				</table>
 
-			<p id="totalsomme">Total : <span id="sous_total">0 €</span></p>
+				<p id="totalsomme">Total : <span id="sous_total">0 €</span></p>
 
-			<div id="confirm-command"><button id="valid-command">Passer la commande</button></div>
-
+				<div id="confirm-command"><button id="valid-command">Passer la commande</button></div>
+			</div>
 			
 		</section>
 
