@@ -294,17 +294,23 @@ h3 {
 #fiche_produit {
 	display:none;
 	border: 2px solid rgba(216,40,76,255);
-	padding: 10px;
 	margin-top: 20px;
-	margin-right: auto;
-	margin-left: auto;
+	margin-right: auto !important;
+	margin-left: auto !important;
+  padding: 0 !important;
 }
+
+table#deta-tab tr {
+  border: 0px solid white;
+}
+
+
 
 /* La photo */
 #description_produit {
-	width: 50%;
+	width: 100%;
 	display : block ;
-	float: left;
+	float: center;
 }
 
 #description_produit img {
@@ -315,22 +321,7 @@ h3 {
 
 /* Le texte */
 #description_produit2 {
-	width: 40%;
-	display : block;
-	float: right;
-}
-
-#description_produit2 p{
-	margin-bottom: 6%;
-	text-align: left;
-}
-
-#produit_action {
-	margin-top: 8%;
-}
-
-#id_prix_produit {
-	text-align: left;
+	font-size: 2rem;
 }
 
 #produit_action input {
@@ -341,6 +332,9 @@ h3 {
 	margin-top: 8%;
 }
 
+#modul_quantity {
+  padding-top: 2rem;
+}
 
 /* Le champ de texte en bas de la page Catégorie */
 #info_categorie {
@@ -348,13 +342,6 @@ h3 {
 }
 
 
-/* L'ancre pour remonter à la fiche produit après clic' */
-#ancre1{
-	display: block; 
-	height: 100px;
-	margin: -100px 0 20px 0;
-	visibility: hidden;
-}
 
 /* ------------------------------------------Les formulaires d'authentification------------------------------------------------------ */
 .form1 {

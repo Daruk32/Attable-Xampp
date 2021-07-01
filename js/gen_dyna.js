@@ -192,7 +192,7 @@ window.chargement = function chargement() {
         }
         else {
 
-        var pre = "<div class='col mb-5 un_produit'><a class='card h-50' href=\"#ancre1\"><img class='card-img-top produit' src='";
+        var pre = "<div class='col mb-5 un_produit'><a class='card h-50' href=\"#main\"><img class='card-img-top produit' src='";
         var mid1 = tab_categorie[number][cat_index].url;
         var mid2 ="' alt='...' onclick='fiche_detaillee(";
         var mid3 = number;
@@ -333,7 +333,7 @@ window.changeCategorie = function changeCategorie(number) {
             document.getElementById("descriptif_cat").innerHTML+="";
         }
         else {
-            var pre = "<div class='col mb-5 un_produit'><a class='card h-50' href=\"#ancre1\"><img class='card-img-top produit' src='";
+            var pre = "<div class='col mb-5 un_produit'><a class='card h-50' href=\"#main\"><img class='card-img-top produit' src='";
             var mid1 = tab_categorie[number][cat_index].url;
             var mid2 ="' alt='...' onclick='fiche_detaillee(";
             var mid3 = number;
@@ -397,7 +397,7 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
     var pre_id = number*1000;
     var id = (pre_id).toString()+cat_index.toString();
 
-	document.getElementById('fiche_produit').style.display = 'inline-block';
+	document.getElementById('fiche_produit').style.display = 'block';
 
         //Met à jour et affiche la quantité de chaque produit
         if (readCookie("list_achat") != null){
@@ -419,18 +419,18 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
         var champs_prix = "Prix : &Agrave; voir en magasin";
     }
     else {
-        var champs_prix = "Prix :" + tab_categorie[number][cat_index].prix + " €";
+        var champs_prix = "Prix :&nbsp;" + tab_categorie[number][cat_index].prix + " €";
     }
 
-    var fd1 = "<div id='description_produit' class='example'><div class='overlay'>🔎</div><img src='";
-    var fd2 = tab_categorie[number][cat_index].url;
-    var fd3 = "' alt='Conserves' class='cats'></div><div id='description_produit2'><p>";
-    var fd4 = tab_categorie[number][cat_index].libelle;
-    var fd5 = "<p>";
+    var fd1 = "<table class='table w-100' id='deta-tab'><tr><td id='description_produit2' colspan='2'class='text-center'><p>";
+    var fd2 = tab_categorie[number][cat_index].libelle;
+    var fd3 = "</p></td></tr><tr><td rowspan='2'><div id='description_produit' class='example'><div class='overlay'>🔎</div><img src='";
+    var fd4 = tab_categorie[number][cat_index].url;
+    var fd5 = "' alt='Conserves' class='cats'></div></td><td class='text-center'><p>";
     var fd6 = tab_categorie[number][cat_index].texte;
-    var fd7 = "</p><div id='produit_action'><span id='id_prix_produit'>";
+    var fd7 = "</p></td></tr><tr><td class='text-center'><span id='id_prix_produit'>";
     var fd8 = champs_prix;
-    var fd9 = "</span><div id='modul_quantity'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
+    var fd9 = "</span></td></tr><tr><td colspan='2'><div id='modul_quantity'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
     var fd10 = cat_index;
     var fd11 = "' data-id='";
     var fd12 = pre_id.toString()+cat_index.toString();
@@ -458,7 +458,7 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
     var fd34 = tab_categorie[number][cat_index].url;
     var fd35 = "' onclick='plus(";
     var fd36 = cat_index;
-    var fd37 = ")'></div></div></div>";
+    var fd37 = ")'></div></td><tr></table>";
     document.getElementById("fiche_produit").innerHTML=fd1+fd2+fd3+fd4+fd5+fd6+fd7+fd8+fd9+fd10+fd11+fd12+fd13+fd14+fd15+fd16+fd17+fd18+fd19+fd20+fd21+fd22+fd23+fd24+fd25+fd26+fd27+fd28+fd29+fd30+fd31+fd32+fd33+fd34+fd35+fd36+fd37;
 
     if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
