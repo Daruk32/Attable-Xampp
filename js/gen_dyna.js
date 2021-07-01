@@ -483,7 +483,7 @@ window.crea_panier = function crea_panier() {
             if (liste_panier[i][4] > 0) {
                 var ch1 = '<tr class="line_panier"><td><img src="';
                 var ch2 = liste_panier[i][3];
-                var ch3 = '" alt="img_product id="echantillon"></td><td>';
+                var ch3 = '" alt="img_product id="echantillon" class="img-responsive"></td><td>';
                 var ch4 = liste_panier[i][1];
                 var ch5 = '</td><td>';
                 var ch6 = liste_panier[i][2];

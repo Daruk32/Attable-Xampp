@@ -68,21 +68,21 @@
 				</div>
 			</nav>
 
-			<div class="container">
+			<div class="container" id="liste_panier">
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Aperçu</th>
-							<th>Article</th>
-							<th>Prix</th>
-							<th>Quantité</th>
-							<th>Supprimer</th>
+							<th scope="col" class="text-center">Aperçu</th>
+							<th scope="col" class="text-center">Article</th>
+							<th scope="col" class="text-center">Prix</th>
+							<th scope="col" class="text-center">Quantité</th>
+							<th scope="col" class="text-center">Supprimer</th>
 						</tr>
 					</thead>
 					<tbody id="cart_tablebody"></tbody>
 				</table>
 
-				<p id="totalsomme">Total : <span id="sous_total">0 €</span></p>
+				<p id="totalsomme" class="text-center pull-right">Total : <span id="sous_total">0 €</span></p>
 
 				<div id="confirm-command"><button id="valid-command">Passer la commande</button></div>
 			</div>
