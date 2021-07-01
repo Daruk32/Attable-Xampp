@@ -144,10 +144,32 @@ h3 {
 	padding-top: 2%;
 	padding-bottom: 2%;
 	text-align: center;
+  margin: 0 auto;
 }
 
 .cats {
 	border:1px solid black;
+}
+
+#index-box {
+  border: 2px solid rgba(216,40,76,255);
+}
+
+#index-box img {
+  height: 20rem;
+  width: auto;
+  margin-right : auto;
+  margin-left : auto;
+  cursor: pointer;
+}
+
+#index-box img:hover {
+  height: 20rem;
+  width: auto;
+  margin-right : auto;
+  margin-left : auto;
+  cursor: pointer;
+  opacity: 0.75;
 }
 
 /* ------------------------------------------Page Catégorie------------------------------------------------------ */
@@ -233,7 +255,7 @@ h3 {
   height: 33rem;
 }
 
-.un_produit a {
+.un_produit a, #index-box {
 	display : block ;
 }
 
