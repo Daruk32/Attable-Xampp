@@ -192,7 +192,7 @@ window.chargement = function chargement() {
         }
         else {
 
-        var pre = "<div class='col mb-5 un_produit'><a class='card h-50' href=\"#main\"><img class='card-img-top produit' src='";
+        var pre = "<div class='col mb-5 un_produit'><a class='card' href=\"#main\"><img class='card-img-top produit' src='";
         var mid1 = tab_categorie[number][cat_index].url;
         var mid2 ="' alt='...' onclick='fiche_detaillee(";
         var mid3 = number;
@@ -333,7 +333,7 @@ window.changeCategorie = function changeCategorie(number) {
             document.getElementById("descriptif_cat").innerHTML+="";
         }
         else {
-            var pre = "<div class='col mb-5 un_produit'><a class='card h-50' href=\"#main\"><img class='card-img-top produit' src='";
+            var pre = "<div class='col mb-5 un_produit'><a class='card' href=\"#main\"><img class='card-img-top produit' src='";
             var mid1 = tab_categorie[number][cat_index].url;
             var mid2 ="' alt='...' onclick='fiche_detaillee(";
             var mid3 = number;
