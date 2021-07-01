@@ -160,6 +160,7 @@ h3 {
 	border: 2px solid rgba(216,40,76,255);
 	top: 0;
 	position: sticky;
+  margin-top: -20px;
 }
 #bande li{
 	display:inline-block;
@@ -278,11 +279,11 @@ h3 {
 /*---------------La fiche produit--------------*/
 #fiche_produit {
 	display:none;
-	width: 50%;
-	height: 50%;
 	border: 2px solid rgba(216,40,76,255);
 	padding: 10px;
-	margin: 20px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 /* La photo */
