@@ -233,34 +233,35 @@ h3 {
 /* La présentation des différents produits de la catégorie */
 #descriptif_cat {
 	width: 100%;
-	padding-top: 1vw;
-	padding-bottom: 1vw;
+	padding-top: 0.25vw;
 	text-align: center;
 }
 
 #zonecat {
 	clear:both;
 	padding:0;
-	margin: 1vw;
+	margin: 0.5vw;
 	text-align:center;
 	position:relative;
 }
 
 .un_produit {
-	margin-top : 1vw;
-	margin-right : 2vw;
-	margin-left : 2vw;
-	padding: 1vw;
-	border:3px solid rgba(216,40,76,255);
-  height: 33rem;
+	margin: 0.5vw 2vw 0 2vw;
+	border: 3px solid rgba(216,40,76,255);
+  height: calc(20rem + 10vw);
 }
 
 .un_produit a, #index-box {
 	display : block ;
 }
 
+.un_produit a {
+	height: calc(8rem + 6vw);
+  width: auto;
+}
+
 .un_produit img {
-	height: 12rem;
+	height: 100%;
   width: auto;
 }
 
@@ -276,12 +277,15 @@ h3 {
 
 .legend_produit {
 	color: black;
-  font-size: 15px;
 	width: 100%;
-	opacity:0.8;
+	opacity: 0.8;
 	background-color: white;
-	position:relative;
+	position: relative;
 	text-align: center;
+}
+
+#info-prix, .legend_produit {
+  font-size: calc(0.5rem + 0.5vw);
 }
 
 .affich_valeur {
@@ -315,7 +319,6 @@ h3 {
 	border: none;
 	border-radius: 5px;
 	vertical-align: middle;
-
 }
 
 

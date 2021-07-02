@@ -200,7 +200,7 @@ window.chargement = function chargement() {
         var mid5 = cat_index;
         var mid6 = ")'></a><div class='card-body p-4'><div class='text-center'><h5 class='fw-bolder legend_produit'>";
         var mid7 = tab_categorie[number][cat_index].libelle;
-        var mid8 = "</h5><div>";
+        var mid8 = "</h5><div id='info-prix'>";
         var mid9 = champs_prix;
         var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer p-4 pt-0 border-top-0 bg-transparent'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
         var mid11 = cat_index;
@@ -231,49 +231,6 @@ window.chargement = function chargement() {
         var mid30 = "' onclick='plus(";
         var mid31 = cat_index;
         var fin = ")'></div></div></div>";
-        
-
-/*
-            var pre = "<div class='un_produit'><a id=togg1' href=\"#ancre1\"><img src='";
-            var mid1 = tab_categorie[number][cat_index].url;
-            var mid2 ="' class='produit' onclick='fiche_detaillee(";
-            var mid3 = number;
-            var mid4 = ", ";
-            var mid5 = cat_index;
-            var mid6 = ")'></a><div class='legend_produit'>";
-            var mid7 = tab_categorie[number][cat_index].libelle;
-            var mid8 = "</div><div id='descriptif_prix'>";
-            var mid9 = champs_prix;
-            var mid10 = "</div><div id='modul_quantity'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
-            var mid11 = cat_index;
-            var mid12 = "' data-id='";
-            var mid13 = pre_id.toString()+cat_index.toString();
-            var mid14 = "' data-name='";
-            var mid15 = tab_categorie[number][cat_index].libelle;
-            var mid16 = "' data-price='";
-            var mid17 = tab_categorie[number][cat_index].prix;
-            var mid171 = "' data-url='";
-            var mid172 = tab_categorie[number][cat_index].url;
-            var mid18 = "' onclick='minus(";
-            var mid19 = cat_index;
-            var mid20 = ")'><input class='affich_valeur' value='";
-            var mid201 = valeur;
-            var mid202 = "' id='count";
-            var mid21 = cat_index;
-            var mid22 = "' disabled><input type='button' class='bplus add-to-cart' value='+' id='plus";
-            var mid23 = cat_index;
-            var mid24 = "' data-id='";
-            var mid25 = pre_id.toString()+cat_index.toString();
-            var mid26 = "' data-name='";
-            var mid27 = tab_categorie[number][cat_index].libelle;
-            var mid28 = "' data-price='";
-            var mid29 = tab_categorie[number][cat_index].prix;
-            var mid291 = "' data-url='";
-            var mid292 = tab_categorie[number][cat_index].url;
-            var mid30 = "' onclick='plus(";
-            var mid31 = cat_index;
-            var fin = ")'></div></div>";
-*/
 
             document.getElementById("descriptif_cat").innerHTML+=pre+mid1+mid2+mid3+mid4+mid5+mid6+mid7+mid8+mid9+mid10+mid11+mid12+mid13+mid14+mid15+mid16+mid17+mid171+mid172+mid18+mid19+mid20+mid201+mid202+mid21+mid22+mid23+mid24+mid25+mid26+mid27+mid28+mid29+mid291+mid292+mid30+mid31+fin;
             document.getElementById("ajout_titre_categorie").innerHTML=titre;
@@ -341,7 +298,7 @@ window.changeCategorie = function changeCategorie(number) {
             var mid5 = cat_index;
             var mid6 = ")'></a><div class='card-body p-4'><div class='text-center'><h5 class='fw-bolder legend_produit'>";
             var mid7 = tab_categorie[number][cat_index].libelle;
-            var mid8 = "</h5><div>";
+            var mid8 = "</h5><div id='info-prix'>";
             var mid9 = champs_prix;
             var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer p-4 pt-0 border-top-0 bg-transparent'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
             var mid11 = cat_index;
