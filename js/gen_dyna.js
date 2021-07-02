@@ -127,7 +127,7 @@ window.bandeau = function bandeau() {
             document.getElementById("bande").innerHTML+="";
         }
         else {
-            if (window.location == "http://localhost:1234/Attable-Xampp/panier.html" || window.location == "http://johan.giroux.free.fr/attable/panier.html") {
+            if (window.location == "http://localhost:1234/Attable-Xampp/panier.html" || window.location == "http://johan.giroux.free.fr/attable/panier.html" || window.location == "http://attable.free.fr/panier.html") {
                 var pre = "<li class='nav-item text-center'><a class='nav-link' onClick=\"window.location.href='categorie.html?categorie=";
                 var mid1 = categ;
                 var mid2 = "'\">";

@@ -195,7 +195,7 @@ window.panier = function panier() {
     document.getElementById("total_commande").innerHTML = total+" €";
     document.getElementById("total_articles").innerHTML = nb_article;
 
-	if (window.location == "http://localhost:1234/Attable-Xampp/panier.html" || window.location == "http://johan.giroux.free.fr/attable/panier.html") {
+	if (window.location == "http://localhost:1234/Attable-Xampp/panier.html" || window.location == "http://johan.giroux.free.fr/attable/panier.html" || window.location == "http://attable.free.fr/panier.html") {
     	document.getElementById("sous_total").innerHTML = total+" €";
 	}
     createCookie("Somme", total, 15);

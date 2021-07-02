@@ -183,7 +183,7 @@ h3 {
 	top: 0;
 	position: sticky;
   margin-top: -20px;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 #bande li{
@@ -203,7 +203,7 @@ h3 {
 }
 #bande a{
 	text-decoration:none;
-	padding:1vw 2vw;
+	padding:0.5vw 1vw;
 	color:black;
   border:2px solid rgba(216,40,76,255);
 	border-radius: 5px;
@@ -572,20 +572,15 @@ table#deta-tab tr {
 .carousel-control.left, .carousel-control.right {
 	background-image: none;
 	color: #d82c2e;
-}
-.carousel-control.left {
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-}
-.carousel-control.right {
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  height: 16vw;
 }
 
-
+#gen-slides {
+  height: 19vw;
+}
 
 .carousel-indicators {
-	bottom: 0px;
+	bottom: 25px !important;
 }
 
 .carousel-indicators li {
