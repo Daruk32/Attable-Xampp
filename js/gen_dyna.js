@@ -530,3 +530,40 @@ window.valid_command = function valid_command() {
 
 
 }
+
+
+
+
+
+
+
+
+
+//Fonction de génération du slideshow
+window.gen_carous = function gen_carous() {
+    var longueur = tab_categorie[0].length;
+
+    for ( let cat_index = 1; cat_index < longueur; cat_index++) {
+
+        if (longueur == 0) {
+            document.getElementById("gen-slides").innerHTML+="";
+        }
+        else {
+
+            var pre = "<div class='item'><img class='card-img-top produit' src='";
+            var mid1 = tab_categorie[0][cat_index].url;
+            var mid2 ="' alt='...'><h4 class='text-center'>";
+            var mid3 = tab_categorie[0][cat_index].libelle;
+            var mid4 = "</h4></div>";			
+
+            document.getElementById("gen-slides").innerHTML+=pre+mid1+mid2+mid3+mid4;
+
+        }
+
+    }
+}
+
+
+
+
+

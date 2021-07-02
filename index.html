@@ -30,7 +30,7 @@
 		
 	</head>
 	
-	<body onload="liste_categorie(), panier()">
+	<body onload="gen_carous(), liste_categorie(), panier()">
 		
 		<section>
 			<nav class="navbar navbar-expand-md" id="top">
@@ -60,8 +60,41 @@
 					</ul>
 				</div>
 			</nav>
+
+
+			<div class="container d-none d-sm-none d-md-block" id="slideshow">
+				<div class="heading">
+					<h3 class='text-center'>NOS PROMOTIONS</h3>
+				</div>
+
+				<div id="myCarousel" class="carousel slide text-center" date-ride="carousel">
+					<ol class="carousel-indicators text-center">
+						<li data-target="#myCarousel" data-slide="0" class="active"></li>
+						<li data-target="#myCarousel" data-slide="1"></li>
+						<li data-target="#myCarousel" data-slide="2"></li>
+						<li data-target="#myCarousel" data-slide="3"></li>
+						<li data-target="#myCarousel" data-slide="4"></li>
+					</ol>
+
+					<div class="carousel-inner" role="listbox" id="gen-slides">
+						<div class="item active">
+							<img class='card-img-top produit' src='categorie/promotions/promo1.png' alt='...'>
+							<h4 class='text-center'>MODIF Gateaux Milka en promotion 2€ pièce 5€ les 3</h4>
+						</div>						
+					</div>
+
+					<a class="left carousel-control" href="#myCarousel" data-slide="prev" role="button">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>					
+					<a class="right carousel-control" href="#myCarousel" data-slide="next" role="button">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+
+
 		
-            <div class="container px-4 px-lg-5 mt-5 liste_categorie" id="cates">
+            <div class="container px-4 px-lg-5 mt-5 liste_categorie">
 				<h3>Les catégories de produit que l'on s'arrache</h3>
                 <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4" id="tableau_image_categorie"></div>
 			</div>
