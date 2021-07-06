@@ -158,15 +158,16 @@ h3 {
 }
 
 #index-box img {
-
+  width: 100%;
+  height: auto;
   margin-right : auto;
   margin-left : auto;
   cursor: pointer;
 }
 
 #index-box img:hover {
-  height: 20rem;
-  width: auto;
+  width: 100%;
+  height: auto;
   margin-right : auto;
   margin-left : auto;
   cursor: pointer;
