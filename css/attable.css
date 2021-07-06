@@ -131,15 +131,14 @@ h3 {
 
 
 /* ------------------------------------------Page d'accueil - Partie Nouveautés------------------------------------------------------ */
-.carrousel,
 .liste_categorie {
-	margin: 5px 5% 20px 5%;
+	margin: 2rem;
 	border: 2px solid rgba(216,40,76,255);
 	border-radius: 20px;
 }
 
 /* Les 16 catégories*/
-#tableau_image_categorie, #tableau_promotion {
+#tableau_image_categorie {
 	width: 100%;
 	padding-top: 2%;
 	padding-bottom: 2%;
@@ -147,31 +146,32 @@ h3 {
   margin: 0 auto;
 }
 
-.cats {
-	border:1px solid black;
+.card_cat {
+  height: 15rem;
+  border: 2px solid rgba(216,40,76,255);
+  border-radius: 1rem;
 }
 
 #index-box {
-  border: 2px solid rgba(216,40,76,255);
-  height: 20rem;
-  width: auto;
+  height: 10rem;
+  display: inline-block;
 }
 
 #index-box img {
-  width: 100%;
-  height: auto;
+  height: 100%;
   margin-right : auto;
   margin-left : auto;
   cursor: pointer;
+  border:1px solid black;
 }
 
 #index-box img:hover {
-  width: 100%;
-  height: auto;
+  height: 100%;
   margin-right : auto;
   margin-left : auto;
   cursor: pointer;
   opacity: 0.75;
+  border:1px solid black;
 }
 
 /* ------------------------------------------Page Catégorie------------------------------------------------------ */
