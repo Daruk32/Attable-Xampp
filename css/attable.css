@@ -37,9 +37,8 @@ body {
 /* Le titre des pages */
 #titre_page {
 	color:rgba(216,40,76,255);
-	font-size: 2rem;
-  width: 40rem !important;
-  right: 0 !important;
+	font-size: 2.5vw;
+
 }
 
 
@@ -57,9 +56,9 @@ body {
 
 /* Le bouton d'authentification */
 #authentification {
-	width: 4rem;
+	width: calc(3rem + 1.5vw);
   text-align: center;
-  margin: 2.2rem 0.5rem 0 0.5rem;
+  margin: 1rem 0.5rem 0 0.5rem;
 }
 
 #lesids {
@@ -69,7 +68,7 @@ body {
 
 /* Le bouton panier */
 #panier {
-	width:3.5rem;
+	width: calc(2.5rem + 1.5vw);
 	text-align: center;
   margin: 1rem 0.5rem 0 0.5rem;
 }

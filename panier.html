@@ -36,33 +36,32 @@
 
 	<body onload="bandeau(), panier(), crea_panier(), valid_command()">
 
-        <nav class="navbar navbar-expand-md" id="top">
-            <div class="container-fluid">
-				<ul class="nav navbar-nav">
-					<li class="mx-xs-5 mx-md-5">
-						<a class="navbar-brand" href="index.html"><img src="images\attable_logo2.png" class="img-responsive" alt="monlogo" id="lelogo"></a>
-					</li>
-					<li class="collapse navbar-collapse mx-md-5">
-						<div id="titre_page">Votre panier</div>
-					</li>
-					<li class="collapse navbar-collapse mx-md-5">
-						<input type="search" id="site-search" name="q" aria-label="Search through site content" value="Rechercher..." onFocus="javascript:this.value=''">
-					</li>
-					<li id="authentification" class="mx-xs-5 ml-md-5">
-						<a href="authentification.html">
-							<img src="images\login.png" alt="Authentification" id="lesids">
-						</a>				
-					</li>
-					<li id="panier" class="mx-xs-5 mr-md-5">
-						<a href="panier.html">
-							<span id="total_articles">0</span>
-							<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
-							<span id="total_commande">0 €</span>
-						</a>
-					</li>
-				</ul>
-            </div>
-        </nav>
+		<nav class="navbar navbar-expand-lg navbar-light" id="top">
+			<div class="container-fluid d-flex flex-row">
+				<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid" alt="monlogo" id="lelogo"></a>
+				<div class="nav-item collapse navbar-collapse">
+					<div id="titre_page">Mon panier</div>
+				</div>
+				<div class='nav-item collapse navbar-collapse'>
+					<form class="collapse navbar-collapse">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
+				<div id="authentification">
+					<a href="authentification.html">
+					<img src="images\login.png" alt="Authentification" id="lesids">
+					</a>				
+				</div>						
+				<div id="panier">
+					<a href="panier.html">
+						<span id="total_articles">0</span>
+						<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+						<span id="total_commande">0 €</span>
+					</a>
+				</div>
+			</div>
+		</nav>
 
 		<section id="main">
 
