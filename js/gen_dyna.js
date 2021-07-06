@@ -493,7 +493,7 @@ window.valid_command = function valid_command() {
 
 
 
-
+/*
 //Fonction de génération du slideshow
 window.gen_carous = function gen_carous() {
     var longueur = tab_categorie[0].length;
@@ -518,3 +518,4 @@ window.gen_carous = function gen_carous() {
     }
 }
 
+*/
