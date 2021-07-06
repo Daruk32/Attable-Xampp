@@ -101,7 +101,7 @@ window.liste_categorie = function liste_categorie() {
             }
             else {
 
-                var pre ="<div class='col mb-5'><div class='card text-center' id='index-box' onClick=\"window.location.href='categorie.html?categorie=";
+                var pre ="<div><div class='card text-center' id='index-box' onClick=\"window.location.href='categorie.html?categorie=";
                 var mid1 = categ;
                 var mid2 = "'\"><img class='card-img-top img-fluid cats' src='";
                 var mid3 = tab_categorie[categ][0].url;

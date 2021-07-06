@@ -153,11 +153,12 @@ h3 {
 
 #index-box {
   border: 2px solid rgba(216,40,76,255);
+  height: 20rem;
+  width: auto;
 }
 
 #index-box img {
-  height: 20rem;
-  width: auto;
+
   margin-right : auto;
   margin-left : auto;
   cursor: pointer;
