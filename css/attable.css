@@ -18,36 +18,36 @@ body {
 /* ------------------------------------------Les éléments du header------------------------------------------------------ */
 #top {
   background-color: rgba(20,32,30,255);
+  height: 8rem;
 }
 
-#top ul {
-  vertical-align: middle;
-}
 
 #top a:hover {
   background-color: inherit !important;
 }
 
 /* Le logo */
+#logo {
+  width: 12rem;
+}
 #lelogo {
 	width: 100%;
-  margin-top: 1rem;
 }
 
 /* Le titre des pages */
 #titre_page {
 	color:rgba(216,40,76,255);
-	font-size:37px;
-  width: 100%;
-  margin-top: 3rem;
+	font-size: 2rem;
+  width: 40rem !important;
+  right: 0 !important;
 }
 
 
 /* La barre de recherche */
 #site-search {
-	font-size: 1.5rem;
-	height: 3rem;
-	width: 15rem;
+	font-size: 1rem;
+	height: 2rem;
+	width: 10rem;
 	border:1px solid rgba(216,40,76,255);
   margin-top: 4.5rem;
 }
@@ -57,27 +57,27 @@ body {
 
 /* Le bouton d'authentification */
 #authentification {
-	width: 10.75rem;
+	width: 4rem;
   text-align: center;
-  margin-top: 1.8rem;
+  margin: 2.2rem 0.5rem 0 0.5rem;
 }
 
 #lesids {
-	width: 71%;
+	width: 100%;
 }
 
 
 /* Le bouton panier */
 #panier {
-	width:9.5rem;
+	width:3.5rem;
 	text-align: center;
-  margin-left: -3rem;
+  margin: 1rem 0.5rem 0 0.5rem;
 }
 #panier a {
 	text-decoration: none;
 }
 #lepanier {
-	width: 80%;
+	width: 100%;
 	position:relative;
 	z-index: 3;
 }
@@ -252,7 +252,7 @@ h3 {
 }
 
 .un_produit a, #index-box {
-	display : block ;
+	display : inline-block ;
 }
 
 .un_produit a {
@@ -474,7 +474,7 @@ table#deta-tab tr {
 #submit2:hover {
 	color: rgba(216,40,76,255);
 	text-align: center;
-	border:1px solid rgba(216,40,76,255)d;
+	border:1px solid rgba(216,40,76,255);
 	padding: 10px;
 	border-radius: 5px;
 	font-weight: bold;
@@ -540,6 +540,13 @@ table#deta-tab tr {
 
 /* ------------------------------------------------------------Page Où nous trouver------------------------------------------------------ */
 
+
+#map_iframe {
+  width: 200rem !important;
+  margin: 0 auto !important;
+}
+
+
 #noutrouver {
   margin-bottom: 2rem;
 }
@@ -553,16 +560,25 @@ table#deta-tab tr {
 /* ------------------------------------------------------------Le slideshow------------------------------------------------------ */
 
 #slideshow {
-  border: 2px solid rgba(216,40,76,255);
+  border: 2px solid rgba(216,40,76,255) !important;
 	border-radius: 20px;
   display: block;
   padding: 0 !important;
   width: 30vw;
+  margin-top: 2rem;
 }
 
-#slideshow img {
-  height: 15vw;
-  width: auto;
+.carousel-item {
+  height: 20rem !important;
+  width: auto !important;
+  display: inline-block !important;
+}
+
+
+
+.carousel-item img {
+  height: 100% !important;
+  width: auto !important;
   margin: 0 auto;
   padding: 0;
 }
@@ -572,7 +588,7 @@ table#deta-tab tr {
   margin: 1rem 0 0 0;
 }
 
-.carousel-control.left, .carousel-control.right {
+.carousel-control.prev, .carousel-control.next {
 	background-image: none;
 	color: #d82c2e;
   height: 16vw;

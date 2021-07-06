@@ -103,7 +103,7 @@ window.liste_categorie = function liste_categorie() {
 
                 var pre ="<div class='col mb-5'><div class='card text-center' id='index-box' onClick=\"window.location.href='categorie.html?categorie=";
                 var mid1 = categ;
-                var mid2 = "'\"><img class='card-img-top img-responsive cats' src='";
+                var mid2 = "'\"><img class='card-img-top img-fluid cats' src='";
                 var mid3 = tab_categorie[categ][0].url;
                 var mid4 = "' alt='...' /></div><div class='card-body p-4'><div class='text-center'><h5 class='fw-bolder'>";
                 var mid5 = tabtitre[categ];
@@ -443,7 +443,7 @@ window.crea_panier = function crea_panier() {
             if (liste_panier[i][4] > 0) {
                 var ch1 = '<tr class="line_panier"><td><img src="';
                 var ch2 = liste_panier[i][3];
-                var ch3 = '" alt="img_product id="echantillon" class="img-responsive"></td><td>';
+                var ch3 = '" alt="img_product id="echantillon" class="img-fluid"></td><td>';
                 var ch4 = liste_panier[i][1];
                 var ch5 = '</td><td>';
                 var ch6 = liste_panier[i][2];
@@ -494,11 +494,6 @@ window.valid_command = function valid_command() {
 
 
 
-
-
-
-
-
 //Fonction de génération du slideshow
 window.gen_carous = function gen_carous() {
     var longueur = tab_categorie[0].length;
@@ -510,11 +505,11 @@ window.gen_carous = function gen_carous() {
         }
         else {
 
-            var pre = "<div class='item'><img class='card-img-top produit' src='";
+            var pre = "<div class='carousel-item'><img class='d-block w-100 produit img-fluid' src='";
             var mid1 = tab_categorie[0][cat_index].url;
-            var mid2 ="' alt='...'><h4 class='text-center'>";
+            var mid2 ="' alt='...'><div class='carousel-caption'><h4 class='text-center'>";
             var mid3 = tab_categorie[0][cat_index].libelle;
-            var mid4 = "</h4></div>";			
+            var mid4 = "</h4></div></div>";			
 
             document.getElementById("gen-slides").innerHTML+=pre+mid1+mid2+mid3+mid4;
 
@@ -522,8 +517,4 @@ window.gen_carous = function gen_carous() {
 
     }
 }
-
-
-
-
 
