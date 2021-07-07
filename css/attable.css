@@ -191,6 +191,8 @@ h3 {
 	top: 0;
 	position: sticky;
   padding: 0.5rem 0;
+  width: 100% !important;
+  height: auto !important;
 }
 
 #bande li{
@@ -198,12 +200,9 @@ h3 {
   font-size: 1vw;
   white-space: pre;
   margin: auto;
-  width:12.5%;
+  width:12.5% !important;
 }
 
-.test14 {
-  width: 20% !important;
-}
 
 #but-cent {
   margin: auto;
