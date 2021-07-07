@@ -190,12 +190,11 @@ h3 {
 	border: 2px solid rgba(216,40,76,255);
 	top: 0;
 	position: sticky;
-  margin-top: -20px;
   padding: 0.5rem 0;
 }
 
 #bande li{
-	display:inline-block;
+	display:inline-block !important;
   font-size: 1vw;
   white-space: pre;
   margin: auto;
@@ -344,6 +343,10 @@ h3 {
   padding: 0 !important;
 }
 
+#deta-tab {
+  border: none !important;
+}
+
 table#deta-tab tr {
   border: 0px solid white;
 }
@@ -365,7 +368,7 @@ table#deta-tab tr {
 
 /* Le texte */
 #description_produit2 {
-	font-size: 2rem;
+	font-size: calc(1rem + 1vw);
 }
 
 #produit_action input {
@@ -380,10 +383,7 @@ table#deta-tab tr {
   padding-top: 2rem;
 }
 
-/* Le champ de texte en bas de la page Catégorie */
-#info_categorie {
-    margin-left: 100px;
-}
+
 
 
 
@@ -777,7 +777,8 @@ thead th:nth-child(54) {
 #quitmail, #joinmail {
   padding: 1rem;
   border: 1px solid rgba(216,40,76,255);
-  margin-bottom: 7rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
 }
 
 #emplacement_recaptcha {
