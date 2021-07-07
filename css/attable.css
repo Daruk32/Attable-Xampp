@@ -107,6 +107,7 @@ header a {
 	padding : 0px 5px 0px 5px;
 	border-radius: 10px;
 	color:black;
+  font-size: calc(0.4rem + 0.4vw);
 }
 
 
@@ -160,7 +161,6 @@ h3 {
 
 #index-box {
   height: 10rem;
-  display: inline-block;
 }
 
 #index-box img {
@@ -190,7 +190,6 @@ h3 {
 	border: 2px solid rgba(216,40,76,255);
 	top: 0;
 	position: sticky;
-  padding: 0.5rem 0;
   width: 100% !important;
   height: auto !important;
 }
@@ -200,7 +199,7 @@ h3 {
   font-size: 1vw;
   white-space: pre;
   margin: auto;
-  width:12.5% !important;
+  width: 12.5% !important;
 }
 
 
@@ -212,7 +211,7 @@ h3 {
 	padding:0.5vw 1vw;
 	color:black;
   border:2px solid rgba(216,40,76,255);
-	border-radius: 5px;
+	border-radius: 0.4vw;
 	background-color: white;
 }
 #bande li:hover a {
@@ -223,11 +222,6 @@ h3 {
 	cursor: pointer;
   background-color: rgba(193,122,61,255);
   color :rgba(34,135,40,255);
-}
-
-#test12 {
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .icon-bar {
@@ -241,46 +235,40 @@ h3 {
 	width: 100%;
 	padding-top: 0.25vw;
 	text-align: center;
-}
-
-#zonecat {
-	clear:both;
-	padding:0;
-	margin: 0.5vw;
-	text-align:center;
-	position:relative;
+  margin: 0 auto;
 }
 
 .un_produit {
-	margin: 0.5vw 2vw 0 2vw;
 	border: 3px solid rgba(216,40,76,255);
-  height: calc(20rem + 10vw);
+  height: calc(15rem + 15vw);
+  margin: 0 2vw 1vw 2vw;
 }
 
-.un_produit a, #index-box {
-	display : inline-block ;
+#index-box, #un_produit img {
+	display: inline-block !important;
 }
 
-.un_produit a {
-	height: calc(8rem + 6vw);
-  width: auto;
+.card_categs {
+	height: calc(10rem + 10vw);
 }
 
-.un_produit img {
-	height: 100%;
-  width: auto;
-}
 
 
 .produit {
 	border:1px solid black;
 	opacity: 1;
-}
+  height:100%;
+  height: 100%;
+  margin-right : auto;
+  margin-left : auto;}
 .produit:hover {
 	border:1px solid rgba(216,40,76,255);
 	opacity: 0.8;
+  height:100%;
+  height: 100%;
+  margin-right : auto;
+  margin-left : auto;
 }
-
 .legend_produit {
 	color: black;
 	width: 100%;
@@ -288,44 +276,49 @@ h3 {
 	background-color: white;
 	position: relative;
 	text-align: center;
+  height: 2vw;
+  margin-top:-1rem !important;
 }
-
 #info-prix, .legend_produit {
   font-size: calc(0.5rem + 0.5vw);
 }
+#info-prix {
+  padding-top: 1rem;
+}
 
+#modul_quantity {
+  margin-top: -1rem;
+}
 .affich_valeur {
-	width: 40px;
+	width: calc(1.5rem + 1.5vw);
+  height: calc(0.5rem + 0.5vw);
 	text-align: center;
-	height:35px;
 	border:none;
 	vertical-align: middle;
 	background: rgba(0, 0, 0, 0);
 	color:black;
 	font-weight:bold;
-	font-size: 20px;
+	font-size: calc(0.4rem + 0.4vw);
 }
-
+.add-to-cart {
+	height: calc(1rem + 1vw);
+	width: calc(1rem + 1vw);
+	background-color: green;
+	color:white;
+	font-weight:bold;
+	font-size: calc(0.4rem + 0.4vw);
+	border: none;
+	border-radius: 5px;
+	vertical-align: middle;
+}
 .affich_valeur, .bmoins {
 	visibility: hidden;
 }
-
 .bplus {
 	visibility: visible;
 }
 
 
-.add-to-cart {
-	height: 35px;
-	width: 35px;
-	background-color: green;
-	color:white;
-	font-weight:bold;
-	font-size: 20px;
-	border: none;
-	border-radius: 5px;
-	vertical-align: middle;
-}
 
 
 
@@ -378,9 +371,6 @@ table#deta-tab tr {
 	margin-top: 8%;
 }
 
-#modul_quantity {
-  padding-top: 2rem;
-}
 
 
 
@@ -677,6 +667,7 @@ padding:10px;
 
 /* Style du tableau générée dynamiquement */
 #liste_panier {
+  margin-top: 2rem;
   margin-bottom: 5rem;
 }
 
@@ -734,16 +725,16 @@ thead th:nth-child(54) {
 }
 
 #totalsomme {
-	width : 12rem;
+	width : calc(6rem + 5vw);
 	padding: 5px;
 	background-color: rgba(216,40,76,255);
 	border-radius: 5px;
 	font-weight:bold;
-  font-size: 1.5rem;
+  font-size: calc(0.5rem + 1vw);
 }
 
 #confirm-command {
-	width: 10rem;
+	width: calc(4rem + 5vw);
 	margin: 0 auto;
 	cursor:pointer;
 	text-decoration: none;
@@ -752,16 +743,21 @@ thead th:nth-child(54) {
 	background-color: green;
 	color:white;
 	font-weight:bold;
-	font-size: 1.5rem;
+  font-size: calc(0.5rem + 1vw);
 	border: 1px solid black;
 	border-radius: 5px;
 	vertical-align: middle;
 	cursor:pointer;
 	text-decoration: none;
 }
-#confirm-command button a, #confirm-command button a:hover {
+
+#confirm-command button a:link, #confirm-command button a:visited, #confirm-command button a:active {
 	text-decoration: none;
 	color:white;
+}
+#confirm-command button a:hover {
+	text-decoration: none;
+	color:rgba(216,40,76,255);
 }
 
 /* ------------------------------------------------------------Page Mentions légales / CGU ----------------------------------------- */
@@ -5078,7 +5074,6 @@ textarea.form-control-lg {
 
 .card {
   position: relative;
-  display: flex;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
@@ -5112,7 +5107,8 @@ textarea.form-control-lg {
 
 .card-body {
   flex: 1 1 auto;
-  padding: 1rem 1rem;
+  height: auto;
+  padding: 0;
 }
 
 .card-title {

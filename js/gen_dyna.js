@@ -195,17 +195,17 @@ window.chargement = function chargement() {
         }
         else {
 
-        var pre = "<div class='col mb-5 un_produit'><a class='card' href=\"#main\"><img class='card-img-top produit' src='";
+        var pre = "<div class='un_produit'><a class='card card_categs' href=\"#main\"><img class='card-img-top produit' src='";
         var mid1 = tab_categorie[number][cat_index].url;
         var mid2 ="' alt='...' onclick='fiche_detaillee(";
         var mid3 = number;
         var mid4 = ", ";
         var mid5 = cat_index;
-        var mid6 = ")'></a><div class='card-body p-4'><div class='text-center'><h5 class='fw-bolder legend_produit'>";
+        var mid6 = ")'></a><div class='card-body'><div class='text-center'><h5 class='fw-bolder legend_produit'>";
         var mid7 = tab_categorie[number][cat_index].libelle;
         var mid8 = "</h5><div id='info-prix'>";
         var mid9 = champs_prix;
-        var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer p-4 pt-0 border-top-0 bg-transparent'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
+        var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
         var mid11 = cat_index;
         var mid12 = "' data-id='";
         var mid13 = pre_id.toString()+cat_index.toString();
@@ -293,17 +293,17 @@ window.changeCategorie = function changeCategorie(number) {
             document.getElementById("descriptif_cat").innerHTML+="";
         }
         else {
-            var pre = "<div class='col mb-5 un_produit'><a class='card' href=\"#main\"><img class='card-img-top produit' src='";
+            var pre = "<div class='un_produit'><a class='card card_categs' href=\"#main\"><img class='card-img-top produit' src='";
             var mid1 = tab_categorie[number][cat_index].url;
             var mid2 ="' alt='...' onclick='fiche_detaillee(";
             var mid3 = number;
             var mid4 = ", ";
             var mid5 = cat_index;
-            var mid6 = ")'></a><div class='card-body p-4'><div class='text-center'><h5 class='fw-bolder legend_produit'>";
+            var mid6 = ")'></a><div class='card-body'><div class='text-center'><h5 class='fw-bolder legend_produit'>";
             var mid7 = tab_categorie[number][cat_index].libelle;
             var mid8 = "</h5><div id='info-prix'>";
             var mid9 = champs_prix;
-            var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer p-4 pt-0 border-top-0 bg-transparent'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
+            var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
             var mid11 = cat_index;
             var mid12 = "' data-id='";
             var mid13 = pre_id.toString()+cat_index.toString();
