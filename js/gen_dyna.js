@@ -254,7 +254,6 @@ window.changeCategorie = function changeCategorie(number) {
     var longueur = tab_categorie[number].length;
     var valeur;
     var titre = tabtitre[number];
-
     document.getElementById("descriptif_cat").innerHTML="";
 
     for ( let cat_index = 0; cat_index < longueur; cat_index++) {
@@ -334,9 +333,7 @@ window.changeCategorie = function changeCategorie(number) {
             var fin = ")'></div></div></div>";
 
             document.getElementById("descriptif_cat").innerHTML+=pre+mid1+mid2+mid3+mid4+mid5+mid6+mid7+mid8+mid9+mid10+mid11+mid12+mid13+mid14+mid15+mid16+mid17+mid171+mid172+mid18+mid19+mid20+mid201+mid202+mid21+mid22+mid23+mid24+mid25+mid26+mid27+mid28+mid29+mid291+mid292+mid30+mid31+fin;
-            if (window.location == "http://localhost:1234/Attable-Xampp/categorie.html") {
-                document.getElementById("ajout_titre_categorie").innerHTML=titre;
-            }
+            document.getElementById("ajout_titre_categorie").innerHTML=titre;
         }
 
         if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
