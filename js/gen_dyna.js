@@ -515,6 +515,18 @@ window.valid_command = function valid_command() {
 }
 
 
+//Génération du logo avec Localstorage
+window.genlogo = function genlogo() {
+    var test = "<img src='images/attable_logo2.png' class='img-fluid' alt='monlogo' id='lelogo'>";
+    let objLinea = JSON.stringify(test);
+    localStorage.setItem("logoimg", objLinea);
+    var urllogo = localStorage.getItem("logoimg");
+    let objJson = JSON.parse(urllogo);
+    console.log(objJson);
+    document.getElementById("logo").innerHTML=objJson;
+}
+
+
 
 /*
 //Fonction de génération du slideshow
