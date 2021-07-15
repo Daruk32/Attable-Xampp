@@ -207,7 +207,12 @@ window.chargement = function chargement() {
         var mid7 = tab_categorie[number][cat_index].libelle;
         var mid8 = "</h5><div id='info-prix'>";
         var mid9 = champs_prix;
-        var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
+        if (valeur > 0) {
+            var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input style='visibility: visible;' class='bmoins add-to-cart' type='button' value='-' id='moins";
+        }
+        else {
+            var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input style='visibility: hidden;' class='bmoins add-to-cart' type='button' value='-' id='moins";
+        }
         var mid11 = cat_index;
         var mid12 = "' data-id='";
         var mid13 = pre_id.toString()+cat_index.toString();
@@ -219,7 +224,12 @@ window.chargement = function chargement() {
         var mid172 = tab_categorie[number][cat_index].url;
         var mid18 = "' onclick='minus(";
         var mid19 = cat_index;
-        var mid20 = ")'><input class='affich_valeur' value='";
+        if (valeur > 0 ) {
+            var mid20 = ")'><input style='visibility: visible;' class='affich_valeur' value='";
+        }
+        else {
+            var mid20 = ")'><input style='visibility: hidden;' class='affich_valeur' value='";
+        }
         var mid201 = valeur;
         var mid202 = "' id='count";
         var mid21 = cat_index;
@@ -270,6 +280,7 @@ window.changeCategorie = function changeCategorie(number) {
             for (let i = 0 ; i < controle.length ; i++) {
                 if (id != controle[i][0]) {
                     valeur = "";
+                    console.log("prout");
                 }
                 else {
                     valeur = controle[i][4];
@@ -304,7 +315,12 @@ window.changeCategorie = function changeCategorie(number) {
             var mid7 = tab_categorie[number][cat_index].libelle;
             var mid8 = "</h5><div id='info-prix'>";
             var mid9 = champs_prix;
-            var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
+            if (valeur > 0) {
+                var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input style='visibility: visible;' class='bmoins add-to-cart' type='button' value='-' id='moins";
+            }
+            else {
+                var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input style='visibility: hidden;' class='bmoins add-to-cart' type='button' value='-' id='moins";
+            }
             var mid11 = cat_index;
             var mid12 = "' data-id='";
             var mid13 = pre_id.toString()+cat_index.toString();
@@ -316,7 +332,12 @@ window.changeCategorie = function changeCategorie(number) {
             var mid172 = tab_categorie[number][cat_index].url;
             var mid18 = "' onclick='minus(";
             var mid19 = cat_index;
-            var mid20 = ")'><input class='affich_valeur' value='";
+            if (valeur > 0 ) {
+                var mid20 = ")'><input style='visibility: visible;' class='affich_valeur' value='";
+            }
+            else {
+                var mid20 = ")'><input style='visibility: hidden;' class='affich_valeur' value='";
+            }
             var mid201 = valeur;
             var mid202 = "' id='count";
             var mid21 = cat_index;

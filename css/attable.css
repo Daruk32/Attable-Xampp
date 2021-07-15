@@ -311,9 +311,7 @@ h3 {
 	border-radius: 5px;
 	vertical-align: middle;
 }
-.affich_valeur, .bmoins {
-	visibility: hidden;
-}
+
 .bplus {
 	visibility: visible;
 }
