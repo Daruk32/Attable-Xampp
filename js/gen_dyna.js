@@ -512,7 +512,7 @@ window.valid_command = function valid_command() {
 }
 
 
-//Génération du logo avec Localstorage
+//Génération du logo avec Localstorage pour la page Index
 window.genlogo = function genlogo() {
     var test = "<img src='images/attable_logo2.png' class='img-fluid' alt='monlogo' id='lelogo'>";
     let objLinea = JSON.stringify(test);
@@ -523,7 +523,18 @@ window.genlogo = function genlogo() {
     document.getElementById("logo").innerHTML=objJson;
 }
 
-
+/*
+//Génération des styles avec Localstorage pour la page CGU
+window.gencss = function gencss() {
+    var css = "<link rel='stylesheet' href='css\attable.css'>";
+    let stylecss = JSON.stringify(css);
+    localStorage.setItem("stylecss", stylecss);
+    var cssstyle = localStorage.getItem("stylecss");
+    let objJson = JSON.parse(cssstyle);
+    console.log(objJson);
+    body.appendChild(objJson);
+}
+*/
 
 /*
 //Fonction de génération du slideshow
