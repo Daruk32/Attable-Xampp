@@ -519,22 +519,20 @@ window.genlogo = function genlogo() {
     localStorage.setItem("logoimg", objLinea);
     var urllogo = localStorage.getItem("logoimg");
     let objJson = JSON.parse(urllogo);
-    console.log(objJson);
     document.getElementById("logo").innerHTML=objJson;
 }
 
-/*
+
 //Génération des styles avec Localstorage pour la page CGU
 window.gencss = function gencss() {
-    var css = "<link rel='stylesheet' href='css\attable.css'>";
+    var css = "<link rel='stylesheet' href='css/attable.css'>";
     let stylecss = JSON.stringify(css);
     localStorage.setItem("stylecss", stylecss);
     var cssstyle = localStorage.getItem("stylecss");
     let objJson = JSON.parse(cssstyle);
-    console.log(objJson);
-    body.appendChild(objJson);
+    document.getElementById("headtest").innerHTML+=objJson;
 }
-*/
+
 
 /*
 //Fonction de génération du slideshow
