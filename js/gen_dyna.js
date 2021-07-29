@@ -280,7 +280,6 @@ window.changeCategorie = function changeCategorie(number) {
             for (let i = 0 ; i < controle.length ; i++) {
                 if (id != controle[i][0]) {
                     valeur = "";
-                    console.log("prout");
                 }
                 else {
                     valeur = controle[i][4];

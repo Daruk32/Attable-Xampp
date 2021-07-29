@@ -66,11 +66,8 @@ window.plus = function plus(catindex){
 		var count = document.getElementById('count'+catindex).value;
 		count++;
 		document.getElementById("count"+catindex).value = count;
-
 		var new_apport = id.toString() + "," + name.toString() + "," + price.toString() + "," + url.toString() + "," + count.toString();
-	
 		var total_panier = count*price;
-
 		createCookie("list_achat", new_apport, 15);
 	}
 
@@ -84,7 +81,6 @@ window.plus = function plus(catindex){
 				liste[i][4] = count2.toString();
 				var new_apport = remontage(liste);
 				document.getElementById("count"+catindex).value = count2;
-
 			}
 			// Ajout d'un nouvel article à la liste initialement générée.
 			else if (document.getElementById('count'+catindex).value == "") {
@@ -94,28 +90,16 @@ window.plus = function plus(catindex){
 				var new_apport = new_apport + "," + id.toString() + "," + name.toString() + "," + price.toString() + "," + url.toString() + "," + count3.toString();
 			    document.getElementById("count"+catindex).value = count3;
 			}
-
 		}
-		//Affichage de la valeur sur la page HTML
-
 
 		//On enregistre la chaîne de caractères dans le cookie.
 		createCookie("list_achat", new_apport, 15);
-
-
 	}
-
     document.getElementById("count"+catindex).style.visibility = 'visible';
     document.getElementById("moins"+catindex).style.visibility = 'visible';
 
-//Stockage de la quantité de produit/Affichage dans le widget
-
-//Ici, pour mettre à jour le nombre d'éléments dans le widget panier.
-//	document.getElementById(zespan).value = count;
-    var somme = panier();
-    console.log(somme);
-// A la fin les return !
-	
+	//Ici, pour mettre à jour le nombre d'éléments dans le widget panier.
+    panier();
 }
 
 
@@ -159,14 +143,7 @@ window.minus = function minus(cat_index){
 		createCookie("list_achat", new_apport, 15);
 	}
 
-	//Efface le cookie du produit si la quantité tombe à 0.
-
     var somme = panier();
-    console.log(somme);
-   
-	//Créer ici la ligne html du tableau
-
-	//Mettre les appels au span pour afficher la quantité	
 }
 
 
@@ -177,11 +154,9 @@ window.panier = function panier() {
 
     if (readCookie("list_achat") != null) {
 		var commande = defrag_cookie("list_achat");
-        console.log(commande);
 		if (commande == "") {
 			total = 0;
 			nb_article = 0;
-			console.log("test1");
 			eraseCookie("list_achat");
 		}
         else {
@@ -216,5 +191,4 @@ window.supp = function supp(article) {
 		createCookie("list_achat", reimport, 15);
 		location.reload();
 	}
-	console.log(supp);
 }
