@@ -87,7 +87,36 @@ tab_categorie.push(tab_the);
 tabtitre.push("Thés");
 
 
+//Ajout des champs id et quantité à l'array tab_categorie
+var length_cat = tab_categorie.length;
+for (let num = 0; num < length_cat; num++) {
+    var lengti = tab_categorie[num].length;
+    for (let numi = 0; numi < lengti; numi++) {
+        var id = (num*1000).toString()+numi.toString();
+        const ajout = {'quantity': 0, 'id': id};
+        tab_categorie[num][numi] = Object.assign({tab_categorie}, tab_categorie[num][numi], ajout);
+    }
+}
 
+//Sérialisation du tableau via Json
+const getCircularReplacer = () => {
+    const seen = new WeakSet();
+    return (key, value) => {
+        if (typeof value === "object" && value !== null) {
+            if (seen.has(value)) {
+                return;
+            }
+            seen.add(value);
+        }
+        return value;
+    };
+};
+//Pour sérialiser  
+    var str_json = JSON.stringify(tab_categorie, getCircularReplacer());
+    console.log(str_json);
+//Pour décomposer
+    //const test = JSON.parse(str_json);
+    //console.log(test);
 
 
 
@@ -165,7 +194,6 @@ window.chargement = function chargement() {
     for ( let cat_index = 0; cat_index < longueur; cat_index++) {
         var pre_id = number*1000;
         var id = (pre_id).toString()+cat_index.toString();
-        
 
         //Met à jour et affiche la quantité de chaque produit
         if (readCookie("list_achat") != null){

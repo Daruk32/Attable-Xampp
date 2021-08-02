@@ -136,8 +136,8 @@
 			<button id="remove" class="btn btn-danger" disabled>
 			  <i class="fa fa-trash"></i> Delete
 			</button>
-		  </div>
-		  <table
+		</div>
+		<table
 			id="table"
 			data-toolbar="#toolbar"
 			data-search="true"
@@ -160,7 +160,15 @@
 			data-side-pagination="server"
 			data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
 			data-response-handler="responseHandler">
-		  </table>
+			<thead>
+				<tr>
+				  <th data-field="name">Name</th>
+				  <th data-field="follower">Follower</th>
+				  <th data-field="following">Following</th>
+				  <th data-field="snippets">Snippets</th>
+				</tr>
+			</thead>
+		</table>
 		  
 
 
