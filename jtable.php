@@ -38,15 +38,8 @@
 		<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/export/bootstrap-table-export.min.js"></script>
 		<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/print/bootstrap-table-print.min.js"></script>
 
-		<style>
-			.select,
-			#locale {
-			  width: 50%;
-			}
-			.like {
-			  margin-right: 10px;
-			}
-		  </style>
+
+
 	</head>
 	
 	<body>
@@ -79,7 +72,12 @@
 				</div>
 			</nav>			  
 		</section>
-	
+
+
+
+
+
+<!--
 		<div class="select">
 			<select class="form-control" id="locale">
 			  <option value="af-ZA">af-ZA</option>
@@ -158,8 +156,9 @@
 			data-page-list="[10, 25, 50, 100, all]"
 			data-show-footer="true"
 			data-side-pagination="server"
-			data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+			data-url="donnees2.json"
 			data-response-handler="responseHandler">
+			
 			<thead>
 				<tr>
 				  <th data-field="name">Name</th>
@@ -169,7 +168,10 @@
 				</tr>
 			</thead>
 		</table>
-		  
+
+-->
+
+
 
 
 		<footer class="py-4 text-center">
@@ -204,145 +206,195 @@
 
 
 
-		<script>
-			var $table = $('#table')
-			var $remove = $('#remove')
-			var selections = []
-		  
-			function getIdSelections() {
-			  return $.map($table.bootstrapTable('getSelections'), function (row) {
-				return row.id
-			  })
-			}
-		  
-			function responseHandler(res) {
-			  $.each(res.rows, function (i, row) {
-				row.state = $.inArray(row.id, selections) !== -1
-			  })
-			  return res
-			}
-		  
-			function detailFormatter(index, row) {
-			  var html = []
-			  $.each(row, function (key, value) {
-				html.push('<p><b>' + key + ':</b> ' + value + '</p>')
-			  })
-			  return html.join('')
-			}
-		  
-			function operateFormatter(value, row, index) {
-			  return [
-				'<a class="like" href="javascript:void(0)" title="Like">',
-				'<i class="fa fa-heart"></i>',
-				'</a>  ',
-				'<a class="remove" href="javascript:void(0)" title="Remove">',
-				'<i class="fa fa-trash"></i>',
-				'</a>'
-			  ].join('')
-			}
-		  
-			window.operateEvents = {
-			  'click .like': function (e, value, row, index) {
-				alert('You click like action, row: ' + JSON.stringify(row))
-			  },
-			  'click .remove': function (e, value, row, index) {
-				$table.bootstrapTable('remove', {
-				  field: 'id',
-				  values: [row.id]
-				})
-			  }
-			}
-		  
-			function totalTextFormatter(data) {
-			  return 'Total'
-			}
-		  
-			function totalNameFormatter(data) {
-			  return data.length
-			}
-		  
-			function totalPriceFormatter(data) {
-			  var field = this.field
-			  return '$' + data.map(function (row) {
-				return +row[field].substring(1)
-			  }).reduce(function (sum, i) {
-				return sum + i
-			  }, 0)
-			}
-		  
-			function initTable() {
-			  $table.bootstrapTable('destroy').bootstrapTable({
-				height: 550,
-				locale: $('#locale').val(),
-				columns: [
-				  [{
-					field: 'state',
-					checkbox: true,
-					rowspan: 2,
-					align: 'center',
-					valign: 'middle'
-				  }, {
-					title: 'Item ID',
-					field: 'id',
-					rowspan: 2,
-					align: 'center',
-					valign: 'middle',
-					sortable: true,
-					footerFormatter: totalTextFormatter
-				  }, {
-					title: 'Item Detail',
-					colspan: 3,
-					align: 'center'
-				  }],
-				  [{
-					field: 'name',
-					title: 'Item Name',
-					sortable: true,
-					footerFormatter: totalNameFormatter,
-					align: 'center'
-				  }, {
-					field: 'price',
-					title: 'Item Price',
-					sortable: true,
-					align: 'center',
-					footerFormatter: totalPriceFormatter
-				  }, {
-					field: 'operate',
-					title: 'Item Operate',
-					align: 'center',
-					clickToSelect: false,
-					events: window.operateEvents,
-					formatter: operateFormatter
-				  }]
-				]
-			  })
-			  $table.on('check.bs.table uncheck.bs.table ' +
-				'check-all.bs.table uncheck-all.bs.table',
-			  function () {
-				$remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
-		  
-				// save your data, here just save the current page
-				selections = getIdSelections()
-				// push or splice the selections if you want to save all data selections
-			  })
-			  $table.on('all.bs.table', function (e, name, args) {
-				console.log(name, args)
-			  })
-			  $remove.click(function () {
-				var ids = getIdSelections()
-				$table.bootstrapTable('remove', {
-				  field: 'id',
-				  values: ids
-				})
-				$remove.prop('disabled', true)
-			  })
-			}
-		  
-			$(function() {
-			  initTable()
-		  
-			  $('#locale').change(initTable)
-			})
-		  </script>
+		
+		<table id="table">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="libelle">Nom</th>
+      <th data-field="prix">Prix</th>
+      <th data-field="quantity">Quantité</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  $(function() {
+    var data = [
+    {
+        "url": "categorie/promotions/promo1.png",
+        "libelle": "MODIF Gateaux Milka en promotion 2€ pièce 5€ les 3",
+        "prix": 2,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "00"
+    },
+    {
+        "url": "categorie/promotions/promo2.png",
+        "libelle": "Crispeas en promotion 1€ les 2",
+        "prix": 1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "01"
+    },
+    {
+        "url": "categorie/promotions/promo3.png",
+        "libelle": "Miel en promotion 3€ 500g 5€ 2x500g",
+        "prix": 3,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "02"
+    },
+    {
+        "url": "categorie/promotions/promo4.png",
+        "libelle": "Promotion sur tout le rayon gâteau en lot !",
+        "prix": 1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "03"
+    },
+    {
+        "url": "categorie/promotions/promo5.png",
+        "libelle": "promotion sur une multitude de produits en lot !",
+        "prix": 3,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "04"
+    },
+    {
+        "url": "categorie/boissons/boisson2.png",
+        "libelle": "Jus pomme orange et boissons gazeuses",
+        "prix": 1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "10000"
+    },
+    {
+        "url": "categorie/boissons/boisson3.png",
+        "libelle": "Fanta Perrier et Sanpellegrino",
+        "prix": 1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "10001"
+    },
+    {
+        "url": "categorie/boissons/boisson4.png",
+        "libelle": "Jus pomme orange et boissons gazeuses",
+        "prix": 1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "10002"
+    },
+    {
+        "url": "categorie/boissons/boisson5.png",
+        "libelle": "Fanta Perrier et Sanpellegrino",
+        "prix": 1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "10003"
+    },
+    {
+        "url": "categorie/boissons/boisson6.png",
+        "libelle": "Essai Prix 0",
+        "prix": 0,
+        "texte": "Un test pour voir",
+        "quantity": 0,
+        "id": "10004"
+    },
+    {
+        "url": "categorie/boissons/fanta.jpg",
+        "libelle": "Fanta",
+        "prix": 0.5,
+        "texte": "Une boisson râfraichissante",
+        "quantity": 0,
+        "id": "10005"
+    },
+    {
+        "url": "categorie/bonbons/bonbons1.png",
+        "libelle": "Ribambel de bonbons",
+        "prix": 1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "20000"
+    },
+    {
+        "url": "categorie/bonbons/bonbons2.png",
+        "libelle": "bonbons et barres chocolatés",
+        "prix": 0.1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "20001"
+    },
+    {
+        "url": "categorie/bonbons/bonbons3.png",
+        "libelle": "bonbon au chocolat",
+        "prix": 1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "20002"
+    },
+    {
+        "url": "categorie/bonbons/bonbons4.png",
+        "libelle": "Ribambel de bonbons",
+        "prix": 1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "20003"
+    },
+    {
+        "url": "categorie/bonbons/bonbons5.png",
+        "libelle": "bonbons et barres chocolatés",
+        "prix": 0.1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "20004"
+    },
+    {
+        "url": "categorie/cafes/cafe1.png",
+        "libelle": "Une multitude de de cafés",
+        "prix": 2.5,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "30000"
+    },
+    {
+        "url": "categorie/cafes/cafe2.png",
+        "libelle": "Café carte noir et autre",
+        "prix": 2,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "30001"
+    },
+    {
+        "url": "categorie/cafes/cafe3.png",
+        "libelle": "Café HOUSE",
+        "prix": 1,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "30002"
+    },
+    {
+        "url": "categorie/cafes/cafe4.png",
+        "libelle": "Une multitude de de cafés",
+        "prix": 2.5,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "30003"
+    },
+    {
+        "url": "categorie/cafes/cafe5.png",
+        "libelle": "Café carte noir et autre",
+        "prix": 2,
+        "texte": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "quantity": 0,
+        "id": "30004"
+    }
+]
+    $table.bootstrapTable({data: data})
+  })
+</script>
+
 	</body>
 </html>

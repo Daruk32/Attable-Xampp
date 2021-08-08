@@ -1,3 +1,5 @@
+/*
+
 var $table = $('#table')
 var $remove = $('#remove')
 var selections = []
@@ -136,3 +138,6 @@ $(function() {
 
   $('#locale').change(initTable)
 })
+
+
+*/

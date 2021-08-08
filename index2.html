@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichier Debug JS</title>
+    <script src="debug.js"></script>
+</head>
+
+<body>
+    <h1>Fichier de dÃ©bogage</h1>
+    <div id="resultclic">premier chargement <hr></div>
+    <button type="button" onclick="affiche_info_html()">Affiche data - html</button>
+    <button type="button" onclick="affiche_info_js()">modifdiv js</button>
+    <button type="button" onclick="modifDATA_js()">modifDATA div js</button>
+    <script>
+        console.warn("chargement fichier index.html");
+        var a_index = 159;
+        var a_globale = 159;
+        console.warn("valeur de a_index de index.html : " + a_index);
+
+        function affiche_info_html() {
+            document.getElementById("resultclic").innerHTML = "Index.html valeur de a_index : " + a_index + "<br>";
+            document.getElementById("resultclic").innerHTML += "Index.html valeur de a_globale : " + a_globale + "<br>";
+        }
+    </script>
+
+</body>
+
+</html>
