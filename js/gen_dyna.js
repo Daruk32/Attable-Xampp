@@ -86,7 +86,7 @@ import {tab_the} from '../categorie/thes/thes.js'
 tab_categorie.push(tab_the);
 tabtitre.push("Thés");
 
-
+/*
 //Ajout des champs id et quantité à l'array tab_categorie
 var length_cat = tab_categorie.length;
 var table_json = new Array();
@@ -100,13 +100,13 @@ for (let num = 0; num < length_cat; num++) {
         tab_categorie[num][numi] = Object.assign({tab_categorie}, tab_categorie[num][numi], ajout);
     }
 }
-/*
+
 //On casse la catégorisation des arrays
 tab_categorie = tab_categorie.reduce(function(prev, curr) {
     return prev.concat(curr);
 });
 
-//Sérialisation du tableau via Json
+//Conversion en format objet de la data entrante pour usage json
 const getCircularReplacer = () => {
     const seen = new WeakSet();
     return (key, value) => {
@@ -132,7 +132,9 @@ const getCircularReplacer = () => {
     xhr.setRequestHeader('Content-type','application/json');
     xhr.send(str_json);
 
-*/
+
+   */ 
+
 /*
 
 
