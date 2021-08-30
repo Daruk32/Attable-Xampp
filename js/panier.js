@@ -1,4 +1,4 @@
-import {tab_categorie} from '../js/gen_dyna.js'
+import {tab_categorie} from '../js/data.js'
 
 var nombre_article;
 var liste;
