@@ -25,6 +25,9 @@
 		
 		<!-- Bootstrap Table Style -->
 		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+		<!-- Bootstrap Table JS-->
+		<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+
 
 		<script src="js/data.js" type="module"></script>
 		
@@ -35,7 +38,18 @@
 		<section>
 
 			
-
+			<table
+				id="table"
+				data-toggle="table"
+				data-url="donnees.json">
+				<thead>
+					<tr>
+						<th data-field="id">ID</th>
+						<th data-field="libelle">Item Name</th>
+						<th data-field="prix">Item Price</th>
+					</tr>
+				</thead>
+			</table>
 
 
 
@@ -45,10 +59,13 @@
 
 
 		</section>
-		
 
-		<!-- Bootstrap Table JS-->
-		<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
-
+		<script>
+			var $table = $('#table')
+		  	$(function() {
+			  var data = 
+			  $table.bootstrapTable({data: data})
+			})
+		</script>
 	</body>
 </html>

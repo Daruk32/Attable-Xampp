@@ -112,7 +112,7 @@ console.log(str_json);
 //var test4 = JSON.parse(str_json);
 //console.log(test);
 
-
+//window.location.href = "jtable.php?var1=" + str_json;
 
 
 
