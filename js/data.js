@@ -116,13 +116,11 @@ console.log(str_json);
 
 
 
-/*
 //Envoi de la base de donnée en json au fichier
 var xhr = new XMLHttpRequest();
-    xhr.open('POST','donnees.json',true);
+    xhr.open('POST','jtable.php',true);
     xhr.setRequestHeader('Content-type','application/json');
     xhr.send(str_json);
-*/
 
 
 
@@ -130,7 +128,6 @@ var xhr = new XMLHttpRequest();
 
 
 /*
-
 
 //Création du tableau avec les data json 
 window.jtable = function jtable() {

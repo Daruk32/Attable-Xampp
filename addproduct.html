@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<title>Ajouter un produit</title>
+
+		<link rel="stylesheet" href="css\attable.css">
+		<link rel="stylesheet" href="css\footer.css">
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+ 
+		<!-- Bootstrap core JS-->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		
+		<!-- icons-->
+		<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+		
+		<!-- Bootstrap Table Style -->
+		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+		<!-- Bootstrap Table JS-->
+		<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+		
+	</head>
+	
+	<body>
+	
+		<section>
+		
+
+			<nav class="navbar navbar-expand-lg navbar-light" id="top">
+				<div class="container-fluid d-flex flex-row">
+					<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid" alt="monlogo" id="lelogo"></a>
+					<div id="titre_page" class="collapse navbar-collapse justify-content-center">
+						<div id="titre_page">Ajouter un produit</div>
+					</div>
+					<div class='nav-item collapse navbar-collapse'>
+						<form class="collapse navbar-collapse justify-content-end">
+							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success" type="submit">Search</button>
+						</form>
+					</div>
+					<div id="authentification">
+						<a href="authentification.html">
+						<img src="images\login.png" alt="Authentification" id="lesids">
+						</a>				
+					</div>						
+					<div id="panier">
+						<a href="panier.html">
+							<span id="total_articles">0</span>
+							<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+							<span id="total_commande">0 €</span>
+						</a>
+					</div>
+				</div>
+			</nav>
+
+
+
+			<div class="container w-75" id="joinmail">
+				<h1 class="text-center w-100">Ajouter un produit</h1>
+				<form>
+				  <fieldset>
+					<div class="form-group text-center">
+						<label for="img">Image du produit</label>
+						<input type="file" name="imagefile" accept="image/jpeg,image/png" />
+					</div>  
+					<div class="form-group text-center">
+						<label for="id">Référence du produit</label>
+						<input type="text" class="form-control w-50" id="email" required>
+					</div>
+					<div class="form-group text-center">
+						<label for="product-name">Nom du produit</label>
+						<input type="text" class="form-control w-50" id="email" required>
+					</div>
+					<div class="form-group text-center">
+						<label for="legend">Légende du produit</label>
+                         <input type="text" class="form-control w-50" id="email" required>
+					</div>
+					<div class="form-group text-center">
+						<label for="short-descriptive">Très bref descriptif du produit (maximum 15 caractères)</label>
+						<input type="text" class="form-control w-50" id="email" required>
+					</div>
+					<div class="form-group text-center">
+						<label for="long-descriptive">Descriptif du produit (max 200 caractères)</label>
+						<input type="text" class="form-control w-50" id="email" required>
+					</div>
+					<div class="form-group text-center">
+						<label for="price">Prix du produit</label>
+						<input type="text" class="form-control w-10" id="email" required>€
+					</div>
+					<div class="form-group text-center">
+						<label for="quantity">Quantité de produit</label>
+						<input type="text" class="form-control w-10" id="email" required>
+					</div>
+					<div class="form-group text-center">
+						<label for="category">Catégorie</label>
+						<select name="category" required>
+							<option></option>
+						    <option value="volvo">Volvo</option>
+						    <option value="saab">Saab</option>
+							<option value="mercedes" disabled>Mercedes</option>
+						    <option value="audi">Audi</option>
+					</div>
+					<div id="bouton">
+						<input style="width:200px;" type="submit" value="Créer/Mettre à jour" id="submit" onclick="verif_form_modification()">
+					</div>
+
+				  </fieldset>
+				</form>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+		</section>
+	
+
+		<footer class="py-4 text-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4 links" id="menu">
+						<ul id="menus">
+							<li><a href="index.html">Accueil</a></li>
+							<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+							<li><a href="noustrouver.html">Nous trouver</a></li>
+							<li><a href="panier.html">Commande</a></li>
+						</ul>
+					</div>
+
+					<div class="col-sm-4 text-center ancre">
+						<a href="#top">
+							<i id='icon-footer' class="fas fa-angle-up"></i>
+						</a>
+						<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+					</div>
+
+					<div class="col-sm-4 links" id="menu">
+						<ul id="menus">
+							<li><a href="newsletter.html">Mailing List</a></li>
+							<li><a href="mentionslegales.html">Mentions légales</a></li>
+							<li><a href="cgu.html">CGU</a></li>
+						</ul>
+					</div>
+				</div>			
+			</div>
+        </footer>
+
+	</body>
+</html>
