@@ -85,55 +85,49 @@ tab_categorie.push(tab_the);
 tabtitre.push("Thés");
 
 
-
-/*
 //Ajout des champs id et quantité à l'array tab_categorie
 var length_cat = tab_categorie.length;
-var table_json = new Array();
-
 for (let num = 0; num < length_cat; num++) {
     var lengti = tab_categorie[num].length;
     var titre = tabtitre[num];
     for (let numi = 0; numi < lengti; numi++) {
         var id = (num*1000).toString()+numi.toString();
         const ajout = {'quantity': 0, 'id': id, 'categorie': titre};
-        tab_categorie[num][numi] = Object.assign({tab_categorie}, tab_categorie[num][numi], ajout);
+        tab_categorie[num][numi] = Object.assign(tab_categorie[num][numi], ajout);
     }
 }
 
+
 //On casse la catégorisation des arrays
-tab_categorie = tab_categorie.reduce(function(prev, curr) {
+var tab_product = tab_categorie.reduce(function(prev, curr) {
     return prev.concat(curr);
 });
 
-//Conversion en format objet de la data entrante pour usage json
-const getCircularReplacer = () => {
-    const seen = new WeakSet();
-    return (key, value) => {
-        if (typeof value === "object" && value !== null) {
-            if (seen.has(value)) {
-                return;
-            }
-            seen.add(value);
-        }
-        return value;
-    };
-};
+
 //Pour sérialiser  
-    var str_json = JSON.stringify(tab_categorie, getCircularReplacer());
+var str_json = JSON.stringify(tab_product);
+console.log(str_json);
 
-    console.log(str_json);
 //Pour décomposer
-    const test = JSON.parse(str_json);
-    //console.log(test);
+//var test4 = JSON.parse(str_json);
+//console.log(test);
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST','jtable.php',true);
+
+
+
+
+/*
+//Envoi de la base de donnée en json au fichier
+var xhr = new XMLHttpRequest();
+    xhr.open('POST','donnees.json',true);
     xhr.setRequestHeader('Content-type','application/json');
     xhr.send(str_json);
+*/
 
 
-   */ 
+
+
+
 
 /*
 

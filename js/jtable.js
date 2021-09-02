@@ -1,3 +1,7 @@
+//import {str_json} from '../js/data.js'
+
+//console.log(str_json);
+
 /*
 
 var $table = $('#table')

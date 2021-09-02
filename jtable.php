@@ -170,7 +170,7 @@
 			data-page-list="[10, 25, 50, 100, all]"
 			data-show-footer="true"
 			data-side-pagination="server"
-			data-url="donnees2.json"
+			data-url="donnees.json"
 			data-response-handler="responseHandler">
 			
 			<thead>

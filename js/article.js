@@ -1,5 +1,5 @@
-import {tab_categorie} from '../js/gen_dyna.js'
-import {tabtitre} from '../js/gen_dyna.js'
+import {tab_categorie} from '../js/data.js'
+import {tabtitre} from '../js/data.js'
 var liste_articles = new Array();
 
 //Création de la classe article pour appliquer une pure méthode objet à tous les produits enregistrés
