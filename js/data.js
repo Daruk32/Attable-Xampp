@@ -106,7 +106,7 @@ var tab_product = tab_categorie.reduce(function(prev, curr) {
 
 //Pour sérialiser  
 var str_json = JSON.stringify(tab_product);
-console.log(str_json);
+//console.log(str_json);
 
 //Pour décomposer
 //var test4 = JSON.parse(str_json);
