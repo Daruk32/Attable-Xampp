@@ -18,13 +18,16 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 
-		<!-- Bootstrap core JS-->
+		<!-- Bootstrap core JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-		
+		<!-- PDF Generator -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.1.135/jspdf.min.js"></script>
 		
 		
 		<script src="js/cookie.js" type="text/javascript"></script>
@@ -89,6 +92,7 @@
 				<p id="totalsomme" class="text-center pull-right">Total : <span id="sous_total">0 €</span></p>
 
 				<div id="confirm-command"><button id="valid-command">Passer la commande</button></div>
+				<div id="confirm-command"><button id="cmd">Générer le PDF</button></div>
 			</div>
 			
 		</section>
