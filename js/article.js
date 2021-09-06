@@ -1,7 +1,31 @@
-import {tab_categorie} from '../js/data.js'
-import {tabtitre} from '../js/data.js'
-var liste_articles = new Array();
+//import {tab_categorie} from '../js/data.js'
+//import {tabtitre} from '../js/data.js'
+//var liste_articles = new Array();
 
+//Pour la page d'ajout de produit, affiche l'aperçu de l'image du produit
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+
+
+
+
+
+
+
+/*
 //Création de la classe article pour appliquer une pure méthode objet à tous les produits enregistrés
 class article {
     constructor (id, url, libelle, prix, texte, quantity, category) {
@@ -23,6 +47,8 @@ for (let categ = 0; categ < total_cat; categ++) {
     tab_categorie[categ].forEach(element => element.push({'quantity':0}));
     console.log(tab_categorie);
 }
+
+*/
 /*
 for (let categ = 0; categ < total_cat; categ++) {
     for (let i = 0; i < tab_categorie[categ].length; i++) {
