@@ -361,14 +361,15 @@ window.crea_panier = function crea_panier() {
         var liste_panier = defrag_cookie("list_achat");
         for (let i=0 ; i < liste_panier.length ; i++) {
             if (liste_panier[i][4] > 0) {
+                console.log(liste_panier[i]);
                 var ch1 = '<tr class="line_panier"><td><img src="';
-                var ch2 = liste_panier[i][3];
+                var ch2 = liste_panier[i].url;
                 var ch3 = '" alt="img_product id="echantillon" class="img-fluid"></td><td>';
-                var ch4 = liste_panier[i][1];
+                var ch4 = liste_panier[i].libelle;
                 var ch5 = '</td><td>';
-                var ch6 = liste_panier[i][2];
+                var ch6 = liste_panier[i].prix;
                 var ch7 = ' €</td><td>';
-                var ch8 = liste_panier[i][4];
+                var ch8 = liste_panier[i].quantity;
                 var ch9 = '</td><td><img src="images/corbeille.jpg" alt="Delete" id="trashcan" onclick="supp(';
                 var ch10 = i;
                 var ch11 = ')"></td></tr>';

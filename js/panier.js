@@ -194,26 +194,57 @@ window.supp = function supp(article) {
 }
 
 
-//Fonction de génération de PDF depuis l'html
-$(document).ready(function(){
+//Fonction de génération de PDF
+window.generate = function generate() {
+    var doc = new jspdf.jsPDF()
+	doc.setFontSize(12);
 
-	var specialElementHandlers = {
-		"#editor":function(element,renderer){
-			return true;
+	//Image Logo
+	var imag = new Image()
+	imag.src = 'images/attable_logo2.png'
+	doc.addImage(imag, 'PNG', 10, 10, 36, 14);
+	doc.text(140, 15, 'Attable, Collectif du Goût');
+	doc.text(140, 20, 'Avenue de Limburg');
+	doc.text(140, 25, '69110 Sainte-Foy-lès-Lyon');
+	doc.text(140, 30, 'attable@gmail.com');
+
+	//N° Commande test
+	var random = Math.random(1000000,9999999); 
+	doc.text('N° de commande : '+ random, 10, 50);
+	
+	//Date
+	const currentDate = new Date();
+	const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+	function addZero(i) {
+		if (i < 10) {
+		  i = "0" + i;
 		}
-	};
+		return i;
+	}
+	var d = new Date();
+	var h = addZero(d.getHours());
+	var m = addZero(d.getMinutes());
+	var s = addZero(d.getSeconds());
+	var fullDate = "Le " + currentDate.toLocaleDateString('fr-FR', options) + " à " + h + ":" + m + ":" + s;
+	doc.text(fullDate, 135, 40);
 
-	$("#cmd").click(function(){
-		var doc = new jsPDF();
-		doc.fromHTML($("#main").html(),15,15,{
-			"width":170,
-			"elementHandlers":specialElementHandlers
-		});
+	//N° Client test
+	doc.text("N° Client : " + Math.random(1000000,9999999), 10, 60);
 
-		doc.save("sample-file.pdf");
-	});
-});
+    //Tableau Achats
+    var head = [['Article', 'Prix', 'Quantité']]
+    var body = [
+        ['Denmark', 7.526, 'Copenhagen'],
+        ['Switzerland', 7.509, 'Bern'],
+        ['Iceland', 7.501, 'Reykjavík'],
+        ['Iceland', 7.501, 'Reykjavík'],
+        ['Iceland', 7.501, 'Reykjavík']
+    ]
+    doc.autoTable({ margin: { top: 70 }, head: head, body: body })
 
+	//Montant total
+	var amount_down = 70+(body.length+1)*10;
+	doc.text(100, amount_down, 'Montant total : ' + readCookie("Somme") + "€");
 
-
-
+    doc.save('table.pdf')
+}

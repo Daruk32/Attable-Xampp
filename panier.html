@@ -27,8 +27,9 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 		<!-- PDF Generator -->
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.1.135/jspdf.min.js"></script>
-		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+		<script type="text/javascript" src="js/jspdf.plugin.autotable.min.js"></script>
+
 		
 		<script src="js/cookie.js" type="text/javascript"></script>
 
@@ -76,7 +77,7 @@
 			</nav>
 
 			<div class="container" id="liste_panier">
-				<table class="table">
+				<table class="table" id="my-table">
 					<thead>
 						<tr>
 							<th scope="col" class="text-center">Aperçu</th>
@@ -92,7 +93,7 @@
 				<p id="totalsomme" class="text-center pull-right">Total : <span id="sous_total">0 €</span></p>
 
 				<div id="confirm-command"><button id="valid-command">Passer la commande</button></div>
-				<div id="confirm-command"><button id="cmd">Générer le PDF</button></div>
+				<div id="confirm-command"><button onclick="generate()">Générer le PDF</button></div>
 			</div>
 			
 		</section>
@@ -126,7 +127,6 @@
 				</div>			
 			</div>
         </footer>
-
 
 	</body>
 </html>
