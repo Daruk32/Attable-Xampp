@@ -1,3 +1,4 @@
+//V2 >08/09/2021 Refonte du code
 //Déclaration du tableau des catégories
 import {tab_categorie} from '../js/data.js'
 //Déclaration du tableau des titres des catégories
@@ -7,47 +8,95 @@ import {defrag_cookie} from '../js/panier.js'
 
 
 
-//Fonction de génération des catégories à la page d'accueil - index.html
+//V2 Nouvelle Fonction de génération des catégories à la page d'accueil - index.html
 window.liste_categorie = function liste_categorie() {
-    var quantite_cat = tab_categorie.length;
-    for ( let categ = 0; categ < quantite_cat; categ++) {
+    //Création de la div mère
+    var section = document.getElementById('tab_categs');
+    var divmere = document.createElement('div');
+    divmere.className = "container liste_categorie px-4 px-lg-5 mt-5";
+    section.appendChild(divmere);
+    //Création du titre du menu des catégories
+    var titreh3 = document.createElement('h3');
+    titreh3.innerHTML = "Les catégories de produit que l'on s'arrache";
+    divmere.appendChild(titreh3);
+    //Création du menu des catégories
+    var divfille = document.createElement('div');
+    divfille.className = "row row-cols-2 row-cols-md-3 row-cols-xl-4";
+    divfille.id = "tableau_image_categorie";
+    divmere.appendChild(divfille);
+    for ( let categ = 0; categ < tab_categorie.length; categ++) {
         if (tab_categorie[categ].length == 0) {
-            document.getElementById("tableau_image_categorie").innerHTML+="";
+            document.getElementById("tableau_image_categorie").innerHTML+="Il n'y a plus de produits.";
         }
         else {
-            var liste = "<div class='card_cat'>\
-                            <div class='card text-center' id='index-box' onClick=\"window.location.href='categorie.html?categorie=" + categ + "'\">\
-                                <img class='card-img-top img-fluid cats' src='" + tab_categorie[categ][0].url + "' alt='...' />\
-                            </div>\
-                            <div class='card-body p-4'>\
-                                <div class='text-center'>\
-                                    <h5 class='fw-bolder'>" + tabtitre[categ] + "</h5>\
-                                </div>\
-                            </div>\
-                        </div>";
-            document.getElementById("tableau_image_categorie").innerHTML += liste;
+            //Div categ contenant divimg et divtext
+            var divcateg = document.createElement('div');
+            divcateg.className = "card_cat";
+            divfille.appendChild(divcateg);
+            //divimg contenant l'image de la catégorie
+            var divimg = document.createElement('div');
+            divimg.className = "card text-center";
+            divimg.id = "index-box";
+            divimg.addEventListener("click", function(e) {
+                window.location.href="categorie.html?categorie=" + categ;
+            }, false);
+            divcateg.appendChild(divimg);
+            //Image de la catégorie
+            var image_categorie = document.createElement('img')
+            image_categorie.className = "card-img-top img-fluid cats";
+            image_categorie.src = tab_categorie[categ][0].url;
+            image_categorie.alt = '...';
+            divimg.appendChild(image_categorie);
+            //divtext contenant le texte de la catégorie
+            var divtext = document.createElement('div');
+            divtext.className = "card-body p-4 text-center";
+            divcateg.appendChild(divtext);
+            //Texte de la catégorie
+            var text_categorie = document.createElement('h5')
+            text_categorie.className = "fw-bolder";
+            text_categorie.innerHTML = tabtitre[categ];
+            divtext.appendChild(text_categorie);
         }
     }
 }
 
 
-
-//Fonction de génération du bandeau des pages - categorie.html + panier.html
+//V2 Fonction de génération du bandeau des pages - categorie.html + panier.html
 window.bandeau = function bandeau() {
     var nombre_cat = tabtitre.length;
+    console.log(window.location.pathname);
+    var bande = document.getElementById("bande");
     for ( let categ = 0; categ < nombre_cat; categ++) {
         if (tab_categorie[categ].length == 0) {
             document.getElementById("bande").innerHTML+="";
         }
         else {
-            if (window.location == "http://localhost:1234/Attable-Xampp/panier.html" || window.location == "http://johan.giroux.free.fr/attable/panier.html" || window.location == "http://attable.free.fr/panier.html") {
-                var ban = "<li class='nav-item text-center '><a class='nav-link' onClick=\"window.location.href='categorie.html?categorie=" + categ + "'\">";
+            if (window.location.pathname == "/Attable-Xampp/panier.html" || window.location.pathname == "/attable/panier.html" || window.location.pathname == "/panier.html") {
+                var divbandeau = document.createElement('li')
+                divbandeau.className = "nav-item text-center";
+                bande.appendChild(divbandeau);
+            
+                var acat = document.createElement('a')
+                acat.className = "nav-link";
+                acat.addEventListener("click", function(e) {
+                    window.location.href="categorie.html?categorie=" + categ;
+                }, false);
+                acat.innerHTML = tabtitre[categ];
+                divbandeau.appendChild(acat);
             }
             else {
-                var ban = "<li class='nav-item text-center '><a class='nav-link' onclick='changeCategorie(" + categ + ")'>";
+                var divbandeau = document.createElement('li')
+                divbandeau.className = "nav-item text-center";
+                bande.appendChild(divbandeau);
+            
+                var acat = document.createElement('a')
+                acat.className = "nav-link";
+                acat.addEventListener("click", function(e) {
+                    changeCategorie(categ);
+                }, false);
+                acat.innerHTML = tabtitre[categ];
+                divbandeau.appendChild(acat);
             }
-            var deau = tabtitre[categ] + "</a></li>";
-            document.getElementById("bande").innerHTML += ban+deau;
         }
     }
 }
@@ -361,15 +410,14 @@ window.crea_panier = function crea_panier() {
         var liste_panier = defrag_cookie("list_achat");
         for (let i=0 ; i < liste_panier.length ; i++) {
             if (liste_panier[i][4] > 0) {
-                console.log(liste_panier[i]);
                 var ch1 = '<tr class="line_panier"><td><img src="';
-                var ch2 = liste_panier[i].url;
+                var ch2 = liste_panier[i][3];
                 var ch3 = '" alt="img_product id="echantillon" class="img-fluid"></td><td>';
-                var ch4 = liste_panier[i].libelle;
+                var ch4 = liste_panier[i][1];
                 var ch5 = '</td><td>';
-                var ch6 = liste_panier[i].prix;
+                var ch6 = liste_panier[i][2];
                 var ch7 = ' €</td><td>';
-                var ch8 = liste_panier[i].quantity;
+                var ch8 = liste_panier[i][4];
                 var ch9 = '</td><td><img src="images/corbeille.jpg" alt="Delete" id="trashcan" onclick="supp(';
                 var ch10 = i;
                 var ch11 = ')"></td></tr>';

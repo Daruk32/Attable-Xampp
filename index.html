@@ -15,10 +15,12 @@
 
  
 		<!-- Bootstrap core JS-->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		
 		<!-- icons-->
 		<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
@@ -40,46 +42,35 @@
 	</head>
 	
 	<body onload="liste_categorie(), panier(), genlogo()">
-	
-		<section>
-		
 
-			<nav class="navbar navbar-expand-lg navbar-light" id="top">
-				<div class="container-fluid d-flex flex-row">
-					<a class="navbar-brand" href="index.html" id="logo"></a>
-					<div id="titre_page" class="collapse navbar-collapse justify-content-center">
-						<div id="titre_page">Passez ATTABLE et faites des économies !</div>
-					</div>
-					<div class='nav-item collapse navbar-collapse'>
-						<form class="collapse navbar-collapse justify-content-end">
-							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success" type="submit">Search</button>
-						</form>
-					</div>
-					<div id="authentification">
-						<a href="authentification.html">
-						<img src="images\login.png" alt="Authentification" id="lesids">
-						</a>				
-					</div>						
-					<div id="panier">
-						<a href="panier.html">
-							<span id="total_articles">0</span>
-							<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
-							<span id="total_commande">0 €</span>
-						</a>
-					</div>
+		<nav class="navbar navbar-expand-lg navbar-light" id="top">
+			<div class="container-fluid d-flex flex-row">
+				<a class="navbar-brand" href="index.html" id="logo"></a>
+				<div id="titre_page" class="collapse navbar-collapse justify-content-center">
+					<div id="titre_page">Passez ATTABLE et faites des économies !</div>
 				</div>
-			</nav>
-
-
-
-            <div class="container liste_categorie px-4 px-lg-5 mt-5">
-				<h3>Les catégories de produit que l'on s'arrache</h3>
-                <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4" id="tableau_image_categorie"></div>
+				<div class='nav-item collapse navbar-collapse'>
+					<form class="collapse navbar-collapse justify-content-end">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
+				<div id="authentification">
+					<a href="authentification.html">
+					<img src="images\login.png" alt="Authentification" id="lesids">
+					</a>				
+				</div>						
+				<div id="panier">
+					<a href="panier.html">
+						<span id="total_articles">0</span>
+						<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+						<span id="total_commande">0 €</span>
+					</a>
+				</div>
 			</div>
+		</nav>
 
-
-		</section>
+		<section id="tab_categs"></section>
 	
 
 		<footer class="py-4 text-center">

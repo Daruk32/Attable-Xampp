@@ -210,7 +210,7 @@ window.generate = function generate() {
 
 	//N° Commande test
 	var random = Math.random(1000000,9999999); 
-	doc.text('N° de commande : '+ random, 10, 50);
+	doc.text('N° Commande : '+ random, 10, 50);
 	
 	//Date
 	const currentDate = new Date();
