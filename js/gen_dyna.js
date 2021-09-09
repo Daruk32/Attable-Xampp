@@ -64,7 +64,6 @@ window.liste_categorie = function liste_categorie() {
 //V2 Fonction de génération du bandeau des pages - categorie.html + panier.html
 window.bandeau = function bandeau() {
     var nombre_cat = tabtitre.length;
-    console.log(window.location.pathname);
     var bande = document.getElementById("bande");
     for ( let categ = 0; categ < nombre_cat; categ++) {
         if (tab_categorie[categ].length == 0) {
@@ -103,19 +102,20 @@ window.bandeau = function bandeau() {
 
 
 
-//Fonction de génération des 5 images/textes des catégories à partir de la page Index.html
+//V2 Fonction de génération des 5 images/textes des catégories à partir de la page Index.html
 window.chargement = function chargement() {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    var number = urlParams.get('categorie');
+    //On récupère le paramètre de l'URL pour définir des variables
+    var number = new URLSearchParams(window.location.search).get('categorie');
+    var categorie_page = document.getElementById("descriptif_cat");
+    
+    if (tab_test != null) {
+        tab_test.length=0;
+    }
+    var tab_test = new Array();
 
-    var longueur = tab_categorie[number].length;
-
-    var titre = tabtitre[number];
-
-    for ( let cat_index = 0; cat_index < longueur; cat_index++) {
-        var pre_id = number*1000;
-        var id = (pre_id).toString()+cat_index.toString();
+    //Boucle de création des produits
+    for (let cat_index = 0; cat_index < tab_categorie[number].length; cat_index++) {
+        var id = (number*1000).toString()+cat_index.toString();
 
         //Met à jour et affiche la quantité de chaque produit
         if (readCookie("list_achat") != null){
@@ -133,72 +133,102 @@ window.chargement = function chargement() {
             var valeur = "";
         }
 
-        //Affiche ou non le prix et les fonctionnalités d'ajout/retrait
-        if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
-            var champs_prix = "Prix : &Agrave; voir en magasin";
+        //Création de la page des produits
+        if (tab_categorie[number].length == 0) {
+            document.getElementById("descriptif_cat").innerHTML+="Il n'y a pas de produits pour cette catégorie";
         }
         else {
-            var champs_prix = tab_categorie[number][cat_index].prix + " €";
-        }
+            var div1 = document.createElement('div')
+            div1.className = "un_produit";
+            categorie_page.appendChild(div1);
 
+                var a11 = document.createElement('a')
+                a11.className = "card card_categs";
+                a11.href='#main';
+                div1.appendChild(a11);
 
-        if (longueur == 0) {
-            document.getElementById("descriptif_cat").innerHTML+="";
-        }
-        else {
+                    var img111 = document.createElement('img')
+                    img111.className = "card-img-top produit";
+                    img111.src = tab_categorie[number][cat_index].url;
+                    img111.alt = "...";
+                    img111.addEventListener("click", function(e) {
+                        fiche_detaillee(number, cat_index);
+                    }, false);
+                    a11.appendChild(img111);
 
-        var pre = "<div class='un_produit'><a class='card card_categs' href=\"#main\"><img class='card-img-top produit' src='";
-        var mid1 = tab_categorie[number][cat_index].url;
-        var mid2 ="' alt='...' onclick='fiche_detaillee(";
-        var mid3 = number;
-        var mid4 = ", ";
-        var mid5 = cat_index;
-        var mid6 = ")'></a><div class='card-body'><div class='text-center'><h5 class='fw-bolder legend_produit'>";
-        var mid7 = tab_categorie[number][cat_index].libelle;
-        var mid8 = "</h5><div id='info-prix'>";
-        var mid9 = champs_prix;
-        if (valeur > 0) {
-            var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input style='visibility: visible;' class='bmoins add-to-cart' type='button' value='-' id='moins";
-        }
-        else {
-            var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input style='visibility: hidden;' class='bmoins add-to-cart' type='button' value='-' id='moins";
-        }
-        var mid11 = cat_index;
-        var mid12 = "' data-id='";
-        var mid13 = pre_id.toString()+cat_index.toString();
-        var mid14 = "' data-name='";
-        var mid15 = tab_categorie[number][cat_index].libelle;
-        var mid16 = "' data-price='";
-        var mid17 = tab_categorie[number][cat_index].prix;
-        var mid171 = "' data-url='";
-        var mid172 = tab_categorie[number][cat_index].url;
-        var mid18 = "' onclick='minus(";
-        var mid19 = cat_index;
-        if (valeur > 0 ) {
-            var mid20 = ")'><input style='visibility: visible;' class='affich_valeur' value='";
-        }
-        else {
-            var mid20 = ")'><input style='visibility: hidden;' class='affich_valeur' value='";
-        }
-        var mid201 = valeur;
-        var mid202 = "' id='count";
-        var mid21 = cat_index;
-        var mid22 = "' disabled><input type='button' class='bplus add-to-cart' value='+' id='plus";
-        var mid23 = cat_index;
-        var mid24 = "' data-id='";
-        var mid25 = pre_id.toString()+cat_index.toString();
-        var mid26 = "' data-name='";
-        var mid27 = tab_categorie[number][cat_index].libelle;
-        var mid28 = "' data-price='";
-        var mid29 = tab_categorie[number][cat_index].prix;
-        var mid291 = "' data-url='";
-        var mid292 = tab_categorie[number][cat_index].url;
-        var mid30 = "' onclick='plus(";
-        var mid31 = cat_index;
-        var fin = ")'></div></div></div>";
+                var div12 = document.createElement('div')
+                div12.className = "card-body text-center";
+                div1.appendChild(div12);
 
-            document.getElementById("descriptif_cat").innerHTML+=pre+mid1+mid2+mid3+mid4+mid5+mid6+mid7+mid8+mid9+mid10+mid11+mid12+mid13+mid14+mid15+mid16+mid17+mid171+mid172+mid18+mid19+mid20+mid201+mid202+mid21+mid22+mid23+mid24+mid25+mid26+mid27+mid28+mid29+mid291+mid292+mid30+mid31+fin;
-            document.getElementById("ajout_titre_categorie").innerHTML=titre;
+                    var h5121 = document.createElement('h5')
+                    h5121.className = "fw-bolder legend_produit";
+                    h5121.innerHTML = tab_categorie[number][cat_index].libelle;
+                    div12.appendChild(h5121);
+
+                    var div122 = document.createElement('div')
+                    div122.id = "info-prix";
+                    if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
+                        div122.innerHTML = "Prix : &Agrave; voir en magasin";
+                    }
+                    else {
+                        div122.innerHTML = tab_categorie[number][cat_index].prix + " €";
+                    }
+                    div12.appendChild(div122);
+
+                var div13 = document.createElement('div')
+                div13.id = "modul_quantity";
+                div13.className = "card-footer";
+                div1.appendChild(div13);
+
+                    var input131 = document.createElement('input')
+                    input131.setAttribute("type", "button");
+                    input131.className = "bmoins add-to-cart";
+                    input131.value = "-";
+                if (valeur > 0) {
+                    input131.style.visibility="visible";
+                }
+                else {
+                    input131.style.visibility="hidden";                
+                }
+                    input131.id = "moins"+cat_index;
+                    input131.dataset.id = id;
+                    input131.dataset.name = tab_categorie[number][cat_index].libelle;
+                    input131.dataset.price = tab_categorie[number][cat_index].prix;
+                    input131.dataset.url = tab_categorie[number][cat_index].url;
+                    input131.addEventListener("click", function(e) {
+                        minus(cat_index);
+                    }, false);
+                    div13.appendChild(input131);
+
+                    var input132 = document.createElement('input')
+                    input132.setAttribute("type", "button");
+                    input132.className = "affich_valeur";
+                    input132.value = valeur;
+                    input132.id = "count"+cat_index;
+                    input132.disabled = true;
+                if (valeur > 0) {
+                    input132.style.visibility="visible";
+                }
+                else {
+                    input132.style.visibility="hidden";                
+                }
+                    div13.appendChild(input132);
+
+                    var input133 = document.createElement('input')
+                    input133.setAttribute("type", "button");
+                    input133.className = "bplus add-to-cart";
+                    input133.value = "+";
+                    input133.id = "plus"+cat_index;
+                    input133.dataset.id = id;
+                    input133.dataset.name = tab_categorie[number][cat_index].libelle;
+                    input133.dataset.price = tab_categorie[number][cat_index].prix;
+                    input133.dataset.url = tab_categorie[number][cat_index].url;
+                    input133.addEventListener("click", function(e) {
+                        plus(cat_index);
+                    }, false);
+                    div13.appendChild(input133);
+
+            document.getElementById("ajout_titre_categorie").innerHTML=tabtitre[number];
         }
 
         if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
@@ -213,15 +243,16 @@ window.chargement = function chargement() {
 
 //Fonction de génération des 5 images/textes des catégories de la page Catégorie
 window.changeCategorie = function changeCategorie(number) {
-    var longueur = tab_categorie[number].length;
-    var valeur;
-    var titre = tabtitre[number];
+    var categorie_page = document.getElementById("descriptif_cat");
     document.getElementById("descriptif_cat").innerHTML="";
 
-    for ( let cat_index = 0; cat_index < longueur; cat_index++) {
-        var pre_id = number*1000;
-        var id = (pre_id).toString()+cat_index.toString();
+    if (tab_test != null) {
+        tab_test.length=0;
+    }
+    var tab_test = new Array();
 
+    for ( let cat_index = 0; cat_index < tab_categorie[number].length; cat_index++) {
+        var id = (number*1000).toString()+cat_index.toString();
 
 
         //Met à jour et affiche la quantité de chaque produit
@@ -241,71 +272,102 @@ window.changeCategorie = function changeCategorie(number) {
         }
 
 
-        //Affiche ou non le prix et les fonctionnalités d'ajout/retrait  
-        if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
-            var champs_prix = "Prix : &Agrave; voir en magasin";
-        }
-        else {
-            var champs_prix = tab_categorie[number][cat_index].prix + " €";
-        }
-
-
-        if (longueur == 0) {
+        //Création de la page des produits
+        if (tab_categorie[number].length == 0) {
             document.getElementById("descriptif_cat").innerHTML+="";
         }
         else {
-            var pre = "<div class='un_produit'><a class='card card_categs' href=\"#main\"><img class='card-img-top produit' src='";
-            var mid1 = tab_categorie[number][cat_index].url;
-            var mid2 ="' alt='...' onclick='fiche_detaillee(";
-            var mid3 = number;
-            var mid4 = ", ";
-            var mid5 = cat_index;
-            var mid6 = ")'></a><div class='card-body'><div class='text-center'><h5 class='fw-bolder legend_produit'>";
-            var mid7 = tab_categorie[number][cat_index].libelle;
-            var mid8 = "</h5><div id='info-prix'>";
-            var mid9 = champs_prix;
-            if (valeur > 0) {
-                var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input style='visibility: visible;' class='bmoins add-to-cart' type='button' value='-' id='moins";
-            }
-            else {
-                var mid10 = "</div></div></div><div id='modul_quantity' class='card-footer'><input style='visibility: hidden;' class='bmoins add-to-cart' type='button' value='-' id='moins";
-            }
-            var mid11 = cat_index;
-            var mid12 = "' data-id='";
-            var mid13 = pre_id.toString()+cat_index.toString();
-            var mid14 = "' data-name='";
-            var mid15 = tab_categorie[number][cat_index].libelle;
-            var mid16 = "' data-price='";
-            var mid17 = tab_categorie[number][cat_index].prix;
-            var mid171 = "' data-url='";
-            var mid172 = tab_categorie[number][cat_index].url;
-            var mid18 = "' onclick='minus(";
-            var mid19 = cat_index;
-            if (valeur > 0 ) {
-                var mid20 = ")'><input style='visibility: visible;' class='affich_valeur' value='";
-            }
-            else {
-                var mid20 = ")'><input style='visibility: hidden;' class='affich_valeur' value='";
-            }
-            var mid201 = valeur;
-            var mid202 = "' id='count";
-            var mid21 = cat_index;
-            var mid22 = "' disabled><input type='button' class='bplus add-to-cart' value='+' id='plus";
-            var mid23 = cat_index;
-            var mid24 = "' data-id='";
-            var mid25 = pre_id.toString()+cat_index.toString();
-            var mid26 = "' data-name='";
-            var mid27 = tab_categorie[number][cat_index].libelle;
-            var mid28 = "' data-price='";
-            var mid29 = tab_categorie[number][cat_index].prix;
-            var mid291 = "' data-url='";
-            var mid292 = tab_categorie[number][cat_index].url;
-            var mid30 = "' onclick='plus(";
-            var mid31 = cat_index;
-            var fin = ")'></div></div></div>";
+            var div1 = document.createElement('div')
+            div1.className = "un_produit";
+            categorie_page.appendChild(div1);
 
-            document.getElementById("descriptif_cat").innerHTML+=pre+mid1+mid2+mid3+mid4+mid5+mid6+mid7+mid8+mid9+mid10+mid11+mid12+mid13+mid14+mid15+mid16+mid17+mid171+mid172+mid18+mid19+mid20+mid201+mid202+mid21+mid22+mid23+mid24+mid25+mid26+mid27+mid28+mid29+mid291+mid292+mid30+mid31+fin;
-            document.getElementById("ajout_titre_categorie").innerHTML=titre;
+                var a11 = document.createElement('a')
+                a11.className = "card card_categs";
+                a11.href='#main';
+                div1.appendChild(a11);
+
+                    var img111 = document.createElement('img')
+                    img111.className = "card-img-top produit";
+                    img111.src = tab_categorie[number][cat_index].url;
+                    img111.alt = "...";
+                    img111.addEventListener("click", function(e) {
+                        fiche_detaillee(number, cat_index);
+                    }, false);
+                    a11.appendChild(img111);
+
+                var div12 = document.createElement('div')
+                div12.className = "card-body text-center";
+                div1.appendChild(div12);
+
+                    var h5121 = document.createElement('h5')
+                    h5121.className = "fw-bolder legend_produit";
+                    h5121.innerHTML = tab_categorie[number][cat_index].libelle;
+                    div12.appendChild(h5121);
+
+                    var div122 = document.createElement('div')
+                    div122.id = "info-prix";
+                    if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
+                        div122.innerHTML = "Prix : &Agrave; voir en magasin";
+                    }
+                    else {
+                        div122.innerHTML = tab_categorie[number][cat_index].prix + " €";
+                    }
+                    div12.appendChild(div122);
+
+                var div13 = document.createElement('div')
+                div13.id = "modul_quantity";
+                div13.className = "card-footer";
+                div1.appendChild(div13);
+
+                    var input131 = document.createElement('input')
+                    input131.setAttribute("type", "button");
+                    input131.className = "bmoins add-to-cart";
+                    input131.value = "-";
+                if (valeur > 0) {
+                    input131.style.visibility="visible";
+                }
+                else {
+                    input131.style.visibility="hidden";                
+                }
+                    input131.id = "moins"+cat_index;
+                    input131.dataset.id = id;
+                    input131.dataset.name = tab_categorie[number][cat_index].libelle;
+                    input131.dataset.price = tab_categorie[number][cat_index].prix;
+                    input131.dataset.url = tab_categorie[number][cat_index].url;
+                    input131.addEventListener("click", function(e) {
+                        minus(cat_index);
+                    }, false);
+                    div13.appendChild(input131);
+
+                    var input132 = document.createElement('input')
+                    input132.setAttribute("type", "button");
+                    input132.className = "affich_valeur";
+                    input132.value = valeur;
+                    input132.id = "count"+cat_index;
+                    input132.disabled = true;
+                if (valeur > 0) {
+                    input132.style.visibility="visible";
+                }
+                else {
+                    input132.style.visibility="hidden";                
+                }
+                    div13.appendChild(input132);
+
+                    var input133 = document.createElement('input')
+                    input133.setAttribute("type", "button");
+                    input133.className = "bplus add-to-cart";
+                    input133.value = "+";
+                    input133.id = "plus"+cat_index;
+                    input133.dataset.id = id;
+                    input133.dataset.name = tab_categorie[number][cat_index].libelle;
+                    input133.dataset.price = tab_categorie[number][cat_index].prix;
+                    input133.dataset.url = tab_categorie[number][cat_index].url;
+                    input133.addEventListener("click", function(e) {
+                        plus(cat_index);
+                    }, false);
+                    div13.appendChild(input133);
+
+            document.getElementById("ajout_titre_categorie").innerHTML=tabtitre[number];
         }
 
         if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
@@ -323,8 +385,7 @@ window.changeCategorie = function changeCategorie(number) {
 //Fonction de génération de la fiche détaillée du produit
 window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
     var valeur;
-    var pre_id = number*1000;
-    var id = (pre_id).toString()+cat_index.toString();
+    var id = (number*1000).toString()+cat_index.toString();
 
 	document.getElementById('fiche_produit').style.display = 'block';
 
@@ -482,30 +543,3 @@ window.gencss = function gencss() {
     document.getElementById("headtest").innerHTML+=objJson;
 }
 
-
-/*
-//Fonction de génération du slideshow
-window.gen_carous = function gen_carous() {
-    var longueur = tab_categorie[0].length;
-
-    for ( let cat_index = 1; cat_index < longueur; cat_index++) {
-
-        if (longueur == 0) {
-            document.getElementById("gen-slides").innerHTML+="";
-        }
-        else {
-
-            var pre = "<div class='carousel-item'><img class='d-block w-100 produit img-fluid' src='";
-            var mid1 = tab_categorie[0][cat_index].url;
-            var mid2 ="' alt='...'><div class='carousel-caption'><h4 class='text-center'>";
-            var mid3 = tab_categorie[0][cat_index].libelle;
-            var mid4 = "</h4></div></div>";			
-
-            document.getElementById("gen-slides").innerHTML+=pre+mid1+mid2+mid3+mid4;
-
-        }
-
-    }
-}
-
-*/

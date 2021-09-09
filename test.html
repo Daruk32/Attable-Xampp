@@ -7,6 +7,8 @@
     		<!-- PDF Generator -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
 		<script type="text/javascript" src="js/jspdf.plugin.autotable.min.js"></script>
+		<script type="text/javascript" src="js/test.js"></script>
+
   </head>
   <style>
     html {
@@ -19,7 +21,8 @@
       box-sizing: inherit;
     }
   </style>
-  <body>
+  <body onload="test()">
+
     <button onclick="generate()">Generate pdf</button>
 
     <table id="table">
@@ -52,6 +55,16 @@
         </tr>
       </tbody>
     </table>
+
+
+    <div id="gentest"></div>
+
+
+
+
+
+
+
 
     <script>
       function generate() {
