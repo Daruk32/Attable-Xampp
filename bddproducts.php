@@ -267,7 +267,6 @@
 			// push or splice the selections if you want to save all data selections
 			})
 			$table.on('all.bs.table', function (e, name, args) {
-			console.log(name, args)
 			})
 			$remove.click(function () {
 			var ids = getIdSelections()

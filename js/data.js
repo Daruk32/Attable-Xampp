@@ -5,82 +5,82 @@ export var tabtitre = new Array();
 
 
 //Promotions
-import {tab_promo} from '../categorie/promotions/promotions.js'
+import { tab_promo } from '../categorie/promotions/promotions.js'
 tab_categorie.push(tab_promo);
 tabtitre.push("Promotions");
 
 //Boissons
-import {tab_boisson} from '../categorie/boissons/boissons.js'
+import { tab_boisson } from '../categorie/boissons/boissons.js'
 tab_categorie.push(tab_boisson);
 tabtitre.push("Boissons");
 
 //Bonbons
-import {tab_bonbon} from '../categorie/bonbons/bonbons.js'
+import { tab_bonbon } from '../categorie/bonbons/bonbons.js'
 tab_categorie.push(tab_bonbon);
 tabtitre.push("Bonbons");
 
 //Cafés
-import {tab_cafe} from '../categorie/cafes/cafes.js'
+import { tab_cafe } from '../categorie/cafes/cafes.js'
 tab_categorie.push(tab_cafe);
 tabtitre.push("Cafés");
 
 //Chips
-import {tab_chips} from '../categorie/chips/chips.js'
+import { tab_chips } from '../categorie/chips/chips.js'
 tab_categorie.push(tab_chips);
 tabtitre.push("Chips");
 
 //Chocolats
-import {tab_chocolat} from '../categorie/chocolats/chocolats.js'
+import { tab_chocolat } from '../categorie/chocolats/chocolats.js'
 tab_categorie.push(tab_chocolat);
 tabtitre.push("Chocolats");
 
 //Conserves
-import {tab_conserves} from '../categorie/conserves/conserves.js'
+import { tab_conserves } from '../categorie/conserves/conserves.js'
 tab_categorie.push(tab_conserves);
 tabtitre.push("Conserves");
 
 //Epicerie salée
-import {tab_epiceriesal} from '../categorie/epiceriesalee/epiceriesalee.js'
+import { tab_epiceriesal } from '../categorie/epiceriesalee/epiceriesalee.js'
 tab_categorie.push(tab_epiceriesal);
 tabtitre.push("&Eacute;picerie salée");
 
 //Epicerie sucrée
-import {tab_epiceriesuc} from '../categorie/epiceriesucree/epiceriesucree.js'
+import { tab_epiceriesuc } from '../categorie/epiceriesucree/epiceriesucree.js'
 tab_categorie.push(tab_epiceriesuc);
 tabtitre.push("&Eacute;picerie sucrée");
 
 //Epices
-import {tab_epices} from '../categorie/epices/epices.js'
+import { tab_epices } from '../categorie/epices/epices.js'
 tab_categorie.push(tab_epices);
 tabtitre.push("&Eacute;pices");
 
 //Farines
-import {tab_farines} from '../categorie/farines/farines.js'
+import { tab_farines } from '../categorie/farines/farines.js'
 tab_categorie.push(tab_farines);
 tabtitre.push("Farines");
 
 //Fruits secs
-import {tab_fruitsecs} from '../categorie/fruitssecs/fruitssecs.js'
+import { tab_fruitsecs } from '../categorie/fruitssecs/fruitssecs.js'
 tab_categorie.push(tab_fruitsecs);
 tabtitre.push("Fruits secs");
 
 //Gâteaux
-import {tab_gateau} from '../categorie/gateaux/gateaux.js'
+import { tab_gateau } from '../categorie/gateaux/gateaux.js'
 tab_categorie.push(tab_gateau);
 tabtitre.push("Gâteaux");
 
 //Hygiène
-import {tab_hygiene} from '../categorie/hygiene/hygiene.js'
+import { tab_hygiene } from '../categorie/hygiene/hygiene.js'
 tab_categorie.push(tab_hygiene);
 tabtitre.push("Hygiène");
 
 //Légumes secs
-import {tab_legumesecs} from '../categorie/legumessecs/legumessecs.js'
+import { tab_legumesecs } from '../categorie/legumessecs/legumessecs.js'
 tab_categorie.push(tab_legumesecs);
 tabtitre.push("Légumes secs");
 
 //Thés
-import {tab_the} from '../categorie/thes/thes.js'
+import { tab_the } from '../categorie/thes/thes.js'
 tab_categorie.push(tab_the);
 tabtitre.push("Thés");
 
@@ -88,19 +88,19 @@ tabtitre.push("Thés");
 //Ajout des champs id et quantité à l'array tab_categorie
 var length_cat = tab_categorie.length;
 for (let num = 0; num < length_cat; num++) {
-    var lengti = tab_categorie[num].length;
-    var titre = tabtitre[num];
-    for (let numi = 0; numi < lengti; numi++) {
-        var id = (num*1000).toString()+numi.toString();
-        const ajout = {'quantity': 0, 'id': id, 'categorie': titre};
-        tab_categorie[num][numi] = Object.assign(tab_categorie[num][numi], ajout);
-    }
+  var lengti = tab_categorie[num].length;
+  var titre = tabtitre[num];
+  for (let numi = 0; numi < lengti; numi++) {
+    var id = (num * 1000).toString() + numi.toString();
+    const ajout = { 'quantity': 0, 'id': id, 'categorie': titre };
+    tab_categorie[num][numi] = Object.assign(tab_categorie[num][numi], ajout);
+  }
 }
 
 
 //On casse la catégorisation des arrays
-var tab_product = tab_categorie.reduce(function(prev, curr) {
-    return prev.concat(curr);
+var tab_product = tab_categorie.reduce(function (prev, curr) {
+  return prev.concat(curr);
 });
 
 
@@ -112,42 +112,55 @@ var str_json = JSON.stringify(tab_product);
 //var test4 = JSON.parse(str_json);
 //console.log(test);
 
-//window.location.href = "jtable.php?var1=" + str_json;
+
+//Sauvegarde du json dans le localstorage  
+localStorage.setItem("bddproducts", str_json);
 
 
 
-//Envoi de la base de donnée en json au fichier
+
+
+//Envoi de la base de donnée en json à la page php
 var xhr = new XMLHttpRequest();
-    xhr.open('POST','jtable.php',true);
-    xhr.setRequestHeader('Content-type','application/json');
-    xhr.send(str_json);
+xhr.open('POST', 'jtable.php', true);
+xhr.setRequestHeader('Content-type', 'application/json');
+xhr.send(str_json);
 
+/*
+//Envoi de la BDD json au file json
+window.exportToJsonFile = function exportToJsonFile(str_json){
+  var xhr = new XMLHttpRequest(),
+  str_json,
+  method = "POST",
+  jsonRequestURL = "testjson.json";
 
-
-
+xhr.open(method, jsonRequestURL, true);
+xhr.send(str_json);
+}
+*/
 
 
 /*
 
-//Création du tableau avec les data json 
+//Création du tableau avec les data json
 window.jtable = function jtable() {
     var $table = $('#table')
     var $remove = $('#remove')
     var selections = []
-  
+
     function getIdSelections() {
       return $.map($table.bootstrapTable('getSelections'), function (row) {
         return row.id
       })
     }
-  
+
     function responseHandler(res) {
       $.each(res.rows, function (i, row) {
         row.state = $.inArray(row.id, selections) !== -1
       })
       return res
     }
-  
+
     function detailFormatter(index, row) {
       var html = []
       $.each(row, function (key, value) {
@@ -155,7 +168,7 @@ window.jtable = function jtable() {
       })
       return html.join('')
     }
-  
+
     function operateFormatter(value, row, index) {
       return [
         '<a class="like" href="javascript:void(0)" title="Like">',
@@ -166,7 +179,7 @@ window.jtable = function jtable() {
         '</a>'
       ].join('')
     }
-  
+
     window.operateEvents = {
       'click .like': function (e, value, row, index) {
         alert('You click like action, row: ' + JSON.stringify(row))
@@ -178,15 +191,15 @@ window.jtable = function jtable() {
         })
       }
     }
-  
+
     function totalTextFormatter(data) {
       return 'Total'
     }
-  
+
     function totalNameFormatter(data) {
       return data.length
     }
-  
+
     function totalPriceFormatter(data) {
       var field = this.field
       return '$' + data.map(function (row) {
@@ -195,7 +208,7 @@ window.jtable = function jtable() {
         return sum + i
       }, 0)
     }
-  
+
     function initTable() {
       $table.bootstrapTable('destroy').bootstrapTable({
         height: 550,
@@ -250,7 +263,7 @@ window.jtable = function jtable() {
         'check-all.bs.table uncheck-all.bs.table',
       function () {
         $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
-  
+
         // save your data, here just save the current page
         selections = getIdSelections()
         // push or splice the selections if you want to save all data selections
@@ -266,12 +279,12 @@ window.jtable = function jtable() {
         $remove.prop('disabled', true)
       })
     }
-  
+
     $(function() {
       initTable()
-  
+
       $('#locale').change(initTable)
-    })    
+    })
 }
 
 */

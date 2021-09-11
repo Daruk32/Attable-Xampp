@@ -34,6 +34,8 @@
 
 		<script src="js\article.js" type="text/javascript"></script>
 
+		<script src="js\addproduct.js" type="text/javascript"></script>
+
 	</head>
 	
 	<body>
@@ -83,19 +85,19 @@
 					<hr>
 					<div class="form-group">
 						<label for="id">Référence du produit</label>
-						<input type="text" class="form-control w-100" id="email" required>
+						<input type="text" class="form-control w-100" id="id" required>
 					</div>
 					<div class="form-group">
 						<label for="product-name">Nom du produit</label>
-						<input type="text" class="form-control w-100" id="email" placeholder="Produit1" required>
+						<input type="text" class="form-control w-100" id="libelle" placeholder="Produit1" required>
 					</div>
 					<div class="form-group">
 						<label for="legend">Légende du produit</label>
-                         <input type="text" class="form-control w-100" id="email" placeholder="LégendeP1" required>
+                         <input type="text" class="form-control w-100" id="legP1" placeholder="LégendeP1" required>
 					</div>
 					<div class="form-group">
 						<label for="short-descriptive">Très bref descriptif du produit (maximum 15 caractères)</label>
-						<input type="text" class="form-control w-100" id="email" placeholder="Moule à gauffre en inox" required>
+						<input type="text" class="form-control w-100" id="sleg" placeholder="Moule à gauffre en inox" required>
 					</div>
 					<div class="form-group">
 						<label for="long-descriptive">Descriptif du produit (max 200 caractères)</label>
@@ -103,16 +105,15 @@
 					</div>
 					<div class="form-group">
 						<label for="price">Prix du produit</label>
-						<input type="text" class="text-center form-control w-25" id="numr" placeholder="..,.. €" required>
+						<input type="text" class="text-center form-control w-25" id="price" placeholder="..,.. €" required>
 					</div>
 					<div class="form-group">
 						<label for="quantity">Quantité de produit</label>
-						<input type="text" class="form-control w-25" id="numr" required>
+						<input type="text" class="form-control w-25" id="quantity" required>
 					</div>
 					<div class="form-group">
 						<label for="category">Catégorie 1</label>
-						<select name="category" class="form-select w-25" required>
-							<option></option>
+						<select name="category" class="form-select w-25" id="categ" required>
 						    <option value="promo">Promotions</option>
 						    <option value="boissons">Boissons</option>
 							<option value="bonbons">Bonbons</option>
@@ -120,7 +121,7 @@
 						</select>
 					</div>
 					<div id="bouton">
-						<input style="width:200px;" type="submit" value="Créer/Mettre à jour" id="submit" onclick="verif_form_modification()">
+						<input style="width:200px;" type="submit" value="Créer/Mettre à jour" id="submit" onclick="add()">
 					</div>
 
 				  </fieldset>

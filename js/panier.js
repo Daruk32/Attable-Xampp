@@ -1,6 +1,3 @@
-import {tab_categorie} from '../js/data.js'
-
-var nombre_article;
 var liste;
 
 
@@ -45,9 +42,6 @@ function remontage(liste) {
 window.plus = function plus(catindex){
 	//Déclaration du produit ciblé et de ses valeurs.
 	var produit = document.getElementById('plus'+catindex);
-    if (produit == null) {
-    	return false;
-    }
     var id = produit.dataset.id;
     var name = produit.dataset.name;
     var price = produit.dataset.price;
@@ -55,7 +49,7 @@ window.plus = function plus(catindex){
 
     //Appel du tableau des enregistrements
 	liste = defrag_cookie("list_achat");
-	//Sert à remplir le cookie list_achat 
+	//Sert à remplir le cookie list_achat
 	var new_apport;
 	//Sert à contrôler la quantité d'un article modifié dans le panier
 	var count;
@@ -67,7 +61,6 @@ window.plus = function plus(catindex){
 		count++;
 		document.getElementById("count"+catindex).value = count;
 		var new_apport = id.toString() + "," + name.toString() + "," + price.toString() + "," + url.toString() + "," + count.toString();
-		var total_panier = count*price;
 		createCookie("list_achat", new_apport, 15);
 	}
 
