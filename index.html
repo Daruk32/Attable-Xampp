@@ -1,110 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-		<title>Accueil</title>
-		
-		<link rel="stylesheet" href="css\booststrap.css">
-		<link rel="stylesheet" href="css\attable.css">
-		<link rel="stylesheet" href="css\footer.css">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<title>Accueil</title>
 
- 
-		<!-- Bootstrap core JS-->
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		
-		<!-- icons-->
-		<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-		
-		<!-- Bootstrap Table Style -->
-		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+	<link rel="stylesheet" href="css\booststrap.css">
+	<link rel="stylesheet" href="css\attable.css">
+	<link rel="stylesheet" href="css\footer.css">
 
-		<script src="js\valid.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-		<script src="js/cookie.js" type="text/javascript"></script>
 
-		<script src="js\gen_dyna.js" type="module" ></script>
+	<!-- Bootstrap core JS-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-		<script src="js/panier.js" type="module"></script>
+	<!-- icons-->
+	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-		<script src="js/article.js" type="module"></script>
-		
-	</head>
-	
-	<body onload="liste_categorie(), panier(), genlogo()">
+	<!-- Bootstrap Table Style -->
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
 
-		<nav class="navbar navbar-expand-lg navbar-light" id="top">
-			<div class="container-fluid d-flex flex-row">
-				<a class="navbar-brand" href="index.html" id="logo"></a>
-				<div id="titre_page" class="collapse navbar-collapse justify-content-center">
-					<div id="titre_page">Passez ATTABLE et faites des économies !</div>
-				</div>
-				<div class='nav-item collapse navbar-collapse'>
-					<form class="collapse navbar-collapse justify-content-end">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success" type="submit">Search</button>
-					</form>
-				</div>
-				<div id="authentification">
-					<a href="authentification.html">
+	<script src="js\valid.js" type="text/javascript"></script>
+
+	<script src="js/cookie.js" type="text/javascript"></script>
+
+	<script src="js\gen_dyna.js" type="module"></script>
+
+	<script src="js/panier.js" type="module"></script>
+
+	<script src="js/article.js" type="module"></script>
+
+</head>
+
+<body onload="liste_categorie(), panier(), genlogo()">
+
+	<nav class="navbar navbar-expand-lg navbar-light" id="top">
+		<div class="container-fluid d-flex flex-row">
+			<a class="navbar-brand" href="index.html" id="logo"></a>
+			<div id="titre_page" class="collapse navbar-collapse justify-content-center">
+				<div id="titre_page">Passez ATTABLE et faites des économies !</div>
+			</div>
+			<div class='nav-item collapse navbar-collapse'>
+				<form class="collapse navbar-collapse justify-content-end">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+			<div id="authentification">
+				<a href="authentification.html">
 					<img src="images\login.png" alt="Authentification" id="lesids">
-					</a>				
-				</div>						
-				<div id="panier">
-					<a href="panier.html">
-						<span id="total_articles">0</span>
-						<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
-						<span id="total_commande">0 €</span>
+				</a>
+			</div>
+			<div id="panier">
+				<a href="panier.html">
+					<span id="total_articles">0</span>
+					<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+					<span id="total_commande">0 €</span>
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<section id="tab_categs"></section>
+
+
+	<footer class="py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+						<li><a href="noustrouver.html">Nous trouver</a></li>
+						<li><a href="panier.html">Commande</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-4 text-center ancre">
+					<a href="#top">
+						<i id='icon-footer' class="fas fa-angle-up"></i>
 					</a>
+					<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+				</div>
+
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="newsletter.html">Mailing List</a></li>
+						<li><a href="mentionslegales.html">Mentions légales</a></li>
+						<li><a href="cgu.html">CGU</a></li>
+					</ul>
 				</div>
 			</div>
-		</nav>
+		</div>
+	</footer>
 
-		<section id="tab_categs"></section>
-	
+	<!-- Bootstrap Table JS-->
+	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 
-		<footer class="py-4 text-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="index.html">Accueil</a></li>
-							<li><a href="quisommesnous.html">Qui sommes nous</a></li>
-							<li><a href="noustrouver.html">Nous trouver</a></li>
-							<li><a href="panier.html">Commande</a></li>
-						</ul>
-					</div>
+	<!-- FIREBASE -->
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		const firebaseConfig = {
+			apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",
+			authDomain: "attable-51633.firebaseapp.com",
+			projectId: "attable-51633",
+			storageBucket: "attable-51633.appspot.com",
+			messagingSenderId: "255390814899",
+			appId: "1:255390814899:web:714ec5ace61cd6479796c6",
+			measurementId: "G-2DZWXDMSY6"
+		};
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);
+	</script>
 
-					<div class="col-sm-4 text-center ancre">
-						<a href="#top">
-							<i id='icon-footer' class="fas fa-angle-up"></i>
-						</a>
-						<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
-					</div>
+</body>
 
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="newsletter.html">Mailing List</a></li>
-							<li><a href="mentionslegales.html">Mentions légales</a></li>
-							<li><a href="cgu.html">CGU</a></li>
-						</ul>
-					</div>
-				</div>			
-			</div>
-        </footer>
-
-		<!-- Bootstrap Table JS-->
-		<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
-
-	</body>
 </html>
