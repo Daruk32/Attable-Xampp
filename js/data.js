@@ -117,174 +117,116 @@ var str_json = JSON.stringify(tab_product);
 localStorage.setItem("bddproducts", str_json);
 
 
-
-
-
 //Envoi de la base de donnée en json à la page php
-var xhr = new XMLHttpRequest();
-xhr.open('POST', 'jtable.php', true);
-xhr.setRequestHeader('Content-type', 'application/json');
-xhr.send(str_json);
+//Envoi de la BDD json au file json
+
 
 /*
-//Envoi de la BDD json au file json
-window.exportToJsonFile = function exportToJsonFile(str_json){
-  var xhr = new XMLHttpRequest(),
-  str_json,
-  method = "POST",
-  jsonRequestURL = "testjson.json";
+//FIREBASE
+const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+var db = firebase.firestore();
 
-xhr.open(method, jsonRequestURL, true);
-xhr.send(str_json);
-}
+// Add a new document in collection "cities"
+db.collection("cities").doc("LA").set({
+  name: "Los Angeles",
+  state: "CA",
+  country: "USA"
+})
+.then(() => {
+  console.log("Document successfully written!");
+})
+.catch((error) => {
+  console.error("Error writing document: ", error);
+});
 */
 
 
+
+
+
+
+
+
+
+
+
 /*
+const firebase = require("firebase");
+require("firebase/firestore");
+const fs = require("fs");
+const { resolve } = require('path');
+firebase.initializeApp({
+  apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",
+  authDomain: "attable-51633.firebaseapp.com",
+  projectId: "attable-51633",
+  storageBucket: "attable-51633.appspot.com",
+  messagingSenderId: "255390814899",
+  appId: "1:255390814899:web:714ec5ace61cd6479796c6",
+  measurementId: "G-2DZWXDMSY6"
+});
+class PopulateJsonFireStore {
+  constructor() {
+    console.time("Time Taken");
+    this.db = firebase.firestore();
+    const [, , filepath, type, collectionname] = process.argv;
+    this.absolutepath = resolve(process.cwd(), filepath);
+    this.type = type;
+    this.collectionname = collectionname;
 
-//Création du tableau avec les data json
-window.jtable = function jtable() {
-    var $table = $('#table')
-    var $remove = $('#remove')
-    var selections = []
-
-    function getIdSelections() {
-      return $.map($table.bootstrapTable('getSelections'), function (row) {
-        return row.id
-      })
+    if (this.type == ! 'set' && this.type == ! 'add') {
+      console.error('Wrong method type ${this.type}')
+      console.log('Accepted Method are : set or add');
+      this.exit(1);
     }
 
-    function responseHandler(res) {
-      $.each(res.rows, function (i, row) {
-        row.state = $.inArray(row.id, selections) !== -1
-      })
-      return res
+    if (this.absolutepath == null || this.absolutepath < 1) {
+      console.error('Make sure you have file path assigned ${this.absolutepath}')
+      this.exit(1);
     }
 
-    function detailFormatter(index, row) {
-      var html = []
-      $.each(row, function (key, value) {
-        html.push('<p><b>' + key + ':</b> ' + value + '</p>')
-      })
-      return html.join('')
+    if (this.collectionname == null || this.collectionname < 1) {
+      console.error('Make sure to specify collection name ${this.collectionname}')
+      this.exit(1);
     }
 
-    function operateFormatter(value, row, index) {
-      return [
-        '<a class="like" href="javascript:void(0)" title="Like">',
-        '<i class="fa fa-heart"></i>',
-        '</a>  ',
-        '<a class="remove" href="javascript:void(0)" title="Remove">',
-        '<i class="fa fa-trash"></i>',
-        '</a>'
-      ].join('')
+    console.log('ABS : FILE PATH ${this.absolutepath}');
+    console.log('Type : method is ${this.type}');
+
+  }
+
+  async populate() {
+    let data = [];
+
+    try {
+      data = JSON.parse(fs.readFileSync(this.absolutepath, {}), 'utf8');
+    } catch (e) {
+      console.error(e.message);
     }
 
-    window.operateEvents = {
-      'click .like': function (e, value, row, index) {
-        alert('You click like action, row: ' + JSON.stringify(row))
-      },
-      'click .remove': function (e, value, row, index) {
-        $table.bootstrapTable('remove', {
-          field: 'id',
-          values: [row.id]
-        })
+    if (data.length<1) {
+      console.error("make sure file contain items");
+    }
+    var i = 0;
+    for (var item of data) {
+      console.log(item);
+      try { this.type === 'set' ? await this.set(item) : await this.add(item);      
+      } catch(e) {
+        console.log(e.message)
+        this.exit(1);
       }
+
+      if (data.length - 1 === i) {
+        console.log("SUCCESS");
+        console.timeEnd('Time taken');
+        this.exit(0);
+      }
+
+      i++;
     }
 
-    function totalTextFormatter(data) {
-      return 'Total'
-    }
 
-    function totalNameFormatter(data) {
-      return data.length
-    }
-
-    function totalPriceFormatter(data) {
-      var field = this.field
-      return '$' + data.map(function (row) {
-        return +row[field].substring(1)
-      }).reduce(function (sum, i) {
-        return sum + i
-      }, 0)
-    }
-
-    function initTable() {
-      $table.bootstrapTable('destroy').bootstrapTable({
-        height: 550,
-        locale: $('#locale').val(),
-        columns: [
-          [{
-            field: 'state',
-            checkbox: true,
-            rowspan: 2,
-            align: 'center',
-            valign: 'middle'
-          }, {
-            title: 'Item ID',
-            field: 'id',
-            rowspan: 2,
-            align: 'center',
-            valign: 'middle',
-            sortable: true,
-            footerFormatter: totalTextFormatter
-          }, {
-            title: 'Item Detail',
-            colspan: 4,
-            align: 'center'
-          }],
-          [{
-            field: 'libelle',
-            title: 'Nom',
-            sortable: true,
-            footerFormatter: totalNameFormatter,
-            align: 'center'
-          }, {
-            field: 'price',
-            title: 'Prix',
-            sortable: true,
-            align: 'center',
-            footerFormatter: totalPriceFormatter
-          }, {
-            field: 'quantity',
-            title: 'Quantité',
-            sortable: true,
-            align: 'center',
-            formatter: totalPriceFormatter
-          }, {
-            field: 'url',
-            title: 'Aperçu',
-            sortable: true,
-            align: 'center',
-          }]
-        ]
-      })
-      $table.on('check.bs.table uncheck.bs.table ' +
-        'check-all.bs.table uncheck-all.bs.table',
-      function () {
-        $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
-
-        // save your data, here just save the current page
-        selections = getIdSelections()
-        // push or splice the selections if you want to save all data selections
-      })
-      $table.on('all.bs.table', function (e, name, args) {
-      })
-      $remove.click(function () {
-        var ids = getIdSelections()
-        $table.bootstrapTable('remove', {
-          field: 'id',
-          values: ids
-        })
-        $remove.prop('disabled', true)
-      })
-    }
-
-    $(function() {
-      initTable()
-
-      $('#locale').change(initTable)
-    })
+  }
 }
-
 */
