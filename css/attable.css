@@ -737,14 +737,13 @@ thead th:nth-child(54) {
 	background-color: green;
 	color:white;
 	font-weight:bold;
-  font-size: calc(0.5rem + 1vw);
+  	font-size: calc(0.5rem + 1vw);
 	border: 1px solid black;
 	border-radius: 5px;
 	vertical-align: middle;
 	cursor:pointer;
 	text-decoration: none;
 }
-
 #confirm-command button a:link, #confirm-command button a:visited, #confirm-command button a:active {
 	text-decoration: none;
 	color:white;
@@ -752,6 +751,37 @@ thead th:nth-child(54) {
 #confirm-command button a:hover {
 	text-decoration: none;
 	color:rgba(216,40,76,255);
+}
+
+
+#show-command {
+	width: calc(6rem + 7vw);
+	margin: 1rem auto;
+	cursor:pointer;
+	text-decoration: none;
+}
+#show-command button{
+	background-color: rgba(255,255,255,1);
+	color:black;
+	border: none;
+  	font-size: calc(0.5rem + 1vw);
+	text-decoration: none;
+	cursor:pointer;
+	text-decoration: none;
+}
+#show-command button a:link, #show-command button a:visited, #show-command button a:active {
+	text-decoration: none;
+	color:white;
+}
+#show-command button:hover {
+	text-decoration: none;
+	color:rgba(216,40,76,255);
+	font-weight:bold;
+	background-color: rgba(193,122,61,255);
+	color:white;
+	border: 1px solid black;
+	border-radius: 5px;
+	vertical-align: middle;
 }
 
 /* ------------------------------------------------------------Page Mentions légales / CGU ----------------------------------------- */

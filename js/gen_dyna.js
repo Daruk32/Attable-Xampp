@@ -462,66 +462,6 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
 
 
 
-//Fonction de génération du panier à la page panier.html à partir du cookie
-window.crea_panier = function crea_panier() {
-    if (readCookie("list_achat") == null) {
-        document.getElementById("cart_tablebody").innerHTML="";
-    }
-    else {
-        var liste_panier = defrag_cookie("list_achat");
-        for (let i=0 ; i < liste_panier.length ; i++) {
-            if (liste_panier[i][4] > 0) {
-                var ch1 = '<tr class="line_panier"><td><img src="';
-                var ch2 = liste_panier[i][3];
-                var ch3 = '" alt="img_product id="echantillon" class="img-fluid"></td><td>';
-                var ch4 = liste_panier[i][1];
-                var ch5 = '</td><td>';
-                var ch6 = liste_panier[i][2];
-                var ch7 = ' €</td><td>';
-                var ch8 = liste_panier[i][4];
-                var ch9 = '</td><td><img src="images/corbeille.jpg" alt="Delete" id="trashcan" onclick="supp(';
-                var ch10 = i;
-                var ch11 = ')"></td></tr>';
-                document.getElementById("cart_tablebody").innerHTML+=ch1+ch2+ch3+ch4+ch5+ch6+ch7+ch8+ch9+ch10+ch11;
-            }
-        }
-    }
-}
-
-//Création du Mail pour la commande
-window.valid_command = function valid_command() {
-    var d = new Date();
-    var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
-    var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-    var fullDate = date+' '+hours;
-
-    if (readCookie("list_achat") != null) {
-        var liste_panier = defrag_cookie("list_achat");
-
-        var m1 = "<a href='mailto:attable@gmail.com?subject=Votre commande - N° Commande&body=Identifiant client :%0ADate : "+fullDate+"%0A%0ABonjour,%0A%0AVoici le récapitulatif de votre commande :%0A%0A";
-        var m2 = "|-------------------------------------------------------------------------------------|%0A";
-        var m3 = "|            Désignation            |         Quantité         |         Prix (€)         |%0A";
-        var m4 = "|-------------------------------------------------------------------------------------|%0A";
-        var m5 = "";
-        for (let i=0 ; i < liste_panier.length ; i++) {
-            if (liste_panier[i][4] > 0) {
-                m5 = m5 + liste_panier[i][1] +" | "+ liste_panier[i][4] +" | "+ liste_panier[i][2] +"€%0A";  
-            }                 
-        }
-        var m6 = "|-------------------------------------------------------------------------------------|%0A";
-        var m7 = "%0A%0AVotre total : " + readCookie("Somme") +"€%0A";
-        var m8 = "%0A%0A Merci pour votre commande !%0A%0ACordialement,%0A%0AAssociation Attable, le Collectif du goût'>Passer la commande</a>";
-        document.getElementById("valid-command").innerHTML=m1+m2+m3+m4+m5+m6+m7+m8;
-    
-    }
-    else {
-        document.getElementById("valid-command").innerHTML="<a onclick='alert(\"Votre panier est vide !\")'>Passer la commande</a>";
-    }    
-
-
-}
-
-
 //Génération du logo avec Localstorage pour la page Index
 window.genlogo = function genlogo() {
     var test = "<img src='images/attable_logo2.png' class='img-fluid' alt='monlogo' id='lelogo'>";
