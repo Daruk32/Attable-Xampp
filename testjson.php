@@ -61,6 +61,9 @@
 		<button id='update'>UPDATE</button>
 		<button id='delete'>DELETE</button>
 
+		<br><br>
+
+		<button id='test'>Test</button>
 
 
   <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
@@ -94,6 +97,7 @@
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 
+		/*
 		var nameV, rollV, secV, genV;
 		function Ready() {
 			nameV = document.getElementById('namebox').value;
@@ -110,6 +114,62 @@
 				Gender: genV
 			});
 		}
+		*/
+
+		var retrievedObject = JSON.parse(localStorage.getItem('bddproducts'));
+		var urlF, libelleF, prixF, texteF, quantityF, idF, categorieF;
+		function Ready() {
+			console.log(retrievedObject);
+
+			/*
+			retrievedObject.forEach(function(){
+				object.url
+				urlF = retrievedObject[num].url;
+				libelleF = retrievedObject[num].libelle;
+				prixF = retrievedObject[num].prix;
+				texteF = retrievedObject[num].texte;
+				quantityF = retrievedObject[num].quantity;
+				idF = retrievedObject[num].id;
+				categorieF = retrievedObject[num].categorie;
+
+			});
+			*/
+			
+			for (let num = 0; num < retrievedObject.length; num++) {
+				urlF = retrievedObject[num].url;
+				libelleF = retrievedObject[num].libelle;
+				prixF = retrievedObject[num].prix;
+				texteF = retrievedObject[num].texte;
+				quantityF = retrievedObject[num].quantity;
+				idF = retrievedObject[num].id;
+				categorieF = retrievedObject[num].categorie;
+
+				firebase.database().ref('products/'+idF).set({
+				url: urlF,
+				libelle: libelleF,
+				prix: prixF,
+				texte: texteF,
+				quantity: quantityF,
+				id: idF,
+				categorie: categorieF
+			});
+			}			
+		}
+		document.getElementById('test').onclick = function() {
+			Ready();
+			/*
+			firebase.database().ref('products').set({
+				url: urlF,
+				libelle: libelleF,
+				prix: prixF,
+				texte: texteF,
+				quantity: quantityF,
+				id: idF,
+				categorie: categorieF
+			});
+			*/
+		}
+
 
 	</script>
 
