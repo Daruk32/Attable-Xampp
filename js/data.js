@@ -85,148 +85,101 @@ tab_categorie.push(tab_the);
 tabtitre.push("Thés");
 
 
-//Ajout des champs id et quantité à l'array tab_categorie
-var length_cat = tab_categorie.length;
-for (let num = 0; num < length_cat; num++) {
-  var lengti = tab_categorie[num].length;
-  var titre = tabtitre[num];
-  for (let numi = 0; numi < lengti; numi++) {
-    var id = (num * 1000).toString() + numi.toString();
-    const ajout = { 'quantity': 0, 'id': id, 'categorie': titre };
-    tab_categorie[num][numi] = Object.assign(tab_categorie[num][numi], ajout);
+//Fonction de conversion de la BDD fixe du site en json et stockage au localstorage
+document.getElementById('jsonConvert').onclick = function () {
+  //Ajout des champs id et quantité à l'array tab_categorie
+  var length_cat = tab_categorie.length;
+  for (let num = 0; num < length_cat; num++) {
+    var lengti = tab_categorie[num].length;
+    var titre = tabtitre[num];
+    for (let numi = 0; numi < lengti; numi++) {
+      var id = (num * 1000).toString() + numi.toString();
+      const ajout = { 'quantity': 0, 'id': id, 'categorie': titre, 'legend_P1': "",'short_legend': ""};
+      tab_categorie[num][numi] = Object.assign(tab_categorie[num][numi], ajout);
+    }
   }
+
+  //On casse la catégorisation des arrays
+  var tab_product = tab_categorie.reduce(function (prev, curr) {
+    return prev.concat(curr);
+  });
+
+  //Pour sérialiser  
+  var str_json = JSON.stringify(tab_product);
+
+  //Sauvegarde du json dans le localstorage  
+  localStorage.setItem("bddproducts", str_json);
+  console.log(str_json);
 }
 
 
-//On casse la catégorisation des arrays
-var tab_product = tab_categorie.reduce(function (prev, curr) {
-  return prev.concat(curr);
-});
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  /*
+  apiKey: process.env.VUE_APP_API_KEY,
+authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+projectId: process.env.VUE_APP_PROJECT_ID,
+databaseURL: process.env.VUE_APP_DB_URL,
+storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+appId: process.env.VUE_APP_APP_ID,
+measurementId: process.env.VUE_APP_MEASUREMENT_ID
+  */
 
-//Pour sérialiser  
-var str_json = JSON.stringify(tab_product);
-//console.log(str_json);
-
-//Pour décomposer
-//var test4 = JSON.parse(str_json);
-//console.log(test);
-
-
-//Sauvegarde du json dans le localstorage  
-localStorage.setItem("bddproducts", str_json);
-
-
-//Envoi de la base de donnée en json à la page php
-//Envoi de la BDD json au file json
-
-
-/*
-//FIREBASE
-const firebase = require("firebase");
-// Required for side-effects
-require("firebase/firestore");
-var db = firebase.firestore();
-
-// Add a new document in collection "cities"
-db.collection("cities").doc("LA").set({
-  name: "Los Angeles",
-  state: "CA",
-  country: "USA"
-})
-.then(() => {
-  console.log("Document successfully written!");
-})
-.catch((error) => {
-  console.error("Error writing document: ", error);
-});
-*/
-
-
-
-
-
-
-
-
-
-
-
-/*
-const firebase = require("firebase");
-require("firebase/firestore");
-const fs = require("fs");
-const { resolve } = require('path');
-firebase.initializeApp({
   apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",
   authDomain: "attable-51633.firebaseapp.com",
   projectId: "attable-51633",
+  databaseURL: "https://attable-51633-default-rtdb.europe-west1.firebasedatabase.app",
   storageBucket: "attable-51633.appspot.com",
   messagingSenderId: "255390814899",
   appId: "1:255390814899:web:714ec5ace61cd6479796c6",
   measurementId: "G-2DZWXDMSY6"
-});
-class PopulateJsonFireStore {
-  constructor() {
-    console.time("Time Taken");
-    this.db = firebase.firestore();
-    const [, , filepath, type, collectionname] = process.argv;
-    this.absolutepath = resolve(process.cwd(), filepath);
-    this.type = type;
-    this.collectionname = collectionname;
 
-    if (this.type == ! 'set' && this.type == ! 'add') {
-      console.error('Wrong method type ${this.type}')
-      console.log('Accepted Method are : set or add');
-      this.exit(1);
-    }
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+var retrievedObject = JSON.parse(localStorage.getItem('bddproducts'));
+var urlF, libelleF, prixF, texteF, quantityF, idF, categorieF;
+var productscollection = db.collection('products');
 
-    if (this.absolutepath == null || this.absolutepath < 1) {
-      console.error('Make sure you have file path assigned ${this.absolutepath}')
-      this.exit(1);
-    }
+function Ready() {
+  for (let num = 0; num < retrievedObject.length; num++) {
+    urlF = retrievedObject[num].url;
+    libelleF = retrievedObject[num].libelle;
+    prixF = retrievedObject[num].prix;
+    texteF = retrievedObject[num].texte;
+    quantityF = retrievedObject[num].quantity;
+    idF = retrievedObject[num].id;
+    categorieF = retrievedObject[num].categorie;
 
-    if (this.collectionname == null || this.collectionname < 1) {
-      console.error('Make sure to specify collection name ${this.collectionname}')
-      this.exit(1);
-    }
+    firebase.database().ref('products/' + idF).set({
+      url: urlF,
+      libelle: libelleF,
+      prix: prixF,
+      texte: texteF,
+      quantity: quantityF,
+      id: idF,
+      categorie: categorieF
+    });
 
-    console.log('ABS : FILE PATH ${this.absolutepath}');
-    console.log('Type : method is ${this.type}');
-
-  }
-
-  async populate() {
-    let data = [];
-
-    try {
-      data = JSON.parse(fs.readFileSync(this.absolutepath, {}), 'utf8');
-    } catch (e) {
-      console.error(e.message);
-    }
-
-    if (data.length<1) {
-      console.error("make sure file contain items");
-    }
-    var i = 0;
-    for (var item of data) {
-      console.log(item);
-      try { this.type === 'set' ? await this.set(item) : await this.add(item);      
-      } catch(e) {
-        console.log(e.message)
-        this.exit(1);
-      }
-
-      if (data.length - 1 === i) {
-        console.log("SUCCESS");
-        console.timeEnd('Time taken');
-        this.exit(0);
-      }
-
-      i++;
-    }
-
-
+    productscollection.doc(idF).set({
+      url: urlF,
+      libelle: libelleF,
+      prix: prixF,
+      texte: texteF,
+      quantity: quantityF,
+      id: idF,
+      categorie: categorieF
+    });
   }
 }
-*/
+document.getElementById('test').onclick = function () {
+  Ready();
+}

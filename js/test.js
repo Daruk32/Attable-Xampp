@@ -1,3 +1,9 @@
+/*
+Copyright (c) Microsoft Corporation.
+
+
+*/
+
 var test = 2;
 var tab_test = new Array();
 
