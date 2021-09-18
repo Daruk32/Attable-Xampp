@@ -86,100 +86,30 @@ tabtitre.push("Thés");
 
 
 //Fonction de conversion de la BDD fixe du site en json et stockage au localstorage
-document.getElementById('jsonConvert').onclick = function () {
-  //Ajout des champs id et quantité à l'array tab_categorie
-  var length_cat = tab_categorie.length;
-  for (let num = 0; num < length_cat; num++) {
-    var lengti = tab_categorie[num].length;
-    var titre = tabtitre[num];
-    for (let numi = 0; numi < lengti; numi++) {
-      var id = (num * 1000).toString() + numi.toString();
-      const ajout = { 'quantity': 0, 'id': id, 'categorie': titre, 'legend_P1': "",'short_legend': ""};
-      tab_categorie[num][numi] = Object.assign(tab_categorie[num][numi], ajout);
+window.convertJsonStorage = function convertJsonStorage() {
+  document.getElementById('jsonConvert').onclick = function () {
+    //Ajout des champs id et quantité à l'array tab_categorie
+    var length_cat = tab_categorie.length;
+    for (let num = 0; num < length_cat; num++) {
+      var lengti = tab_categorie[num].length;
+      var titre = tabtitre[num];
+      for (let numi = 0; numi < lengti; numi++) {
+        var id = (num * 1000).toString() + numi.toString();
+        const ajout = { 'quantity': 0, 'id': id, 'categorie': titre, 'legend_P1': "", 'short_legend': "" };
+        tab_categorie[num][numi] = Object.assign(tab_categorie[num][numi], ajout);
+      }
     }
-  }
 
-  //On casse la catégorisation des arrays
-  var tab_product = tab_categorie.reduce(function (prev, curr) {
-    return prev.concat(curr);
-  });
-
-  //Pour sérialiser  
-  var str_json = JSON.stringify(tab_product);
-
-  //Sauvegarde du json dans le localstorage  
-  localStorage.setItem("bddproducts", str_json);
-  console.log(str_json);
-}
-
-
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  /*
-  apiKey: process.env.VUE_APP_API_KEY,
-authDomain: process.env.VUE_APP_AUTH_DOMAIN,
-projectId: process.env.VUE_APP_PROJECT_ID,
-databaseURL: process.env.VUE_APP_DB_URL,
-storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
-messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
-appId: process.env.VUE_APP_APP_ID,
-measurementId: process.env.VUE_APP_MEASUREMENT_ID
-  */
-
-  apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",
-  authDomain: "attable-51633.firebaseapp.com",
-  projectId: "attable-51633",
-  databaseURL: "https://attable-51633-default-rtdb.europe-west1.firebasedatabase.app",
-  storageBucket: "attable-51633.appspot.com",
-  messagingSenderId: "255390814899",
-  appId: "1:255390814899:web:714ec5ace61cd6479796c6",
-  measurementId: "G-2DZWXDMSY6"
-
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-var retrievedObject = JSON.parse(localStorage.getItem('bddproducts'));
-var urlF, libelleF, prixF, texteF, quantityF, idF, categorieF;
-var productscollection = db.collection('products');
-
-function Ready() {
-  for (let num = 0; num < retrievedObject.length; num++) {
-    urlF = retrievedObject[num].url;
-    libelleF = retrievedObject[num].libelle;
-    prixF = retrievedObject[num].prix;
-    texteF = retrievedObject[num].texte;
-    quantityF = retrievedObject[num].quantity;
-    idF = retrievedObject[num].id;
-    categorieF = retrievedObject[num].categorie;
-
-    firebase.database().ref('products/' + idF).set({
-      url: urlF,
-      libelle: libelleF,
-      prix: prixF,
-      texte: texteF,
-      quantity: quantityF,
-      id: idF,
-      categorie: categorieF
+    //On casse la catégorisation des arrays
+    var tab_product = tab_categorie.reduce(function (prev, curr) {
+      return prev.concat(curr);
     });
 
-    productscollection.doc(idF).set({
-      url: urlF,
-      libelle: libelleF,
-      prix: prixF,
-      texte: texteF,
-      quantity: quantityF,
-      id: idF,
-      categorie: categorieF
-    });
+    //Pour sérialiser  
+    var str_json = JSON.stringify(tab_product);
+
+    //Sauvegarde du json dans le localstorage  
+    localStorage.setItem("bddproducts", str_json);
+    console.log(str_json);
   }
-}
-document.getElementById('test').onclick = function () {
-  Ready();
 }
