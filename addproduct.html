@@ -1,95 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-		<title>Ajouter un produit</title>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="css\attable.css">
-		<link rel="stylesheet" href="css\booststrap.css">
-		<link rel="stylesheet" href="css\footer.css">
+	<title>Ajouter un produit</title>
 
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="css\attable.css">
+	<link rel="stylesheet" href="css\booststrap.css">
+	<link rel="stylesheet" href="css\footer.css">
 
- 
-		<!-- Bootstrap core JS-->
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		
-		<!-- icons-->
-		<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-		
-		<!-- Bootstrap Table Style -->
-		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
-		<!-- Bootstrap Table JS-->
-		<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
-		
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-		<script src="js\article.js" type="text/javascript"></script>
 
-		<script src="js\addproduct.js" type="text/javascript"></script>
+	<!-- Bootstrap core JS-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-	</head>
-	
-	<body>
-	
-		<section>
-		
+	<!-- icons-->
+	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-			<nav class="navbar navbar-expand-lg navbar-light" id="top">
-				<div class="container-fluid d-flex flex-row">
-					<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid" alt="monlogo" id="lelogo"></a>
-					<div id="titre_page" class="collapse navbar-collapse justify-content-center">
-						<div id="titre_page">Ajouter un produit</div>
-					</div>
-					<div class='nav-item collapse navbar-collapse'>
-						<form class="collapse navbar-collapse justify-content-end">
-							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success" type="submit">Search</button>
-						</form>
-					</div>
-					<div id="authentification">
-						<a href="authentification.html">
-						<img src="images\login.png" alt="Authentification" id="lesids">
-						</a>				
-					</div>						
-					<div id="panier">
-						<a href="panier.html">
-							<span id="total_articles">0</span>
-							<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
-							<span id="total_commande">0 €</span>
-						</a>
-					</div>
+	<!-- Bootstrap Table Style -->
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+	<!-- Bootstrap Table JS-->
+	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+
+
+	<script src="js\article.js" type="text/javascript"></script>
+
+	<script src="js\addproduct.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+	<section>
+
+
+		<nav class="navbar navbar-expand-lg navbar-light" id="top">
+			<div class="container-fluid d-flex flex-row">
+				<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png"
+						class="img-fluid" alt="monlogo" id="lelogo"></a>
+				<div id="titre_page" class="collapse navbar-collapse justify-content-center">
+					<div id="titre_page">Ajouter un produit</div>
 				</div>
-			</nav>
-
-			<br>
-
-			<div class="text-center">
-				<a href="admin.html">
-					Retourner à la page Administrateur
-				</a>
+				<div class='nav-item collapse navbar-collapse'>
+					<form class="collapse navbar-collapse justify-content-end">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
+				<div id="authentification">
+					<a href="authentification.html">
+						<img src="images\login.png" alt="Authentification" id="lesids">
+					</a>
+				</div>
+				<div id="panier">
+					<a href="panier.html">
+						<span id="total_articles">0</span>
+						<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+						<span id="total_commande">0 €</span>
+					</a>
+				</div>
 			</div>
+		</nav>
+
+		<br>
+
+		<div class="text-center">
+			<a href="admin.html">
+				Retourner à la page Administrateur
+			</a>
+		</div>
 
 
 
-			<div class="container w-50" id="joinmail">
-				<h1 class="text-center w-100">Ajouter un produit</h1>
-				<hr>
-				<form>
-				  <fieldset>
+		<div class="container w-50" id="joinmail">
+			<h1 class="text-center w-100">Ajouter un produit</h1>
+			<hr>
+			<form>
+				<fieldset>
 					<div class="form-group">
 						<label for="img">Image du produit</label>
 						<input class="w-50" type="file" id="imgInp" name="imagefile" accept="image/jpeg,image/png" />
 						<img id="blah" src="#" onerror="this.src='images/promo.png'" />
-					</div> 
+					</div>
 					<hr>
 					<div class="form-group">
 						<label for="id">Référence du produit</label>
@@ -101,19 +104,23 @@
 					</div>
 					<div class="form-group">
 						<label for="legend">Légende du produit</label>
-                         <input type="text" class="form-control w-100" id="legend_P1" placeholder="LégendeP1" required>
+						<input type="text" class="form-control w-100" id="legend_P1" placeholder="LégendeP1" required>
 					</div>
 					<div class="form-group">
 						<label for="short-descriptive">Très bref descriptif du produit (maximum 15 caractères)</label>
-						<input type="text" class="form-control w-100" id="short_legend" placeholder="Moule à gauffre en inox" required>
+						<input type="text" class="form-control w-100" id="short_legend"
+							placeholder="Moule à gauffre en inox" required>
 					</div>
 					<div class="form-group">
 						<label for="long-descriptive">Descriptif du produit (max 200 caractères)</label>
-						<input type="text" id="descriptive" class="form-control w-100" size="50" placeholder="Moule à gaufre en inox de qualité supérieure, tout le monde en rêve..." required>
+						<input type="text" id="descriptive" class="form-control w-100" size="50"
+							placeholder="Moule à gaufre en inox de qualité supérieure, tout le monde en rêve..."
+							required>
 					</div>
 					<div class="form-group">
 						<label for="price">Prix du produit</label>
-						<input type="text" class="text-center form-control w-25" id="price" placeholder="..,.. €" required>
+						<input type="text" class="text-center form-control w-25" id="price" placeholder="..,.. €"
+							required>
 					</div>
 					<div class="form-group">
 						<label for="quantity">Quantité de produit</label>
@@ -122,63 +129,105 @@
 					<div class="form-group">
 						<label for="category">Catégorie 1</label>
 						<select name="category" class="form-select w-25" id="categ" required>
-						    <option value="promo">Promotions</option>
-						    <option value="boissons">Boissons</option>
+							<option value="promo">Promotions</option>
+							<option value="boissons">Boissons</option>
 							<option value="bonbons">Bonbons</option>
-						    <option value="cafe">Café</option>
+							<option value="cafe">Café</option>
 						</select>
 					</div>
 					<div id="bouton">
-						<input style="width:200px;" type="submit" value="Créer/Mettre à jour" id="submit" onclick="addProduct()">
+						<input style="width:200px;" type="submit" value="Créer/Mettre à jour" id="submit"
+							onclick="addProduct()">
 					</div>
 
-				  </fieldset>
-				</form>
+				</fieldset>
+			</form>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	</section>
+
+
+	<footer class="py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+						<li><a href="noustrouver.html">Nous trouver</a></li>
+						<li><a href="panier.html">Commande</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-4 text-center ancre">
+					<a href="#top">
+						<i id='icon-footer' class="fas fa-angle-up"></i>
+					</a>
+					<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+				</div>
+
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="newsletter.html">Mailing List</a></li>
+						<li><a href="mentionslegales.html">Mentions légales</a></li>
+						<li><a href="cgu.html">CGU</a></li>
+					</ul>
+				</div>
 			</div>
+		</div>
+	</footer>
 
 
+	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<!--test temps réel-->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+	<script id='MainScript' type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		const firebaseConfig = {
+			apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",
+			authDomain: "attable-51633.firebaseapp.com",
+			projectId: "attable-51633",
+			databaseURL: "https://attable-51633-default-rtdb.europe-west1.firebasedatabase.app",
+			storageBucket: "attable-51633.appspot.com",
+			messagingSenderId: "255390814899",
+			appId: "1:255390814899:web:714ec5ace61cd6479796c6",
+			measurementId: "G-2DZWXDMSY6"
+
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+		firebase.auth().onAuthStateChanged((user)=>{
+			if(!user){
+				location.replace("authentification.html")
+			}
+		})
+	</script>
 
 
+</body>
 
-
-
-
-
-
-
-
-		</section>
-	
-
-		<footer class="py-4 text-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="index.html">Accueil</a></li>
-							<li><a href="quisommesnous.html">Qui sommes nous</a></li>
-							<li><a href="noustrouver.html">Nous trouver</a></li>
-							<li><a href="panier.html">Commande</a></li>
-						</ul>
-					</div>
-
-					<div class="col-sm-4 text-center ancre">
-						<a href="#top">
-							<i id='icon-footer' class="fas fa-angle-up"></i>
-						</a>
-						<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
-					</div>
-
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="newsletter.html">Mailing List</a></li>
-							<li><a href="mentionslegales.html">Mentions légales</a></li>
-							<li><a href="cgu.html">CGU</a></li>
-						</ul>
-					</div>
-				</div>			
-			</div>
-        </footer>
-
-	</body>
 </html>

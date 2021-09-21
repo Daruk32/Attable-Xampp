@@ -290,7 +290,7 @@ window.generate = function generate() {
 	var liste_panier = defrag_cookie("list_achat");
 	for (let i = 0; i < liste_panier.length; i++) {
 		if (liste_panier[i][4] > 0) {
-			body.push([liste_panier[i][1], liste_panier[i][2], liste_panier[i][4]]);
+			body.push([liste_panier[i][1], liste_panier[i][2]+" €", liste_panier[i][4]]);
 		}
 	}
 
