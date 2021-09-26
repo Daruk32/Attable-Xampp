@@ -300,5 +300,6 @@ window.generate = function generate() {
 	var amount_down = 70 + (body.length + 1) * 10;
 	doc.text(155, amount_down, 'Montant total : ' + readCookie("Somme") + "€");
 
-	doc.save('Ma Commande.pdf')
+	//doc.save('Ma Commande.pdf');
+	window.open(doc.output('bloburl'), '_blank');
 }

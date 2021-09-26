@@ -71,7 +71,7 @@ function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("mdp").value;
   firebase.auth().signInWithEmailAndPassword(email, password);
-  createCookie("session", "yoursession", 2);
+  createCookie("session", "yoursession", 3);
 }
 
 function logout() {
