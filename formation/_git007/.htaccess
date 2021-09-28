@@ -1,0 +1,27 @@
+# ======================
+# IfDefine Free permet de ne cibler que l'instruction pour les serveurs Free.fr
+# ========= ici on  =============
+<IfDefine Free>
+php56 1
+#mettre -Indexes pour ne pas authoriser l'affichage du répertoire
+Options -Indexes
+PerlSetVar AuthFile /.#secret/.htpass_apache2_2
+AuthType Basic
+AuthName "Acces coupes en fin de formation"
+Require user francis EIL_2019_A
+</IfDefine>
+
+<ifDefine !Free>
+Options Indexes 
+#authentification pour acceder au fichier
+AuthType Basic
+AuthName "Restricted Files"
+AuthBasicProvider file
+
+#path pour LOCAL
+AuthUserFile "../htdocs/.#secret/.htpass_apache2_2_nonfree"
+
+#accepte un utilisateur enregistré dans le fichier contenant les mots de passe
+#ou tous les utilisateurs du fichier : require valid-user
+Require user EIL_2019_A francis johan
+</ifDefine>

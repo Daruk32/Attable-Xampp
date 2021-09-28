@@ -68,6 +68,12 @@ function validate_password() {
 
 
 function login() {
+  if (controleCharacter() == 1) {
+    console.log("C'est interdit !");
+    location.reload();
+    return;
+  }
+
   const email = document.getElementById("email").value;
   const password = document.getElementById("mdp").value;
   firebase.auth().signInWithEmailAndPassword(email, password);
@@ -88,4 +94,14 @@ function logout() {
 
 if (readCookie("session") == null) {
 	logout();
+}
+
+
+
+function verif_form_modification() {
+  if (controleCharacter() == 1) {
+    console.log("C'est interdit !");
+    location.reload();
+    return;
+  }
 }

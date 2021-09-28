@@ -17,6 +17,12 @@ function Captcha(){
 
 //Fonction de validation du captcha de la désinscription - mailing list
 function ValidCaptcha(){
+  if (controleCharacter() == 1) {
+    console.log("C'est interdit !");
+    location.reload();
+    return;
+  }
+  
   var string1 = removeSpaces(document.getElementById('mainCaptcha').value);
   var string2 = removeSpaces(document.getElementById('txtInput').value);
   if (string1 == string2){
@@ -27,9 +33,14 @@ function ValidCaptcha(){
   }
 }
 
-
 //Fonction de validation du captcha de l'inscription - mailing list
 function ValidCaptcha2(){
+  if (controleCharacter() == 1) {
+    console.log("C'est interdit !");
+    location.reload();
+    return;
+  }
+
   var string1 = removeSpaces(document.getElementById('mainCaptcha').value);
   var string2 = removeSpaces(document.getElementById('txtInput').value);
   if (string1 == string2){

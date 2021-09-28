@@ -1,0 +1,17 @@
+{
+  "fruits": [
+    {
+      "kiwis": 3,
+      "mangues": 4,
+      "pommes": null
+    },
+    {
+      "estdanspanier": true
+    }
+  ],
+  "legumes": {
+    "patates": "amandine",
+    "poireaux": ""
+  },
+  "viandes": ["singe", "poulet", "boeuf"]
+}

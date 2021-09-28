@@ -1,4 +1,10 @@
 function addProduct() {
+    if (controleCharacter() == 1) {
+        console.log("C'est interdit !");
+        location.reload();
+        return;
+    }
+
     //Récupération des datas du produit renseigné
     var id = document.getElementById("id").value;
     var name = document.getElementById("name").value;

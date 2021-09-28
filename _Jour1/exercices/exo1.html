@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			table {
+			width: 90%; margin: 10px auto; border: 1px solid gray;
+			}
+			tr, td, th {
+            border: 1px solid gray;
+			}
+		</style>
+	</head>
+	<body>
+ 		<center> <h2>Exercice base_html_tableau_1.html</h2></center> 
+		<table>
+			<thead>
+				<tr>
+					<th>Titre 1</th>
+					<th>Titre 2</th>
+					<th>Titre 3</th>
+				</tr></thead>
+				<tbody>
+					<tr>
+						<td>Cellule simple</td>
+						<td>Cellule simple</td>
+						<td>Cellule simple</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="right">Deux colonnes assemblées</td>
+						<td>cellule simple</td>
+					</tr>
+					<tr>
+						<td>Cellule simple</td>
+					<td>Cellule simple</td>
+					<td rowspan="2" align="left" valign="bottom">Deux lignes assemblées</td>
+					</tr>
+					<tr>
+						<td> Cellule simple</td>
+						<td> Cellule simple</td>
+					</tr>
+					<tr>
+						<td>Cellule simple</td>
+						<td colspan="2" rowspan="2" align="center" valign="top">Deux lignes et deux colonnes</td>
+					</tr>
+					<tr>
+						<td>Cellule simple</td>
+					</tr>
+	</tbody>
+</table>

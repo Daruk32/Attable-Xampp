@@ -25,11 +25,14 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 
-		<!-- Bootstrap core JS-->
+		<!-- Bootstrap core JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 
 		
 
@@ -67,7 +70,7 @@
 					
 					<div class="form-group text-center">
 						<label for="email">Entrez votre mail</label>
-						<input type="email" class="form-control w-75" id="email" required="required">
+						<input type="email" class="form-control w-75" id="email" name="control" required="required">
 					  </div>						
 					  
 					  <div class="form-group text-center">
@@ -75,7 +78,7 @@
 							<label>Confirmez que vous n'êtes pas un robot !</label>
 							<div id="table-capcha">
 								<input type="text" id="mainCaptcha" class="text_capcha" disabled/>
-								<input type="text" id="txtInput" class="text_capcha" required="required" />
+								<input type="text" id="txtInput" class="text_capcha" name="control" required="required" />
 								<input type="button" id="refresh" value="Refresh" class="butt_capcha" onclick="Captcha();" />
 							</div>
 						</div>
