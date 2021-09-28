@@ -1,166 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head id='headtest'>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-		<title>Conditions d'utilisation</title>
+<head id='headtest'>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="css\footer.css">
-		<link rel="stylesheet" href="css\booststrap.css">
+	<title>Conditions d'utilisation</title>
 
-		<script src="js/cookie.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="css\footer.css">
+	<link rel="stylesheet" href="css\booststrap.css">
 
-		<script type="module" src="js\gen_dyna.js"></script>
+	<script src="js/cookie-obf.js" type="text/javascript"></script>
 
-		<script src="js/panier.js" type="module"></script>
+	<script type="module" src="js\gen_dyna-obf.js"></script>
+
+	<script src="js/panier-obf.js" type="module"></script>
 
 
-		<!-- icons-->
-		<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<!-- icons-->
+	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-		
-		<!-- Bootstrap core JS-->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-		
+	<!-- Bootstrap core JS-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-	</head>
-	
-	<body onload="panier(), gencss()">
-				
-		<nav class="navbar navbar-expand-lg navbar-light" id="top">
-			<div class="container-fluid d-flex flex-row">
-				<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid" alt="monlogo" id="lelogo"></a>
-				<div class="nav-item collapse navbar-collapse">
-					<div id="titre_page">Nos conditions d'utilisation</div>
-				</div>
-				<div id="authentification">
-					<a href="authentification.html">
+
+
+
+</head>
+
+<body onload="panier(), gencss()">
+
+	<nav class="navbar navbar-expand-lg navbar-light" id="top">
+		<div class="container-fluid d-flex flex-row">
+			<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid"
+					alt="monlogo" id="lelogo"></a>
+			<div class="nav-item collapse navbar-collapse">
+				<div id="titre_page">Nos conditions d'utilisation</div>
+			</div>
+			<div id="authentification">
+				<a href="authentification.html">
 					<img src="images\login.png" alt="Authentification" id="lesids">
-					</a>				
-				</div>						
-				<div id="panier">
-					<a href="panier.html">
-						<span id="total_articles">0</span>
-						<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
-						<span id="total_commande">0 €</span>
+				</a>
+			</div>
+			<div id="panier">
+				<a href="panier.html">
+					<span id="total_articles">0</span>
+					<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+					<span id="total_commande">0 €</span>
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<section id="main">
+
+		<div class="container" id="cgu">
+			<h3>Qui sommes-nous ?</h3>
+			L’adresse de notre site Web est : .
+			<br><br>
+			Il s'agit d'un site simple type portfolio réalisé dans le cadre de ma formation, ses fonctionnalités sont
+			limitées.
+			<br>
+			Il pourra être mis à jour dans le futur dans le cadre de l'évolution de mes compétences.
+
+			<h3>Utilisation des données personnelles collectées</h3>
+			<h4>Commentaires</h4>
+			Quand vous laissez un commentaire sur notre site web, les données inscrites dans le formulaire de
+			commentaire, mais aussi votre adresse IP et l’agent utilisateur de votre navigateur sont collectés pour nous
+			aider à la détection des commentaires indésirables.
+			<br><br>
+			Une chaîne anonymisée créée à partir de votre adresse de messagerie (également appelée hash) peut être
+			envoyée au service Gravatar pour vérifier si vous utilisez ce dernier. Les clauses de confidentialité du
+			service Gravatar sont disponibles ici : https://automattic.com/privacy/. Après validation de votre
+			commentaire, votre photo de profil sera visible publiquement à coté de votre commentaire.
+
+			<h4>Médias</h4>
+			Si vous êtes un utilisateur ou une utilisatrice enregistré·e et que vous téléversez des images sur le site
+			web, nous vous conseillons d’éviter de téléverser des images contenant des données EXIF de coordonnées GPS.
+			Les visiteurs de votre site web peuvent télécharger et extraire des données de localisation depuis ces
+			images.
+
+			<h4>Formulaires de contact</h4>
+			Si vous déposez un commentaire sur notre site, il vous sera proposé d’enregistrer votre nom, adresse de
+			messagerie et site web dans des cookies. C’est uniquement pour votre confort afin de ne pas avoir à saisir
+			ces informations si vous déposez un autre commentaire plus tard. Ces cookies expirent au bout d’un an.
+			<br><br>
+			Si vous vous rendez sur la page de connexion, un cookie temporaire sera créé afin de déterminer si votre
+			navigateur accepte les cookies. Il ne contient pas de données personnelles et sera supprimé automatiquement
+			à la fermeture de votre navigateur.
+			<br><br>
+			Lorsque vous vous connecterez, nous mettrons en place un certain nombre de cookies pour enregistrer vos
+			informations de connexion et vos préférences d’écran. La durée de vie d’un cookie de connexion est de deux
+			jours, celle d’un cookie d’option d’écran est d’un an. Si vous cochez « Se souvenir de moi », votre cookie
+			de connexion sera conservé pendant deux semaines. Si vous vous déconnectez de votre compte, le cookie de
+			connexion sera effacé.
+			<br><br>
+			En modifiant ou en publiant une publication, un cookie supplémentaire sera enregistré dans votre navigateur.
+			Ce cookie ne comprend aucune donnée personnelle. Il indique simplement l’ID de la publication que vous venez
+			de modifier. Il expire au bout d’un jour.
+
+			<h4>Cookies</h4>
+			Si vous déposez un commentaire sur notre site, il vous sera proposé d’enregistrer votre nom, adresse de
+			messagerie et site web dans des cookies. C’est uniquement pour votre confort afin de ne pas avoir à saisir
+			ces informations si vous déposez un autre commentaire plus tard. Ces cookies expirent au bout d’un an.
+			<br><br>
+			Si vous vous rendez sur la page de connexion, un cookie temporaire sera créé afin de déterminer si votre
+			navigateur accepte les cookies. Il ne contient pas de données personnelles et sera supprimé automatiquement
+			à la fermeture de votre navigateur.
+			<br><br>
+			Lorsque vous vous connecterez, nous mettrons en place un certain nombre de cookies pour enregistrer vos
+			informations de connexion et vos préférences d’écran. La durée de vie d’un cookie de connexion est de deux
+			jours, celle d’un cookie d’option d’écran est d’un an. Si vous cochez « Se souvenir de moi », votre cookie
+			de connexion sera conservé pendant deux semaines. Si vous vous déconnectez de votre compte, le cookie de
+			connexion sera effacé.
+			<br><br>
+			En modifiant ou en publiant une publication, un cookie supplémentaire sera enregistré dans votre navigateur.
+			Ce cookie ne comprend aucune donnée personnelle. Il indique simplement l’ID de la publication que vous venez
+			de modifier. Il expire au bout d’un jour.
+
+			<h4>Contenu embarqué depuis d’autres sites</h4>
+			Les articles de ce site peuvent inclure des contenus intégrés (par exemple des vidéos, images, articles…).
+			Le contenu intégré depuis d’autres sites se comporte de la même manière que si le visiteur se rendait sur
+			cet autre site.
+			<br><br>
+			Ces sites web pourraient collecter des données sur vous, utiliser des cookies, embarquer des outils de
+			suivis tiers, suivre vos interactions avec ces contenus embarqués si vous disposez d’un compte connecté sur
+			leur site web.
+
+			<h4>Statistiques et mesures d’audience</h4>
+			Je n’utilise actuellement aucun outil de statistiques et de mesure d’audience.
+
+			<h3>Utilisation et transmission de vos données personnelles</h3>
+			<h4>Durées de stockage de vos données</h4>
+			Si vous laissez un commentaire, le commentaire et ses métadonnées sont conservés indéfiniment. Cela permet
+			de reconnaître et approuver automatiquement les commentaires suivants au lieu de les laisser dans la file de
+			modération.
+			<br><br>
+			Pour les utilisateurs et utilisatrices qui s’inscrivent sur notre site (si cela est possible), nous stockons
+			également les données personnelles indiquées dans leur profil. Tous les utilisateurs et utilisatrices
+			peuvent voir, modifier ou supprimer leurs informations personnelles à tout moment (à l’exception de leur nom
+			d’utilisateur·ice). Les gestionnaires du site peuvent aussi voir et modifier ces informations.
+
+			<h4>Les droits que vous avez sur vos données</h4>
+			Si vous avez un compte ou si vous avez laissé des commentaires sur le site, vous pouvez demander à recevoir
+			un fichier contenant toutes les données personnelles que nous possédons à votre sujet, incluant celles que
+			vous nous avez fournies. Vous pouvez également demander la suppression des données personnelles vous
+			concernant. Cela ne prend pas en compte les données stockées à des fins administratives, légales ou pour des
+			raisons de sécurité.
+
+			<h4>Transmission de vos données personnelles</h4>
+			Les commentaires des visiteurs peuvent être vérifiés à l’aide d’un service automatisé de détection des
+			commentaires indésirables.
+
+			<h3>Informations de contact</h3>
+			Pour toutes questions n’hésitez pas à contacter le webmestre de ce site :
+
+			<h3>Informations supplémentaires</h3>
+			<h4>Comment nous protégeons vos données</h4>
+
+			<h4>Procédures mises en œuvre en cas de fuite de données</h4>
+			En cas de fuite de données nous saisirons la Commission de la protection de la Vie Privée et nous vous
+			préviendrons. Par ailleurs nous contacterons notre hébergeur pour limiter les dégâts et trouver les failles
+			de sécurité éventuelles afin de les corriger.
+
+			<h4>Les services tiers qui nous transmettent des données</h4>
+			Nous n’utilisons pas de services tiers susceptibles de transmettre des données sur vous.
+
+			<h4>Opérations de marketing automatisé et/ou de profilage réalisées à l’aide des données personnelles</h4>
+
+			<h4>Affichage des informations liées aux secteurs soumis à des régulations spécifiques</h4>
+		</div>
+
+	</section>
+
+	<footer class="py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+						<li><a href="noustrouver.html">Nous trouver</a></li>
+						<li><a href="panier.html">Commande</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-4 text-center ancre">
+					<a href="#top">
+						<i id='icon-footer' class="fas fa-angle-up"></i>
 					</a>
+					<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+				</div>
+
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="newsletter.html">Mailing List</a></li>
+						<li><a href="mentionslegales.html">Mentions légales</a></li>
+						<li><a href="cgu.html">CGU</a></li>
+					</ul>
 				</div>
 			</div>
-		</nav>
-		
-		<section id="main">
-		
-			<div class="container" id="cgu">
-				<h3>Qui sommes-nous ?</h3>
-				L’adresse de notre site Web est : .
-				<br><br>
-				Il s'agit d'un site simple type portfolio réalisé dans le cadre de ma formation, ses fonctionnalités sont limitées.
-				<br>
-				Il pourra être mis à jour dans le futur dans le cadre de l'évolution de mes compétences.
+		</div>
+	</footer>
 
-				<h3>Utilisation des données personnelles collectées</h3>
-				<h4>Commentaires</h4>
-				Quand vous laissez un commentaire sur notre site web, les données inscrites dans le formulaire de commentaire, mais aussi votre adresse IP et l’agent utilisateur de votre navigateur sont collectés pour nous aider à la détection des commentaires indésirables.
-				<br><br>
-				Une chaîne anonymisée créée à partir de votre adresse de messagerie (également appelée hash) peut être envoyée au service Gravatar pour vérifier si vous utilisez ce dernier. Les clauses de confidentialité du service Gravatar sont disponibles ici : https://automattic.com/privacy/. Après validation de votre commentaire, votre photo de profil sera visible publiquement à coté de votre commentaire.
 
-				<h4>Médias</h4>
-				Si vous êtes un utilisateur ou une utilisatrice enregistré·e et que vous téléversez des images sur le site web, nous vous conseillons d’éviter de téléverser des images contenant des données EXIF de coordonnées GPS. Les visiteurs de votre site web peuvent télécharger et extraire des données de localisation depuis ces images.
+</body>
 
-				<h4>Formulaires de contact</h4>
-				Si vous déposez un commentaire sur notre site, il vous sera proposé d’enregistrer votre nom, adresse de messagerie et site web dans des cookies. C’est uniquement pour votre confort afin de ne pas avoir à saisir ces informations si vous déposez un autre commentaire plus tard. Ces cookies expirent au bout d’un an.
-				<br><br>
-				Si vous vous rendez sur la page de connexion, un cookie temporaire sera créé afin de déterminer si votre navigateur accepte les cookies. Il ne contient pas de données personnelles et sera supprimé automatiquement à la fermeture de votre navigateur.
-				<br><br>
-				Lorsque vous vous connecterez, nous mettrons en place un certain nombre de cookies pour enregistrer vos informations de connexion et vos préférences d’écran. La durée de vie d’un cookie de connexion est de deux jours, celle d’un cookie d’option d’écran est d’un an. Si vous cochez « Se souvenir de moi », votre cookie de connexion sera conservé pendant deux semaines. Si vous vous déconnectez de votre compte, le cookie de connexion sera effacé.
-				<br><br>
-				En modifiant ou en publiant une publication, un cookie supplémentaire sera enregistré dans votre navigateur. Ce cookie ne comprend aucune donnée personnelle. Il indique simplement l’ID de la publication que vous venez de modifier. Il expire au bout d’un jour.
-
-				<h4>Cookies</h4>
-				Si vous déposez un commentaire sur notre site, il vous sera proposé d’enregistrer votre nom, adresse de messagerie et site web dans des cookies. C’est uniquement pour votre confort afin de ne pas avoir à saisir ces informations si vous déposez un autre commentaire plus tard. Ces cookies expirent au bout d’un an.
-				<br><br>
-				Si vous vous rendez sur la page de connexion, un cookie temporaire sera créé afin de déterminer si votre navigateur accepte les cookies. Il ne contient pas de données personnelles et sera supprimé automatiquement à la fermeture de votre navigateur.
-				<br><br>
-				Lorsque vous vous connecterez, nous mettrons en place un certain nombre de cookies pour enregistrer vos informations de connexion et vos préférences d’écran. La durée de vie d’un cookie de connexion est de deux jours, celle d’un cookie d’option d’écran est d’un an. Si vous cochez « Se souvenir de moi », votre cookie de connexion sera conservé pendant deux semaines. Si vous vous déconnectez de votre compte, le cookie de connexion sera effacé.
-				<br><br>
-				En modifiant ou en publiant une publication, un cookie supplémentaire sera enregistré dans votre navigateur. Ce cookie ne comprend aucune donnée personnelle. Il indique simplement l’ID de la publication que vous venez de modifier. Il expire au bout d’un jour.
-				
-				<h4>Contenu embarqué depuis d’autres sites</h4>
-				Les articles de ce site peuvent inclure des contenus intégrés (par exemple des vidéos, images, articles…). Le contenu intégré depuis d’autres sites se comporte de la même manière que si le visiteur se rendait sur cet autre site.
-				<br><br>
-				Ces sites web pourraient collecter des données sur vous, utiliser des cookies, embarquer des outils de suivis tiers, suivre vos interactions avec ces contenus embarqués si vous disposez d’un compte connecté sur leur site web.
-
-				<h4>Statistiques et mesures d’audience</h4>
-				Je n’utilise actuellement aucun outil de statistiques et de mesure d’audience.
-
-				<h3>Utilisation et transmission de vos données personnelles</h3>
-				<h4>Durées de stockage de vos données</h4>
-				Si vous laissez un commentaire, le commentaire et ses métadonnées sont conservés indéfiniment. Cela permet de reconnaître et approuver automatiquement les commentaires suivants au lieu de les laisser dans la file de modération.
-				<br><br>
-				Pour les utilisateurs et utilisatrices qui s’inscrivent sur notre site (si cela est possible), nous stockons également les données personnelles indiquées dans leur profil. Tous les utilisateurs et utilisatrices peuvent voir, modifier ou supprimer leurs informations personnelles à tout moment (à l’exception de leur nom d’utilisateur·ice). Les gestionnaires du site peuvent aussi voir et modifier ces informations.
-
-				<h4>Les droits que vous avez sur vos données</h4>
-				Si vous avez un compte ou si vous avez laissé des commentaires sur le site, vous pouvez demander à recevoir un fichier contenant toutes les données personnelles que nous possédons à votre sujet, incluant celles que vous nous avez fournies. Vous pouvez également demander la suppression des données personnelles vous concernant. Cela ne prend pas en compte les données stockées à des fins administratives, légales ou pour des raisons de sécurité.
-
-				<h4>Transmission de vos données personnelles</h4>
-				Les commentaires des visiteurs peuvent être vérifiés à l’aide d’un service automatisé de détection des commentaires indésirables.
-
-				<h3>Informations de contact</h3>
-				Pour toutes questions n’hésitez pas à contacter le webmestre de ce site : 
-
-				<h3>Informations supplémentaires</h3>
-				<h4>Comment nous protégeons vos données</h4>
-
-				<h4>Procédures mises en œuvre en cas de fuite de données</h4>
-				En cas de fuite de données nous saisirons la Commission  de la protection de la Vie Privée et nous vous préviendrons. Par ailleurs nous contacterons notre hébergeur pour limiter les dégâts et trouver les failles de sécurité éventuelles afin de les corriger.
-
-				<h4>Les services tiers qui nous transmettent des données</h4>
-				Nous n’utilisons pas de services tiers susceptibles de transmettre des données sur vous.
-				
-				<h4>Opérations de marketing automatisé et/ou de profilage réalisées à l’aide des données personnelles</h4>
-
-				<h4>Affichage des informations liées aux secteurs soumis à des régulations spécifiques</h4>
-			</div>
-
-		</section>
-	
-		<footer class="py-4 text-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="index.html">Accueil</a></li>
-							<li><a href="quisommesnous.html">Qui sommes nous</a></li>
-							<li><a href="noustrouver.html">Nous trouver</a></li>
-							<li><a href="panier.html">Commande</a></li>
-						</ul>
-					</div>
-
-					<div class="col-sm-4 text-center ancre">
-						<a href="#top">
-							<i id='icon-footer' class="fas fa-angle-up"></i>
-						</a>
-						<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
-					</div>
-
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="newsletter.html">Mailing List</a></li>
-							<li><a href="mentionslegales.html">Mentions légales</a></li>
-							<li><a href="cgu.html">CGU</a></li>
-						</ul>
-					</div>
-				</div>			
-			</div>
-        </footer>
-	
-	
-	</body>
 </html>

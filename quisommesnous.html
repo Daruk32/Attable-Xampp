@@ -1,106 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Qui sommes-nous</title>
-		<link rel="stylesheet" href="css\attable.css">
-		<link rel="stylesheet" href="css\booststrap.css">
-		<link rel="stylesheet" href="css\footer.css">
-		
-		<script src="js/cookie.js" type="text/javascript"></script>
+	<title>Qui sommes-nous</title>
+	<link rel="stylesheet" href="css\attable.css">
+	<link rel="stylesheet" href="css\booststrap.css">
+	<link rel="stylesheet" href="css\footer.css">
 
-		<script type="module" src="js\gen_dyna.js"></script>
+	<script src="js/cookie-obf.js" type="text/javascript"></script>
 
-		<script src="js/panier.js" type="module"></script>
+	<script type="module" src="js\gen_dyna-obf.js"></script>
 
-
-		<!-- icons-->
-		<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<script src="js/panier-obf.js" type="module"></script>
 
 
-		<!-- Bootstrap core JS-->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<!-- icons-->
+	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-		
-	</head>
 
-	<body onload="panier()">
+	<!-- Bootstrap core JS-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-		<nav class="navbar navbar-expand-lg navbar-light" id="top">
-			<div class="container-fluid d-flex flex-row">
-				<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid" alt="monlogo" id="lelogo"></a>
-				<div class="nav-item collapse navbar-collapse">
-					<div id="titre_page">Qui sommes-nous ?</div>
-				</div>
-				<div id="authentification">
-					<a href="authentification.html">
+
+</head>
+
+<body onload="panier()">
+
+	<nav class="navbar navbar-expand-lg navbar-light" id="top">
+		<div class="container-fluid d-flex flex-row">
+			<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid"
+					alt="monlogo" id="lelogo"></a>
+			<div class="nav-item collapse navbar-collapse">
+				<div id="titre_page">Qui sommes-nous ?</div>
+			</div>
+			<div id="authentification">
+				<a href="authentification.html">
 					<img src="images\login.png" alt="Authentification" id="lesids">
-					</a>				
-				</div>						
-				<div id="panier">
-					<a href="panier.html">
-						<span id="total_articles">0</span>
-						<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
-						<span id="total_commande">0 €</span>
+				</a>
+			</div>
+			<div id="panier">
+				<a href="panier.html">
+					<span id="total_articles">0</span>
+					<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+					<span id="total_commande">0 €</span>
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<section id="main">
+
+		<div id="devanture" class="container">
+
+			<p>
+				Nous répondons aux besoins de personnes cherchant à acheter des produits avec un faible budget,<br>
+				ou dans une demarche de non gaspillage, ainsi que de profiter de bonnes affaires.<br><br>
+				Nous permetons au client d'éviter de se déplacer et de choisir les produits de producteurs en direct<br>
+				et de pouvoir les récupérer à proximité de chez lui.
+			</p>
+
+		</div>
+
+	</section>
+
+	<footer class="py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+						<li><a href="noustrouver.html">Nous trouver</a></li>
+						<li><a href="panier.html">Commande</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-4 text-center ancre">
+					<a href="#top">
+						<i id='icon-footer' class="fas fa-angle-up"></i>
 					</a>
+					<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+				</div>
+
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="newsletter.html">Mailing List</a></li>
+						<li><a href="mentionslegales.html">Mentions légales</a></li>
+						<li><a href="cgu.html">CGU</a></li>
+					</ul>
 				</div>
 			</div>
-		</nav>
-
-		<section id="main">
-
-			<div id="devanture" class="container">
-
-				<p> 
-					Nous répondons aux besoins de personnes cherchant à acheter des produits avec un faible budget,<br>
-					ou dans une demarche de non gaspillage, ainsi  que de profiter de bonnes affaires.<br><br>
-					Nous permetons au client d'éviter de se déplacer et de choisir les produits de producteurs en direct<br>
-					et de pouvoir les récupérer à proximité de chez lui.
-				</p>
-
-			</div>
-
-			<script src="js\slideshow.js" type="text/javascript"></script>
-
-		</section>
-
-		<footer class="py-4 text-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="index.html">Accueil</a></li>
-							<li><a href="quisommesnous.html">Qui sommes nous</a></li>
-							<li><a href="noustrouver.html">Nous trouver</a></li>
-							<li><a href="panier.html">Commande</a></li>
-						</ul>
-					</div>
-
-					<div class="col-sm-4 text-center ancre">
-						<a href="#top">
-							<i id='icon-footer' class="fas fa-angle-up"></i>
-						</a>
-						<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
-					</div>
-
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="newsletter.html">Mailing List</a></li>
-							<li><a href="mentionslegales.html">Mentions légales</a></li>
-							<li><a href="cgu.html">CGU</a></li>
-						</ul>
-					</div>
-				</div>			
-			</div>
-        </footer>
+		</div>
+	</footer>
 
 
-	</body>
+</body>
+
 </html>
