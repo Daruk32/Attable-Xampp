@@ -76,6 +76,11 @@
 						<input type="password" class="form-control w-75" id="mdp" name="control"
 							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z\d]).{6,}" required="required">
 					</div>
+					<div class="form-check text-center">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+						<label class="form-check-label" for="flexCheckDefault">Rester connecté</label>
+					</div>
+					<br>
 					<div id="bouton">
 						<input type="submit" value="Connexion" id="submit">
 						<div id="message">
@@ -178,11 +183,6 @@
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 
-		firebase.auth().onAuthStateChanged((user) => {
-			if (user) {
-				location.replace("admin.html");
-			}
-		})
 
 	</script>
 

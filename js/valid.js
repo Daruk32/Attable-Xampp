@@ -66,42 +66,63 @@ function validate_password() {
 
 
 
-
+// Fonction Connexion 
 function login() {
   if (controleCharacter() == 1) {
-    console.log("C'est interdit !");
     location.reload();
     return;
   }
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("mdp").value;
+  var inputElements = document.getElementById('flexCheckDefault');
+  if (inputElements.checked) {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("mdp").value;
+    var ids = [email, password];
+    var ids_json = JSON.stringify(ids);
+    createCookie("info_cnx", ids_json, 3);
+  }
+  else {
+    createCookie("info_cnx", ids_json, 3);
+  }
+
   firebase.auth().signInWithEmailAndPassword(email, password);
-  createCookie("session", "yoursession", 3);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      var cookieStatut = {
+        userName: email,
+        statut: true
+      };
+      createCookie("statut_cnx", JSON.stringify(cookieStatut), 7);
+      location.replace("admin.html");
+    }
+  })
 }
 
+// Fonction Déconnexion
 function logout() {
   firebase.auth().signOut().then(() => {
     console.log("user signed out");
-    eraseCookie("session");
+    eraseCookie("info_cnx");
     // Sign-out successful.
-  }).catch((error) => {4
+  }).catch((error) => {
     console.log("error");
     // An error happened.
   });
 }
 
-
-if (readCookie("session") == null) {
-	logout();
+// Fonction déconnexion si cookie expiré
+if (readCookie("info_cnx") == null) {
+  logout();
 }
 
 
-
+// Fonction contrôle des caractères 
 function verif_form_modification() {
   if (controleCharacter() == 1) {
-    console.log("C'est interdit !");
     location.reload();
     return;
   }
 }
+
+

@@ -21,7 +21,7 @@ ErrorDocument 403 "403 - Répertoire interdit"
 <ifDefine !Free>
 #serveur de prod
 #renvoie toutes les requetes sur le dossier visible par tous sans auth
-#RedirectMatch permanent ^/$ /_Jour1/index.html
+RedirectMatch permanent ^/$ /_Jour1/index.html
 
 #mettre -Indexes pour ne pas authoriser l'affichage du répertoire
 Options Indexes 
