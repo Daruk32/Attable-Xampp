@@ -136,4 +136,15 @@ fs.readFile("./js/valid.js", "utf-8", function (error, code) {
     })
 })
 
-
+fs.readFile("./js/crypt.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/crypt-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated crypt is ready !");
+    })
+})

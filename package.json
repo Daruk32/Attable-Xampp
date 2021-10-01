@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "firebaseui": "^5.0.0",
-    "javascript-obfuscator": "^2.19.0"
+    "javascript-obfuscator": "^2.19.0",
+    "jose": "^3.19.0",
+    "jsonwebtoken": "^8.5.1"
   }
 }

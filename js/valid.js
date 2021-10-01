@@ -158,3 +158,4 @@ function putInfos() {
     boxRemember.checked = false;
   }
 }
+
