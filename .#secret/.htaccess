@@ -1,9 +1,0 @@
-# ======================
-# On securise le dossier afin d'empecher que les mots de passes puissent être récupérés
-# ======================
-Order allow,deny
-Deny from all
-Options -Indexes
-
-
-
