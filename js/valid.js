@@ -74,15 +74,24 @@ function login() {
   }
 
   var inputElements = document.getElementById('flexCheckDefault');
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("mdp").value;
+  var ids = [email, password];
+  var ids_json = JSON.stringify(ids);
+
   if (inputElements.checked) {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("mdp").value;
-    var ids = [email, password];
-    var ids_json = JSON.stringify(ids);
     createCookie("info_cnx", ids_json, 3);
   }
   else {
-    createCookie("info_cnx", ids_json, 3);
+    eraseCookie("info_cnx");
+  }
+
+  var inputRemember = document.getElementById('rememberMe');
+  if (inputRemember.checked) {
+    createCookie("info_rmb", ids_json, 3);
+  }
+  else {
+    eraseCookie("info_rmb");
   }
 
   firebase.auth().signInWithEmailAndPassword(email, password);
@@ -112,10 +121,17 @@ function logout() {
 }
 
 // Fonction déconnexion si cookie expiré
-if (readCookie("info_cnx") == null) {
-  logout();
+function cookieControl() {
+  if (readCookie("info_cnx") == null) {
+    let inputElements = document.getElementById('flexCheckDefault');
+    inputElements.checked = false;
+    logout();
+  }
+  else {
+    let inputElements = document.getElementById('flexCheckDefault');
+    inputElements.checked = true;
+  }
 }
-
 
 // Fonction contrôle des caractères 
 function verif_form_modification() {
@@ -126,3 +142,19 @@ function verif_form_modification() {
 }
 
 
+// Fonction pour mettre le mail et mdp dans les inputs si rememberMe est checked
+function putInfos() {
+  if (readCookie("info_rmb") != null) {
+    var infos = JSON.parse(readCookie("info_rmb"));
+    document.getElementById("email").value = infos[0];
+    document.getElementById("mdp").value = infos[1];
+    let boxRemember = document.getElementById('rememberMe');
+    boxRemember.checked = true;
+  }
+  else {
+    document.getElementById("email").value = "";
+    document.getElementById("mdp").value = "";
+    let boxRemember = document.getElementById('rememberMe');
+    boxRemember.checked = false;
+  }
+}
