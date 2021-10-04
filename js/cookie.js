@@ -1,3 +1,4 @@
+//création du cookie
 function createCookie(name, value, days) {
 	if (days) {
 		var date = new Date();
@@ -7,8 +8,7 @@ function createCookie(name, value, days) {
 	else var expires = "";
 	document.cookie = name + "=" + value + expires + "; path=/" + ';';
 }
-
-
+//Lecture du cookie
 function readCookie(name) {
 	var nameEQ = name + "=";
 	var ca = document.cookie.split(';');
@@ -19,13 +19,13 @@ function readCookie(name) {
 	}
 	return null;
 }
-
-
+//Suppression du cookie
 function eraseCookie(name) {
 	createCookie(name, "", -1);
 }
 
 
+//Contrôle des caractères interdits pour les formulaires
 var controleInfo;
 var charactersForbidden = ["&", "<", ">", "%", "/", "<script>", "\"", "'"];
 function controleCharacter() {
@@ -35,11 +35,23 @@ function controleCharacter() {
 		for (let y = 0; y < element.length; y++) {
 			for (let z = 0; z < charactersForbidden.length; z++) {
 				if (element[y] == charactersForbidden[z]) {
-					alert(element[y]+ " est un caractère interdit !")
+					alert(element[y] + " est un caractère interdit !")
 					controleInfo = 1;
 					return controleInfo;
 				}
 			}
 		}
+	}
+}
+
+
+//Redirection si connecté
+function redirAdmin() {
+	var dotAuyth = document.getElementById("authAdmin");
+	if (readCookie("info_cnx") != null) {
+		dotAuyth.href = 'admin.html';
+	}
+	else {
+		dotAuyth.href = "authentification.html";
 	}
 }

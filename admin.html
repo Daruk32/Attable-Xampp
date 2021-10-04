@@ -37,7 +37,7 @@
 
 	</head>
 
-	<body onload="panier(), convertJsonStorage()">
+	<body onload="panier(), convertJsonStorage(), redirAdmin()">
 
 		<nav class="navbar navbar-expand-lg navbar-light" id="top">
 			<div class="container-fluid d-flex flex-row">
@@ -46,8 +46,8 @@
 					<div id="titre_page">Page Administrateur</div>
 				</div>
 				<div id="authentification">
-					<a href="authentification.html">
-					<img src="images\login.png" alt="Authentification" id="lesids">
+					<a id="authAdmin">
+						<img src="images\login.png" alt="Authentification" id="lesids">
 					</a>				
 				</div>						
 				<div id="panier">

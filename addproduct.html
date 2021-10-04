@@ -33,6 +33,7 @@
 	<!-- Bootstrap Table JS-->
 	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 
+	<script src="js/cookie-obf.js" type="text/javascript"></script>
 
 	<script src="js\article-obf.js" type="text/javascript"></script>
 
@@ -40,7 +41,7 @@
 
 </head>
 
-<body>
+<body onload="redirAdmin()">
 
 	<section>
 
@@ -53,7 +54,7 @@
 					<div id="titre_page">Ajouter un produit</div>
 				</div>
 				<div id="authentification">
-					<a href="authentification.html">
+					<a id="authAdmin">
 						<img src="images\login.png" alt="Authentification" id="lesids">
 					</a>
 				</div>
@@ -94,25 +95,29 @@
 					</div>
 					<div class="form-group">
 						<label for="product-name">Nom du produit</label>
-						<input type="text" class="form-control w-100" id="name" placeholder="Produit1" name="control" required>
+						<input type="text" class="form-control w-100" id="name" placeholder="Produit1" name="control"
+							required>
 					</div>
 					<div class="form-group">
 						<label for="legend">Légende du produit</label>
-						<input type="text" class="form-control w-100" id="legend_P1" placeholder="LégendeP1" name="control" required>
+						<input type="text" class="form-control w-100" id="legend_P1" placeholder="LégendeP1"
+							name="control" required>
 					</div>
 					<div class="form-group">
 						<label for="short-descriptive">Très bref descriptif du produit (maximum 15 caractères)</label>
-						<input type="text" class="form-control w-100" id="short_legend" name="control" placeholder="Moule à gauffre en inox" required>
+						<input type="text" class="form-control w-100" id="short_legend" name="control"
+							placeholder="Moule à gauffre en inox" required>
 					</div>
 					<div class="form-group">
 						<label for="long-descriptive">Descriptif du produit (max 200 caractères)</label>
-						<input type="text" id="descriptive" class="form-control w-100" size="50" name="control"	placeholder="Moule à gaufre en inox de qualité supérieure, tout le monde en rêve..."
+						<input type="text" id="descriptive" class="form-control w-100" size="50" name="control"
+							placeholder="Moule à gaufre en inox de qualité supérieure, tout le monde en rêve..."
 							required>
 					</div>
 					<div class="form-group">
 						<label for="price">Prix du produit</label>
-						<input type="text" class="text-center form-control w-25" id="price" name="control" placeholder="..,.. €"
-							required>
+						<input type="text" class="text-center form-control w-25" id="price" name="control"
+							placeholder="..,.. €" required>
 					</div>
 					<div class="form-group">
 						<label for="quantity">Quantité de produit</label>
@@ -201,8 +206,8 @@
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 
-		firebase.auth().onAuthStateChanged((user)=>{
-			if(!user){
+		firebase.auth().onAuthStateChanged((user) => {
+			if (!user) {
 				location.replace("authentification.html")
 			}
 		})
