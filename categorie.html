@@ -123,7 +123,46 @@
 
 		<script src="js/jquery.izoomify.js"></script>
 
+	<!-- Bootstrap Table JS-->
+	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 
+	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<!--test temps réel-->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+	<script id='MainScript' type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		const firebaseConfig = {
+			apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",
+			authDomain: "attable-51633.firebaseapp.com",
+			projectId: "attable-51633",
+			databaseURL: "https://attable-51633-default-rtdb.europe-west1.firebasedatabase.app",
+			storageBucket: "attable-51633.appspot.com",
+			messagingSenderId: "255390814899",
+			appId: "1:255390814899:web:714ec5ace61cd6479796c6",
+			measurementId: "G-2DZWXDMSY6"
+
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+		firebase.auth().onAuthStateChanged((user) => {
+			if (!user) {
+				location.replace("authentification.html")
+			}
+		})
+	</script>
 
 	</body>
 </html>
