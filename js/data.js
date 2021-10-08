@@ -85,7 +85,7 @@ tab_categorie.push(tab_the);
 tabtitre.push("Thés");
 
 
-//Fonction de conversion de la BDD fixe du site en json et stockage au localstorage
+//Fonction de conversion de la BDD fixe products du site en json et stockage au localstorage
 window.convertJsonStorage = function convertJsonStorage() {
   document.getElementById('jsonConvert').onclick = function () {
     //Ajout des champs id et quantité à l'array tab_categorie
@@ -113,3 +113,124 @@ window.convertJsonStorage = function convertJsonStorage() {
     console.log(str_json);
   }
 }
+
+
+//Tableau Exemple Fournisseurs 
+var supplierTable = [
+  {
+    "id": "1S",
+    "producter_name": "leclerc",
+    "producter_price": 1.5,
+    "comments": "conserves, épiceries",
+    "comments2": "grande surface, négociations longues",
+    "adress": "90 Avenue Barthélémy, 69009 Lyon"
+  }, {
+    "id": "2S",
+    "producter_name": "Senteurs d'Orient",
+    "producter_price": 1,
+    "comments": "thés",
+    "comments2": "grossiste",
+    "adress": "77 Cours de la Liberté, 69003 Lyon"
+  }, {
+    "id": "3S",
+    "producter_name": "Vie Claire",
+    "producter_price": 3,
+    "comments": "produits bios",
+    "comments2": "produits chers",
+    "adress": "245 Cour Lafayette, 69006 Lyon"
+  }, {
+    "id": "4S",
+    "producter_name": "Dlago",
+    "producter_price": 0.5,
+    "comments": "chips, produits secs",
+    "comments2": "rien",
+    "adress": "6 Rue Franklin, 69002 Lyon"
+  }, {
+    "id": "5S",
+    "producter_name": "Sucry",
+    "producter_price": 2,
+    "comments": "confiseries, chocolaterie",
+    "comments2": "vaste catalogue",
+    "adress": "129 Avenue Maréchal de Saxe, 69003 Lyon"
+  }
+]
+
+
+const db = firebase.firestore();
+var retrieveBddProducts = JSON.parse(localStorage.getItem('bddproducts'));
+var urlF, libelleF, prixF, texteF, quantityF, idF, categorieF;
+var productscollection = db.collection('products');
+
+window.exportProducts = function exportProducts() {
+  document.getElementById('exportProducts').onclick = function () {
+
+    for (let num = 0; num < retrieveBddProducts.length; num++) {
+      urlF = retrieveBddProducts[num].url;
+      libelleF = retrieveBddProducts[num].libelle;
+      prixF = retrieveBddProducts[num].prix;
+      texteF = retrieveBddProducts[num].texte;
+      quantityF = retrieveBddProducts[num].quantity;
+      idF = retrieveBddProducts[num].id;
+      categorieF = retrieveBddProducts[num].categorie;
+
+      firebase.database().ref('products/' + idF).set({
+        url: urlF,
+        libelle: libelleF,
+        prix: prixF,
+        texte: texteF,
+        quantity: quantityF,
+        id: idF,
+        categorie: categorieF
+      });
+    }
+    /*
+        productscollection.doc(idF).set({
+          url: urlF,
+          libelle: libelleF,
+          prix: prixF,
+          texte: texteF,
+          quantity: quantityF,
+          id: idF,
+          categorie: categorieF
+        });
+        */
+    console.log("Table Produits remise insérée")
+  }
+}
+
+var idFo, nameFo, prixFo, commentsFo, comments2Fo, adressFo;
+window.ExpSuppliers = function ExpSuppliers() {
+  document.getElementById('exportSuppliers').onclick = function () {
+    for (let numf = 0; numf < supplierTable.length; numf++) {
+      idFo = supplierTable[numf].id;
+      nameFo = supplierTable[numf].producter_name;
+      prixFo = supplierTable[numf].producter_price;
+      commentsFo = supplierTable[numf].comments;
+      comments2Fo = supplierTable[numf].comments2;
+      adressFo = supplierTable[numf].adress;
+
+      firebase.database().ref('suppliers/' + idFo).set({
+        id: idFo,
+        nom: nameFo,
+        prix: prixFo,
+        info1: commentsFo,
+        info2: comments2Fo,
+        adresse: adressFo
+      });
+    }
+    /*
+        productscollection.doc(idF).set({
+          url: urlF,
+          libelle: libelleF,
+          prix: prixF,
+          texte: texteF,
+          quantity: quantityF,
+          id: idF,
+          categorie: categorieF
+        });
+        */
+    console.log("Table Fournisseurs insérée")
+
+  }
+}
+

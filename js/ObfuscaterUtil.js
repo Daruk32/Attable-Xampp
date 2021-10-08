@@ -9,11 +9,17 @@ Pour chaque fichier js :
 ./js/addproduct.js
 ./js/addproduct-obf.js
 
+./js/addsupplier.js
+./js/addsupplier-obf.js
+
 ./js/article.js
 ./js/article-obf.js
 
 ./js/bddproduct.js
 ./js/bddproduct-obf.js
+
+./js/bddsupplier.js
+./js/bddsupplier-obf.js
 
 ./js/captcha.js
 ./js/captcha-obf.js
@@ -162,5 +168,31 @@ fs.readFile("./js/bddproduct.js", "utf-8", function (error, code) {
             return console.log(fsError);
         }
         console.log("Your obfuscated bddproduct is ready !");
+    })
+})
+
+fs.readFile("./js/addsupplier.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/addsupplier-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated addsupplier is ready !");
+    })
+})
+
+fs.readFile("./js/bddsupplier.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/bddsupplier-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated bddsupplier is ready !");
     })
 })

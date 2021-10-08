@@ -13,19 +13,21 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
-var ref, nom, price, quantities;
+var ref, nom, info1, info2, adress, price;
 
 function SelectAllData() {
-    firebase.database().ref("products").once('value',
+    firebase.database().ref("suppliers").once('value',
         function (AllRecords) {
             AllRecords.forEach(
                 function (CurrentRecord) {
                     ref = CurrentRecord.val().id;
-                    nom = CurrentRecord.val().libelle;
+                    nom = CurrentRecord.val().nom;
+                    info1 = CurrentRecord.val().info1;
+                    info2 = CurrentRecord.val().info2;
+                    adress = CurrentRecord.val().adresse;
                     price = CurrentRecord.val().prix;
-                    quantities = CurrentRecord.val().quantity;
 
-                    AddItemsToTable(ref, nom, price, quantities);
+                    AddItemsToTable(ref, nom, info1, info2, adress, price);
                 }
             );
         });
@@ -33,7 +35,7 @@ function SelectAllData() {
 
 window.onload = SelectAllData;
 
-function AddItemsToTable(ref, nom, price, quantities) {
+function AddItemsToTable(ref, nom, info1, info2, adress, price) {
     var tbody = document.getElementById("tbody1");
     var trow = document.createElement("tr");
     var td0 = document.createElement("input");
@@ -44,23 +46,27 @@ function AddItemsToTable(ref, nom, price, quantities) {
     var td3 = document.createElement("td");
     td3.className = "text-center";
     var td4 = document.createElement("td");
-    td4.className = "text-center";
+    td4.className = "text-center";    
     var td5 = document.createElement("td");
-    td5.className = "text-center";
+    td5.className = "text-center";    
     var td6 = document.createElement("td");
-    var td6a = document.createElement("a");
-    td6a.className = "text-center remove";
-    td6a.title = "Remove";
-    td6.appendChild(td6a);
-    var td6i = document.createElement("i");
-    td6.className = "fa fa-trash";
-    td6.href = "javascript:void(0)";
-    td6a.appendChild(td6i);
+    td6.className = "text-center";
+    var td8 = document.createElement("td");
+    var td8a = document.createElement("a");
+    td8a.className = "text-center remove";
+    td8a.title = "Remove";
+    td8.appendChild(td8a);
+    var td8i = document.createElement("i");
+    td8.className = "fa fa-trash";
+    td8.href = "javascript:void(0)";
+    td8a.appendChild(td8i);
     td1.innerHTML = ref;
     td2.innerHTML = nom;
-    td3.innerHTML = price;
-    td4.innerHTML = quantities;
-    trow.appendChild(td0); trow.appendChild(td1); trow.appendChild(td2); trow.appendChild(td3); trow.appendChild(td4); trow.appendChild(td5); trow.appendChild(td6);
+    td3.innerHTML = info1;
+    td4.innerHTML = info2;
+    td5.innerHTML = adress;
+    td6.innerHTML = price;
+    trow.appendChild(td0); trow.appendChild(td1); trow.appendChild(td2); trow.appendChild(td3); trow.appendChild(td4); trow.appendChild(td5); trow.appendChild(td6); trow.appendChild(td8);
     tbody.appendChild(trow);
 }
 
