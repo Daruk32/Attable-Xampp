@@ -36,7 +36,7 @@
 
 </head>
 
-<body onload="panier(), convertJsonStorage(), redirAdmin(), exportProducts(), ExpSuppliers()">
+<body onload="panier(), convertJsonStorage(), redirAdmin(), exportProducts(), ExpSuppliers(), ExpCategories()">
 
 	<nav class="navbar navbar-expand-lg navbar-light" id="top">
 		<div class="container-fluid d-flex flex-row">
@@ -63,7 +63,7 @@
 	<br>
 
 	<div class="text-center">
-		<h4>Convertir le tableau local products en format json et stockage dans le localstorage</h4>
+		<h4>Convertir les tableaux locaux products et categories en format json et stockage dans le localstorage</h4>
 		<button id='jsonConvert'>Conversion et sauvegarde</button>
 	</div>
 	<br>
@@ -94,8 +94,8 @@
 
 	<div class="text-center row">
 		<h4>Gestion des catégories</h4>
-		<a class="col-md-6" href="addcategory.html" target="_blank">CRUD Catégories</a>
-		<a class="col-md-6" href="bddcategories.html" target="_blank">BDD Catégories</a>
+		<a class="col-md-6" href="addcategorie.html" target="_blank">CRUD Catégories</a>
+		<a class="col-md-6" href="bddcategorie.html" target="_blank">BDD Catégories</a>
 	</div>
 
 	<br>

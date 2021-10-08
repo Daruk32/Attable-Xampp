@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Ajouter un catégorie</title>
+
+	<!-- Les styles -->
+	<link rel="stylesheet" href="css\attable.css">
+	<link rel="stylesheet" href="css\booststrap.css">
+	<link rel="stylesheet" href="css\footer.css">
+
+	<style>
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		input[type=number] {
+			-moz-appearance: textfield;
+		}
+	</style>
+
+	<!-- Icônes Fontawesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+	<!-- Bootstrap core JS-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<!-- Bootstrap Table -->
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+
+	<!-- Swal.fire -->
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+	<!-- Scripts -->
+	<script src="js/cookie-obf.js" type="text/javascript"></script>
+	<script src="js\article-obf.js" type="text/javascript"></script>
+
+</head>
+
+<body onload="redirAdmin()">
+
+	<section>
+
+
+		<nav class="navbar navbar-expand-lg navbar-light" id="top">
+			<div class="container-fluid d-flex flex-row">
+				<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png"
+						class="img-fluid" alt="monlogo" id="lelogo"></a>
+				<div id="titre_page" class="collapse navbar-collapse justify-content-center">
+					<div id="titre_page">Gestion des catégories</div>
+				</div>
+				<div id="authentification">
+					<a id="authAdmin">
+						<img src="images\login.png" alt="Authentification" id="lesids">
+					</a>
+				</div>
+				<div id="panier">
+					<a href="panier.html">
+						<span id="total_articles">0</span>
+						<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+						<span id="total_commande">0 €</span>
+					</a>
+				</div>
+			</div>
+		</nav>
+
+		<br>
+
+		<div class="row text-center">
+			<div class="col-md-6">
+				<a href="admin.html">
+					Retourner à la page Administrateur
+				</a>
+			</div>
+			<div class="col-md-6">
+				<button onclick="logout()">Déconnexion</button>
+			</div>
+		</div>
+
+		<br>
+		<div class="row text-center">
+
+			<div class="col-md-6">
+				<a href="bddcategorie.html" target="_blank">
+					Voir le tableau local des catégories
+				</a>
+			</div>
+			<div class="col-md-6">
+				<a href="https://console.firebase.google.com/project/attable-51633/database/attable-51633-default-rtdb/data"
+					target="_blank">
+					Voir le tableau des catégories Firebase
+				</a>
+			</div>
+		</div>
+
+		<br>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 joinform">
+					<h1 class="text-center w-100">Gestion des catégories</h1>
+					<hr>
+
+					<div class="form-group">
+						<label for="id">Référence de la catégorie</label>
+						<input type="text" class="form-control w-100" id="idCategorie" name="control" required>
+					</div>
+					<div class="form-group">
+						<label for="categorie-name">Nom de la catégorie</label>
+						<input type="text" class="form-control w-100" id="nameCategorie" name="control" required>
+					</div>
+					<div class="form-group">
+						<label for="categorie-value">Valeur</label>
+						<input type="text" class="form-control w-100" id="categorieValue" name="control" required>
+					</div>
+				</div>
+				<div class="col-md-3 joinform">
+					<div class="text-center">
+						<button id="Clear" class="btn btn-danger" onclick="Clear()"><i class="fas fa-eraser"></i>
+							CLEAR</button>
+					</div>
+					<div class="text-center mt-4">
+						<button id="AddCategorie" class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter une
+							catégorie</button>
+					</div>
+					<div class="text-center mt-4">
+						<button id="SelectCategorie" class="btn btn-warning"><i class="fas fa-search "></i> Sélectionner
+							une catégorie</button>
+					</div>
+					<div class="text-center mt-4">
+						<button id="UpdateCategorie" class="btn btn-success"><i class="fas fa-save"></i> Mettre à jour
+							un
+							catégorie</button>
+					</div>
+					<div class="text-center mt-4">
+						<button id="DeleteCategorie" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer un
+							catégorie</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+	<footer class="py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+						<li><a href="noustrouver.html">Nous trouver</a></li>
+						<li><a href="panier.html">Commande</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-4 text-center ancre">
+					<a href="#top">
+						<i id='icon-footer' class="fas fa-angle-up"></i>
+					</a>
+					<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+				</div>
+
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="newsletter.html">Mailing List</a></li>
+						<li><a href="mentionslegales.html">Mentions légales</a></li>
+						<li><a href="cgu.html">CGU</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<script src="js\addcategorie-obf.js" type="text/javascript"></script>
+
+</body>
+
+</html>

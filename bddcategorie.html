@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Tableau des catégories</title>
+
+	<link rel="stylesheet" href="css\booststrap.css">
+	<link rel="stylesheet" href="css\footer.css">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
+	<!-- Bootstrap core JS-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+	<!-- icons-->
+	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+	<!-- Bootstrap Table Style -->
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+
+
+
+	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table-locale-all.min.js"></script>
+	<script
+		src="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/export/bootstrap-table-export.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/print/bootstrap-table-print.min.js"></script>
+
+	<script src="js/data-obf.js" type="module"></script>
+
+	<script src="js\valid-obf.js" type="text/javascript"></script>
+
+	<script src="js/cookie-obf.js" type="text/javascript"></script>
+
+	<script src="js/panier-obf.js" type="module"></script>
+
+</head>
+
+<body onload="redirAdmin()">
+
+	<section>
+		<nav class="navbar navbar-expand-lg navbar-light" id="top">
+			<div class="container-fluid d-flex flex-row">
+				<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png"
+						class="img-fluid" alt="monlogo" id="lelogo"></a>
+				<div id="titre_page" class="collapse navbar-collapse justify-content-center">
+					<div id="titre_page">Tableau des catégories</div>
+				</div>
+				<div class='nav-item collapse navbar-collapse'>
+					<form class="collapse navbar-collapse justify-content-end">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
+				<div id="authentification">
+					<a id="authAdmin">
+						<img src="images\login.png" alt="Authentification" id="lesids">
+					</a>
+				</div>
+				<div id="panier">
+					<a href="panier.html">
+						<span id="total_articles">0</span>
+						<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+						<span id="total_commande">0 €</span>
+					</a>
+				</div>
+			</div>
+		</nav>
+	</section>
+
+
+	<br>
+
+	<div class="text-center">
+		<button id="MAJ" class="btn btn-primary" onclick="Maj()"><i class="fas fa-refresh"></i> Mettre à jour</button>
+	</div>
+
+	<div class="row text-center">
+		<div class="col-md-6">
+			<a href="admin.html">
+				Retourner à la page Administrateur
+			</a>
+		</div>
+		<div class="col-md-6">
+			<button onclick="logout()">Déconnexion</button>
+		</div>
+	</div>
+
+	<br>
+	<div class="row text-center">
+
+		<div class="col-md-6">
+			<a href="addcategorie.html" target="_blank">
+				Voir le CRUD des catégories
+			</a>
+		</div>
+		<div class="col-md-6">
+			<a href="https://console.firebase.google.com/project/attable-51633/database/attable-51633-default-rtdb/data"
+				target="_blank">
+				Voir le tableau des catégories Firebase
+			</a>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="m-3">
+		<div class="select">
+			<select class="form-control" id="locale">
+				<option value="en-US">en-US</option>
+				<option value="fr-FR" selected>fr-FR</option>
+			</select>
+		</div>
+		<table class="table" id="table" data-toolbar="#toolbar" data-search="true" data-show-refresh="true"
+			data-show-toggle="true" data-show-print="true" data-show-columns="true" data-show-columns-toggle-all="true"
+			data-detail-view="true" data-show-export="true" data-click-to-select="true"
+			data-detail-formatter="detailFormatter" data-show-pagination-switch="true" data-pagination="true"
+			data-id-field="id" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true"
+			data-side-pagination="server" data-response-handler="responseHandler">
+			<thead>
+				<th class="text-center col-md-2">Référence</th>
+				<th class="text-center col-md-4.5">Nom</th>
+				<th class="text-center col-md-2">Valeur</th>
+				<th class="text-center col-md-3">Actions</th>
+			</thead>
+
+			<tbody id="tbody1"></tbody>
+		</table>
+	</div>
+
+
+	<footer class="py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+						<li><a href="noustrouver.html">Nous trouver</a></li>
+						<li><a href="panier.html">Commande</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-4 text-center ancre">
+					<a href="#top">
+						<i id='icon-footer' class="fas fa-angle-up"></i>
+					</a>
+					<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+				</div>
+
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="newsletter.html">Mailing List</a></li>
+						<li><a href="mentionslegales.html">Mentions légales</a></li>
+						<li><a href="cgu.html">CGU</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<!--test temps réel-->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+	<script src="js/bddcategorie-obf.js" type="text/javascript"></script>
+
+	<script>
+		var $table = $('#table')
+		$(function () {
+			$table.bootstrapTable({
+				height: 700,
+				locale: $('#locale').val()
+			})
+			$('#locale').change(initTable)
+		})
+	</script>
+
+</body>
+
+</html>

@@ -9,6 +9,9 @@ Pour chaque fichier js :
 ./js/addproduct.js
 ./js/addproduct-obf.js
 
+./js\addcategorie.js
+./js\addcategorie-obf.js
+
 ./js/addsupplier.js
 ./js/addsupplier-obf.js
 
@@ -17,6 +20,9 @@ Pour chaque fichier js :
 
 ./js/bddproduct.js
 ./js/bddproduct-obf.js
+
+js/bddcategorie.js
+js/bddcategorie-obf.js
 
 ./js/bddsupplier.js
 ./js/bddsupplier-obf.js
@@ -194,5 +200,31 @@ fs.readFile("./js/bddsupplier.js", "utf-8", function (error, code) {
             return console.log(fsError);
         }
         console.log("Your obfuscated bddsupplier is ready !");
+    })
+})
+
+fs.readFile("./js/addcategorie.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/addcategorie-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated addcategorie is ready !");
+    })
+})
+
+fs.readFile("./js/bddcategorie.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/bddcategorie-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated bddcategorie is ready !");
     })
 })
