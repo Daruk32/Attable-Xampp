@@ -1,34 +1,34 @@
 [
     {
-        "id": "1",
+        "id": "1S",
         "producter_name": "leclerc",
         "producter_price": 1.5,
         "comments": "conserves, épiceries",
         "comments2": "grande surface, négociations longues",
         "adress": "90 Avenue Barthélémy, 69009 Lyon"
     },{
-        "id": "2",
+        "id": "2S",
         "producter_name": "Senteurs d'Orient",
         "producter_price": 1,
         "comments": "thés",
         "comments2": "grossiste",
         "adress": "77 Cours de la Liberté, 69003 Lyon"
     },{
-        "id": "3",
+        "id": "3S",
         "producter_name": "Vie Claire",
         "producter_price": 3,
         "comments": "produits bios",
         "comments2": "produits chers",
         "adress": "245 Cour Lafayette, 69006 Lyon"
     },{
-        "id": "4",
+        "id": "4S",
         "producter_name": "Dlago",
         "producter_price": 0.5,
         "comments": "chips, produits secs",
         "comments2": "rien",
         "adress": "6 Rue Franklin, 69002 Lyon"
     },{
-        "id": "5",
+        "id": "5S",
         "producter_name": "Sucry",
         "producter_price": 2,
         "comments": "confiseries, chocolaterie",

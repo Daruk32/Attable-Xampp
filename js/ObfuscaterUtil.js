@@ -12,6 +12,9 @@ Pour chaque fichier js :
 ./js/article.js
 ./js/article-obf.js
 
+./js/bddproduct.js
+./js/bddproduct-obf.js
+
 ./js/captcha.js
 ./js/captcha-obf.js
 
@@ -146,5 +149,18 @@ fs.readFile("./js/crypt.js", "utf-8", function (error, code) {
             return console.log(fsError);
         }
         console.log("Your obfuscated crypt is ready !");
+    })
+})
+
+fs.readFile("./js/bddproduct.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/bddproduct-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated bddproduct is ready !");
     })
 })

@@ -793,7 +793,7 @@ thead th:nth-child(54) {
 
 /* ------------------------------------------------------------Page NewsLetter et QuitMailingList----------------------------------------- */
 
-#quitmail, #joinmail {
+#quitmail, #joinmail, .joinform {
   padding: 1rem;
   border: 1px solid rgba(216,40,76,255);
   margin-top: 2rem;
