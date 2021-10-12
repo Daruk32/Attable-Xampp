@@ -17,7 +17,7 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 
-//
+//Process Image
 var ImgName, ImgUrl;
 var files = [];
 var reader;
@@ -48,12 +48,30 @@ function Ready() {
     descriptiveP = document.getElementById("descriptive").value;
     priceP = document.getElementById("price").value;
     quantityP = document.getElementById("quantity").value;
-    //categorieP = document.getElementById("categ").value;
+    categorieP = document.getElementById("categ").value;
 }
+
+
+//Process valeurs catégories
+firebase.database().ref("categories/").on('value', function (snapshot) {
+    var returnArr = [];
+    snapshot.forEach(function (childSnapshot) {
+        var item = childSnapshot.val().nom;
+        returnArr.push(item);
+    });
+    returnArr.sort();
+    var select = document.getElementById("categ");
+    for (index in returnArr) {
+        select.options[select.options.length] = new Option(returnArr[index], index);
+    }
+});
+
 
 //Clear
 function Clear() {
     document.getElementById('namebox').value = "";
+    document.getElementById('myimg').src = 'images/promo.png';
+    document.getElementById("UpProgress").innerHTML = "";
     document.getElementById("id").value = "";
     document.getElementById("name").value = "";
     document.getElementById("legend_P1").value = "";
@@ -61,6 +79,7 @@ function Clear() {
     document.getElementById("descriptive").value = "";
     document.getElementById("price").value = "";
     document.getElementById("quantity").value = "";
+    document.getElementById("categ").value = "";
 }
 
 //Ajout d'un produit
@@ -89,7 +108,8 @@ document.getElementById("AddProduct").onclick = function () {
                     short_legend: short_legendP,
                     descriptive: descriptiveP,
                     prix: priceP,
-                    quantity: quantityP
+                    quantity: quantityP,
+                    category: categorieP
                 });
             }
             );
@@ -126,7 +146,7 @@ document.getElementById("SelectProduct").onclick = function () {
             document.getElementById("descriptive").value = snapshot.val().descriptive;
             document.getElementById("price").value = snapshot.val().prix;
             document.getElementById("quantity").value = snapshot.val().quantity;
-
+            document.getElementById("categ").value = snapshot.val().category;
             Swal.fire({
                 title: 'Voilà !',
                 text: 'Votre produit',
@@ -140,7 +160,6 @@ document.getElementById("SelectProduct").onclick = function () {
 //MAJ d'un produit
 document.getElementById("UpdateProduct").onclick = function () {
     Ready();
-
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -159,21 +178,26 @@ document.getElementById("UpdateProduct").onclick = function () {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            firebase.database().ref("products/" + idP).update({
-                id: idP,
-                libelle: libelleP,
-                texte: legend_P1P,
-                short_legend: short_legendP,
-                descriptive: descriptiveP,
-                prix: priceP,
-                quantity: quantityP
+            var uploadTask = firebase.storage().ref('images/' + idP + ".png").put(files[0]);
+            uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                ImgUrl = url;
+                firebase.database().ref('products/' + idP).set({
+                    Link: ImgUrl,
+                    id: idP,
+                    libelle: libelleP,
+                    texte: legend_P1P,
+                    short_legend: short_legendP,
+                    descriptive: descriptiveP,
+                    prix: priceP,
+                    quantity: quantityP,
+                    category: categorieP
+                });
+                swalWithBootstrapButtons.fire(
+                    'Modifié !',
+                    'Les modifications sont enregistrées !',
+                    'success'
+                )
             });
-            swalWithBootstrapButtons.fire(
-                'Modifié !',
-                'Les modifications sont enregistrées !',
-                'success'
-            )
-            Clear();
         } else if (
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
