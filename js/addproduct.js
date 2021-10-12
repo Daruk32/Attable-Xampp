@@ -16,9 +16,31 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
+
+//
+var ImgName, ImgUrl;
+var files = [];
+var reader;
+//Fonction Select Image
+document.getElementById("namebox").onclick = function (e) {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.onchange = e => {
+        files = e.target.files;
+        reader = new FileReader();
+        reader.onload = function () {
+            document.getElementById("myimg").src = reader.result;
+        }
+        reader.readAsDataURL(files[0]);
+    }
+    input.click();
+}
+
+
 //Récupération des datas du produit renseigné
 var idP, libelleP, legend_P1P, short_legendP, descriptiveP, priceP, quantityP, categorieP;
 function Ready() {
+    ImgName = document.getElementById('namebox').value;
     idP = document.getElementById("id").value;
     libelleP = document.getElementById("name").value;
     legend_P1P = document.getElementById("legend_P1").value;
@@ -31,6 +53,7 @@ function Ready() {
 
 //Clear
 function Clear() {
+    document.getElementById('namebox').value = "";
     document.getElementById("id").value = "";
     document.getElementById("name").value = "";
     document.getElementById("legend_P1").value = "";
@@ -43,15 +66,36 @@ function Clear() {
 //Ajout d'un produit
 document.getElementById("AddProduct").onclick = function () {
     Ready();
-    firebase.database().ref("products/" + idP).set({
-        id: idP,
-        libelle: libelleP,
-        texte: legend_P1P,
-        short_legend: short_legendP,
-        descriptive: descriptiveP,
-        prix: priceP,
-        quantity: quantityP
-    });
+
+    //Process de l'image
+    var uploadTask = firebase.storage().ref('images/' + idP + ".png").put(files[0]);
+    uploadTask.on('state_changed', function (snapshot) {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        document.getElementById('UpProgress').innerHTML = 'Upload' + progress + '%';
+    },
+        function (error) {
+            alert('Error in saving the image !');
+        },
+
+        function () {
+            uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                ImgUrl = url;
+
+                firebase.database().ref('products/' + idP).set({
+                    Link: ImgUrl,
+                    id: idP,
+                    libelle: libelleP,
+                    texte: legend_P1P,
+                    short_legend: short_legendP,
+                    descriptive: descriptiveP,
+                    prix: priceP,
+                    quantity: quantityP
+                });
+            }
+            );
+        });
+
+
     Swal.fire({
         title: 'Bravo !',
         text: 'Votre produit a été ajouté !',
@@ -74,6 +118,7 @@ document.getElementById("SelectProduct").onclick = function () {
             });
         }
         else {
+            document.getElementById("myimg").src = snapshot.val().Link;
             document.getElementById("id").value = snapshot.val().id;
             document.getElementById("name").value = snapshot.val().libelle;
             document.getElementById("legend_P1").value = snapshot.val().texte;

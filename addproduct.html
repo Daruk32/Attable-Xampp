@@ -121,8 +121,9 @@
 
 					<div class="form-group">
 						<label for="img">Image du produit</label>
-						<input class="w-50" type="file" id="imgInp" name="imagefile" accept="image/jpeg,image/png" />
-						<img id="blah" src="#" onerror="this.src='images/promo.png'" />
+						<!--<input class="w-50" type="file" id="select" name="imagefile" accept="image/*" />-->
+						<button class="w-10" id="namebox">Parcourir...</button>
+						<img id="myimg" src="#" onerror="this.src='images/promo.png'" /><label id="UpProgress"></label>
 					</div>
 					<hr>
 					<div class="form-group">
@@ -195,7 +196,6 @@
 				</div>
 			</div>
 		</div>
-
 	</section>
 
 
@@ -229,8 +229,12 @@
 		</div>
 	</footer>
 
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-	<script src="js\addproduct-obf.js" type="text/javascript"></script>
+	<script src="js\addproduct.js" type="text/javascript"></script>
 
 </body>
 
