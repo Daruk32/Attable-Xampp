@@ -154,35 +154,35 @@ window.exportProducts = function exportProducts() {
 //Tableau Exemple Fournisseurs 
 var supplierTable = [
   {
-    "id": "1S",
+    "idS": "1S",
     "producter_name": "leclerc",
     "producter_price": 1.5,
     "comments": "conserves, épiceries",
     "comments2": "grande surface, négociations longues",
     "adress": "90 Avenue Barthélémy, 69009 Lyon"
   }, {
-    "id": "2S",
+    "idS": "2S",
     "producter_name": "Senteurs d'Orient",
     "producter_price": 1,
     "comments": "thés",
     "comments2": "grossiste",
     "adress": "77 Cours de la Liberté, 69003 Lyon"
   }, {
-    "id": "3S",
+    "idS": "3S",
     "producter_name": "Vie Claire",
     "producter_price": 3,
     "comments": "produits bios",
     "comments2": "produits chers",
     "adress": "245 Cour Lafayette, 69006 Lyon"
   }, {
-    "id": "4S",
+    "idS": "4S",
     "producter_name": "Dlago",
     "producter_price": 0.5,
     "comments": "chips, produits secs",
     "comments2": "rien",
     "adress": "6 Rue Franklin, 69002 Lyon"
   }, {
-    "id": "5S",
+    "idS": "5S",
     "producter_name": "Sucry",
     "producter_price": 2,
     "comments": "confiseries, chocolaterie",
@@ -196,7 +196,7 @@ window.ExpSuppliers = function ExpSuppliers() {
   document.getElementById('exportSuppliers').onclick = function () {
     for (let numf = 0; numf < supplierTable.length; numf++) {
       //Récupération des valeurs
-      idFo = supplierTable[numf].id;
+      idFo = supplierTable[numf].idS;
       nameFo = supplierTable[numf].producter_name;
       prixFo = supplierTable[numf].producter_price;
       commentsFo = supplierTable[numf].comments;
@@ -204,7 +204,7 @@ window.ExpSuppliers = function ExpSuppliers() {
       adressFo = supplierTable[numf].adress;
       //Export sous Firebase
       firebase.database().ref('suppliers/' + idFo).set({
-        id: idFo,
+        idS: idFo,
         nom: nameFo,
         prix: prixFo,
         info1: commentsFo,
@@ -231,67 +231,67 @@ window.ExpSuppliers = function ExpSuppliers() {
 //Tableau Exemple Catégories 
 var categsTable = [
   {
-    "id": "0C",
+    "idC": "0C",
     "titre": "Promotions",
     "value": 0
   }, {
-    "id": "1C",
+    "idC": "1C",
     "titre": "Boissons",
     "value": 1000
   }, {
-    "id": "2C",
+    "idC": "2C",
     "titre": "Bonbons",
     "value": 2000
   }, {
-    "id": "3C",
+    "idC": "3C",
     "titre": "Cafés",
     "value": 3000
   }, {
-    "id": "4C",
+    "idC": "4C",
     "titre": "Chips",
     "value": 4000
   }, {
-    "id": "5C",
+    "idC": "5C",
     "titre": "Chocolats",
     "value": 5000
   }, {
-    "id": "6C",
+    "idC": "6C",
     "titre": "Conserves",
     "value": 6000
   }, {
-    "id": "7C",
+    "idC": "7C",
     "titre": "&Eacute;picerie salée",
     "value": 7000
   }, {
-    "id": "8C",
+    "idC": "8C",
     "titre": "&Eacute;picerie sucrée",
     "value": 8000
   }, {
-    "id": "9C",
+    "idC": "9C",
     "titre": "&Eacute;pices",
     "value": 9000
   }, {
-    "id": "10C",
+    "idC": "10C",
     "titre": "Farines",
     "value": 10000
   }, {
-    "id": "11C",
+    "idC": "11C",
     "titre": "Fruits secs",
     "value": 11000
   }, {
-    "id": "12C",
+    "idC": "12C",
     "titre": "Gâteaux",
     "value": 12000
   }, {
-    "id": "13C",
+    "idC": "13C",
     "titre": "Hygiène",
     "value": 13000
   }, {
-    "id": "14C",
+    "idC": "14C",
     "titre": "Légumes secs",
     "value": 14000
   }, {
-    "id": "15C",
+    "idC": "15C",
     "titre": "Thés",
     "value": 15000
   }
@@ -301,12 +301,12 @@ var idcateg, namecateg, valueCateg;
 window.ExpCategories = function ExpCategories() {
   document.getElementById('exportCategories').onclick = function () {
     for (let numf = 0; numf < categsTable.length; numf++) {
-      idcateg = categsTable[numf].id;
+      idcateg = categsTable[numf].idC;
       namecateg = categsTable[numf].titre;
       valueCateg = categsTable[numf].value;
 
       firebase.database().ref('categories/' + idcateg).set({
-        id: idcateg,
+        idC: idcateg,
         nom: namecateg,
         valeur: valueCateg
       });

@@ -2,8 +2,15 @@
   "dependencies": {
     "crypto-js": "^4.1.1",
     "firebaseui": "^5.0.0",
-    "javascript-obfuscator": "^2.19.0",
+    "javascript-obfuscator": "^0.6.2",
     "jose": "^3.19.0",
     "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "babel-loader": "^8.2.2",
+    "dotenv": "^10.0.0",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0"
   }
 }

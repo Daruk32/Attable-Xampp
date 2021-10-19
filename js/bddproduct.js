@@ -73,3 +73,39 @@ firebase.auth().onAuthStateChanged((user) => {
 function Maj() {
     location.reload();
 }
+
+
+
+
+
+
+/*
+// Appel des tableaux JSON de Firebase
+const db = firebase.database().ref();
+const products = db.child("products/id");
+const categories = db.child("categories/id");
+const suppliers = db.child("suppliers/id");
+// Exemples de fonctions
+eventsRef.orderFunction().queryFunction();
+eventsRef.orderByKey().limitToFirst(10);
+eventsRef.orderByChild();
+eventsRef.orderByValue();
+startAt('value');
+endAt('value');
+equalTo('child_key');
+limitToFirst(10);
+limitToLast(10);
+// Exemple
+const db = firebase.database();
+const products = db.child("products/id");
+const query = products
+                .orderByChild('id')
+                .equalTo('value_example')
+                .limitToFirst(1);
+query.on('value', snap => {
+    //render to HTML
+});
+*/
+
+
+

@@ -8,6 +8,16 @@ var firebaseConfig = {
     messagingSenderId: "255390814899",
     appId: "1:255390814899:web:714ec5ace61cd6479796c6",
     measurementId: "G-2DZWXDMSY6"
+    /*    
+    apiKey: process.env.VUE_APP_API_KEY,
+    authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+    projectId: process.env.VUE_APP_PROJECT_ID,
+    databaseURL: process.env.VUE_APP_DB_URL,
+    storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+    appId: process.env.VUE_APP_APP_ID,
+    measurementId: process.env.VUE_APP_MEASUREMENT_ID
+    */
 };
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged((user) => {
@@ -55,14 +65,16 @@ function Ready() {
 //Process valeurs catégories
 firebase.database().ref("categories/").on('value', function (snapshot) {
     var returnArr = [];
+    var categoryArray = new Array;
     snapshot.forEach(function (childSnapshot) {
-        var item = childSnapshot.val().nom;
-        returnArr.push(item);
+        var item_id = childSnapshot.val().idC;
+        var item_name = childSnapshot.val().nom;
+        categoryArray[item_id] = item_name;
     });
-    returnArr.sort();
+    console.log(categoryArray);
     var select = document.getElementById("categ");
-    for (index in returnArr) {
-        select.options[select.options.length] = new Option(returnArr[index], index);
+    for (index in categoryArray) {
+        select.options[select.options.length] = new Option(categoryArray[index], index);
     }
 });
 

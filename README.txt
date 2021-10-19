@@ -22,14 +22,7 @@ Rajouter le code ci-dessous :
 - 2 : renseigner les identifiants redirigeant les data vers la BDD du compte Firebase/Google dans un script
 
 	const firebaseConfig = {
-		apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",
-		authDomain: "attable-51633.firebaseapp.com",
-		projectId: "attable-51633",
-		databaseURL: "https://attable-51633-default-rtdb.europe-west1.firebasedatabase.app",
-		storageBucket: "attable-51633.appspot.com",
-		messagingSenderId: "255390814899",
-		appId: "1:255390814899:web:714ec5ace61cd6479796c6",
-		measurementId: "G-2DZWXDMSY6"	
+	
 	};
 
 3 : Initialiser Firebase dans le script et les fonctions d'export de la BDD json vers les 2 types de stockage
