@@ -27,6 +27,18 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 
+//Insertion de la date de la MAJ de la BDD
+function BddMaj() {
+    var today = new Date();
+    var idD = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString() + today.getHours().toString() + today.getMinutes().toString() + today.getSeconds().toString();
+    var dateMaj = today.toString();
+    firebase.database().ref('DateMaj/' + idD).set({
+        IDD: idD,
+        Date: dateMaj
+    });
+}
+
+
 //Process Image
 var ImgName, ImgUrl;
 var files = [];
@@ -46,6 +58,20 @@ document.getElementById("namebox").onclick = function (e) {
     input.click();
 }
 
+var categoryArray = new Array;
+//Process valeurs catégories
+firebase.database().ref("categories/").on('value', function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+        var item_id = childSnapshot.val().idC;
+        var item_name = childSnapshot.val().nom;
+        categoryArray[item_id] = item_name;
+    });
+    var select = document.getElementById("categ");
+    for (index in categoryArray) {
+        select.options[select.options.length] = new Option(categoryArray[index], index);
+    }
+});
+
 
 //Récupération des datas du produit renseigné
 var idP, libelleP, legend_P1P, short_legendP, descriptiveP, priceP, quantityP, categorieP;
@@ -58,25 +84,13 @@ function Ready() {
     descriptiveP = document.getElementById("descriptive").value;
     priceP = document.getElementById("price").value;
     quantityP = document.getElementById("quantity").value;
-    categorieP = document.getElementById("categ").value;
-}
-
-
-//Process valeurs catégories
-firebase.database().ref("categories/").on('value', function (snapshot) {
-    var returnArr = [];
-    var categoryArray = new Array;
-    snapshot.forEach(function (childSnapshot) {
-        var item_id = childSnapshot.val().idC;
-        var item_name = childSnapshot.val().nom;
-        categoryArray[item_id] = item_name;
-    });
-    console.log(categoryArray);
-    var select = document.getElementById("categ");
-    for (index in categoryArray) {
-        select.options[select.options.length] = new Option(categoryArray[index], index);
+    if (document.getElementById("categ").options[document.getElementById("categ").selectedIndex] != undefined) {
+        categorieP = document.getElementById("categ").options[document.getElementById("categ").selectedIndex].text;
     }
-});
+    else {
+        categorieP = "";
+    }
+}
 
 
 //Clear
@@ -91,7 +105,7 @@ function Clear() {
     document.getElementById("descriptive").value = "";
     document.getElementById("price").value = "";
     document.getElementById("quantity").value = "";
-    document.getElementById("categ").value = "";
+    document.getElementById("categ").value = "test";
 }
 
 //Ajout d'un produit
@@ -134,6 +148,7 @@ document.getElementById("AddProduct").onclick = function () {
         icon: 'success',
         confirmButtonText: 'Cool'
     });
+    BddMaj();
     Clear();
 }
 
@@ -220,7 +235,8 @@ document.getElementById("UpdateProduct").onclick = function () {
                 'error'
             )
         }
-    })
+    });
+    BddMaj();
 }
 
 
@@ -262,5 +278,6 @@ document.getElementById("DeleteProduct").onclick = function () {
                 'error'
             )
         }
-    })
+    });
+    BddMaj();
 }

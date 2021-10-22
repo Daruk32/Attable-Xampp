@@ -38,7 +38,7 @@
 
 </head>
 
-<body onload="panier(), redirAdmin(), convertJsonStorage(), exportProducts(), ExpSuppliers(), ExpCategories()">
+<body onload="panier(), redirAdmin(), convertJsonStorage(), exportProducts(), ExpSuppliers(), ExpCategories(), productsArrayToPhp()">
 
 	<nav class="navbar navbar-expand-lg navbar-light" id="top">
 		<div class="container-fluid d-flex flex-row">
@@ -154,6 +154,7 @@
 	</footer>
 
 
+	
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>

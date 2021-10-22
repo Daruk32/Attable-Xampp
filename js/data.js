@@ -326,3 +326,30 @@ window.ExpCategories = function ExpCategories() {
 
   }
 }
+
+
+//Sélection des datas relatives aux produits depuis firebase ou le localstorage
+firebase.database().ref("products/").on('value', function (snapshot) {
+  var productsArray = new Array;
+  //Récupère tous le tableau products de firebase et l'insère dans un tableau productsArray
+  snapshot.forEach(function (childSnapshot) {
+    var productID = childSnapshot.val().id;
+    var productLibelle = childSnapshot.val().libelle;
+    var productPrice = childSnapshot.val().prix;
+    var productCategory = childSnapshot.val().category;
+    var productDescriptive = childSnapshot.val().descriptive;
+    var productURL = childSnapshot.val().Link;
+    var productSLegend = childSnapshot.val().short_legend;
+    var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend };
+    productsArray.push(ajout);
+  });
+  localStorage.setItem("productsArray", JSON.stringify(productsArray));
+});
+
+window.productsArrayToPhp = function productsArrayToPhp() {
+  var bddProducts = localStorage.getItem("productsArray");
+  $.post('ajax-test.php', { postbbd: bddProducts },
+      function (data) {
+          $('#result').html(data);
+      });
+}

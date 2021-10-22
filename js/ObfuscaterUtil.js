@@ -4,6 +4,8 @@ var jsObfuscator = require('javascript-obfuscator');
 /*
 Commande pour lancer le process dans le terminal
 node js/ObfuscaterUtil.js
+New version ???
+javascript-obfuscator samples/sample.js --compact true --self-defending false
 
 Pour chaque fichier js :
 ./js/addproduct.js

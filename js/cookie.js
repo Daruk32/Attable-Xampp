@@ -49,7 +49,7 @@ function controleCharacter() {
 function redirAdmin() {
 	var dotAuyth = document.getElementById("authAdmin");
 	if (readCookie("info_cnx") != null) {
-		dotAuyth.href = 'admin.html';
+		dotAuyth.href = 'admin.php';
 	}
 	else {
 		dotAuyth.href = "authentification.html";

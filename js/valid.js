@@ -103,7 +103,7 @@ function login() {
         statut: true
       };
       createCookie("statut_cnx", JSON.stringify(cookieStatut), 7);
-      location.replace("admin.html");
+      location.replace("admin.php");
     }
   })
 }

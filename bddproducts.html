@@ -38,7 +38,7 @@
 
 	<!-- Scripts -->
 	<script src="js\valid-obf.js" type="text/javascript"></script>
-	<script src="js/cookie-obf.js" type="text/javascript"></script>
+	<script src="js/cookie.js" type="text/javascript"></script>
 	<script src="js/panier-obf.js" type="module"></script>
 
 
@@ -84,7 +84,7 @@
 
 	<div class="row text-center">
 		<div class="col-md-6">
-			<a href="admin.html">
+			<a href="admin.php">
 				Retourner à la page Administrateur
 			</a>
 		</div>
@@ -110,23 +110,7 @@
 	</div>
 
 	<br>
-	<!--
-	<div class="m-3">
-		<table class="table" id="table">
-			<thead>
-				<th class="text-center col-md-0.5"></th>
-				<th class="text-center col-md-1">Référence</th>
-				<th class="col-md-4">Nom</th>
-				<th class="text-center col-md-1">Prix</th>
-				<th class="text-center col-md-1">Quantité</th>
-				<th class="text-center col-md-1.5">Photo</th>
-				<th class="text-center col-md-1.5">Actions</th>
-			</thead>
 
-			<tbody id="tbody1"></tbody>
-		</table>
-	</div>
--->
 	<div class="m-3">
 		<div class="select">
 			<select class="form-control" id="locale">
@@ -134,19 +118,12 @@
 				<option value="fr-FR" selected>fr-FR</option>
 			</select>
 		</div>
-		<table class="table" id="table" data-toolbar="#toolbar" data-search="true" data-show-refresh="true"
-			data-show-toggle="true" data-show-print="true" data-show-columns="true" data-show-columns-toggle-all="true"
-			data-detail-view="true" data-show-export="true" data-click-to-select="true"
-			data-detail-formatter="detailFormatter" data-show-pagination-switch="true" data-pagination="true"
-			data-id-field="id" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true"
-			data-side-pagination="server" data-response-handler="responseHandler">
-			<thead>
-				<th class="text-center">Référence</th>
-				<th class="text-center">Nom</th>
-				<th class="text-center">Valeur</th>
-			</thead>
-
-			<tbody id="tbody1"></tbody>
+		<table class="table" id="table" data-toolbar="#toolbar" data-toggle="table" data-search="true"
+			data-show-refresh="true" data-show-toggle="true" data-show-print="true" data-show-columns="true"
+			data-show-columns-toggle-all="true" data-detail-view="true" data-show-export="true"
+			data-click-to-select="true" data-detail-formatter="detailFormatter" data-show-pagination-switch="true"
+			data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true"
+			data-side-pagination="server" data-response-handler="responseHandler" data-url="BddProducts.json">
 		</table>
 	</div>
 
@@ -189,18 +166,9 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
 	<!--<script src="js/bddproduct-obf.js" type="text/javascript"></script>-->
-	<script src="js/data-obf.js" type="module"></script>
+	<script src="js/data.js" type="module"></script>
 
 	<script id='MainScript' type="module">
-		var test2;
-		var test;
-		test = firebase.database().ref('products/').once('value', function (snap) {
-			test2 = JSON.stringify(snap.val());
-			console.log (test2);
-		})
-		console.log (test);
-		console.log (test2);
-
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
 				location.replace("authentification.html")
@@ -212,6 +180,8 @@
 		var $table = $('#table')
 		var $remove = $('#remove')
 		var selections = []
+
+
 		function getIdSelections() {
 			return $.map($table.bootstrapTable('getSelections'), function (row) {
 				return row.id
@@ -264,8 +234,6 @@
 			return data.length
 		}
 
-
-
 		function initTable() {
 			$table.bootstrapTable('destroy').bootstrapTable({
 				height: 550,
@@ -291,7 +259,7 @@
 						align: 'center'
 					}],
 					[{
-						field: 'libelle',
+						field: 'name',
 						title: 'Nom',
 						sortable: true,
 						footerFormatter: totalNameFormatter,
@@ -300,12 +268,12 @@
 						field: 'prix',
 						title: 'Prix',
 						sortable: true,
-						align: 'center',
+						align: 'center'
 					}, {
 						field: 'quantity',
 						title: 'Quantité',
 						sortable: true,
-						align: 'center',
+						align: 'center'
 					}, {
 						field: 'operate',
 						title: 'Item Operate',
@@ -339,11 +307,6 @@
 
 		$(function () {
 			initTable()
-
-			$table.bootstrapTable({
-				height: 700,
-				locale: $('#locale').val()
-			})
 			$('#locale').change(initTable)
 		})
 	</script>
