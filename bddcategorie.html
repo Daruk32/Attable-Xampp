@@ -49,12 +49,6 @@
 				<div id="titre_page" class="collapse navbar-collapse justify-content-center">
 					<div id="titre_page">Tableau des catégories</div>
 				</div>
-				<div class='nav-item collapse navbar-collapse'>
-					<form class="collapse navbar-collapse justify-content-end">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success" type="submit">Search</button>
-					</form>
-				</div>
 				<div id="authentification">
 					<a id="authAdmin">
 						<img src="images/login.png" alt="Authentification" id="lesids">
@@ -114,7 +108,7 @@
 				<option value="fr-FR" selected>fr-FR</option>
 			</select>
 		</div>
-		<table class="table" id="table" data-toolbar="#toolbar" data-search="true" data-show-refresh="true"
+		<table class="table" id="table" data-toolbar="#toolbar" data-search="false" data-show-refresh="true"
 			data-show-toggle="true" data-show-print="true" data-show-columns="true" data-show-columns-toggle-all="true"
 			data-detail-view="true" data-show-export="true" data-click-to-select="true"
 			data-detail-formatter="detailFormatter" data-show-pagination-switch="true" data-pagination="true"
@@ -168,7 +162,17 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-
+	<script id='MainScript' type="module">
+		firebase.auth().onAuthStateChanged((user) => {
+			if (!user) {
+				location.replace("authentification.html");
+			}
+			else {
+				document.getElementById("lesids").src="images/login2.png";
+			}
+		})
+	</script>
+	
 	<!-- Scripts -->
 	<script src="js/data-obf.js" type="module"></script>
 	<script src="js/bddcategorie-obf.js" type="text/javascript"></script>

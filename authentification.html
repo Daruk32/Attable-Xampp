@@ -24,16 +24,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	
+
 	<!-- Scripts -->
 	<script src="js/cookie-obf.js" type="text/javascript"></script>
 	<script src="js/gen_dyna-obf.js" type="module"></script>
 	<script src="js/panier-obf.js" type="module"></script>
 	<script src="js/valid-obf.js" type="text/javascript"></script>
 
-
 </head>
-
 
 <body onload="validate_password(), panier(), cookieControl(), putInfos(), redirAdmin()">
 
@@ -72,7 +70,7 @@
 					<div class="form-group text-center">
 						<label for="password">Entrez votre mot de passe</label>
 						<input type="password" class="form-control w-75" id="mdp" name="control"
-							pattern="(?=.*/d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z/d]).{6,}" required="required">
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z\d]).{6,}" required="required">
 					</div>
 					<div class="form-check text-left">
 						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -155,10 +153,12 @@
 	</script>
 
 	<!-- Firebase -->
+	<!-- Firebase -->
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 	<script id='MainScript' type="module">
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
 		const firebaseConfig = {
@@ -173,6 +173,16 @@
 		};
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
+	</script>
+	<script id='MainScript' type="module">
+		firebase.auth().onAuthStateChanged((user) => {
+			if (!user) {
+				location.replace("authentification.html");
+			}
+			else {
+				document.getElementById("lesids").src = "images/login2.png";
+			}
+		})
 	</script>
 
 </body>

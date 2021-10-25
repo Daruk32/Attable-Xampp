@@ -159,7 +159,10 @@
 	<script id='MainScript' type="module">
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
-				location.replace("authentification.html")
+				location.replace("authentification.html");
+			}
+			else {
+				document.getElementById("lesids").src="images/login2.png";
 			}
 		})
 	</script>

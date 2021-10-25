@@ -50,12 +50,6 @@
 				<div id="titre_page" class="collapse navbar-collapse justify-content-center">
 					<div id="titre_page">Tableau des produits</div>
 				</div>
-				<div class='nav-item collapse navbar-collapse'>
-					<form class="collapse navbar-collapse justify-content-end">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success" type="submit">Search</button>
-					</form>
-				</div>
 				<div id="authentification">
 					<a id="authAdmin">
 						<img src="images/login.png" alt="Authentification" id="lesids">
@@ -114,7 +108,7 @@
 				<option value="fr-FR" selected>fr-FR</option>
 			</select>
 		</div>
-		<table class="table" id="table" data-toolbar="#toolbar" data-toggle="table" data-search="true"
+		<table class="table" id="table" data-toolbar="#toolbar" data-toggle="table" data-search="false"
 			data-show-refresh="true" data-show-toggle="true" data-show-print="true" data-show-columns="true"
 			data-show-columns-toggle-all="true" data-detail-view="true" data-show-export="true"
 			data-click-to-select="true" data-detail-formatter="detailFormatter" data-show-pagination-switch="true"
@@ -167,7 +161,10 @@
 	<script id='MainScript' type="module">
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
-				location.replace("authentification.html")
+				location.replace("authentification.html");
+			}
+			else {
+				document.getElementById("lesids").src="images/login2.png";
 			}
 		})
 	</script>
