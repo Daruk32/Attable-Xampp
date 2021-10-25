@@ -1,3 +1,11 @@
+/*
+Auteur : Johan GIROUX
+2020-2021
+Dernière MAJ : 30/10/2021
+V2.9
+*/
+
+
 //Fonction de génération d'un Captcha textuel
 function Captcha(){
   var alpha = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');

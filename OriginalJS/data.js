@@ -1,3 +1,11 @@
+/*
+Auteur : Johan GIROUX
+2020-2021
+Dernière MAJ : 30/10/2021
+V2.9
+*/
+
+
 // Initialize Firebase
 var firebaseConfig = {
   apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",

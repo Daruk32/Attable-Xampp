@@ -7,9 +7,10 @@
 
 	<title>Page Admin</title>
 
-	<link rel="stylesheet" href="css\attable.css">
-	<link rel="stylesheet" href="css\booststrap.css">
-	<link rel="stylesheet" href="css\footer.css">
+	<!-- Styles CSS -->
+	<link rel="stylesheet" href="css/attable.css">
+	<link rel="stylesheet" href="css/booststrap.css">
+	<link rel="stylesheet" href="css/footer.css">
 
 	<!-- icons-->
 	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
@@ -28,13 +29,10 @@
 	<!-- Bootstrap Table JS-->
 	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 
-	<script src="js/cookie.js" type="text/javascript"></script>
-
+	<!-- Scripts -->
+	<script src="js/cookie-obf.js" type="text/javascript"></script>
 	<script src="js/panier-obf.js" type="module"></script>
-
 	<script src="js/valid-obf.js" type="text/javascript"></script>
-	<script src="js/data.js" type="module"></script>
-
 
 </head>
 
@@ -42,20 +40,20 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light" id="top">
 		<div class="container-fluid d-flex flex-row">
-			<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid"
+			<a class="navbar-brand" href="index.html" id="logo"><img src="images/attable_logo2.png" class="img-fluid"
 					alt="monlogo" id="lelogo"></a>
 			<div class="nav-item collapse navbar-collapse">
 				<div id="titre_page">Page Administrateur</div>
 			</div>
 			<div id="authentification">
 				<a id="authAdmin">
-					<img src="images\login.png" alt="Authentification" id="lesids">
+					<img src="images/login.png" alt="Authentification" id="lesids">
 				</a>
 			</div>
 			<div id="panier">
 				<a href="panier.html">
 					<span id="total_articles">0</span>
-					<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+					<img src="images/logo_panier2.png" alt="MonPanier" id="lepanier">
 					<span id="total_commande">0 €</span>
 				</a>
 			</div>
@@ -152,8 +150,6 @@
 			</div>
 		</div>
 	</footer>
-
-
 	
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -167,7 +163,9 @@
 			}
 		})
 	</script>
-
+		
+	<!-- Scripts -->
+	<script src="js/data-obf.js" type="module"></script>
 
 </body>
 

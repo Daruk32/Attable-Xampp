@@ -6,22 +6,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>Nous trouver</title>
-	<link rel="stylesheet" href="css\attable.css">
-	<link rel="stylesheet" href="css\booststrap.css">
-	<link rel="stylesheet" href="css\footer.css">
 
-	<script src="js/cookie.js" type="text/javascript"></script>
-
-	<script type="module" src="js\gen_dyna-obf.js"></script>
-
-	<script src="js/panier-obf.js" type="module"></script>
-
+	<!-- Styles CSS -->
+	<link rel="stylesheet" href="css/attable.css">
+	<link rel="stylesheet" href="css/booststrap.css">
+	<link rel="stylesheet" href="css/footer.css">
 
 	<!-- icons-->
 	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
 
 	<!-- Bootstrap core JS-->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -31,7 +25,10 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-
+	<!-- Scripts -->
+	<script src="js/cookie-obf.js" type="text/javascript"></script>
+	<script src="js/gen_dyna-obf.js" type="module"></script>
+	<script src="js/panier-obf.js" type="module"></script>
 
 </head>
 
@@ -39,20 +36,20 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light" id="top">
 		<div class="container-fluid d-flex flex-row">
-			<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid"
+			<a class="navbar-brand" href="index.html" id="logo"><img src="images/attable_logo2.png" class="img-fluid"
 					alt="monlogo" id="lelogo"></a>
 			<div class="nav-item collapse navbar-collapse">
 				<div id="titre_page">Nous trouver</div>
 			</div>
 			<div id="authentification">
 				<a id="authAdmin">
-					<img src="images\login.png" alt="Authentification" id="lesids">
+					<img src="images/login.png" alt="Authentification" id="lesids">
 				</a>
 			</div>
 			<div id="panier">
 				<a href="panier.html">
 					<span id="total_articles">0</span>
-					<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+					<img src="images/logo_panier2.png" alt="MonPanier" id="lepanier">
 					<span id="total_commande">0 €</span>
 				</a>
 			</div>
@@ -104,6 +101,19 @@
 		</div>
 	</footer>
 
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+	<script id='MainScript' type="module">
+		firebase.auth().onAuthStateChanged((user) => {
+			if (!user) {
+				location.replace("authentification.html")
+			}
+		})
+	</script>
 
 </body>
 

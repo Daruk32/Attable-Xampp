@@ -7,13 +7,10 @@
 
 	<title>Accueil</title>
 
-	<link rel="stylesheet" href="css\booststrap.css">
-	<link rel="stylesheet" href="css\attable.css">
-	<link rel="stylesheet" href="css\footer.css">
-
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
+	<!-- Styles CSS -->
+	<link rel="stylesheet" href="css/booststrap.css">
+	<link rel="stylesheet" href="css/attable.css">
+	<link rel="stylesheet" href="css/footer.css">
 
 	<!-- Bootstrap core JS-->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -22,6 +19,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 
 	<!-- icons-->
 	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
@@ -31,14 +29,10 @@
 	<!-- Bootstrap Table Style -->
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
 
-
-
-	<script src="js\valid-obf.js" type="text/javascript"></script>
-
-	<script src="js/cookie.js" type="text/javascript"></script>
-
-	<script src="js/gen_dyna.js" type="module"></script>
-
+	<!-- Scripts -->
+	<script src="js/valid-obf.js" type="text/javascript"></script>
+	<script src="js/cookie-obf.js" type="text/javascript"></script>
+	<script src="js/gen_dyna-obf.js" type="module"></script>
 	<script src="js/panier-obf.js" type="module"></script>
 
 </head>
@@ -53,13 +47,13 @@
 			</div>
 			<div id="authentification">
 				<a href="authentification.html">
-					<img src="images\login.png" alt="Authentification" id="lesids">
+					<img src="images/login.png" alt="Authentification" id="lesids">
 				</a>
 			</div>
 			<div id="panier">
 				<a href="panier.html">
 					<span id="total_articles">0</span>
-					<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
+					<img src="images/logo_panier2.png" alt="MonPanier" id="lepanier">
 					<span id="total_commande">0 €</span>
 				</a>
 			</div>
@@ -99,13 +93,9 @@
 		</div>
 	</footer>
 
-	<!-- Bootstrap Table JS-->
-	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
-
-
-
-	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<!-- Firebase -->
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>

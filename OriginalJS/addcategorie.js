@@ -1,3 +1,11 @@
+/*
+Auteur : Johan GIROUX
+2020-2021
+Dernière MAJ : 30/10/2021
+V2.9
+*/
+
+
 // Initialize Firebase
 var firebaseConfig = {
     apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",
@@ -16,71 +24,57 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
-//Récupération des datas du fournisseur renseigné
-var idF, nameF, info1F, info2F, adressF, pricePF;
+// Récupération des datas de la catégorie renseignée
+var idCategorieC, nameCategorieC, categorieValueC;
 function Ready() {
-    idF = document.getElementById("id").value;
-    nameF = document.getElementById("name").value;
-    info1F = document.getElementById("info1").value;
-    info2F = document.getElementById("info2").value;
-    adressF = document.getElementById("adress").value;
-    pricePF = document.getElementById("price").value;
-
+    idCategorieC = document.getElementById("idCategorie").value;
+    nameCategorieC = document.getElementById("nameCategorie").value;
+    categorieValueC = document.getElementById("categorieValue").value;
 }
 
-//Clear
+// Clear
 function Clear() {
-    document.getElementById("id").value = "";
-    document.getElementById("name").value = "";
-    document.getElementById("info1").value = "";
-    document.getElementById("info2").value = "";
-    document.getElementById("adress").value = "";
-    document.getElementById("price").value = "";
+    document.getElementById("idCategorie").value = "";
+    document.getElementById("nameCategorie").value = "";
+    document.getElementById("categorieValue").value = "";
 }
 
-//Ajout d'un fournisseur
-document.getElementById("AddSupplier").onclick = function () {
+// Ajout d'une catégorie
+document.getElementById("AddCategorie").onclick = function () {
     Ready();
-    firebase.database().ref("suppliers/" + idF).set({
-        id: idF,
-        nom: nameF,
-        info1: info1F,
-        info2: info2F,
-        adresse: adressF,
-        prix: pricePF
+    firebase.database().ref("categories/" + idCategorieC).set({
+        id: idCategorieC,
+        nom: nameCategorieC,
+        valeur: categorieValueC
     });
     Swal.fire({
         title: 'Bravo !',
-        text: 'Votre fournisseur a été ajouté !',
+        text: 'Votre catégorie a été ajoutée !',
         icon: 'success',
         confirmButtonText: 'Cool'
     });
     Clear();
 }
 
-//Sélection d'un fournisseur
-document.getElementById("SelectSupplier").onclick = function () {
+// Sélection d'une catégorie
+document.getElementById("SelectCategorie").onclick = function () {
     Ready();
-    firebase.database().ref("suppliers/" + idF).on('value', function (snapshot) {
-        if (snapshot.val() == null || idF == "") {
+    firebase.database().ref("categories/" + idCategorieC).on('value', function (snapshot) {
+        if (snapshot.val() == null || idCategorie == "") {
             Swal.fire({
                 title: '???',
-                text: "Ce fournisseur n'existe pas !",
+                text: "Cette catégorie n'existe pas !",
                 icon: 'error',
                 confirmButtonText: 'Où me suis-je trompé ?'
             });
         }
         else {
-            document.getElementById("id").value = snapshot.val().id;
-            document.getElementById("name").value = snapshot.val().nom;
-            document.getElementById("info1").value = snapshot.val().info1;
-            document.getElementById("info2").short_legend = snapshot.val().info2;
-            document.getElementById("adress").value = snapshot.val().adresse;
-            document.getElementById("price").value = snapshot.val().prix;
-
+            document.getElementById("idCategorie").value = snapshot.val().id;
+            document.getElementById("nameCategorie").value = snapshot.val().nom;
+            document.getElementById("categorieValue").value = snapshot.val().valeur;
             Swal.fire({
                 title: 'Voilà !',
-                text: 'Votre fournisseur',
+                text: 'Votre catégorie',
                 icon: 'info',
                 confirmButtonText: 'Continuer'
             });
@@ -88,11 +82,9 @@ document.getElementById("SelectSupplier").onclick = function () {
     });
 }
 
-//MAJ d'un fournisseur
-document.getElementById("UpdateSupplier").onclick = function () {
+// MAJ d'une catégorie
+document.getElementById("UpdateCategorie").onclick = function () {
     Ready();
-
-
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -110,13 +102,10 @@ document.getElementById("UpdateSupplier").onclick = function () {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            firebase.database().ref("suppliers/" + idF).update({
-                id: idF,
-                nom: nameF,
-                info1: info1F,
-                info2: info2F,
-                adresse: adressF,
-                prix: pricePF
+            firebase.database().ref("categories/" + idCategorieC).update({
+                id: idCategorieC,
+                nom: nameCategorieC,
+                valeur: categorieValueC
             });
             swalWithBootstrapButtons.fire(
                 'Modifié !',
@@ -137,9 +126,8 @@ document.getElementById("UpdateSupplier").onclick = function () {
     })
 }
 
-
-//Suppression d'un fournisseur
-document.getElementById("DeleteSupplier").onclick = function () {
+// Suppression d'une catégorie
+document.getElementById("DeleteCategorie").onclick = function () {
     Ready();
 
     const swalWithBootstrapButtons = Swal.mixin({
@@ -150,7 +138,7 @@ document.getElementById("DeleteSupplier").onclick = function () {
         buttonsStyling: false
     })
     swalWithBootstrapButtons.fire({
-        title: 'Êtes-vous certain de vouloir supprimer ce fournisseur ?',
+        title: 'Êtes-vous certain de vouloir supprimer cette catégorie ?',
         text: "C'est irréversible !",
         icon: 'warning',
         showCancelButton: true,
@@ -159,10 +147,10 @@ document.getElementById("DeleteSupplier").onclick = function () {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            firebase.database().ref("suppliers/" + idF).remove();
+            firebase.database().ref("categories/" + idCategorieC).remove();
             swalWithBootstrapButtons.fire(
                 'Supprimé',
-                'Le fournisseur a été supprimé !',
+                'La catégorie a été supprimée !',
                 'success'
             )
             Clear();

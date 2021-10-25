@@ -1,5 +1,11 @@
-var liste;
+/*
+Auteur : Johan GIROUX
+2020-2021
+Dernière MAJ : 30/10/2021
+V2.9
+*/
 
+var liste;
 
 //--------------------------------------------------------------------------------------------------------
 //Cette fonction décompose en chunk/nombre la chaîne de caractères issue du cookie list_achat en multiples arrays.

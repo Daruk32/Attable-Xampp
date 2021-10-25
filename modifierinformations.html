@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Modification</title>
-		<link rel="stylesheet" href="css\attable.css">
-		<link rel="stylesheet" href="css\booststrap.css">
-		<link rel="stylesheet" href="css\footer.css">
+	<title>Modification</title>
 
-		<script src="js\valid-obf.js" type="text/javascript"></script>
-		<script src="js/cookie.js" type="text/javascript"></script>
+	<!-- Styles CSS -->
+	<link rel="stylesheet" href="css/attable.css">
+	<link rel="stylesheet" href="css/booststrap.css">
+	<link rel="stylesheet" href="css/footer.css">
 
-		<script type="module" src="js\gen_dyna-obf.js"></script>
+	<!-- icons-->
+	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-		<script src="js/panier-obf.js" type="module"></script>
 
-
-		<!-- icons-->
-		<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
-		
 	<!-- Bootstrap core JS-->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -31,43 +26,46 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+	<!-- Scripts -->
+	<script src="js/valid-obf.js" type="text/javascript"></script>
+	<script src="js/cookie-obf.js" type="text/javascript"></script>
+	<script src="js/gen_dyna-obf.js" type="module"></script>
+	<script src="js/panier-obf.js" type="module"></script>
 
-		
+</head>
 
-	</head>
+<body onload="panier(), redirAdmin()">
 
-	<body onload="panier(), redirAdmin()">
 
-		
-		<nav class="navbar navbar-expand-lg navbar-light" id="top">
-			<div class="container-fluid d-flex flex-row">
-				<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid" alt="monlogo" id="lelogo"></a>
-				<div class="nav-item collapse navbar-collapse">
-					<div id="titre_page">Modifier mes informations</div>
-				</div>
-				<div id="authentification">
-					<a id="authAdmin">
-						<img src="images\login.png" alt="Authentification" id="lesids">
-					</a>				
-				</div>						
-				<div id="panier">
-					<a href="panier.html">
-						<span id="total_articles">0</span>
-						<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
-						<span id="total_commande">0 €</span>
-					</a>
-				</div>
+	<nav class="navbar navbar-expand-lg navbar-light" id="top">
+		<div class="container-fluid d-flex flex-row">
+			<a class="navbar-brand" href="index.html" id="logo"><img src="images/attable_logo2.png" class="img-fluid"
+					alt="monlogo" id="lelogo"></a>
+			<div class="nav-item collapse navbar-collapse">
+				<div id="titre_page">Modifier mes informations</div>
 			</div>
-		</nav>
+			<div id="authentification">
+				<a id="authAdmin">
+					<img src="images/login.png" alt="Authentification" id="lesids">
+				</a>
+			</div>
+			<div id="panier">
+				<a href="panier.html">
+					<span id="total_articles">0</span>
+					<img src="images/logo_panier2.png" alt="MonPanier" id="lepanier">
+					<span id="total_commande">0 €</span>
+				</a>
+			</div>
+		</div>
+	</nav>
 
-		<section id="main">
+	<section id="main">
 
+		<div class="container w-75" id="joinmail">
+			<h1 class="text-center w-100">Modifier mes informations</h1>
+			<form>
+				<fieldset>
 
-			<div class="container w-75" id="joinmail">
-				<h1 class="text-center w-100">Modifier mes informations</h1>
-				<form>
-				  <fieldset>
-					
 					<div class="form-group text-center">
 						<label for="email">Entrez votre mail</label>
 						<input type="email" class="form-control w-50" id="email" name="control" required>
@@ -78,7 +76,7 @@
 					</div>
 					<div class="form-group text-center">
 						<label for="nom">Nom de famille</label>
-                         <input type="text" class="form-control w-50" id="email" name="control" required>
+						<input type="text" class="form-control w-50" id="email" name="control" required>
 					</div>
 					<div class="form-group text-center">
 						<label for="nom">Mon adresse</label>
@@ -106,45 +104,61 @@
 						<input type="password" class="form-control w-50" id="email" name="control" required>
 					</div>
 					<div id="bouton">
-						<input style="width:100px;" type="submit" value="Enregistrer" id="submit" onclick="verif_form_modification()">
+						<input style="width:100px;" type="submit" value="Enregistrer" id="submit"
+							onclick="verif_form_modification()">
 					</div>
 
-				  </fieldset>
-				</form>
+				</fieldset>
+			</form>
+		</div>
+
+
+	</section>
+
+	<footer class="py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+						<li><a href="noustrouver.html">Nous trouver</a></li>
+						<li><a href="panier.html">Commande</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-4 text-center ancre">
+					<a href="#top">
+						<i id='icon-footer' class="fas fa-angle-up"></i>
+					</a>
+					<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+				</div>
+
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="newsletter.html">Mailing List</a></li>
+						<li><a href="mentionslegales.html">Mentions légales</a></li>
+						<li><a href="cgu.html">CGU</a></li>
+					</ul>
+				</div>
 			</div>
+		</div>
+	</footer>
 
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+	<script id='MainScript' type="module">
+		firebase.auth().onAuthStateChanged((user) => {
+			if (!user) {
+				location.replace("authentification.html")
+			}
+		})
+	</script>
 
-		</section>
+</body>
 
-		<footer class="py-4 text-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="index.html">Accueil</a></li>
-							<li><a href="quisommesnous.html">Qui sommes nous</a></li>
-							<li><a href="noustrouver.html">Nous trouver</a></li>
-							<li><a href="panier.html">Commande</a></li>
-						</ul>
-					</div>
-
-					<div class="col-sm-4 text-center ancre">
-						<a href="#top">
-							<i id='icon-footer' class="fas fa-angle-up"></i>
-						</a>
-						<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
-					</div>
-
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="newsletter.html">Mailing List</a></li>
-							<li><a href="mentionslegales.html">Mentions légales</a></li>
-							<li><a href="cgu.html">CGU</a></li>
-						</ul>
-					</div>
-				</div>			
-			</div>
-        </footer>
-
-	</body>
 </html>

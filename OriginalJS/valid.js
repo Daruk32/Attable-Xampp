@@ -1,3 +1,11 @@
+/*
+Auteur : Johan GIROUX
+2020-2021
+Dernière MAJ : 30/10/2021
+V2.9
+*/
+
+
 function validate_password() {
   var myInput = document.getElementById("mdp");
   var letter = document.getElementById("letter");

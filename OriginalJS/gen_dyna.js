@@ -1,10 +1,16 @@
-//V2 >08/09/2021 Refonte du code
-//V3 BackEnd >20/10/2021 Refonte du code
+/*
+Auteur : Johan GIROUX
+2020-2021
+Dernière MAJ : 30/10/2021
+V2.9
+*/
+
+
 //Déclaration du tableau des catégories
-import { tab_categorie } from '../js/data.js'
+import { tab_categorie } from '../js/data-obf.js'
 
 //Appel de la fonction defrag_cookie
-import { defrag_cookie } from '../js/panier.js'
+import { defrag_cookie } from '../js/panier-obf.js'
 
 
 

@@ -1,3 +1,11 @@
+/*
+Auteur : Johan GIROUX
+2020-2021
+Dernière MAJ : 30/10/2021
+V2.9
+*/
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",
     authDomain: "attable-51633.firebaseapp.com",
@@ -13,19 +21,18 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
-var ref, nom, price, quantities;
+var ref, nom, valeur;
 
 function SelectAllData() {
-    firebase.database().ref("products").once('value',
+    firebase.database().ref("categories").once('value',
         function (AllRecords) {
             AllRecords.forEach(
                 function (CurrentRecord) {
                     ref = CurrentRecord.val().id;
-                    nom = CurrentRecord.val().libelle;
-                    price = CurrentRecord.val().prix;
-                    quantities = CurrentRecord.val().quantity;
+                    nom = CurrentRecord.val().nom;
+                    valeur = CurrentRecord.val().valeur;
 
-                    AddItemsToTable(ref, nom, price, quantities);
+                    AddItemsToTable(ref, nom, valeur);
                 }
             );
         });
@@ -33,7 +40,7 @@ function SelectAllData() {
 
 window.onload = SelectAllData;
 
-function AddItemsToTable(ref, nom, price, quantities) {
+function AddItemsToTable(ref, nom, valeur) {
     var tbody = document.getElementById("tbody1");
     var trow = document.createElement("tr");
     var td0 = document.createElement("input");
@@ -43,10 +50,6 @@ function AddItemsToTable(ref, nom, price, quantities) {
     var td2 = document.createElement("td");
     var td3 = document.createElement("td");
     td3.className = "text-center";
-    var td4 = document.createElement("td");
-    td4.className = "text-center";
-    var td5 = document.createElement("td");
-    td5.className = "text-center";
     var td6 = document.createElement("td");
     var td6a = document.createElement("a");
     td6a.className = "text-center remove";
@@ -58,9 +61,8 @@ function AddItemsToTable(ref, nom, price, quantities) {
     td6a.appendChild(td6i);
     td1.innerHTML = ref;
     td2.innerHTML = nom;
-    td3.innerHTML = price;
-    td4.innerHTML = quantities;
-    trow.appendChild(td0); trow.appendChild(td1); trow.appendChild(td2); trow.appendChild(td3); trow.appendChild(td4); trow.appendChild(td5); trow.appendChild(td6);
+    td3.innerHTML = valeur;
+    trow.appendChild(td0); trow.appendChild(td1); trow.appendChild(td2); trow.appendChild(td3); trow.appendChild(td6);
     tbody.appendChild(trow);
 }
 
@@ -73,39 +75,3 @@ firebase.auth().onAuthStateChanged((user) => {
 function Maj() {
     location.reload();
 }
-
-
-
-
-
-
-/*
-// Appel des tableaux JSON de Firebase
-const db = firebase.database().ref();
-const products = db.child("products/id");
-const categories = db.child("categories/id");
-const suppliers = db.child("suppliers/id");
-// Exemples de fonctions
-eventsRef.orderFunction().queryFunction();
-eventsRef.orderByKey().limitToFirst(10);
-eventsRef.orderByChild();
-eventsRef.orderByValue();
-startAt('value');
-endAt('value');
-equalTo('child_key');
-limitToFirst(10);
-limitToLast(10);
-// Exemple
-const db = firebase.database();
-const products = db.child("products/id");
-const query = products
-                .orderByChild('id')
-                .equalTo('value_example')
-                .limitToFirst(1);
-query.on('value', snap => {
-    //render to HTML
-});
-*/
-
-
-

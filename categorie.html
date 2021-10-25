@@ -1,137 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-		<title>Nos gammes</title>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- Les 2 styles du site -->
-		<link rel="stylesheet" href="css\attable.css">
-		<link rel="stylesheet" href="css\booststrap.css">
-		<link rel="stylesheet" href="css\footer.css">
+	<title>Nos gammes</title>
 
+	<!-- Styles CSS -->
+	<link rel="stylesheet" href="css/attable.css">
+	<link rel="stylesheet" href="css/booststrap.css">
+	<link rel="stylesheet" href="css/footer.css">
 
-		<!-- icons-->
-		<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<!-- icons-->
+	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-		
-		<!-- Bootstrap core JS-->
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-		
-		<!-- Gestion des cookies -->
-		<script src="js/cookie.js" type="text/javascript"></script>
-
-		<!-- Génération dynamique des éléments de la page -->		
-		<script type="module" src="js\gen_dyna.js"></script>
-
-		<!-- Gestion du panier -->		
-		<script src="js/panier-obf.js" type="module"></script>
-		
-	</head>
-	
-	<body onload="chargement(), panier(), bandeau(), redirAdmin()">
-
-		
-		<nav class="navbar navbar-expand-lg navbar-light" id="top">
-			<div class="container-fluid d-flex flex-row">
-				<a class="navbar-brand" href="index.html" id="logo"><img src="images\attable_logo2.png" class="img-fluid" alt="monlogo" id="lelogo"></a>
-				<div class="nav-item collapse navbar-collapse">
-					<div id="titre_page" class="collapse navbar-collapse justify-content-center">
-						Nos gammes -&nbsp;<span id="ajout_titre_categorie"></span>
-					</div>
-				</div>
-				<div id="authentification">
-					<a id="authAdmin">
-						<img src="images\login.png" alt="Authentification" id="lesids">
-					</a>				
-				</div>						
-				<div id="panier">
-					<a href="panier.html">
-						<span id="total_articles">0</span>
-						<img src="images\logo_panier2.png" alt="MonPanier" id="lepanier">
-						<span id="total_commande">0 €</span>
-					</a>
-				</div>
-			</div>
-		</nav>
-		
-		<section id="main">
-		
-			<nav class="navbar navbar-expand-lg" id="bandeau">
-				<div class="container-fluid px-4 px-lg-5 navbar-dark">
-					<ul id="bande"></ul>
-				</div>
-			</nav>
-
-
-			<!--Div d'affichage du produit choisi depuis la liste générée ci-dessous / Voir tableau.js-->
-			<div id="fiche_produit" class="container text-center w-50"></div>
-
-			
-			<!--Div de génération des produits de la catégorie choisie / Voir tableau.js-->
-            <div class="container liste_categorie">
-                <div class="row row-cols-2 row row-cols-sm-3 row-cols-md-3 row-cols-xl-4 justify-content-center" id="descriptif_cat"></div>
-			</div>
-
-			<div id="info_categorie" class="text-center mb-4">
-				Venez en magasin car il y a des arrivées fréquentes, tous les produits et prix ne sont pas visibles sur notre site, images non contractuelles !
-			</div>
-			
-
-		</section>
-
-
-	
-		<footer class="py-4 text-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="index.html">Accueil</a></li>
-							<li><a href="quisommesnous.html">Qui sommes nous</a></li>
-							<li><a href="noustrouver.html">Nous trouver</a></li>
-							<li><a href="panier.html">Commande</a></li>
-						</ul>
-					</div>
-
-					<div class="col-sm-4 text-center ancre">
-						<a href="#top">
-							<i id='icon-footer' class="fas fa-angle-up"></i>
-						</a>
-						<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
-					</div>
-
-					<div class="col-sm-4 links" id="menu">
-						<ul id="menus">
-							<li><a href="newsletter.html">Mailing List</a></li>
-							<li><a href="mentionslegales.html">Mentions légales</a></li>
-							<li><a href="cgu.html">CGU</a></li>
-						</ul>
-					</div>
-				</div>			
-			</div>
-        </footer>
-
-		<script src="js/jquery.izoomify.js"></script>
-
-	<!-- Bootstrap Table JS-->
+	<!-- Bootstrap core JS-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 
+	<!-- Scripts -->
+	<script src="js/jquery.izoomify.js"></script>
+	<script src="js/cookie-obf.js" type="text/javascript"></script>
+	<script src="js/gen_dyna-obf.js" type="module"></script>
+	<script src="js/panier-obf.js" type="module"></script>
+
+</head>
+
+<body onload="chargement(), panier(), bandeau(), redirAdmin()">
 
 
+	<nav class="navbar navbar-expand-lg navbar-light" id="top">
+		<div class="container-fluid d-flex flex-row">
+			<a class="navbar-brand" href="index.html" id="logo"><img src="images/attable_logo2.png" class="img-fluid"
+					alt="monlogo" id="lelogo"></a>
+			<div class="nav-item collapse navbar-collapse">
+				<div id="titre_page" class="collapse navbar-collapse justify-content-center">
+					Nos gammes -&nbsp;<span id="ajout_titre_categorie"></span>
+				</div>
+			</div>
+			<div id="authentification">
+				<a id="authAdmin">
+					<img src="images/login.png" alt="Authentification" id="lesids">
+				</a>
+			</div>
+			<div id="panier">
+				<a href="panier.html">
+					<span id="total_articles">0</span>
+					<img src="images/logo_panier2.png" alt="MonPanier" id="lepanier">
+					<span id="total_commande">0 €</span>
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<section id="main">
+
+		<nav class="navbar navbar-expand-lg" id="bandeau">
+			<div class="container-fluid px-4 px-lg-5 navbar-dark">
+				<ul id="bande"></ul>
+			</div>
+		</nav>
+
+
+		<!--Div d'affichage du produit choisi depuis la liste générée ci-dessous / Voir tableau.js-->
+		<div id="fiche_produit" class="container text-center w-50"></div>
+
+
+		<!--Div de génération des produits de la catégorie choisie / Voir tableau.js-->
+		<div class="container liste_categorie">
+			<div class="row row-cols-2 row row-cols-sm-3 row-cols-md-3 row-cols-xl-4 justify-content-center"
+				id="descriptif_cat"></div>
+		</div>
+
+		<div id="info_categorie" class="text-center mb-4">
+			Venez en magasin car il y a des arrivées fréquentes, tous les produits et prix ne sont pas visibles sur
+			notre site, images non contractuelles !
+		</div>
+
+
+	</section>
+
+	<footer class="py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+						<li><a href="noustrouver.html">Nous trouver</a></li>
+						<li><a href="panier.html">Commande</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-4 text-center ancre">
+					<a href="#top">
+						<i id='icon-footer' class="fas fa-angle-up"></i>
+					</a>
+					<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+				</div>
+
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="newsletter.html">Mailing List</a></li>
+						<li><a href="mentionslegales.html">Mentions légales</a></li>
+						<li><a href="cgu.html">CGU</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Firebase -->
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-	</body>
+</body>
+
 </html>

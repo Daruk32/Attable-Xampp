@@ -4,52 +4,47 @@ var jsObfuscator = require('javascript-obfuscator');
 /*
 Commande pour lancer le process dans le terminal
 node js/ObfuscaterUtil.js
-New version ???
-javascript-obfuscator samples/sample.js --compact true --self-defending false
 
 Pour chaque fichier js :
-./js/addproduct.js
+./OriginalJS/addproduct.js
 ./js/addproduct-obf.js
 
-./js\addcategorie.js
-./js\addcategorie-obf.js
+./OriginalJS/addcategorie.js
+./js/addcategorie-obf.js
 
-./js/addsupplier.js
+./OriginalJS/addsupplier.js
 ./js/addsupplier-obf.js
 
-./js/article.js
-./js/article-obf.js
-
-./js/bddproduct.js
+./OriginalJS/bddproduct.js
 ./js/bddproduct-obf.js
 
-js/bddcategorie.js
-js/bddcategorie-obf.js
+./OriginalJS/bddcategorie.js
+./js/bddcategorie-obf.js
 
-./js/bddsupplier.js
+./OriginalJS/bddsupplier.js
 ./js/bddsupplier-obf.js
 
-./js/captcha.js
+./OriginalJS/captcha.js
 ./js/captcha-obf.js
 
-./js/cookie.js
+./OriginalJS/cookie.js
 ./js/cookie-obf.js
 
-./js/data.js
+./OriginalJS/data.js
 ./js/data-obf.js
 
-./js/gen_dyna.js
+./OriginalJS/gen_dyna.js
 ./js/gen_dyna-obf.js
 
-./js/panier.js
+./OriginalJS/panier.js
 ./js/panier-obf.js
 
-./js/valid.js
+./OriginalJS/valid.js
 ./js/valid-obf.js
 */
 
 
-fs.readFile("./js/addproduct.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/addproduct.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -62,20 +57,7 @@ fs.readFile("./js/addproduct.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/article.js", "utf-8", function (error, code) {
-    if (error) {
-        throw error;
-    }
-    var obfuscateResult = jsObfuscator.obfuscate(code);
-    fs.writeFile("./js/article-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
-        if (fsError) {
-            return console.log(fsError);
-        }
-        console.log("Your obfuscated article is ready !");
-    })
-})
-
-fs.readFile("./js/captcha.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/captcha.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -88,7 +70,7 @@ fs.readFile("./js/captcha.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/cookie.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/cookie.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -101,7 +83,7 @@ fs.readFile("./js/cookie.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/data.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/data.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -114,7 +96,7 @@ fs.readFile("./js/data.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/gen_dyna.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/gen_dyna.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -127,7 +109,7 @@ fs.readFile("./js/gen_dyna.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/panier.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/panier.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -140,7 +122,7 @@ fs.readFile("./js/panier.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/valid.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/valid.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -153,20 +135,7 @@ fs.readFile("./js/valid.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/crypt.js", "utf-8", function (error, code) {
-    if (error) {
-        throw error;
-    }
-    var obfuscateResult = jsObfuscator.obfuscate(code);
-    fs.writeFile("./js/crypt-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
-        if (fsError) {
-            return console.log(fsError);
-        }
-        console.log("Your obfuscated crypt is ready !");
-    })
-})
-
-fs.readFile("./js/bddproduct.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/bddproduct.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -179,7 +148,7 @@ fs.readFile("./js/bddproduct.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/addsupplier.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/addsupplier.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -192,7 +161,7 @@ fs.readFile("./js/addsupplier.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/bddsupplier.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/bddsupplier.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -205,7 +174,7 @@ fs.readFile("./js/bddsupplier.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/addcategorie.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/addcategorie.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
@@ -218,7 +187,7 @@ fs.readFile("./js/addcategorie.js", "utf-8", function (error, code) {
     })
 })
 
-fs.readFile("./js/bddcategorie.js", "utf-8", function (error, code) {
+fs.readFile("./OriginalJS/bddcategorie.js", "utf-8", function (error, code) {
     if (error) {
         throw error;
     }
