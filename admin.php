@@ -12,22 +12,19 @@
 	<link rel="stylesheet" href="css/booststrap.css">
 	<link rel="stylesheet" href="css/footer.css">
 
-	<!-- icons-->
-	<script src="https://use.fontawesome.com/2e4ae48f29.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<!-- Icônes Fontawesome -->
+	<link rel="stylesheet" href="css/fontawesome-free-5.15.4-web/css/all.css">
 
-	<!-- Bootstrap core JS - MAJ FONCTIONNELLE-->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<!-- Bootstrap Table Style -->
-	<link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
-	<!-- Bootstrap Table JS-->
-	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+	<!-- Bootstrap core JS-->
+	<script src="bootstrap/jquery-3.3.1.slim.min.js"></script>
+	<script src="bootstrap/3.4.1-jquery.min.js"></script>
+	<script src="bootstrap/tableExport.min.js"></script>
+	<script src="bootstrap/popper.min.js"></script>
+	<link rel="stylesheet" href="bootstrap/4.3.1-bootstrap.min.css">
+	<script src="bootstrap/4.3.1-bootstrap.min.js"></script>
+	<!-- Bootstrap Table -->
+	<link rel="stylesheet" href="bootstrap/bootstrap-table.min.css">
+	<script src="bootstrap/bootstrap-table.min.js"></script>
 
 	<!-- Scripts -->
 	<script src="js/cookie-obf.js" type="text/javascript"></script>
@@ -156,6 +153,8 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+	<!-- Scripts -->
+	<script src="js/data-obf.js" type="module"></script>
 	<script id='MainScript' type="module">
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
@@ -167,8 +166,7 @@
 		})
 	</script>
 		
-	<!-- Scripts -->
-	<script src="js/data-obf.js" type="module"></script>
+
 
 </body>
 
