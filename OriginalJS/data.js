@@ -8,14 +8,13 @@ V2.9
 
 // Initialize Firebase
 var firebaseConfig = {
-  apiKey: "AIzaSyBojMuKZJSJBC-O6JRkI9UmbjErGka1b1E",
-  authDomain: "attable-51633.firebaseapp.com",
-  projectId: "attable-51633",
-  databaseURL: "https://attable-51633-default-rtdb.europe-west1.firebasedatabase.app",
-  storageBucket: "attable-51633.appspot.com",
-  messagingSenderId: "255390814899",
-  appId: "1:255390814899:web:714ec5ace61cd6479796c6",
-  measurementId: "G-2DZWXDMSY6"
+  apiKey: "AIzaSyCRpXRP0D_MuPqyuUOG491w1SANIc6lVL8",
+  authDomain: "attable-6578b.firebaseapp.com",
+  databaseURL: "https://attable-6578b-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "attable-6578b",
+  storageBucket: "attable-6578b.appspot.com",
+  messagingSenderId: "1061243206959",
+  appId: "1:1061243206959:web:ee2f97b4777e626a1975da"
 };
 firebase.initializeApp(firebaseConfig);
 
