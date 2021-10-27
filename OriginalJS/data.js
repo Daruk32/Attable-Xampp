@@ -312,7 +312,7 @@ window.ExpCategories = function ExpCategories() {
       namecateg = categsTable[numf].titre;
       valueCateg = categsTable[numf].value;
 
-      firebase.database().ref('categories/' + idcateg).set({
+      firebase.database().ref('categories/' + namecateg).set({
         idC: idcateg,
         nom: namecateg,
         valeur: valueCateg

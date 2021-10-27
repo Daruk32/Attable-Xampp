@@ -101,8 +101,8 @@ firebase.database().ref("categories/").on('value', function (snapshot) {
             var productID = childSnapshot.val().idC;
             var productName = childSnapshot.val().nom;
             var productValue = childSnapshot.val().valeur;
-            //var productLink = childSnapshot.val().url;
-            var ajoutC = { 'id': productID, 'name': productName, 'valeur': productValue };
+            var productLink = childSnapshot.val().Link;
+            var ajoutC = { 'id': productID, 'name': productName, 'valeur': productValue, 'url':productLink };
             categoriesArray.push(ajoutC);
         });
         localStorage.setItem("categoriesSelected", JSON.stringify(categoriesArray));
@@ -144,7 +144,7 @@ window.liste_categorie = function liste_categorie() {
         //Image de la catégorie
         var image_categorie = document.createElement('img')
         image_categorie.className = "card-img-top img-fluid cats";
-        //image_categorie.src = item.url;
+        image_categorie.src = item.url;
         image_categorie.alt = '...';
         divimg.appendChild(image_categorie);
         //divtext contenant le texte de la catégorie

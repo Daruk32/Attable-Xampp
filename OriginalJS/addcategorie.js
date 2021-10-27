@@ -23,9 +23,53 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
+
+//Process Image
+var ImgName, ImgUrl;
+var files = [];
+var reader;
+//Fonction Select Image
+document.getElementById("namebox").onclick = function (e) {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.onchange = e => {
+        files = e.target.files;
+        reader = new FileReader();
+        reader.onload = function () {
+            document.getElementById("myimg").src = reader.result;
+        }
+        reader.readAsDataURL(files[0]);
+    }
+    input.click();
+}
+
+var categoryArray = new Array;
+//Process valeurs catégories
+firebase.database().ref("categories/").on('value', function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+        var item_id = childSnapshot.val().idC;
+        var item_name = childSnapshot.val().nom;
+        categoryArray[item_id] = item_name;
+    });
+    var select = document.getElementById("categ");
+    for (index in categoryArray) {
+        select.options[select.options.length] = new Option(categoryArray[index], index);
+    }
+});
+
+document.getElementById("categ").onclick = function () {
+    if (document.getElementById("categ").options[document.getElementById("categ").selectedIndex] != undefined) {
+        document.getElementById("nameCategorie").value = document.getElementById("categ").options[document.getElementById("categ").selectedIndex].text;
+    }
+    else {
+        categorieP = "";
+    }
+}
+
 // Récupération des datas de la catégorie renseignée
-var idCategorieC, nameCategorieC, categorieValueC;
+var ImgName, idCategorieC, nameCategorieC, categorieValueC;
 function Ready() {
+    ImgName = document.getElementById('namebox').value;
     idCategorieC = document.getElementById("idCategorie").value;
     nameCategorieC = document.getElementById("nameCategorie").value;
     categorieValueC = document.getElementById("categorieValue").value;
@@ -33,6 +77,9 @@ function Ready() {
 
 // Clear
 function Clear() {
+    document.getElementById('namebox').value = "";
+    document.getElementById('myimg').src = 'images/promo.png';
+    document.getElementById("UpProgress").innerHTML = "";
     document.getElementById("idCategorie").value = "";
     document.getElementById("nameCategorie").value = "";
     document.getElementById("categorieValue").value = "";
@@ -41,11 +88,31 @@ function Clear() {
 // Ajout d'une catégorie
 document.getElementById("AddCategorie").onclick = function () {
     Ready();
-    firebase.database().ref("categories/" + idCategorieC).set({
-        id: idCategorieC,
-        nom: nameCategorieC,
-        valeur: categorieValueC
-    });
+
+    //Process de l'image
+    var uploadTask = firebase.storage().ref('images/' + nameCategorieC + ".png").put(files[0]);
+    uploadTask.on('state_changed', function (snapshot) {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        document.getElementById('UpProgress').innerHTML = 'Upload' + progress + '%';
+    },
+        function (error) {
+            alert('Error in saving the image !');
+        },
+
+        function () {
+            uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                ImgUrl = url;
+
+                firebase.database().ref('categories/' + nameCategorieC).set({
+                    Link : ImgUrl,
+                    idC: idCategorieC,
+                    nom: nameCategorieC,
+                    valeur: categorieValueC
+                });
+            }
+            );
+        });
+
     Swal.fire({
         title: 'Bravo !',
         text: 'Votre catégorie a été ajoutée !',
@@ -58,8 +125,8 @@ document.getElementById("AddCategorie").onclick = function () {
 // Sélection d'une catégorie
 document.getElementById("SelectCategorie").onclick = function () {
     Ready();
-    firebase.database().ref("categories/" + idCategorieC).on('value', function (snapshot) {
-        if (snapshot.val() == null || idCategorie == "") {
+    firebase.database().ref("categories/" + nameCategorieC).on('value', function (snapshot) {
+        if (snapshot.val() == null || nameCategorieC == "") {
             Swal.fire({
                 title: '???',
                 text: "Cette catégorie n'existe pas !",
@@ -68,7 +135,8 @@ document.getElementById("SelectCategorie").onclick = function () {
             });
         }
         else {
-            document.getElementById("idCategorie").value = snapshot.val().id;
+            document.getElementById("myimg").src = snapshot.val().Link;
+            document.getElementById("idCategorie").value = snapshot.val().idC;
             document.getElementById("nameCategorie").value = snapshot.val().nom;
             document.getElementById("categorieValue").value = snapshot.val().valeur;
             Swal.fire({
@@ -101,17 +169,21 @@ document.getElementById("UpdateCategorie").onclick = function () {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            firebase.database().ref("categories/" + idCategorieC).update({
-                id: idCategorieC,
-                nom: nameCategorieC,
-                valeur: categorieValueC
+            var uploadTask = firebase.storage().ref('images/' + nameCategorieC + ".png").put(files[0]);
+            uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                ImgUrl = url;
+                firebase.database().ref('categories/' + nameCategorieC).set({
+                    Link: ImgUrl,
+                    idC: idCategorieC,
+                    nom: nameCategorieC,
+                    valeur: categorieValueC
+                });
+                swalWithBootstrapButtons.fire(
+                    'Modifié !',
+                    'Les modifications sont enregistrées !',
+                    'success'
+                )
             });
-            swalWithBootstrapButtons.fire(
-                'Modifié !',
-                'Les modifications sont enregistrées !',
-                'success'
-            )
-            Clear();
         } else if (
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
@@ -146,7 +218,7 @@ document.getElementById("DeleteCategorie").onclick = function () {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            firebase.database().ref("categories/" + idCategorieC).remove();
+            firebase.database().ref("categories/" + nameCategorieC).remove();
             swalWithBootstrapButtons.fire(
                 'Supprimé',
                 'La catégorie a été supprimée !',

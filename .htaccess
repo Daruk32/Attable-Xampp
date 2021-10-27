@@ -25,9 +25,6 @@
     ErrorDocument 401 "401 - Acces interdit"
     ErrorDocument 403 "403 - Repertoire interdit"
 
-
-
-
 <Files ajax-test.php>
     Order allow,deny
     Deny from all
@@ -39,6 +36,17 @@
 </Files>
 
 
+#RedirectMatch permanent .github/.* http://localhost:1234/Attable-Xampp/index.html
+#RedirectMatch permanent .vscode/.* http://localhost:1234/Attable-Xampp/index.html
+#RedirectMatch permanent bootstrap/.* http://localhost:1234/Attable-Xampp/index.html
+#RedirectMatch permanent categorie/.* http://localhost:1234/Attable-Xampp/index.html
+#RedirectMatch permanent css/.* http://localhost:1234/Attable-Xampp/index.html
+#RedirectMatch permanent firebase/.* http://localhost:1234/Attable-Xampp/index.html
+#RedirectMatch permanent images/.* http://localhost:1234/Attable-Xampp/index.html
+#RedirectMatch permanent js/.* http://localhost:1234/Attable-Xampp/index.html
+#RedirectMatch permanent node_modules/.* http://localhost:1234/Attable-Xampp/index.html
+#RedirectMatch permanent OriginalJS/.* http://localhost:1234/Attable-Xampp/index.html
+#RedirectMatch permanent public/.* http://localhost:1234/Attable-Xampp/index.html
 
 
 
