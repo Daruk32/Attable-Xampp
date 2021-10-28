@@ -216,6 +216,10 @@
 			}
 		}
 
+		function imageFormatter(cell, row) {
+			return "<img class='img-thumbnail w-25' src='" + cell + "'/>";
+		}
+
 		function totalTextFormatter(data) {
 			return 'Total'
 		}
@@ -232,23 +236,16 @@
 					[{
 						field: 'state',
 						checkbox: true,
-						rowspan: 2,
 						align: 'center',
 						valign: 'middle'
 					}, {
 						title: 'Référence',
 						field: 'id',
-						rowspan: 2,
 						align: 'center',
 						valign: 'middle',
 						sortable: true,
 						footerFormatter: totalTextFormatter
 					}, {
-						title: 'Item Detail',
-						colspan: 4,
-						align: 'center'
-					}],
-					[{
 						field: 'name',
 						title: 'Nom',
 						sortable: true,
@@ -264,6 +261,12 @@
 						title: 'Quantité',
 						sortable: true,
 						align: 'center'
+					}, {
+						field: 'url',
+						title: 'Aperçu',
+						sortable: false,
+						align: 'center',
+						formatter: imageFormatter
 					}, {
 						field: 'operate',
 						title: 'Item Operate',

@@ -25,15 +25,15 @@
     ErrorDocument 401 "401 - Acces interdit"
     ErrorDocument 403 "403 - Repertoire interdit"
 
-<Files ajax-test.php>
-    Order allow,deny
-    Deny from all
-</Files>
+#<Files ajax-test.php>
+#   Order allow,deny
+#    Deny from all
+#</Files>
 
-<Files ~ "\.(json|rules)$">
-    Order allow,deny
-    Deny from all
-</Files>
+#<Files ~ "\.(json|rules)$">
+#    Order allow,deny
+#    Deny from all
+#</Files>
 
 
 #RedirectMatch permanent .github/.* http://localhost:1234/Attable-Xampp/index.html

@@ -343,11 +343,12 @@ firebase.database().ref("products/").on('value', function (snapshot) {
     var productID = childSnapshot.val().id;
     var productLibelle = childSnapshot.val().libelle;
     var productPrice = childSnapshot.val().prix;
+    var productQuantity = childSnapshot.val().quantity;
     var productCategory = childSnapshot.val().category;
     var productDescriptive = childSnapshot.val().descriptive;
     var productURL = childSnapshot.val().Link;
     var productSLegend = childSnapshot.val().short_legend;
-    var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend };
+    var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'quantity' : productQuantity, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend };
     productsArray.push(ajout);
   });
   localStorage.setItem("productsArray", JSON.stringify(productsArray));
