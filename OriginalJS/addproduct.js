@@ -19,7 +19,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged((user) => {
     if (!user) {
-        location.replace("authentification.html")
+        location.replace("authentification")
     }
 });
 

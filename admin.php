@@ -31,7 +31,7 @@
 
 	<!-- Scripts -->
 	<script src="js/cookie-obf.js" type="text/javascript"></script>
-	<script src="OriginalJS/crypto.js" type="text/javascript"></script>
+	<script src="js/crypto-obf.js" type="text/javascript"></script>
 	<script src="js/panier-obf.js" type="module"></script>
 	<script src="js/valid-obf.js" type="text/javascript"></script>
 
@@ -41,7 +41,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light" id="top">
 		<div class="container-fluid d-flex flex-row">
-			<a class="navbar-brand" href="index.html" id="logo"><img src="images/attable_logo2.png" class="img-fluid"
+			<a class="navbar-brand" href="index" id="logo"><img src="images/attable_logo2.png" class="img-fluid"
 					alt="monlogo" id="lelogo"></a>
 			<div class="nav-item collapse navbar-collapse">
 				<div id="titre_page">Page Administrateur</div>
@@ -52,7 +52,7 @@
 				</a>
 			</div>
 			<div id="panier">
-				<a href="panier.html">
+				<a href="panier">
 					<span id="total_articles">0</span>
 					<img src="images/logo_panier2.png" alt="MonPanier" id="lepanier">
 					<span id="total_commande">0 €</span>
@@ -87,24 +87,24 @@
 
 	<div class="text-center row">
 		<h4>Gestion des Produits</h4>
-		<a class="col-md-6" href="addproduct.html" target="_blank">CRUD Produits</a>
-		<a class="col-md-6" href="bddproducts.html" target="_blank">BDD Produits</a>
+		<a class="col-md-6" href="addproduct" target="_blank">CRUD Produits</a>
+		<a class="col-md-6" href="bddproducts" target="_blank">BDD Produits</a>
 	</div>
 
 	<br>
 
 	<div class="text-center row">
 		<h4>Gestion des catégories</h4>
-		<a class="col-md-6" href="addcategorie.html" target="_blank">CRUD Catégories</a>
-		<a class="col-md-6" href="bddcategorie.html" target="_blank">BDD Catégories</a>
+		<a class="col-md-6" href="addcategorie" target="_blank">CRUD Catégories</a>
+		<a class="col-md-6" href="bddcategorie" target="_blank">BDD Catégories</a>
 	</div>
 
 	<br>
 
 	<div class="text-center row">
 		<h4>Gestion des Fournisseurs</h4>
-		<a class="col-md-6" href="addsupplier.html" target="_blank">CRUD Fournisseurs</a>
-		<a class="col-md-6" href="bddsupplier.html" target="_blank">BDD Fournisseurs</a>
+		<a class="col-md-6" href="addsupplier" target="_blank">CRUD Fournisseurs</a>
+		<a class="col-md-6" href="bddsupplier" target="_blank">BDD Fournisseurs</a>
 	</div>
 
 	<br><br>
@@ -127,10 +127,10 @@
 			<div class="row">
 				<div class="col-sm-4 links" id="menu">
 					<ul id="menus">
-						<li><a href="index.html">Accueil</a></li>
-						<li><a href="quisommesnous.html">Qui sommes nous</a></li>
-						<li><a href="noustrouver.html">Nous trouver</a></li>
-						<li><a href="panier.html">Commande</a></li>
+						<li><a href="index">Accueil</a></li>
+						<li><a href="quisommesnous">Qui sommes nous</a></li>
+						<li><a href="noustrouver">Nous trouver</a></li>
+						<li><a href="panier">Commande</a></li>
 					</ul>
 				</div>
 
@@ -143,9 +143,9 @@
 
 				<div class="col-sm-4 links" id="menu">
 					<ul id="menus">
-						<li><a href="newsletter.html">Mailing List</a></li>
-						<li><a href="mentionslegales.html">Mentions légales</a></li>
-						<li><a href="cgu.html">CGU</a></li>
+						<li><a href="newsletter">Mailing List</a></li>
+						<li><a href="mentionslegales">Mentions légales</a></li>
+						<li><a href="cgu">CGU</a></li>
 					</ul>
 				</div>
 			</div>
@@ -158,11 +158,11 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 	<!-- Scripts -->
-	<script src="OriginalJS/data.js" type="module"></script>
+	<script src="js/data-obf.js" type="module"></script>
 	<script id='MainScript' type="module">
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
-				location.replace("authentification.html");
+				location.replace("authentification");
 			}
 			else {
 				document.getElementById("lesids").src="images/login2.png";

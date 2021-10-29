@@ -25,29 +25,15 @@
     ErrorDocument 401 "401 - Acces interdit"
     ErrorDocument 403 "403 - Repertoire interdit"
 
-#<Files ajax-test.php>
-#   Order allow,deny
-#    Deny from all
-#</Files>
+Options +SymLinksIfOwnerMatch 
 
-#<Files ~ "\.(json|rules)$">
-#    Order allow,deny
-#    Deny from all
-#</Files>
+# Enlever l'extension .html des fichiers
+RewriteEngine on 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
 
-
-#RedirectMatch permanent .github/.* http://localhost:1234/Attable-Xampp/index.html
-#RedirectMatch permanent .vscode/.* http://localhost:1234/Attable-Xampp/index.html
-#RedirectMatch permanent bootstrap/.* http://localhost:1234/Attable-Xampp/index.html
-#RedirectMatch permanent categorie/.* http://localhost:1234/Attable-Xampp/index.html
-#RedirectMatch permanent css/.* http://localhost:1234/Attable-Xampp/index.html
-#RedirectMatch permanent firebase/.* http://localhost:1234/Attable-Xampp/index.html
-#RedirectMatch permanent images/.* http://localhost:1234/Attable-Xampp/index.html
-#RedirectMatch permanent js/.* http://localhost:1234/Attable-Xampp/index.html
-#RedirectMatch permanent node_modules/.* http://localhost:1234/Attable-Xampp/index.html
-#RedirectMatch permanent OriginalJS/.* http://localhost:1234/Attable-Xampp/index.html
-#RedirectMatch permanent public/.* http://localhost:1234/Attable-Xampp/index.html
-
-
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L]
 
 </ifDefine>
