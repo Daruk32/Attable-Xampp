@@ -1,17 +1,6 @@
-// Converts a String to word array
-var words = CryptoJS.enc.Utf16.parse('Hello, World!');
-// Reverses the word array to a readable String
-var utf8 = CryptoJS.enc.Utf16.stringify(words); // Hello World
-console.log(utf8);
-console.log("Travail");
-
-
-
+/*
 createCookie('test', JSON.stringify(CryptoJS.enc.Utf16.parse('Hello, World!')), 24);
 console.log(CryptoJS.enc.Utf16.stringify(JSON.parse(readCookie('test'))));
-
-
-
 
 var supplierTable = [
     {
@@ -65,3 +54,4 @@ var supplierTable = [
 //console.log(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem('prout'))));
 //console.log(JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem('prout')))));
 
+*/

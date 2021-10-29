@@ -6,6 +6,7 @@ V2.9
 */
 
 
+//Pour contrôler les caractères entrés pour le mot de passe
 function validate_password() {
   var myInput = document.getElementById("mdp");
   var letter = document.getElementById("letter");

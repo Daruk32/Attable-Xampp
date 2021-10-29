@@ -550,8 +550,6 @@ window.genlogo = function genlogo() {
     var urllogo = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("logoimg"))));
     document.getElementById("logo").innerHTML = urllogo;
 }
-
-
 //Génération des styles avec Localstorage pour la page CGU
 window.gencss = function gencss() {
     var css = "<link rel='stylesheet' href='css/attable.css'>";
