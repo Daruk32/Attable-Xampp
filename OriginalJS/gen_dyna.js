@@ -26,55 +26,54 @@ function FirstMajBdd() {
     });
 }
 function ControlMajBdd() {
-    var controleMaj;
-    const bdd = firebase.database().ref("DateMaj/").limitToLast(1);
-    bdd.on('value', snap => {
-        snap.forEach(function (item) {
-            controleMaj = item.val().IDD;
-            localStorage.setItem("controleVersionBdd", controleMaj);
-        });
-    });
+    var today = new Date();
+    var controleMaj = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString() + today.getHours().toString() + today.getMinutes().toString() + today.getSeconds().toString();
+    localStorage.setItem("controleVersionBdd", controleMaj);
 }
 
+ControlMajBdd();
 
 //Sélection des datas relatives aux produits depuis firebase ou le localstorage
-firebase.database().ref("products/").on('value', function (snapshot) {
-    var productsArray = new Array;
-    var productsSelectedArray = new Array;
-    var incompleteProducts = new Array;
-    if (snapshot.val() == null || localStorage.getItem("controleVersionBdd") || parseFloat(localStorage.getItem("controleVersionBdd")) == parseFloat(localStorage.getItem("actualVersionBdd"))) {
-        ControlMajBdd();
-        productsSelectedArray = localStorage.getItem("productsSelected");
-    }
-    //Récupère tous le tableau products de firebase et l'insère dans un tableau productsArray
-    else {
-        snapshot.forEach(function (childSnapshot) {
-            var productID = childSnapshot.val().id;
-            var productLibelle = childSnapshot.val().libelle;
-            var productPrice = childSnapshot.val().prix;
-            var productCategory = childSnapshot.val().category;
-            var productDescriptive = childSnapshot.val().descriptive;
-            var productURL = childSnapshot.val().Link;
-            var productSLegend = childSnapshot.val().short_legend;
-            var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend };
-            productsArray.push(ajout);
-        });
-        //Sélectionne les produits complets du tableau productsArray et les insère dans le tableau productsSelectedArray sinon dans incompleteProducts
-        function tri(element) {
-            if (element.id == null || element.name == null || element.prix == null || element.categorie == null || element.descriptive == null || element.url == null || element.short_legend == null || element.id == "" || element.name == "" || element.prix == "" || element.categorie == "" || element.descriptive == "" || element.url == "" || element.short_legend == "") {
-                incompleteProducts.push(element.id);
+function infoproducts() {
+    firebase.database().ref("products/").on('value', function (snapshot) {
+        var productsArray = new Array;
+        let productsSelectedArray = new Array;
+        var incompleteProducts = new Array;
+        if (snapshot.val() != null || parseFloat(localStorage.getItem("controleVersionBdd")) != parseFloat(localStorage.getItem("actualVersionBdd"))) {
+            snapshot.forEach(function (childSnapshot) {
+                var productID = childSnapshot.val().id;
+                var productLibelle = childSnapshot.val().libelle;
+                var productPrice = childSnapshot.val().prix;
+                var productCategory = childSnapshot.val().category;
+                var productDescriptive = childSnapshot.val().descriptive;
+                var productURL = childSnapshot.val().Link;
+                var productSLegend = childSnapshot.val().short_legend;
+                var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend };
+                productsArray.push(ajout);
+            });
+            //Sélectionne les produits complets du tableau productsArray et les insère dans le tableau productsSelectedArray sinon dans incompleteProducts
+            function tri(element) {
+                if (element.id == null || element.name == null || element.prix == null || element.categorie == null || element.descriptive == null || element.url == null || element.short_legend == null || element.id == "" || element.name == "" || element.prix == "" || element.categorie == "" || element.descriptive == "" || element.url == "" || element.short_legend == "") {
+                    incompleteProducts.push(element.id);
+                }
+                else {
+                    var productSelected = { 'id': element.id, 'name': element.name, 'prix': element.prix, 'categorie': element.categorie, 'descriptive': element.descriptive, 'url': element.url, 'short_legend': element.short_legend };
+                    productsSelectedArray.push(productSelected);
+                }
             }
-            else {
-                var productSelected = { 'id': element.id, 'name': element.name, 'prix': element.prix, 'categorie': element.categorie, 'descriptive': element.descriptive, 'url': element.url, 'short_legend': element.short_legend };
-                productsSelectedArray.push(productSelected);
-            }
+            productsArray.forEach(element => tri(element));
+            localStorage.setItem("productsArray", JSON.stringify(productsArray));
+            localStorage.setItem("productsSelected", JSON.stringify(productsSelectedArray));
+            FirstMajBdd();
         }
-        productsArray.forEach(element => tri(element));
-        localStorage.setItem("productsArray", JSON.stringify(productsArray));
-        localStorage.setItem("productsSelected", JSON.stringify(productsSelectedArray));
-        FirstMajBdd();
-    }
-});
+        //Récupère tous le tableau products de firebase et l'insère dans un tableau productsArray
+        else {
+            ControlMajBdd();
+            productsSelectedArray = localStorage.getItem("productsSelected");
+        }
+    });
+}
+infoproducts();
 var productList = JSON.parse(localStorage.getItem("productsSelected"));
 
 
@@ -89,30 +88,34 @@ function productSelection(choice) {
 }
 
 //Sélection des datas relatives aux catégories depuis firebase ou le localstorage
-firebase.database().ref("categories/").on('value', function (snapshot) {
-    var categoriesArray = new Array;
-    if (snapshot.val() == null || localStorage.getItem("controleVersionBdd") || parseFloat(localStorage.getItem("controleVersionBdd")) == parseFloat(localStorage.getItem("actualVersionBdd"))) {
-        ControlMajBdd();
-        productsSelectedArray = localStorage.getItem("productsSelected");
-    }
-    //Récupère tous le tableau products de firebase et l'insère dans un tableau categoriesArray
-    else {
-        snapshot.forEach(function (childSnapshot) {
-            var productID = childSnapshot.val().idC;
-            var productName = childSnapshot.val().nom;
-            var productValue = childSnapshot.val().valeur;
-            var productLink = childSnapshot.val().Link;
-            var ajoutC = { 'id': productID, 'name': productName, 'valeur': productValue, 'url':productLink };
-            categoriesArray.push(ajoutC);
-        });
-        localStorage.setItem("categoriesSelected", JSON.stringify(categoriesArray));
-        FirstMajBdd();
-    }
-});
-var categorieList = JSON.parse(localStorage.getItem("categoriesSelected"));
+function infocategorie() {
+    firebase.database().ref("categories/").on('value', function (snapshot) {
+        let productsSelectedArray = new Array;
+        var categoriesArray = new Array;
+        if (snapshot.val() != null || parseFloat(localStorage.getItem("controleVersionBdd")) != parseFloat(localStorage.getItem("actualVersionBdd"))) {
+            snapshot.forEach(function (childSnapshot) {
+                var productID = childSnapshot.val().idC;
+                var productName = childSnapshot.val().nom;
+                var productValue = childSnapshot.val().valeur;
+                var productLink = childSnapshot.val().Link;
+                var ajoutC = { 'id': productID, 'name': productName, 'valeur': productValue, 'url': productLink };
+                categoriesArray.push(ajoutC);
+            });
+            localStorage.setItem("categoriesSelected", JSON.stringify(categoriesArray));
+            FirstMajBdd();
+        }
+        //Récupère tous le tableau products de firebase et l'insère dans un tableau categoriesArray
+        else {
+            ControlMajBdd();
+            productsSelectedArray = localStorage.getItem("categoriesSelected");
+        }
+    });
+}
+infocategorie();
 
 //V3-BackEnd - Fonction de génération des catégories à la page d'accueil - index.html
 window.liste_categorie = function liste_categorie() {
+    var categorieList = JSON.parse(localStorage.getItem("categoriesSelected"));
     //Création de la div mère
     var section = document.getElementById('tab_categs');
     var divmere = document.createElement('div');
@@ -162,6 +165,7 @@ window.liste_categorie = function liste_categorie() {
 
 //V3-BackEnd - Fonction de génération du bandeau des pages - categorie.html + panier.html
 window.bandeau = function bandeau() {
+    var categorieList = JSON.parse(localStorage.getItem("categoriesSelected"));
     var bande = document.getElementById("bande");
 
     categorieList.forEach(function (item) {
@@ -542,21 +546,17 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
 //Génération du logo avec Localstorage pour la page Index
 window.genlogo = function genlogo() {
     var test = "<img src='images/attable_logo2.png' class='img-fluid' alt='monlogo' id='lelogo'>";
-    let objLinea = JSON.stringify(test);
-    localStorage.setItem("logoimg", objLinea);
-    var urllogo = localStorage.getItem("logoimg");
-    let objJson = JSON.parse(urllogo);
-    document.getElementById("logo").innerHTML = objJson;
+    localStorage.setItem("logoimg", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(test))));
+    var urllogo = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("logoimg"))));
+    document.getElementById("logo").innerHTML = urllogo;
 }
 
 
 //Génération des styles avec Localstorage pour la page CGU
 window.gencss = function gencss() {
     var css = "<link rel='stylesheet' href='css/attable.css'>";
-    let stylecss = JSON.stringify(css);
-    localStorage.setItem("stylecss", stylecss);
-    var cssstyle = localStorage.getItem("stylecss");
-    let objJson = JSON.parse(cssstyle);
-    document.getElementById("headtest").innerHTML += objJson;
+    localStorage.setItem("stylecss", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(css))));
+    var cssstyle = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("stylecss"))));
+    document.getElementById("headtest").innerHTML += cssstyle;
 }
 

@@ -199,3 +199,29 @@ fs.readFile("./OriginalJS/bddcategorie.js", "utf-8", function (error, code) {
         console.log("Your obfuscated bddcategorie is ready !");
     })
 })
+
+fs.readFile("./OriginalJS/cryptoJS.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/cryptoJS-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated cryptoJS is ready !");
+    })
+})
+
+fs.readFile("./OriginalJS/crypto.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/crypto-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated crypto is ready !");
+    })
+})

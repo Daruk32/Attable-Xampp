@@ -24,7 +24,7 @@ export function defrag_cookie(list_achat) {
 		liste = null;
 	}
 	else {
-		liste = splitIntoChunk(readCookie("list_achat").split(","), 5);
+		liste = splitIntoChunk(CryptoJS.enc.Utf16.stringify(JSON.parse(readCookie("list_achat"))).split(","), 5);
 	}
 	return liste;
 }
@@ -67,7 +67,7 @@ window.plus = function plus(catindex) {
 		count++;
 		document.getElementById("count" + catindex).value = count;
 		var new_apport = id.toString() + "," + name.toString() + "," + price.toString() + "," + url.toString() + "," + count.toString();
-		createCookie("list_achat", new_apport, 15);
+		createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(new_apport)), 15);
 	}
 
 	//S'il existe déjà :
@@ -83,7 +83,7 @@ window.plus = function plus(catindex) {
 			}
 			// Ajout d'un nouvel article à la liste initialement générée.
 			else if (document.getElementById('count' + catindex).value == "") {
-				new_apport = readCookie("list_achat");
+				new_apport = CryptoJS.enc.Utf16.stringify(JSON.parse(readCookie("list_achat")));
 				var count3 = document.getElementById('count' + catindex).value;
 				count3++;
 				var new_apport = new_apport + "," + id.toString() + "," + name.toString() + "," + price.toString() + "," + url.toString() + "," + count3.toString();
@@ -92,7 +92,7 @@ window.plus = function plus(catindex) {
 		}
 
 		//On enregistre la chaîne de caractères dans le cookie.
-		createCookie("list_achat", new_apport, 15);
+		createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(new_apport)), 15);
 	}
 	document.getElementById("count" + catindex).style.visibility = 'visible';
 	document.getElementById("moins" + catindex).style.visibility = 'visible';
@@ -139,7 +139,7 @@ window.minus = function minus(cat_index) {
 
 		document.getElementById("count" + cat_index).value = comptage2;
 
-		createCookie("list_achat", new_apport, 15);
+		createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(new_apport)), 15);
 	}
 
 	var somme = panier();
@@ -172,7 +172,7 @@ window.panier = function panier() {
 	if (window.location.pathname == "/Attable-Xampp/panier.html" || window.location.pathname == "/attable/panier.html" || window.location.pathname == "/panier.html") {
 		document.getElementById("sous_total").innerHTML = total + " €";
 	}
-	createCookie("Somme", total, 15);
+	createCookie("Somme", JSON.stringify(CryptoJS.enc.Utf16.parse(total)), 15);
 
 	return total;
 }
@@ -187,7 +187,7 @@ window.supp = function supp(article) {
 			var supp = lotcommande.filter(function (val) { return val !== '' });
 		}
 		var reimport = remontage(supp);
-		createCookie("list_achat", reimport, 15);
+		createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(reimport)), 15);
 		location.reload();
 	}
 }
@@ -241,7 +241,7 @@ window.valid_command = function valid_command() {
 			}
 		}
 		var m6 = "|-------------------------------------------------------------------------------------|%0A";
-		var m7 = "%0A%0AVotre total : " + readCookie("Somme") + "€%0A";
+		var m7 = "%0A%0AVotre total : " + CryptoJS.enc.Utf16.stringify(JSON.parse(readCookie("Somme"))) + "€%0A";
 		var m8 = "%0A%0A Merci pour votre commande !%0A%0ACordialement,%0A%0AAssociation Attable, le Collectif du goût'>Passer la commande</a>";
 		document.getElementById("valid-command").innerHTML = m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8;
 
@@ -304,7 +304,7 @@ window.generate = function generate() {
 
 	//Montant total
 	var amount_down = 70 + (body.length + 1) * 10;
-	doc.text(155, amount_down, 'Montant total : ' + readCookie("Somme") + "€");
+	doc.text(155, amount_down, 'Montant total : ' + CryptoJS.enc.Utf16.stringify(JSON.parse(readCookie("Somme"))) + "€");
 
 	//doc.save('Ma Commande.pdf');
 	window.open(doc.output('bloburl'), '_blank');

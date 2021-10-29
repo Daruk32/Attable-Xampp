@@ -26,8 +26,12 @@
 	<link rel="stylesheet" href="bootstrap/bootstrap-table.min.css">
 	<script src="bootstrap/bootstrap-table.min.js"></script>
 
+	<!-- Data crypto -->
+	<script src="js/cryptoJS-obf.js" type="text/javascript"></script>
+
 	<!-- Scripts -->
 	<script src="js/cookie-obf.js" type="text/javascript"></script>
+	<script src="OriginalJS/crypto.js" type="text/javascript"></script>
 	<script src="js/panier-obf.js" type="module"></script>
 	<script src="js/valid-obf.js" type="text/javascript"></script>
 
@@ -154,7 +158,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 	<!-- Scripts -->
-	<script src="js/data-obf.js" type="module"></script>
+	<script src="OriginalJS/data.js" type="module"></script>
 	<script id='MainScript' type="module">
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {

@@ -108,11 +108,9 @@ window.convertJsonStorage = function convertJsonStorage() {
     var tab_product = tab_categorie.reduce(function (prev, curr) {
       return prev.concat(curr);
     });
-    //Pour sérialiser  
-    var str_json = JSON.stringify(tab_product);
     //Sauvegarde du json dans le localstorage  
-    localStorage.setItem("bddproducts", str_json);
-    console.log(str_json);
+    localStorage.setItem("bddproducts", JSON.stringify(tab_product));
+    console.log(tab_product);
   }
 }
 //Exportation du tableau Produits sous Firebase

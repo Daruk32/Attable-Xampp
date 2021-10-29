@@ -88,7 +88,7 @@ function login() {
   var ids_json = JSON.stringify(ids);
 
   if (inputElements.checked) {
-    createCookie("info_cnx", ids_json, 3);
+    createCookie("info_cnx", CryptoJS.enc.Utf16.parse(ids_json), 3);
   }
   else {
     eraseCookie("info_cnx");
@@ -96,7 +96,7 @@ function login() {
 
   var inputRemember = document.getElementById('rememberMe');
   if (inputRemember.checked) {
-    createCookie("info_rmb", ids_json, 3);
+    createCookie("info_rmb", CryptoJS.enc.Utf16.parse(ids_json), 3);
   }
   else {
     eraseCookie("info_rmb");
@@ -110,7 +110,7 @@ function login() {
         userName: email,
         statut: true
       };
-      createCookie("statut_cnx", JSON.stringify(cookieStatut), 7);
+      createCookie("statut_cnx", CryptoJS.enc.Utf16.parse(JSON.stringify(cookieStatut)), 7);
       location.replace("admin.php");
     }
   })
@@ -153,7 +153,7 @@ function verif_form_modification() {
 // Fonction pour mettre le mail et mdp dans les inputs si rememberMe est checked
 function putInfos() {
   if (readCookie("info_rmb") != null) {
-    var infos = JSON.parse(readCookie("info_rmb"));
+    var infos = JSON.parse(CryptoJS.enc.Utf16.stringify(readCookie("info_rmb")));
     document.getElementById("email").value = infos[0];
     document.getElementById("mdp").value = infos[1];
     let boxRemember = document.getElementById('rememberMe');
