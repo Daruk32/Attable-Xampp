@@ -5,7 +5,6 @@ Dernière MAJ : 30/10/2021
 V2.9
 */
 
-
 var firebaseConfig = {
     apiKey: "AIzaSyCRpXRP0D_MuPqyuUOG491w1SANIc6lVL8",
     authDomain: "attable-6578b.firebaseapp.com",

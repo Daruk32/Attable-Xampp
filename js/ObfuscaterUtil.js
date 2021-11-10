@@ -225,3 +225,29 @@ fs.readFile("./OriginalJS/crypto.js", "utf-8", function (error, code) {
         console.log("Your obfuscated crypto is ready !");
     })
 })
+
+fs.readFile("./OriginalJS/index.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/index-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated index is ready !");
+    })
+})
+
+fs.readFile("./OriginalJS/categorie.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/categorie-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated categorie is ready !");
+    })
+})
