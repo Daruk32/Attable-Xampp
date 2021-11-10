@@ -54,10 +54,12 @@ function controleCharacter() {
 
 
 //Redirection si connecté
-var dotAuyth = document.getElementById("authAdmin");
-if (readCookie("info_cnx") != null) {
-	dotAuyth.href = 'admin.html';
-}
-else {
-	dotAuyth.href = "authentification.html";
+function redirAdmin() {
+	var dotAuyth = document.getElementById("authAdmin");
+	if (readCookie("info_cnx") != null) {
+		dotAuyth.href = 'admin.html';
+	}
+	else {
+		dotAuyth.href = "authentification.html";
+	}
 }
