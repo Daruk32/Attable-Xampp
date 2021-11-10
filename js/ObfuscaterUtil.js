@@ -251,3 +251,16 @@ fs.readFile("./OriginalJS/categorie.js", "utf-8", function (error, code) {
         console.log("Your obfuscated categorie is ready !");
     })
 })
+
+fs.readFile("./OriginalJS/firesrc.js", "utf-8", function (error, code) {
+    if (error) {
+        throw error;
+    }
+    var obfuscateResult = jsObfuscator.obfuscate(code);
+    fs.writeFile("./js/firesrc-obf.js", obfuscateResult.getObfuscatedCode(), function (fsError) {
+        if (fsError) {
+            return console.log(fsError);
+        }
+        console.log("Your obfuscated firesrc is ready !");
+    })
+})

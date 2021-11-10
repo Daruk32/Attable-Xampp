@@ -151,6 +151,8 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+	<script src="js/firesrc-obf.js" type="text/javascript"></script>
+
 	<!-- Scripts -->
 	<script src="js/data-obf.js" type="module"></script>
 	<script id='MainScript' type="module">
