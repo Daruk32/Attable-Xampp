@@ -60,7 +60,8 @@ firebase.database().ref("products/").on('value', function (snapshot) {
     //On récupère le paramètre de l'URL pour définir des variables
     var number = new URLSearchParams(window.location.search).get('categorie');
     document.getElementById("ajout_titre_categorie").innerHTML = number;
-
+    
+    var indexProduit = 0;
     var categorie_page = document.getElementById("descriptif_cat");
     var productsOneCategorieSelected = productSelection(number);
     //Boucle de création des produits
@@ -98,9 +99,9 @@ firebase.database().ref("products/").on('value', function (snapshot) {
             img111.className = "card-img-top produit";
             img111.src = item.url;
             img111.alt = "...";
-            /*img111.addEventListener("click", function (e) {
-                fiche_detaillee(number, cat_index);
-            }, false);*/
+            img111.addEventListener("click", function (e) {
+                fiche_detaillee(item, indexProduit);
+            }, false);
             a11.appendChild(img111);
 
             var div12 = document.createElement('div')
@@ -175,6 +176,8 @@ firebase.database().ref("products/").on('value', function (snapshot) {
             }, false);
             div13.appendChild(input133);
 
+            indexProduit++;
+
             if (item.prix == 0 || item.prix == "") {
                 document.getElementById("plus" + item.id).style.visibility = 'hidden';
             }
@@ -190,7 +193,7 @@ function changeCategorie(number) {
 
     var categorie_page = document.getElementById("descriptif_cat");
     var productsOneCategorieSelected = productSelection(number);
-
+    var indexProduit = 0;
     document.getElementById("ajout_titre_categorie").innerHTML = number;
 
     //Boucle de création des produits
@@ -228,9 +231,9 @@ function changeCategorie(number) {
             img111.className = "card-img-top produit";
             img111.src = item.url;
             img111.alt = "...";
-            /*img111.addEventListener("click", function (e) {
-                fiche_detaillee(number, cat_index);
-            }, false);*/
+            img111.addEventListener("click", function (e) {
+                fiche_detaillee(item, indexProduit);
+            }, false);
             a11.appendChild(img111);
 
             var div12 = document.createElement('div')
@@ -309,6 +312,8 @@ function changeCategorie(number) {
                 document.getElementById("plus" + item.id).style.visibility = 'hidden';
             }
 
+            indexProduit++;
+
         });
     }
     document.getElementById('fiche_produit').style.display = 'none';
@@ -336,12 +341,11 @@ categorieList.forEach(function (item) {
 
 
 
-
-/*
 //Fonction de génération de la fiche détaillée du produit
-window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
+window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
+    var ficheProduit = document.getElementById("fiche_produit");
+
     var valeur;
-    var id = (number * 1000).toString() + cat_index.toString();
 
     document.getElementById('fiche_produit').style.display = 'block';
 
@@ -349,7 +353,7 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
     if (readCookie("list_achat") != null) {
         var controle = defrag_cookie("list_achat");
         for (let i = 0; i < controle.length; i++) {
-            if (id != controle[i][0]) {
+            if (item.id != controle[i][0]) {
                 valeur = "";
             }
             else {
@@ -361,58 +365,123 @@ window.fiche_detaillee = function fiche_detaillee(number, cat_index) {
         var valeur = "";
     }
 
-    if (tab_categorie[number][cat_index].prix == 0) {
+    if (item.prix == 0) {
         var champs_prix = "Prix : &Agrave; voir en magasin";
     }
     else {
-        var champs_prix = "Prix :&nbsp;" + tab_categorie[number][cat_index].prix + " €";
+        var champs_prix = "Prix :&nbsp;" + item.prix + " €";
     }
 
-    var fd1 = "<table class='table w-100' id='deta-tab'><tr><td id='description_produit2' colspan='2'class='text-center'><p>";
-    var fd2 = tab_categorie[number][cat_index].libelle;
-    var fd3 = "</p></td></tr><tr><td rowspan='2'><div id='description_produit' class='example'><div class='overlay'>🔎</div><img src='";
-    var fd4 = tab_categorie[number][cat_index].url;
-    var fd5 = "' alt='Conserves' class='cats'></div></td><td class='text-center'><p>";
-    var fd6 = tab_categorie[number][cat_index].texte;
-    var fd7 = "</p></td></tr><tr><td class='text-center'><span id='id_prix_produit'>";
-    var fd8 = champs_prix;
-    var fd9 = "</span></td></tr><tr><td colspan='2'><div id='modul_quantity'><input class='bmoins add-to-cart' type='button' value='-' id='moins";
-    var fd10 = cat_index;
-    var fd11 = "' data-id='";
-    var fd12 = pre_id.toString() + cat_index.toString();
-    var fd13 = "' data-name='";
-    var fd14 = tab_categorie[number][cat_index].libelle;
-    var fd15 = "' data-price='";
-    var fd16 = tab_categorie[number][cat_index].prix;
-    var fd17 = "' data-url='";
-    var fd18 = tab_categorie[number][cat_index].url;
-    var fd19 = "' onclick='minus(";
-    var fd20 = cat_index;
-    var fd21 = ")'><input class='affich_valeur' value='";
-    var fd22 = valeur;
-    var fd23 = "' id='count";
-    var fd24 = cat_index;
-    var fd25 = "' disabled><input type='button' class='bplus add-to-cart' value='+' id='plus";
-    var fd26 = cat_index;
-    var fd27 = "' data-id='";
-    var fd28 = pre_id.toString() + cat_index.toString();
-    var fd29 = "' data-name='";
-    var fd30 = tab_categorie[number][cat_index].libelle;
-    var fd31 = "' data-price='";
-    var fd32 = tab_categorie[number][cat_index].prix;
-    var fd33 = "' data-url='";
-    var fd34 = tab_categorie[number][cat_index].url;
-    var fd35 = "' onclick='plus(";
-    var fd36 = cat_index;
-    var fd37 = ")'></div></td><tr></table>";
-    document.getElementById("fiche_produit").innerHTML = fd1 + fd2 + fd3 + fd4 + fd5 + fd6 + fd7 + fd8 + fd9 + fd10 + fd11 + fd12 + fd13 + fd14 + fd15 + fd16 + fd17 + fd18 + fd19 + fd20 + fd21 + fd22 + fd23 + fd24 + fd25 + fd26 + fd27 + fd28 + fd29 + fd30 + fd31 + fd32 + fd33 + fd34 + fd35 + fd36 + fd37;
+    //table
+    var table1 = document.createElement('table')
+    table1.className = "table w-100";
+    table1.id = "deta-tab";
+    ficheProduit.appendChild(table1);
+    //tr1
+    var tr1 = document.createElement('tr')
+    table1.appendChild(tr1);
+    //td11
+    var td11 = document.createElement('td')
+    td11.id = "description_produit2";
+    td11.className = "text-center";
+    td11.colSpan = "2";
+    tr1.appendChild(td11);
+    //p111
+    var p111 = document.createElement('p')
+    td11.innerHTML = item.name;
+    td11.appendChild(p111);
+    //tr2
+    var tr2 = document.createElement('tr')
+    table1.appendChild(tr2);
+    //td21
+    var td21 = document.createElement('td')
+    td21.rowSpan = "2";
+    tr2.appendChild(td21);
+    //div211
+    var div211 = document.createElement('div')
+    div211.className = "example";
+    div211.id = "description_produit";
+    td21.appendChild(div211);
+    //div2111
+    var div2111 = document.createElement('div')
+    div2111.className = "overlay";
+    div2111.innerHTML = "🔎";
+    div211.appendChild(div2111);
+    //img2112
+    var img2112 = document.createElement('img')
+    img2112.src = item.url;
+    img2112.className = "cats";
+    div211.appendChild(img2112);
+    //td22
+    var td22 = document.createElement('td')
+    td22.className = "text-center";
+    tr2.appendChild(td22);
+    //p221
+    var p221 = document.createElement('p')
+    p221.innerHTML = item.descriptive;
+    td22.appendChild(p221);
+    //tr3
+    var tr3 = document.createElement('tr')
+    table1.appendChild(tr3);
+    //td31
+    var td31 = document.createElement('td')
+    td31.className = "text-center";
+    tr3.appendChild(td31);
+    //span311
+    var span311 = document.createElement('span')
+    span311.id = "id_prix_produit";
+    span311.innerHTML = champs_prix;
+    td31.appendChild(span311);
+    //tr4
+    var tr4 = document.createElement('tr')
+    table1.appendChild(tr4);
+    //td41
+    var td41 = document.createElement('td')
+    td41.colspan = "2";
+    tr4.appendChild(td41);
+    //div411
+    var div411 = document.createElement('div')
+    div411.id = "modul_quantity";
+    td41.appendChild(div411);
+    //input4111
+    var input4111 = document.createElement('input')
+    input4111.className = "bmoins add-to-cart";
+    input4111.type = "button";
+    input4111.value = "-";
+    input4111.id = "moins"+indexProduit;
+    input4111.dataset.name = item.name;
+    input4111.dataset.price = item.prix;
+    input4111.dataset.url = item.url;
+    input4111.addEventListener("click", function (e) {
+        minus(indexProduit);
+    }, false);
+    div411.appendChild(input4111);
+    //input4112
+    var input4112 = document.createElement('input')
+    input4112.className = "affich_valeur";
+    input4112.value = "valeur";
+    input4112.id = "count"+indexProduit;
+    input4112.disabled = true;
+    div411.appendChild(input4112);
+    //input4113
+    var input4113 = document.createElement('input')
+    input4113.className = "bplus add-to-cart";
+    input4113.type = "button";
+    input4113.value = "+";
+    input4113.id = "plus"+indexProduit;
+    input4113.dataset.name = item.name;
+    input4113.dataset.price = item.prix;
+    input4113.dataset.url = item.url;
+    input4113.addEventListener("click", function (e) {
+        plus(indexProduit);
+    }, false);
+    div411.appendChild(input4113);
 
-    if (tab_categorie[number][cat_index].prix == 0 || tab_categorie[number][cat_index].prix == "") {
-        document.getElementById("plus" + cat_index).style.visibility = 'hidden';
+    if (item.prix == 0 || item.prix == "") {
+        document.getElementById("plus" + indexProduit).style.visibility = 'hidden';
     }
 
     $(document).ready(function () {
         $('.example').izoomify();
     });
 }
-*/

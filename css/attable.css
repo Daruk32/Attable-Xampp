@@ -193,7 +193,6 @@ h3 {
   width: 100% !important;
   height: auto !important;
 }
-
 #bande li{
 	display:inline-block !important;
   font-size: 1vw;
@@ -223,7 +222,6 @@ h3 {
   background-color: rgba(193,122,61,255);
   color :rgba(34,135,40,255);
 }
-
 .icon-bar {
 	background: #CC8B65 !important;	
 }
