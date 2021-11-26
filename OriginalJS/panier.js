@@ -52,7 +52,7 @@ window.plus = function plus(catindex) {
 	var name = produit.dataset.name;
 	var price = produit.dataset.price;
 	var url = produit.dataset.url;
-
+console.log(id);
 	//Appel du tableau des enregistrements
 	liste = defrag_cookie("list_achat");
 	//Sert à remplir le cookie list_achat
