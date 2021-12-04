@@ -9,11 +9,6 @@ V2.9
 
 
 
-//Déclaration du tableau des catégories
-import { tab_categorie } from '../js/data-obf.js'
-
-//Appel de la fonction defrag_cookie
-import { defrag_cookie } from '../js/panier-obf.js'
 
 var productsSelectedArray = new Array;
 
@@ -29,162 +24,158 @@ function productSelection(choice) {
 }
 
 //Génération de la page des produits par catégorie avec les data Firebase
-firebase.database().ref("products/").on('value', function (snapshot) {
-    var productsArray = new Array;
-    var incompleteProducts = new Array;
-    snapshot.forEach(function (childSnapshot) {
-        var productID = childSnapshot.val().id;
-        var productLibelle = childSnapshot.val().libelle;
-        var productPrice = childSnapshot.val().prix;
-        var productCategory = childSnapshot.val().category;
-        var productDescriptive = childSnapshot.val().descriptive;
-        var productURL = childSnapshot.val().Link;
-        var productSLegend = childSnapshot.val().short_legend;
-        var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend };
-        productsArray.push(ajout);
-    });
-    //Sélectionne les produits complets du tableau productsArray et les insère dans le tableau productsSelectedArray sinon dans incompleteProducts
-    function tri(element) {
-        if (element.id == null || element.name == null || element.prix == null || element.categorie == null || element.descriptive == null || element.url == null || element.short_legend == null || element.id == "" || element.name == "" || element.prix == "" || element.categorie == "" || element.descriptive == "" || element.url == "" || element.short_legend == "") {
-            incompleteProducts.push(element.id);
+function creationCategorie() {
+    firebase.database().ref("products/").on('value', function (snapshot) {
+        var productsArray = new Array;
+        var incompleteProducts = new Array;
+        snapshot.forEach(function (childSnapshot) {
+            var productID = childSnapshot.val().id;
+            var productLibelle = childSnapshot.val().libelle;
+            var productPrice = childSnapshot.val().prix;
+            var productCategory = childSnapshot.val().category;
+            var productDescriptive = childSnapshot.val().descriptive;
+            var productURL = childSnapshot.val().Link;
+            var productSLegend = childSnapshot.val().short_legend;
+            var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend };
+            productsArray.push(ajout);
+        });
+        //Sélectionne les produits complets du tableau productsArray et les insère dans le tableau productsSelectedArray sinon dans incompleteProducts
+        function tri(element) {
+            if (element.id == null || element.name == null || element.prix == null || element.categorie == null || element.descriptive == null || element.url == null || element.short_legend == null || element.id == "" || element.name == "" || element.prix == "" || element.categorie == "" || element.descriptive == "" || element.url == "" || element.short_legend == "") {
+                incompleteProducts.push(element.id);
+            }
+            else {
+                var productSelected = { 'id': element.id, 'name': element.name, 'prix': element.prix, 'categorie': element.categorie, 'descriptive': element.descriptive, 'url': element.url, 'short_legend': element.short_legend };
+                productsSelectedArray.push(productSelected);
+            }
+        }
+        productsArray.forEach(element => tri(element));
+        //localStorage.setItem("productsArray", JSON.stringify(productsArray));
+
+
+        //On récupère le paramètre de l'URL pour définir des variables
+        var number = new URLSearchParams(window.location.search).get('categorie');
+        document.getElementById("ajout_titre_categorie").innerHTML = number;
+
+        var indexProduit = 0;
+        var categorie_page = document.getElementById("descriptif_cat");
+        var productsOneCategorieSelected = productSelection(number);
+        //Boucle de création des produits
+        if (productsOneCategorieSelected.length == 0) {
+            document.getElementById("descriptif_cat").innerHTML += "Il n'y a pas de produits pour cette catégorie";
         }
         else {
-            var productSelected = { 'id': element.id, 'name': element.name, 'prix': element.prix, 'categorie': element.categorie, 'descriptive': element.descriptive, 'url': element.url, 'short_legend': element.short_legend };
-            productsSelectedArray.push(productSelected);
-        }
-    }
-    productsArray.forEach(element => tri(element));
-    //localStorage.setItem("productsArray", JSON.stringify(productsArray));
-
-
-    //On récupère le paramètre de l'URL pour définir des variables
-    var number = new URLSearchParams(window.location.search).get('categorie');
-    document.getElementById("ajout_titre_categorie").innerHTML = number;
-    
-    var indexProduit = 0;
-    var categorie_page = document.getElementById("descriptif_cat");
-    var productsOneCategorieSelected = productSelection(number);
-    //Boucle de création des produits
-    if (productsOneCategorieSelected.length == 0) {
-        document.getElementById("descriptif_cat").innerHTML += "Il n'y a pas de produits pour cette catégorie";
-    }
-    else {
-        productsOneCategorieSelected.forEach(function (item) {
-            //Met à jour et affiche la quantité de chaque produit
-            if (readCookie("list_achat") != null) {
-                var controle = defrag_cookie("list_achat");
-                for (let i = 0; i < controle.length; i++) {
-                    if (item.id != controle[i][0]) {
-                        valeur = "";
-                    }
-                    else {
-                        valeur = controle[i][4];
+            productsOneCategorieSelected.forEach(function (item) {
+                //Met à jour et affiche la quantité de chaque produit
+                if (localStorage.getItem("list_achat") != null) {
+                    var controle = JSON.parse(localStorage.getItem("list_achat"));
+                    for (let i in controle) {
+                        if (item.id != controle[i].id) {
+                            valeur = "";
+                        }
+                        else {
+                            valeur = controle[i].quantity;
+                        }
                     }
                 }
-            }
-            else {
-                var valeur = "";
-            }
-            //Création de la page des produits
-            var div1 = document.createElement('div')
-            div1.className = "un_produit";
-            categorie_page.appendChild(div1);
+                else {
+                    var valeur = "";
+                }
+                //Création de la page des produits
+                var div1 = document.createElement('div')
+                div1.className = "un_produit";
+                categorie_page.appendChild(div1);
 
-            var a11 = document.createElement('a')
-            a11.className = "card card_categs";
-            a11.href = '#main';
-            div1.appendChild(a11);
+                var a11 = document.createElement('a')
+                a11.className = "card card_categs";
+                a11.href = '#main';
+                div1.appendChild(a11);
 
-            var img111 = document.createElement('img')
-            img111.className = "card-img-top produit";
-            img111.src = item.url;
-            img111.alt = "...";
-            img111.addEventListener("click", function (e) {
-                fiche_detaillee(item, indexProduit);
-            }, false);
-            a11.appendChild(img111);
+                var img111 = document.createElement('img')
+                img111.className = "card-img-top produit";
+                img111.src = item.url;
+                img111.alt = "...";
+                img111.addEventListener("click", function (e) {
+                    fiche_detaillee(item, indexProduit);
+                }, false);
+                a11.appendChild(img111);
 
-            var div12 = document.createElement('div')
-            div12.className = "card-body text-center";
-            div1.appendChild(div12);
+                var div12 = document.createElement('div')
+                div12.className = "card-body text-center";
+                div1.appendChild(div12);
 
-            var h5121 = document.createElement('h5')
-            h5121.className = "fw-bolder legend_produit";
-            h5121.innerHTML = item.name;
-            div12.appendChild(h5121);
+                var h5121 = document.createElement('h5')
+                h5121.className = "fw-bolder legend_produit";
+                h5121.innerHTML = item.name;
+                div12.appendChild(h5121);
 
-            var div122 = document.createElement('div')
-            div122.id = "info-prix";
-            if (item.prix == 0 || item.prix == "") {
-                div122.innerHTML = "Prix : &Agrave; voir en magasin";
-            }
-            else {
-                div122.innerHTML = item.prix + " €";
-            }
-            div12.appendChild(div122);
+                var div122 = document.createElement('div')
+                div122.id = "info-prix";
+                if (item.prix == 0 || item.prix == "") {
+                    div122.innerHTML = "Prix : &Agrave; voir en magasin";
+                }
+                else {
+                    div122.innerHTML = item.prix + " €";
+                }
+                div12.appendChild(div122);
 
-            var div13 = document.createElement('div')
-            div13.id = "modul_quantity";
-            div13.className = "card-footer";
-            div1.appendChild(div13);
+                var div13 = document.createElement('div')
+                div13.id = "modul_quantity";
+                div13.className = "card-footer";
+                div1.appendChild(div13);
 
-            var input131 = document.createElement('input')
-            input131.setAttribute("type", "button");
-            input131.className = "bmoins add-to-cart";
-            input131.value = "-";
-            if (valeur > 0) {
-                input131.style.visibility = "visible";
-            }
-            else {
-                input131.style.visibility = "hidden";
-            }
-            input131.id = "moins" + item.id;
-            input131.dataset.id = item.id;
-            input131.dataset.name = item.name;
-            input131.dataset.price = item.prix;
-            input131.dataset.url = item.url;
-            input131.addEventListener("click", function (e) {
-                minus(item.id);
-            }, false);
-            div13.appendChild(input131);
+                var input131 = document.createElement('input')
+                input131.setAttribute("type", "button");
+                input131.className = "bmoins add-to-cart";
+                input131.value = "-";
+                if (valeur > 0) {
+                    input131.style.visibility = "visible";
+                }
+                else {
+                    input131.style.visibility = "hidden";
+                }
+                input131.id = "moins" + item.id;
+                input131.dataset.id = item.id;
+                input131.addEventListener("click", function (e) {
+                    minus(item.id);
+                }, false);
+                div13.appendChild(input131);
 
-            var input132 = document.createElement('input')
-            input132.setAttribute("type", "button");
-            input132.className = "affich_valeur";
-            input132.value = valeur;
-            input132.id = "count" + item.id;
-            input132.disabled = true;
-            if (valeur > 0) {
-                input132.style.visibility = "visible";
-            }
-            else {
-                input132.style.visibility = "hidden";
-            }
-            div13.appendChild(input132);
+                var input132 = document.createElement('input')
+                input132.setAttribute("type", "button");
+                input132.className = "affich_valeur";
+                input132.value = valeur;
+                input132.id = "count" + item.id;
+                input132.disabled = true;
+                if (valeur > 0) {
+                    input132.style.visibility = "visible";
+                }
+                else {
+                    input132.style.visibility = "hidden";
+                }
+                div13.appendChild(input132);
 
-            var input133 = document.createElement('input')
-            input133.setAttribute("type", "button");
-            input133.className = "bplus add-to-cart";
-            input133.value = "+";
-            input133.id = "plus" + item.id;
-            input133.dataset.id = item.id;
-            input133.dataset.name = item.name;
-            input133.dataset.price = item.prix;
-            input133.dataset.url = item.url;
-            input133.addEventListener("click", function (e) {
-                plus(item.id);
-            }, false);
-            div13.appendChild(input133);
+                var input133 = document.createElement('input')
+                input133.setAttribute("type", "button");
+                input133.className = "bplus add-to-cart";
+                input133.value = "+";
+                input133.id = "plus" + item.id;
+                input133.dataset.id = item.id;
+                input133.addEventListener("click", function (e) {
+                    plus(item.id);
+                }, false);
+                div13.appendChild(input133);
 
-            indexProduit++;
+                indexProduit++;
 
-            if (item.prix == 0 || item.prix == "") {
-                document.getElementById("plus" + item.id).style.visibility = 'hidden';
-            }
-        });
-    }
-});
-
+                if (item.prix == 0 || item.prix == "") {
+                    document.getElementById("plus" + item.id).style.visibility = 'hidden';
+                }
+            });
+        }
+    });
+}
+creationCategorie();
 
 //Fonction de génération des 5 images/textes des catégories depuis le bandeau
 function changeCategorie(number) {
@@ -203,14 +194,14 @@ function changeCategorie(number) {
     else {
         productsOneCategorieSelected.forEach(function (item) {
             //Met à jour et affiche la quantité de chaque produit
-            if (readCookie("list_achat") != null) {
-                var controle = defrag_cookie("list_achat");
-                for (let i = 0; i < controle.length; i++) {
-                    if (item.id != controle[i][0]) {
+            if (localStorage.getItem("list_achat") != null) {
+                var controle = JSON.parse(localStorage.getItem("list_achat"));
+                for (let i in controle) {
+                    if (item.id != controle[i].id) {
                         valeur = "";
                     }
                     else {
-                        valeur = controle[i][4];
+                        valeur = controle[i].quantity;
                     }
                 }
             }
@@ -272,11 +263,8 @@ function changeCategorie(number) {
             }
             input131.id = "moins" + item.id;
             input131.dataset.id = item.id;
-            input131.dataset.name = item.name;
-            input131.dataset.price = item.prix;
-            input131.dataset.url = item.url;
             input131.addEventListener("click", function (e) {
-                minus(item.id);
+                minus(item.id, indexProduit);
             }, false);
             div13.appendChild(input131);
 
@@ -300,11 +288,8 @@ function changeCategorie(number) {
             input133.value = "+";
             input133.id = "plus" + item.id;
             input133.dataset.id = item.id;
-            input133.dataset.name = item.name;
-            input133.dataset.price = item.prix;
-            input133.dataset.url = item.url;
             input133.addEventListener("click", function (e) {
-                plus(item.id);
+                plus(item.id, indexProduit);
             }, false);
             div13.appendChild(input133);
 
@@ -343,6 +328,7 @@ categorieList.forEach(function (item) {
 
 //Fonction de génération de la fiche détaillée du produit
 window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
+    document.getElementById("fiche_produit").innerHTML = "";
     var ficheProduit = document.getElementById("fiche_produit");
 
     var valeur;
@@ -350,14 +336,14 @@ window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
     document.getElementById('fiche_produit').style.display = 'block';
 
     //Met à jour et affiche la quantité de chaque produit
-    if (readCookie("list_achat") != null) {
-        var controle = defrag_cookie("list_achat");
-        for (let i = 0; i < controle.length; i++) {
-            if (item.id != controle[i][0]) {
+    if (localStorage.getItem("list_achat") != null) {
+        var controle = JSON.parse(localStorage.getItem("list_achat"));
+        for (let i in controle) {
+            if (item.id != controle[i].id) {
                 valeur = "";
             }
             else {
-                valeur = controle[i][4];
+                valeur = controle[i].quantity;
             }
         }
     }
@@ -448,19 +434,16 @@ window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
     input4111.className = "bmoins add-to-cart";
     input4111.type = "button";
     input4111.value = "-";
-    input4111.id = "moins"+indexProduit;
-    input4111.dataset.name = item.name;
-    input4111.dataset.price = item.prix;
-    input4111.dataset.url = item.url;
+    input4111.id = "moins" + indexProduit;
     input4111.addEventListener("click", function (e) {
-        minus(indexProduit);
+        minus(item.id, indexProduit);
     }, false);
     div411.appendChild(input4111);
     //input4112
     var input4112 = document.createElement('input')
     input4112.className = "affich_valeur";
-    input4112.value = "valeur";
-    input4112.id = "count"+indexProduit;
+    input4112.value = document.getElementById("count" + item.id).value;
+    input4112.id = "count2" + indexProduit;
     input4112.disabled = true;
     div411.appendChild(input4112);
     //input4113
@@ -468,12 +451,9 @@ window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
     input4113.className = "bplus add-to-cart";
     input4113.type = "button";
     input4113.value = "+";
-    input4113.id = "plus"+indexProduit;
-    input4113.dataset.name = item.name;
-    input4113.dataset.price = item.prix;
-    input4113.dataset.url = item.url;
+    input4113.id = "plus" + indexProduit;
     input4113.addEventListener("click", function (e) {
-        plus(indexProduit);
+        plus(item.id, indexProduit);
     }, false);
     div411.appendChild(input4113);
 
@@ -484,4 +464,134 @@ window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
     $(document).ready(function () {
         $('.example').izoomify();
     });
+}
+
+
+
+
+var liste = {};
+//Fonction Ajout quantité d'untel produit
+window.plus = function plus(idProduit, indexProduit) {
+    //Récupération des données du produit ciblé
+    var srcProduit, nameProduit, prixProduit;
+    firebase.database().ref("products/" + idProduit).on('value', function (snapshot) {
+        srcProduit = snapshot.val().Link;
+        nameProduit = snapshot.val().libelle;
+        prixProduit = snapshot.val().prix;
+    });
+    //On lit le localStorage pour savoir le produit existe déjà ou non
+    //C'est un nouveau produit avec initialisation de la liste et du localStorage :
+    var count;
+    if (localStorage.getItem("list_achat") == null) {
+        count = document.getElementById('count' + idProduit).value;
+        count++;
+        document.getElementById("count" + idProduit).value = count;
+        liste[idProduit] = { id: idProduit, url: srcProduit, name: nameProduit, price: prixProduit, quantity: count };
+        localStorage.setItem("list_achat", JSON.stringify(liste));
+        if (document.getElementById("count2" + indexProduit) != null) {
+            document.getElementById("count2" + indexProduit).value = count;
+        }
+        //createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(new_apport)), 15);
+    }
+    //S'il existe déjà :
+    else {
+        liste = JSON.parse(localStorage.getItem("list_achat"));
+        for (let key in liste) {
+            if (idProduit == liste[key].id) {
+                count = liste[key].quantity;
+                count++;
+                liste[key].quantity = count;
+                localStorage.setItem("list_achat", JSON.stringify(liste));
+                document.getElementById("count" + idProduit).value = count;
+                if (document.getElementById("count2" + indexProduit) != null) {
+                    document.getElementById("count2" + indexProduit).value = count;
+                }
+            }
+            // Ajout d'un nouvel article à la liste initialement générée.
+            else if (document.getElementById('count' + idProduit).value == "") {
+                count = document.getElementById('count' + idProduit).value;
+                count++;
+                liste[idProduit] = { id: idProduit, url: srcProduit, name: nameProduit, price: prixProduit, quantity: count };
+                localStorage.setItem("list_achat", JSON.stringify(liste));
+                document.getElementById("count" + idProduit).value = count;
+                if (document.getElementById("count2" + indexProduit) != null) {
+                    document.getElementById("count2" + indexProduit).value = count;
+                }
+            }
+        }
+    }
+    if (document.getElementById("count2" + idProduit) != null) {
+        document.getElementById("count2" + idProduit).innerHTML = count;
+    }
+    else {
+        count++;
+    }
+    document.getElementById("count" + idProduit).style.visibility = 'visible';
+    document.getElementById("moins" + idProduit).style.visibility = 'visible';
+    //Ici, pour mettre à jour le nombre d'éléments dans le widget panier.
+    paniercateg();
+}
+
+
+
+//Fonction Retire quantité d'untel produit
+window.minus = function minus(idProduit, indexProduit) {
+    var produit = document.getElementById('moins' + idProduit);
+    if (produit == null) {
+        return false;
+    }
+    var id = produit.dataset.id;
+    liste = JSON.parse(localStorage.getItem("list_achat"));
+    for (let key in liste) {
+        //Diminue la quantité du produit tant qu'elle est >0.
+        if (idProduit == liste[key].id) {
+            var comptage2 = document.getElementById('count' + idProduit).value;
+            if (comptage2 > 1) {
+                comptage2--;
+                liste[key].quantity = comptage2;
+                localStorage.setItem("list_achat", JSON.stringify(liste));
+            }
+            else if (comptage2 == 1) {
+                document.getElementById("moins" + idProduit).style.visibility = 'hidden';
+                document.getElementById("count" + idProduit).style.visibility = 'hidden';
+                comptage2 = 0;
+                liste[key].quantity = comptage2;
+                localStorage.setItem("list_achat", JSON.stringify(liste));
+            }
+        }
+        else {
+            var comptage2 = document.getElementById('count' + idProduit).value;
+        }
+        document.getElementById("count" + idProduit).value = comptage2;
+        if (document.getElementById("count2" + indexProduit) != null) {
+            document.getElementById("count2" + indexProduit).value = comptage2;
+        }
+        //createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(new_apport)), 15);
+    }
+    //Ici, pour mettre à jour le nombre d'éléments dans le widget panier.
+    paniercateg();
+}
+
+
+//MAJ du widget panier
+window.paniercateg = function paniercateg() {
+    var total = 0;
+    var nb_article = 0;
+    if (localStorage.getItem("list_achat") != null) {
+        var commande = JSON.parse(localStorage.getItem("list_achat"))
+        if (commande == "") {
+            total = 0;
+            nb_article = 0;
+            localStorage.removeItem("list_achat");
+        }
+        else {
+            for (let i in commande) {
+                total = total + commande[i].price * commande[i].quantity;
+                nb_article = nb_article + commande[i].quantity;
+            }
+            total = (Math.round(total * 100)) / 100;
+        }
+    }
+    document.getElementById("total_commande").innerHTML = total + " €";
+    document.getElementById("total_articles").innerHTML = nb_article;
 }

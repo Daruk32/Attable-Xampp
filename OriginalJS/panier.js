@@ -5,163 +5,22 @@ Dernière MAJ : 30/10/2021
 V2.9
 */
 
-var liste;
-
-//--------------------------------------------------------------------------------------------------------
-//Cette fonction décompose en chunk/nombre la chaîne de caractères issue du cookie list_achat en multiples arrays.
-function splitIntoChunk(arr, chunk) {
-	var liste = new Array();
-	while (arr.length > 0) {
-		let tempArray = arr.splice(0, chunk);
-		liste.push(tempArray);
-	}
-	return liste;
-}
-
-//Cette fonction réunit les arrays produits par splitIntoChunk dans un array central : liste.
-export function defrag_cookie(list_achat) {
-	if (readCookie("list_achat") == null) {
-		liste = null;
-	}
-	else {
-		liste = splitIntoChunk(CryptoJS.enc.Utf16.stringify(JSON.parse(readCookie("list_achat"))).split(","), 5);
-	}
-	return liste;
-}
-
-//Cette fonction assemble les tableaux en une chaîne de caractères.
-function remontage(liste) {
-	var tableau = liste;
-	for (let i = 0; i < tableau.length; i++) {
-		if (tableau[i] == "object") {
-			tableau = tableau[i].concat(tableau[i + 1]);
-		}
-	}
-	var test = tableau.join(",");
-	return test;
-}
-
-
-
-
-//Fonction Ajout quantité d'untel produit
-window.plus = function plus(catindex) {
-	//Déclaration du produit ciblé et de ses valeurs.
-	var produit = document.getElementById('plus' + catindex);
-	var id = produit.dataset.id;
-	var name = produit.dataset.name;
-	var price = produit.dataset.price;
-	var url = produit.dataset.url;
-console.log(id);
-	//Appel du tableau des enregistrements
-	liste = defrag_cookie("list_achat");
-	//Sert à remplir le cookie list_achat
-	var new_apport;
-	//Sert à contrôler la quantité d'un article modifié dans le panier
-	var count;
-
-	//On lit les cookies pour savoir le produit existe déjà ou non
-	//C'est un nouveau produit avec initialisation de la liste et du cookie :
-	if (readCookie("list_achat") == null) {
-		var count = document.getElementById('count' + catindex).value;
-		count++;
-		document.getElementById("count" + catindex).value = count;
-		var new_apport = id.toString() + "," + name.toString() + "," + price.toString() + "," + url.toString() + "," + count.toString();
-		createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(new_apport)), 15);
-	}
-
-	//S'il existe déjà :
-	else {
-		for (let i = 0; i < liste.length; i++) {
-			// MAJ de la quantité de l'article
-			if (id == liste[i][0]) {
-				var count2 = liste[i][4];
-				count2++;
-				liste[i][4] = count2.toString();
-				var new_apport = remontage(liste);
-				document.getElementById("count" + catindex).value = count2;
-			}
-			// Ajout d'un nouvel article à la liste initialement générée.
-			else if (document.getElementById('count' + catindex).value == "") {
-				new_apport = CryptoJS.enc.Utf16.stringify(JSON.parse(readCookie("list_achat")));
-				var count3 = document.getElementById('count' + catindex).value;
-				count3++;
-				var new_apport = new_apport + "," + id.toString() + "," + name.toString() + "," + price.toString() + "," + url.toString() + "," + count3.toString();
-				document.getElementById("count" + catindex).value = count3;
-			}
-		}
-
-		//On enregistre la chaîne de caractères dans le cookie.
-		createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(new_apport)), 15);
-	}
-	document.getElementById("count" + catindex).style.visibility = 'visible';
-	document.getElementById("moins" + catindex).style.visibility = 'visible';
-
-	//Ici, pour mettre à jour le nombre d'éléments dans le widget panier.
-	panier();
-}
-
-
-
-//Fonction Retire quantité d'untel produit
-window.minus = function minus(cat_index) {
-	var produit = document.getElementById('moins' + cat_index);
-	if (produit == null) {
-		return false;
-	}
-	var id = produit.dataset.id;
-
-	liste = defrag_cookie("list_achat");
-
-	for (let i = 0; i < liste.length; i++) {
-		//Diminue la quantité du produit tant qu'elle est >0.
-
-		if (liste[i][0] == id) {
-			var comptage2 = document.getElementById('count' + cat_index).value;
-
-			if (comptage2 > 1) {
-				comptage2--;
-				liste[i][4] = comptage2.toString();
-				var new_apport = remontage(liste);
-			}
-			else if (comptage2 == 1) {
-				comptage2--;
-				document.getElementById("moins" + cat_index).style.visibility = 'hidden';
-				document.getElementById("count" + cat_index).style.visibility = 'hidden';
-				liste[i][4] = comptage2.toString();
-				var new_apport = remontage(liste);
-				comptage2 = 0;
-			}
-		}
-		else {
-			var comptage2 = document.getElementById('count' + cat_index).value;
-		}
-
-		document.getElementById("count" + cat_index).value = comptage2;
-
-		createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(new_apport)), 15);
-	}
-
-	var somme = panier();
-}
-
 
 //fonction de calcul du total du panier
 window.panier = function panier() {
 	var total = 0;
 	var nb_article = 0;
-
-	if (readCookie("list_achat") != null) {
-		var commande = defrag_cookie("list_achat");
+	if (localStorage.getItem("list_achat") != null) {
+		var commande = JSON.parse(localStorage.getItem("list_achat"))
 		if (commande == "") {
 			total = 0;
 			nb_article = 0;
-			eraseCookie("list_achat");
+			localStorage.removeItem("list_achat");
 		}
 		else {
-			for (let i = 0; i < commande.length; i++) {
-				total = total + parseFloat(commande[i][4]) * parseFloat(commande[i][2]);
-				nb_article = nb_article + parseFloat(commande[i][4]);
+			for (let i in commande) {
+				total = total + commande[i].price * commande[i].quantity;
+				nb_article = nb_article + commande[i].quantity;
 			}
 			total = (Math.round(total * 100)) / 100;
 		}
@@ -169,25 +28,19 @@ window.panier = function panier() {
 	document.getElementById("total_commande").innerHTML = total + " €";
 	document.getElementById("total_articles").innerHTML = nb_article;
 
-	if (window.location.pathname == "/Attable-Xampp/panier.html" || window.location.pathname == "/attable/panier.html" || window.location.pathname == "/panier.html") {
+	if (document.getElementById("sous_total") != null) {
 		document.getElementById("sous_total").innerHTML = total + " €";
 	}
-	createCookie("Somme", JSON.stringify(CryptoJS.enc.Utf16.parse(total)), 15);
-
+	localStorage.setItem("Somme", JSON.stringify(total));
 	return total;
 }
 
-
 //Fonction pour supprimer une ligne du tableau de commande
 window.supp = function supp(article) {
-	if (readCookie("list_achat") != null) {
-		var lotcommande = defrag_cookie("list_achat");
+	if (localStorage.getItem("list_achat") != null) {
+		var lotcommande = JSON.parse(localStorage.getItem("list_achat"));
 		delete lotcommande[article];
-		if (lotcommande.length > 0) {
-			var supp = lotcommande.filter(function (val) { return val !== '' });
-		}
-		var reimport = remontage(supp);
-		createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(reimport)), 15);
+		localStorage.setItem("list_achat", JSON.stringify(lotcommande))
 		location.reload();
 	}
 }
@@ -195,25 +48,42 @@ window.supp = function supp(article) {
 
 //Fonction de génération du panier à la page panier.html à partir du cookie
 window.crea_panier = function crea_panier() {
-	if (readCookie("list_achat") == null) {
+	if (localStorage.getItem("list_achat") == null) {
 		document.getElementById("cart_tablebody").innerHTML = "";
 	}
 	else {
-		var liste_panier = defrag_cookie("list_achat");
-		for (let i = 0; i < liste_panier.length; i++) {
-			if (liste_panier[i][4] > 0) {
-				var ch1 = '<tr class="line_panier"><td><img src="';
-				var ch2 = liste_panier[i][3];
-				var ch3 = '" alt="img_product id="echantillon" class="img-fluid"></td><td>';
-				var ch4 = liste_panier[i][1];
-				var ch5 = '</td><td>';
-				var ch6 = liste_panier[i][2];
-				var ch7 = ' €</td><td>';
-				var ch8 = liste_panier[i][4];
-				var ch9 = '</td><td><img src="images/corbeille.jpg" alt="Delete" id="trashcan" onclick="supp(';
-				var ch10 = i;
-				var ch11 = ')"></td></tr>';
-				document.getElementById("cart_tablebody").innerHTML += ch1 + ch2 + ch3 + ch4 + ch5 + ch6 + ch7 + ch8 + ch9 + ch10 + ch11;
+		var liste_panier = JSON.parse(localStorage.getItem("list_achat"));
+		for (let i in liste_panier) {
+			if (liste_panier[i].quantity > 0) {
+				var table1 = document.getElementById("cart_tablebody");
+				var tr11 = document.createElement('tr')
+				tr11.className = "line_panier";
+				table1.appendChild(tr11);
+				var td111 = document.createElement('td')
+				tr11.appendChild(td111);
+				var img1111 = document.createElement('img')
+				img1111.src = liste_panier[i].url;
+				img1111.id = "echantillon";
+				img1111.className = "img-fluid";
+				td111.appendChild(img1111);
+				var td112 = document.createElement('td')
+				td112.innerHTML = liste_panier[i].name;
+				tr11.appendChild(td112);
+				var td113 = document.createElement('td')
+				td113.innerHTML = liste_panier[i].price;
+				tr11.appendChild(td113);
+				var td114 = document.createElement('td')
+				td114.innerHTML = liste_panier[i].quantity;
+				tr11.appendChild(td114);
+				var td115 = document.createElement('td')
+				tr11.appendChild(td115);
+				var img1151 = document.createElement('img')
+				img1151.src = "images/corbeille.jpg";
+				img1151.id = "trashcan";
+				img1151.addEventListener("click", function (e) {
+					supp(liste_panier[i].id);
+				}, false);
+				td115.appendChild(img1151);
 			}
 		}
 	}
@@ -227,21 +97,21 @@ window.valid_command = function valid_command() {
 	var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 	var fullDate = date + ' ' + hours;
 
-	if (readCookie("list_achat") != null) {
-		var liste_panier = defrag_cookie("list_achat");
+	if (localStorage.getItem("list_achat") != null) {
+		var liste_panier = JSON.parse(localStorage.getItem("list_achat"));
 
 		var m1 = "<a href='mailto:attable@gmail.com?subject=Votre commande - N° Commande&body=Identifiant client :%0ADate : " + fullDate + "%0A%0ABonjour,%0A%0AVoici le récapitulatif de votre commande :%0A%0A";
 		var m2 = "|-------------------------------------------------------------------------------------|%0A";
 		var m3 = "|            Désignation            |         Quantité         |         Prix (€)         |%0A";
 		var m4 = "|-------------------------------------------------------------------------------------|%0A";
 		var m5 = "";
-		for (let i = 0; i < liste_panier.length; i++) {
-			if (liste_panier[i][4] > 0) {
-				m5 = m5 + liste_panier[i][1] + " | " + liste_panier[i][4] + " | " + liste_panier[i][2] + "€%0A";
+		for (let i in liste_panier) {
+			if (liste_panier[i].quantity > 0) {
+				m5 = m5 + liste_panier[i].name + " | " + liste_panier[i].quantity + " | " + liste_panier[i].price + "€%0A";
 			}
 		}
 		var m6 = "|-------------------------------------------------------------------------------------|%0A";
-		var m7 = "%0A%0AVotre total : " + CryptoJS.enc.Utf16.stringify(JSON.parse(readCookie("Somme"))) + "€%0A";
+		var m7 = "%0A%0AVotre total : " + JSON.parse(localStorage.getItem("Somme")) + "€%0A";
 		var m8 = "%0A%0A Merci pour votre commande !%0A%0ACordialement,%0A%0AAssociation Attable, le Collectif du goût'>Passer la commande</a>";
 		document.getElementById("valid-command").innerHTML = m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8;
 
@@ -293,10 +163,10 @@ window.generate = function generate() {
 	var head = [['Article', 'Prix', 'Quantité']]
 
 	var body = [];
-	var liste_panier = defrag_cookie("list_achat");
-	for (let i = 0; i < liste_panier.length; i++) {
-		if (liste_panier[i][4] > 0) {
-			body.push([liste_panier[i][1], liste_panier[i][2]+" €", liste_panier[i][4]]);
+	var liste_panier = JSON.parse(localStorage.getItem("list_achat"));
+	for (let i in liste_panier) {
+		if (liste_panier[i].quantity > 0) {
+			body.push([liste_panier[i].name, liste_panier[i].price + " €", liste_panier[i].quantity]);
 		}
 	}
 
@@ -304,7 +174,7 @@ window.generate = function generate() {
 
 	//Montant total
 	var amount_down = 70 + (body.length + 1) * 10;
-	doc.text(155, amount_down, 'Montant total : ' + CryptoJS.enc.Utf16.stringify(JSON.parse(readCookie("Somme"))) + "€");
+	doc.text(155, amount_down, 'Montant total : ' + JSON.parse(localStorage.getItem("Somme")) + "€");
 
 	//doc.save('Ma Commande.pdf');
 	window.open(doc.output('bloburl'), '_blank');
