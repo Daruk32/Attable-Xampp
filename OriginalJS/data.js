@@ -42,15 +42,15 @@ tabtitre.push("Conserves");
 //Epicerie salée
 import { tab_epiceriesal } from '../categorie/epiceriesalee/epiceriesalee.js'
 tab_categorie.push(tab_epiceriesal);
-tabtitre.push("&Eacute;picerie salée");
+tabtitre.push("Epicerie salée");
 //Epicerie sucrée
 import { tab_epiceriesuc } from '../categorie/epiceriesucree/epiceriesucree.js'
 tab_categorie.push(tab_epiceriesuc);
-tabtitre.push("&Eacute;picerie sucrée");
+tabtitre.push("Epicerie sucrée");
 //Epices
 import { tab_epices } from '../categorie/epices/epices.js'
 tab_categorie.push(tab_epices);
-tabtitre.push("&Eacute;pices");
+tabtitre.push("Epices");
 //Farines
 import { tab_farines } from '../categorie/farines/farines.js'
 tab_categorie.push(tab_farines);

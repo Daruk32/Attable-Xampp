@@ -24,158 +24,173 @@ function productSelection(choice) {
 }
 
 //Génération de la page des produits par catégorie avec les data Firebase
-function creationCategorie() {
-    firebase.database().ref("products/").on('value', function (snapshot) {
-        var productsArray = new Array;
-        var incompleteProducts = new Array;
-        snapshot.forEach(function (childSnapshot) {
-            var productID = childSnapshot.val().id;
-            var productLibelle = childSnapshot.val().libelle;
-            var productPrice = childSnapshot.val().prix;
-            var productCategory = childSnapshot.val().category;
-            var productDescriptive = childSnapshot.val().descriptive;
-            var productURL = childSnapshot.val().Link;
-            var productSLegend = childSnapshot.val().short_legend;
-            var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend };
-            productsArray.push(ajout);
-        });
-        //Sélectionne les produits complets du tableau productsArray et les insère dans le tableau productsSelectedArray sinon dans incompleteProducts
-        function tri(element) {
-            if (element.id == null || element.name == null || element.prix == null || element.categorie == null || element.descriptive == null || element.url == null || element.short_legend == null || element.id == "" || element.name == "" || element.prix == "" || element.categorie == "" || element.descriptive == "" || element.url == "" || element.short_legend == "") {
-                incompleteProducts.push(element.id);
-            }
-            else {
-                var productSelected = { 'id': element.id, 'name': element.name, 'prix': element.prix, 'categorie': element.categorie, 'descriptive': element.descriptive, 'url': element.url, 'short_legend': element.short_legend };
-                productsSelectedArray.push(productSelected);
-            }
-        }
-        productsArray.forEach(element => tri(element));
-        //localStorage.setItem("productsArray", JSON.stringify(productsArray));
-
-
-        //On récupère le paramètre de l'URL pour définir des variables
-        var number = new URLSearchParams(window.location.search).get('categorie');
-        document.getElementById("ajout_titre_categorie").innerHTML = number;
-
-        var indexProduit = 0;
-        var categorie_page = document.getElementById("descriptif_cat");
-        var productsOneCategorieSelected = productSelection(number);
-        //Boucle de création des produits
-        if (productsOneCategorieSelected.length == 0) {
-            document.getElementById("descriptif_cat").innerHTML += "Il n'y a pas de produits pour cette catégorie";
+firebase.database().ref("products/").on('value', function (snapshot) {
+    var productsArray = new Array;
+    var incompleteProducts = new Array;
+    snapshot.forEach(function (childSnapshot) {
+        var productID = childSnapshot.val().id;
+        var productLibelle = childSnapshot.val().libelle;
+        var productPrice = childSnapshot.val().prix;
+        var productCategory = childSnapshot.val().category;
+        var productDescriptive = childSnapshot.val().descriptive;
+        var productURL = childSnapshot.val().Link;
+        var productSLegend = childSnapshot.val().short_legend;
+        var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend };
+        productsArray.push(ajout);
+    });
+    //Sélectionne les produits complets du tableau productsArray et les insère dans le tableau productsSelectedArray sinon dans incompleteProducts
+    function tri(element) {
+        if (element.id == null || element.name == null || element.prix == null || element.categorie == null || element.descriptive == null || element.url == null || element.short_legend == null || element.id == "" || element.name == "" || element.prix == "" || element.categorie == "" || element.descriptive == "" || element.url == "" || element.short_legend == "") {
+            incompleteProducts.push(element.id);
         }
         else {
-            productsOneCategorieSelected.forEach(function (item) {
-                //Met à jour et affiche la quantité de chaque produit
-                if (localStorage.getItem("list_achat") != null) {
-                    var controle = JSON.parse(localStorage.getItem("list_achat"));
-                    for (let i in controle) {
-                        if (item.id != controle[i].id) {
-                            valeur = "";
-                        }
-                        else {
-                            valeur = controle[i].quantity;
-                        }
+            var productSelected = { 'id': element.id, 'name': element.name, 'prix': element.prix, 'categorie': element.categorie, 'descriptive': element.descriptive, 'url': element.url, 'short_legend': element.short_legend };
+            productsSelectedArray.push(productSelected);
+        }
+    }
+    productsArray.forEach(element => tri(element));
+    //localStorage.setItem("productsArray", JSON.stringify(productsArray));
+
+
+    //On récupère le paramètre de l'URL pour définir des variables
+    var url1 = (new URL(document.location)).searchParams;
+    var number = url1.get('categorie');
+
+    document.getElementById("ajout_titre_categorie").innerHTML = number;
+
+    var indexProduit = 0;
+    var categorie_page = document.getElementById("descriptif_cat");
+
+
+
+    //sélection des produits de la catégorie sélectionnée
+    var productCategorieChosen = new Array;
+    productsSelectedArray.forEach(function (item) {
+        if (number == item.categorie) {
+            productCategorieChosen.push(item);
+        }
+    })
+    var productsOneCategorieSelected = productCategorieChosen;
+
+
+
+    
+    //Boucle de création des produits
+    if (productsOneCategorieSelected.length == 0) {
+        document.getElementById("descriptif_cat").innerHTML += "Il n'y a pas de produits pour cette catégorie";
+    }
+    else {
+        productsOneCategorieSelected.forEach(function (item) {
+            //Met à jour et affiche la quantité de chaque produit
+            if (localStorage.getItem("list_achat") != null) {
+                var controle = JSON.parse(localStorage.getItem("list_achat"));
+                for (let i in controle) {
+                    if (item.id != controle[i].id) {
+                        valeur = "";
+                    }
+                    else {
+                        valeur = controle[i].quantity;
                     }
                 }
-                else {
-                    var valeur = "";
-                }
-                //Création de la page des produits
-                var div1 = document.createElement('div')
-                div1.className = "un_produit";
-                categorie_page.appendChild(div1);
+            }
+            else {
+                var valeur = "";
+            }
+            //Création de la page des produits
+            var div1 = document.createElement('div')
+            div1.className = "un_produit";
+            categorie_page.appendChild(div1);
 
-                var a11 = document.createElement('a')
-                a11.className = "card card_categs";
-                a11.href = '#main';
-                div1.appendChild(a11);
+            var a11 = document.createElement('a')
+            a11.className = "card card_categs";
+            a11.href = '#main';
+            div1.appendChild(a11);
 
-                var img111 = document.createElement('img')
-                img111.className = "card-img-top produit";
-                img111.src = item.url;
-                img111.alt = "...";
-                img111.addEventListener("click", function (e) {
-                    fiche_detaillee(item, indexProduit);
-                }, false);
-                a11.appendChild(img111);
+            var img111 = document.createElement('img')
+            img111.className = "card-img-top produit";
+            img111.src = item.url;
+            img111.alt = "...";
+            img111.addEventListener("click", function (e) {
+                fiche_detaillee(item, indexProduit);
+            }, false);
+            a11.appendChild(img111);
 
-                var div12 = document.createElement('div')
-                div12.className = "card-body text-center";
-                div1.appendChild(div12);
+            var div12 = document.createElement('div')
+            div12.className = "card-body text-center";
+            div1.appendChild(div12);
 
-                var h5121 = document.createElement('h5')
-                h5121.className = "fw-bolder legend_produit";
-                h5121.innerHTML = item.name;
-                div12.appendChild(h5121);
+            var h5121 = document.createElement('h5')
+            h5121.className = "fw-bolder legend_produit";
+            h5121.innerHTML = item.name;
+            div12.appendChild(h5121);
 
-                var div122 = document.createElement('div')
-                div122.id = "info-prix";
-                if (item.prix == 0 || item.prix == "") {
-                    div122.innerHTML = "Prix : &Agrave; voir en magasin";
-                }
-                else {
-                    div122.innerHTML = item.prix + " €";
-                }
-                div12.appendChild(div122);
+            var div122 = document.createElement('div')
+            div122.id = "info-prix";
+            if (item.prix == 0 || item.prix == "") {
+                div122.innerHTML = "Prix : &Agrave; voir en magasin";
+            }
+            else {
+                div122.innerHTML = item.prix + " €";
+            }
+            div12.appendChild(div122);
 
-                var div13 = document.createElement('div')
-                div13.id = "modul_quantity";
-                div13.className = "card-footer";
-                div1.appendChild(div13);
+            var div13 = document.createElement('div')
+            div13.id = "modul_quantity";
+            div13.className = "card-footer";
+            div1.appendChild(div13);
 
-                var input131 = document.createElement('input')
-                input131.setAttribute("type", "button");
-                input131.className = "bmoins add-to-cart";
-                input131.value = "-";
-                if (valeur > 0) {
-                    input131.style.visibility = "visible";
-                }
-                else {
-                    input131.style.visibility = "hidden";
-                }
-                input131.id = "moins" + item.id;
-                input131.dataset.id = item.id;
-                input131.addEventListener("click", function (e) {
-                    minus(item.id);
-                }, false);
-                div13.appendChild(input131);
+            var input131 = document.createElement('input')
+            input131.setAttribute("type", "button");
+            input131.className = "bmoins add-to-cart";
+            input131.value = "-";
+            if (valeur > 0) {
+                input131.style.visibility = "visible";
+            }
+            else {
+                input131.style.visibility = "hidden";
+            }
+            input131.id = "moins" + item.id;
+            input131.dataset.id = item.id;
+            input131.addEventListener("click", function (e) {
+                minus(item.id);
+            }, false);
+            div13.appendChild(input131);
 
-                var input132 = document.createElement('input')
-                input132.setAttribute("type", "button");
-                input132.className = "affich_valeur";
-                input132.value = valeur;
-                input132.id = "count" + item.id;
-                input132.disabled = true;
-                if (valeur > 0) {
-                    input132.style.visibility = "visible";
-                }
-                else {
-                    input132.style.visibility = "hidden";
-                }
-                div13.appendChild(input132);
+            var input132 = document.createElement('input')
+            input132.setAttribute("type", "button");
+            input132.className = "affich_valeur";
+            input132.value = valeur;
+            input132.id = "count" + item.id;
+            input132.disabled = true;
+            if (valeur > 0) {
+                input132.style.visibility = "visible";
+            }
+            else {
+                input132.style.visibility = "hidden";
+            }
+            div13.appendChild(input132);
 
-                var input133 = document.createElement('input')
-                input133.setAttribute("type", "button");
-                input133.className = "bplus add-to-cart";
-                input133.value = "+";
-                input133.id = "plus" + item.id;
-                input133.dataset.id = item.id;
-                input133.addEventListener("click", function (e) {
-                    plus(item.id);
-                }, false);
-                div13.appendChild(input133);
+            var input133 = document.createElement('input')
+            input133.setAttribute("type", "button");
+            input133.className = "bplus add-to-cart";
+            input133.value = "+";
+            input133.id = "plus" + item.id;
+            input133.dataset.id = item.id;
+            input133.addEventListener("click", function (e) {
+                plus(item.id);
+            }, false);
+            div13.appendChild(input133);
 
-                indexProduit++;
+            indexProduit++;
 
-                if (item.prix == 0 || item.prix == "") {
-                    document.getElementById("plus" + item.id).style.visibility = 'hidden';
-                }
-            });
-        }
-    });
-}
-creationCategorie();
+            if (item.prix == 0 || item.prix == "") {
+                document.getElementById("plus" + item.id).style.visibility = 'hidden';
+            }
+        });
+    }
+});
+
+
 
 //Fonction de génération des 5 images/textes des catégories depuis le bandeau
 function changeCategorie(number) {
