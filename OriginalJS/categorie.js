@@ -12,6 +12,7 @@ V2.9
 
 var productsSelectedArray = new Array;
 
+
 //Fonction de sélection de la gamme voulue
 function productSelection(choice) {
     var productCategorieChosen = new Array;
@@ -72,30 +73,40 @@ firebase.database().ref("products/").on('value', function (snapshot) {
     })
     var productsOneCategorieSelected = productCategorieChosen;
 
-
-
-    
     //Boucle de création des produits
     if (productsOneCategorieSelected.length == 0) {
         document.getElementById("descriptif_cat").innerHTML += "Il n'y a pas de produits pour cette catégorie";
     }
     else {
+        var iTest = 0;
+        var tabValueAchat = new Array;
+        //Met à jour et affiche la quantité de chaque produit
         productsOneCategorieSelected.forEach(function (item) {
-            //Met à jour et affiche la quantité de chaque produit
+            let valeur;
             if (localStorage.getItem("list_achat") != null) {
                 var controle = JSON.parse(localStorage.getItem("list_achat"));
-                for (let i in controle) {
-                    if (item.id != controle[i].id) {
-                        valeur = "";
+                for (let iListe in controle) {
+                    if (item.id == controle[iListe].id) {
+                        valeur = controle[iListe].quantity;
+                        break;
                     }
                     else {
-                        valeur = controle[i].quantity;
+                        valeur = "";
                     }
                 }
+                tabValueAchat.push(valeur);
             }
             else {
-                var valeur = "";
+                tabValueAchat[productsOneCategorieSelected.length] = "";
             }
+        });
+
+
+        productsOneCategorieSelected.forEach(function (item) {
+
+            let valeur = tabValueAchat[iTest];
+            iTest = iTest + 1;
+
             //Création de la page des produits
             var div1 = document.createElement('div')
             div1.className = "un_produit";
@@ -191,7 +202,6 @@ firebase.database().ref("products/").on('value', function (snapshot) {
 });
 
 
-
 //Fonction de génération des 5 images/textes des catégories depuis le bandeau
 function changeCategorie(number) {
     var categorie_page = document.getElementById("descriptif_cat");
@@ -207,23 +217,37 @@ function changeCategorie(number) {
         document.getElementById("descriptif_cat").innerHTML += "Il n'y a pas de produits pour cette catégorie";
     }
     else {
+        var iTest = 0;
+        var tabValueAchat = new Array;
+
+        //Met à jour et affiche la quantité de chaque produit
         productsOneCategorieSelected.forEach(function (item) {
-            //Met à jour et affiche la quantité de chaque produit
+            let valeur;
             if (localStorage.getItem("list_achat") != null) {
                 var controle = JSON.parse(localStorage.getItem("list_achat"));
-                for (let i in controle) {
-                    if (item.id != controle[i].id) {
-                        valeur = "";
+                for (let iListe in controle) {
+                    if (item.id == controle[iListe].id) {
+                        valeur = controle[iListe].quantity;
+                        break;
                     }
                     else {
-                        valeur = controle[i].quantity;
+                        valeur = "";
                     }
                 }
+                tabValueAchat.push(valeur);
             }
             else {
-                var valeur = "";
+                tabValueAchat[productsOneCategorieSelected.length] = "";
             }
-            //Création de la page des produits
+        });
+
+
+        //Génère le rendu HTML de la page des produits
+        productsOneCategorieSelected.forEach(function (item) {
+
+            let valeur = tabValueAchat[iTest];
+            iTest = iTest + 1;
+
             var div1 = document.createElement('div')
             div1.className = "un_produit";
             categorie_page.appendChild(div1);
@@ -498,7 +522,7 @@ window.plus = function plus(idProduit, indexProduit) {
     //C'est un nouveau produit avec initialisation de la liste et du localStorage :
     var count;
     if (localStorage.getItem("list_achat") == null) {
-        count = document.getElementById('count' + idProduit).value;
+        count = 0;
         count++;
         document.getElementById("count" + idProduit).value = count;
         liste[idProduit] = { id: idProduit, url: srcProduit, name: nameProduit, price: prixProduit, quantity: count };
@@ -523,8 +547,9 @@ window.plus = function plus(idProduit, indexProduit) {
                 }
             }
             // Ajout d'un nouvel article à la liste initialement générée.
-            else if (document.getElementById('count' + idProduit).value == "") {
-                count = document.getElementById('count' + idProduit).value;
+
+            else if (document.getElementById('count' + idProduit).value == "" || document.getElementById('count' + idProduit).value == "undefined") {
+                count = 0;
                 count++;
                 liste[idProduit] = { id: idProduit, url: srcProduit, name: nameProduit, price: prixProduit, quantity: count };
                 localStorage.setItem("list_achat", JSON.stringify(liste));
