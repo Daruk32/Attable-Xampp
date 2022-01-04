@@ -17,6 +17,7 @@
 			-webkit-appearance: none;
 			margin: 0;
 		}
+
 		input[type=number] {
 			-moz-appearance: textfield;
 		}
@@ -144,22 +145,27 @@
 					<div class="text-center">
 						<button id="Clear" class="btn btn-danger" onclick="Clear()"><i class="fas fa-eraser"></i>
 							CLEAR</button>
+						<div>Cliquer pour réinitialiser les champs.</div>
 					</div>
 					<div class="text-center mt-4">
 						<button id="AddSupplier" class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter un
 							fournisseur</button>
+						<div>Ajouter un fournisseur en renseignant chaque champs.</div>
 					</div>
 					<div class="text-center mt-4">
 						<button id="SelectSupplier" class="btn btn-warning"><i class="fas fa-search "></i> Sélectionner
 							un fournisseur</button>
+						<div>Sélectionner un fournisseur en insérant la référence du fournisseur puis cliquer.</div>
 					</div>
 					<div class="text-center mt-4">
 						<button id="UpdateSupplier" class="btn btn-success"><i class="fas fa-save"></i> Mettre à jour un
 							fournisseur</button>
+						<div>Une fois le fournisseur sélectionné et modifié, cliquer pour mettre à jour.</div>
 					</div>
 					<div class="text-center mt-4">
 						<button id="DeleteSupplier" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer un
 							fournisseur</button>
+						<div>Une fois le fournisseur sélectionné, cliquer pour supprimer.</div>
 					</div>
 				</div>
 			</div>
@@ -212,12 +218,12 @@
 				location.replace("authentification.html");
 			}
 			else {
-				document.getElementById("lesids").src="images/login2.png";
+				document.getElementById("lesids").src = "images/login2.png";
 				document.getElementById("lepanier").src = "images/logo_panier3.png";
 			}
 		})
 	</script>
-	
+
 	<!-- Scripts -->
 	<script src="js/addsupplier-obf.js" type="text/javascript"></script>
 

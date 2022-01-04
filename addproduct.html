@@ -116,7 +116,7 @@
 					<div class="form-group">
 						<label for="img">Image du produit</label>
 						<button class="w-10" id="namebox">Parcourir...</button>
-						<img id="myimg" src="#" onerror="this.src='images/promo.png'" /><label id="UpProgress"></label>
+						<img id="myimg" src="#" onerror="this.src='images/promo.png'" width="50%"/><label id="UpProgress"></label>
 					</div>
 					<hr>
 					<div class="form-group">
@@ -164,22 +164,27 @@
 					<div class="text-center">
 						<button id="Clear" class="btn btn-danger" onclick="Clear()"><i class="fas fa-eraser"></i>
 							CLEAR</button>
+						<div>Cliquer pour réinitialiser les champs.</div>
 					</div>
 					<div class="text-center mt-4">
 						<button id="AddProduct" class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter un
 							produit</button>
+						<div>Ajouter un produit en renseignant chaque champs. La référence doit débuter par un préfixe de 2 chiffres spécifiques (de 00 à 15) à sa catégorie puis par 3 chiffres désignés pour le produit. Pour plus d'exemples, voir la liste des références</div>
 					</div>
 					<div class="text-center mt-4">
 						<button id="SelectProduct" class="btn btn-warning"><i class="fas fa-search "></i> Sélectionner
 							un produit</button>
+						<div>Sélectionner un produit en insérant la référence du produit puis cliquer.</div>
 					</div>
 					<div class="text-center mt-4">
 						<button id="UpdateProduct" class="btn btn-success"><i class="fas fa-save"></i> Mettre à jour un
 							produit</button>
+						<div>Une fois le produit sélectionné et modifié, cliquer pour mettre à jour.</div>
 					</div>
 					<div class="text-center mt-4">
 						<button id="DeleteProduct" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer un
 							produit</button>
+						<div>Une fois le produit sélectionné, cliquer pour supprimer.</div>
 					</div>
 				</div>
 			</div>
