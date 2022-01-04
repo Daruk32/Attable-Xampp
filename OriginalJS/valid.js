@@ -98,6 +98,7 @@ function login() {
   var inputRemember = document.getElementById('rememberMe');
   if (inputRemember.checked) {
     createCookie("info_rmb", CryptoJS.enc.Utf16.parse(ids_json), 3);
+    createCookie("info_cnx", CryptoJS.enc.Utf16.parse(ids_json), 3);
   }
   else {
     eraseCookie("info_rmb");
