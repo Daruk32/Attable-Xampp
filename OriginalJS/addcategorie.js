@@ -39,14 +39,24 @@ firebase.database().ref("categories/").on('value', function (snapshot) {
     }
 });
 
+
+
 document.getElementById("categ").onclick = function () {
     if (document.getElementById("categ").options[document.getElementById("categ").selectedIndex] != undefined) {
         document.getElementById("nameCategorie").value = document.getElementById("categ").options[document.getElementById("categ").selectedIndex].text;
+        firebase.database().ref("categories/" + document.getElementById("categ").options[document.getElementById("categ").selectedIndex].text).on('value', function (snapshot) {
+            document.getElementById("myimg").src = snapshot.val().Link;
+            document.getElementById("idCategorie").value = snapshot.val().idC;
+            document.getElementById("categorieValue").value = snapshot.val().valeur;
+        });
     }
     else {
         categorieP = "";
     }
 }
+
+
+
 
 // Récupération des datas de la catégorie renseignée
 var ImgName, idCategorieC, nameCategorieC, categorieValueC;
