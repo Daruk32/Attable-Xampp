@@ -5,13 +5,25 @@ Dernière MAJ : 30/10/2021
 V2.9
 */
 
-// Initialize Firebase
+
+// Ecoute de l'événement Scroll
+var stickyBandeau = document.getElementById("bandeau");
+var stickyIcone = document.getElementById("panier");
+var divBody = document.getElementById("idBody");
+divBody.onscroll = function (e) {
+    if (window.pageYOffset > 60) {
+        stickyBandeau.classList.add("pr-5");
+        stickyIcone.style.top = "-0.5%";
+    }
+    else {
+        stickyBandeau.classList.remove("pr-5");
+        stickyIcone.style.top = "1%";
+    }
+};
 
 
-
-
+// Génération dynamique depuis Firebase
 var productsSelectedArray = new Array;
-
 
 //Fonction de sélection de la gamme voulue
 function productSelection(choice) {

@@ -49,7 +49,7 @@ firebase.database().ref("categories/").on('value', function (snapshot) {
         divcateg.appendChild(divimg);
         //Image de la catégorie
         var image_categorie = document.createElement('img')
-        image_categorie.className = "card-img-top img-fluid cats";
+        image_categorie.className = "card-img-top img-fluid cats lozad";
         image_categorie.src = item.url;
         image_categorie.alt = '...';
         divimg.appendChild(image_categorie);
@@ -64,3 +64,11 @@ firebase.database().ref("categories/").on('value', function (snapshot) {
         divtext.appendChild(text_categorie);
     });
 });
+
+// Event lozad
+const observer = lozad('.lozad', {
+    rootMargin: '10px 0px', // syntax similar to that of CSS Margin
+    threshold: 0.1, // ratio of element convergence
+    enableAutoReload: true // it will reload the new image when validating attributes changes
+});
+observer.observe();

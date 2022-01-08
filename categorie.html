@@ -34,8 +34,7 @@
 
 </head>
 
-<body onload="redirAdmin(), panier()">
-	
+<body id="idBody" onload="redirAdmin(), panier()">
 
 	<nav class="navbar navbar-expand-lg navbar-light" id="top">
 		<div class="container-fluid d-flex flex-row">
@@ -46,21 +45,22 @@
 					Nos gammes -&nbsp;<span id="ajout_titre_categorie"></span>
 				</div>
 			</div>
-			<div id="authentification">
+			<div id="authentification" class="mr-5">
 				<a id="authAdmin">
 					<img alt="" id="lesids">
 				</a>
 			</div>
-			<div id="panier">
-				<a href="panier.html">
-					<span id="total_articles">0</span>
-					<img alt="" id="lepanier">
-					<span id="total_commande">0 €</span>
-				</a>
-			</div>
+			<div class="p-3 mr-1"></div>
 		</div>
 	</nav>
 
+	<div id="panier" class="position-fixed d-flex justify-content-end">
+		<a href="panier.html" id="lotPanier">
+			<span id="total_articles">0</span>
+			<img alt="" id="lepanier">
+			<span id="total_commande">0 €</span>
+		</a>
+	</div>
 
 	<section id="main">
 
