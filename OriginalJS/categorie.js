@@ -11,10 +11,12 @@ var stickyBandeau = document.getElementById("bandeau");
 var stickyIcone = document.getElementById("panier");
 var divBody = document.getElementById("idBody");
 divBody.onscroll = function (e) {
+    // Modifie le bandeau dès la hauteur de scroll atteinte et ajuste le panier
     if (window.pageYOffset > 60) {
         stickyBandeau.classList.add("pr-5");
         stickyIcone.style.top = "-0.5%";
     }
+    // Remet en place le panier en dehors de la zone du bandeau
     else {
         stickyBandeau.classList.remove("pr-5");
         stickyIcone.style.top = "1%";

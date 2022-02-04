@@ -22,26 +22,26 @@ firebase.database().ref("categories/").on('value', function (snapshot) {
     //Création de la div mère
     var section = document.getElementById('tab_categs');
     var divmere = document.createElement('div');
-    divmere.className = "container liste_categorie px-4 px-lg-5 mt-5";
+    divmere.className = "m-2 p-2";
     section.appendChild(divmere);
     //Création du titre du menu des catégories
     var titreh3 = document.createElement('h3');
+    titreh3.className = "mt-2";
     titreh3.innerHTML = "Les catégories de produit que l'on s'arrache";
     divmere.appendChild(titreh3);
     //Création du menu des catégories
     var divfille = document.createElement('div');
-    divfille.className = "row row-cols-2 row-cols-md-3 row-cols-xl-4";
-    divfille.id = "tableau_image_categorie";
+    divfille.className = "row row-cols-3 row-cols-md-4 row-cols-xl-5 mx-auto py-4 px-1 text-center justify-content-center";
     divmere.appendChild(divfille);
 
     categoriesArray.forEach(function (item) {
         //Div categ contenant divimg et divtext
         var divcateg = document.createElement('div');
-        divcateg.className = "card_cat";
+        divcateg.className = "card card_cat m-2 p-0";
         divfille.appendChild(divcateg);
         //divimg contenant l'image de la catégorie
         var divimg = document.createElement('div');
-        divimg.className = "card text-center";
+        divimg.className = "card border-0 p-0 text-center";
         divimg.id = "index-box";
         divimg.addEventListener("click", function (e) {
             window.location.href = "categorie.html?categorie=" + item.name;
@@ -49,17 +49,17 @@ firebase.database().ref("categories/").on('value', function (snapshot) {
         divcateg.appendChild(divimg);
         //Image de la catégorie
         var image_categorie = document.createElement('img')
-        image_categorie.className = "card-img-top img-fluid cats lozad";
+        image_categorie.className = "card-img-top h-100 w-auto lozad";
         image_categorie.src = item.url;
         image_categorie.alt = '...';
         divimg.appendChild(image_categorie);
         //divtext contenant le texte de la catégorie
         var divtext = document.createElement('div');
-        divtext.className = "card-body p-4 text-center";
+        divtext.className = "card-body py-2";
         divcateg.appendChild(divtext);
         //Texte de la catégorie
-        var text_categorie = document.createElement('h5')
-        text_categorie.className = "fw-bolder";
+        var text_categorie = document.createElement('div')
+        text_categorie.className = "fw-bold";
         text_categorie.innerHTML = item.name;
         divtext.appendChild(text_categorie);
     });

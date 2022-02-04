@@ -8,9 +8,8 @@
 	<title>Mentions légales</title>
 
 	<!-- Styles CSS -->
-	<link rel="stylesheet" href="css/attable.css">
 	<link rel="stylesheet" href="css/booststrap.css">
-	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/attable.css">
 
 	<!-- Icônes Fontawesome -->
 	<link rel="stylesheet" href="css/fontawesome-free-5.15.4-web/css/all.css">
@@ -36,27 +35,37 @@
 
 <body onload="panier(), redirAdmin()">
 
-	<nav class="navbar navbar-expand-lg navbar-light" id="top">
-		<div class="container-fluid d-flex flex-row">
-			<a class="navbar-brand" href="index.html" id="logo"><img src="images/attable_logo2.png" class="img-fluid"
-					alt="monlogo" id="lelogo"></a>
-			<div class="nav-item collapse navbar-collapse">
-				<div id="titre_page">Mentions légales</div>
-			</div>
-			<div id="authentification">
-				<a id="authAdmin">
-					<img alt="" id="lesids">
+	<div class="container-fluid" id="top">
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class="navbar-brand" id="logo">
+				<a href="index.html"><img src="images/attable_logo2.png" class="img-fluid" alt="monlogo" id="leLogo">
+				</a>
+
+				<a href="noustrouver.html" id="locationSite">
+					<i class="fas fa-map-marked-alt" id="logoLocationSite"></i>
 				</a>
 			</div>
-			<div id="panier">
-				<a href="panier.html">
-					<span id="total_articles">0</span>
-					<img alt="" id="lepanier">
-					<span id="total_commande">0 €</span>
-				</a>
+
+			<div id="titre_page" class="collapse navbar-collapse justify-content-center">
+				<div>Mentions légales</div>
 			</div>
-		</div>
-	</nav>
+
+			<div class="d-flex flex-row-reverse">
+				<div id="panier" class="ml-auto">
+					<a href="panier.html">
+						<span id="total_articles">0</span>
+						<img alt="" id="lepanier">
+						<span id="total_commande">0 €</span>
+					</a>
+				</div>
+				<div id="authentification">
+					<a id="authAdmin">
+						<img alt="" id="lesids">
+					</a>
+				</div>
+			</div>
+		</nav>
+	</div>
 
 	<section id="main">
 
@@ -148,7 +157,7 @@
 					<a href="#top">
 						<i id='icon-footer' class="fas fa-angle-up"></i>
 					</a>
-					<p class="m-0 text-center text-white">Copyright &copy; ATTABLE 2021</p>
+					<div class="m-0 text-center" id="copyAt">Copyright &copy; ATTABLE 2021</div>
 				</div>
 
 				<div class="col-sm-4 links" id="menu">
