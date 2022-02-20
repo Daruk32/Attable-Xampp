@@ -10,16 +10,17 @@ V2.9
 var stickyBandeau = document.getElementById("bandeau");
 var stickyIcone = document.getElementById("panier");
 var divBody = document.getElementById("idBody");
+stickyIcone.style.top = "-2.3%";
 divBody.onscroll = function (e) {
     // Modifie le bandeau dès la hauteur de scroll atteinte et ajuste le panier
     if (window.pageYOffset > 60) {
         stickyBandeau.classList.add("pr-5");
-        stickyIcone.style.top = "-0.5%";
+        stickyIcone.style.top = "-2%";
     }
     // Remet en place le panier en dehors de la zone du bandeau
     else {
         stickyBandeau.classList.remove("pr-5");
-        stickyIcone.style.top = "1%";
+        stickyIcone.style.top = "-2.3%";
     }
 };
 
@@ -50,7 +51,8 @@ firebase.database().ref("products/").on('value', function (snapshot) {
         var productDescriptive = childSnapshot.val().descriptive;
         var productURL = childSnapshot.val().Link;
         var productSLegend = childSnapshot.val().short_legend;
-        var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend };
+        var promoSi = childSnapshot.val().promo;
+        var ajout = { 'id': productID, 'name': productLibelle, 'prix': productPrice, 'categorie': productCategory, 'descriptive': productDescriptive, 'url': productURL, 'short_legend': productSLegend, 'promo': promoSi };
         productsArray.push(ajout);
     });
     //Sélectionne les produits complets du tableau productsArray et les insère dans le tableau productsSelectedArray sinon dans incompleteProducts
@@ -59,7 +61,7 @@ firebase.database().ref("products/").on('value', function (snapshot) {
             incompleteProducts.push(element.id);
         }
         else {
-            var productSelected = { 'id': element.id, 'name': element.name, 'prix': element.prix, 'categorie': element.categorie, 'descriptive': element.descriptive, 'url': element.url, 'short_legend': element.short_legend };
+            var productSelected = { 'id': element.id, 'name': element.name, 'prix': element.prix, 'categorie': element.categorie, 'descriptive': element.descriptive, 'url': element.url, 'short_legend': element.short_legend, 'promo': element.promo };
             productsSelectedArray.push(productSelected);
         }
     }
@@ -116,29 +118,36 @@ firebase.database().ref("products/").on('value', function (snapshot) {
         });
 
 
+        //Génère le rendu HTML de la page des produits
         productsOneCategorieSelected.forEach(function (item) {
 
             let valeur = tabValueAchat[iTest];
             iTest = iTest + 1;
 
-            //Création de la page des produits
             var div1 = document.createElement('div')
             div1.className = "un_produit";
             categorie_page.appendChild(div1);
 
             var a11 = document.createElement('a')
-            a11.className = "card card_categs";
+            a11.className = "card card_categs border-0 p-0 w-100";
             a11.href = '#main';
             div1.appendChild(a11);
 
             var img111 = document.createElement('img')
-            img111.className = "card-img-top produit";
+            img111.className = "card-img-top border-0 h-100 w-auto mx-auto produit";
             img111.src = item.url;
             img111.alt = "...";
             img111.addEventListener("click", function (e) {
                 fiche_detaillee(item, indexProduit);
             }, false);
             a11.appendChild(img111);
+
+            if (item.promo == true) {
+                var img112 = document.createElement('img');
+                img112.src = "images/promo.png";
+                img112.className = "position-absolute w-25 ml-5";
+                a11.appendChild(img112);
+            }
 
             var div12 = document.createElement('div')
             div12.className = "card-body text-center";
@@ -263,22 +272,29 @@ function changeCategorie(number) {
             iTest = iTest + 1;
 
             var div1 = document.createElement('div')
-            div1.className = "un_produit";
+            div1.className = "card un_produit";
             categorie_page.appendChild(div1);
 
             var a11 = document.createElement('a')
-            a11.className = "card card_categs";
+            a11.className = "card card_categs border-0 p-0 text-center";
             a11.href = '#main';
             div1.appendChild(a11);
 
             var img111 = document.createElement('img')
-            img111.className = "card-img-top produit";
+            img111.className = "card-img-top h-100 w-auto mx-auto produit";
             img111.src = item.url;
             img111.alt = "...";
             img111.addEventListener("click", function (e) {
                 fiche_detaillee(item, indexProduit);
             }, false);
             a11.appendChild(img111);
+
+            if (item.promo == true) {
+                var img112 = document.createElement('img');
+                img112.src = "images/promo.png";
+                img112.className = "position-absolute w-25 ml-5";
+                a11.appendChild(img112);
+            }
 
             var div12 = document.createElement('div')
             div12.className = "card-body text-center";

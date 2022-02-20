@@ -38,11 +38,11 @@
 
 </head>
 
-<body onload="bandeau(), panier(), crea_panier(), valid_command(), redirAdmin()">
+<body id="idBody" onload="bandeau(), panier(), crea_panier(), valid_command(), redirAdmin()">
 
 	<div class="container-fluid" id="top">
 		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="navbar-brand" id="logo">
+			<div class="navbar-brand pt-4" id="logo">
 				<a href="index.html"><img src="images/attable_logo2.png" class="img-fluid" alt="monlogo" id="leLogo">
 				</a>
 
@@ -51,10 +51,10 @@
 				</a>
 			</div>
 
-			<div id="titre_page" class="collapse navbar-collapse justify-content-center">Mon panier</div>
+			<div id="titre_page" class="collapse navbar-collapse justify-content-center pt-4">Mon panier</div>
 
-			<div class="d-flex flex-row-reverse">
-				<div class="p-3 mr-1"></div>
+			<div class="d-flex flex-row-reverse mr-4 pb-1">
+				<div class="p-3 mr-2"></div>
 				<div id="authentification">
 					<a id="authAdmin">
 						<img alt="" id="lesids">
@@ -64,7 +64,7 @@
 		</nav>
 	</div>
 
-	<div id="panier" class="position-fixed d-flex justify-content-end">
+	<div id="panier" class="position-fixed d-flex justify-content-end mt-1">
 		<a href="panier.html" id="lotPanier">
 			<span id="total_articles">0</span>
 			<img alt="" id="lepanier">
@@ -80,7 +80,7 @@
 			</div>
 		</nav>
 
-		<div class="container" id="liste_panier">
+		<div class="container mt-5" id="liste_panier">
 			<table class="table" id="my-table">
 				<thead>
 					<tr>

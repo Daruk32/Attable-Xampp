@@ -37,7 +37,7 @@
 
 	<div class="container-fluid" id="top">
 		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="navbar-brand" id="logo">
+			<div class="navbar-brand pt-4" id="logo">
 				<a href="index.html"><img src="images/attable_logo2.png" class="img-fluid" alt="monlogo" id="leLogo">
 				</a>
 
@@ -46,12 +46,12 @@
 				</a>
 			</div>
 
-			<div id="titre_page" class="collapse navbar-collapse justify-content-center">
+			<div id="titre_page" class="collapse navbar-collapse justify-content-center pt-4">
 				<div>Nos gammes -&nbsp;<span id="ajout_titre_categorie"></span></div>
 			</div>
 
-			<div class="d-flex flex-row-reverse">
-				<div class="p-3 mr-1"></div>
+			<div class="d-flex flex-row-reverse mr-4 pb-1">
+				<div class="px-3 mr-2"></div>
 				<div id="authentification">
 					<a id="authAdmin">
 						<img alt="" id="lesids">
@@ -61,10 +61,7 @@
 		</nav>
 	</div>
 
-	
-	
-
-	<div id="panier" class="position-fixed d-flex justify-content-end">
+	<div id="panier" class="position-fixed d-flex justify-content-end mt-1">
 		<a href="panier.html" id="lotPanier">
 			<span id="total_articles">0</span>
 			<img alt="" id="lepanier">
@@ -75,7 +72,7 @@
 	<section id="main">
 
 		<nav class="navbar navbar-expand-lg" id="bandeau">
-			<div class="container-fluid pr-lg-5 pt-lg-2 navbar-dark">
+			<div class="container-fluid pr-lg-5">
 				<ul id="bande"></ul>
 			</div>
 		</nav>
@@ -86,8 +83,8 @@
 
 
 		<!--Div de génération des produits de la catégorie choisie / Voir tableau.js-->
-		<div class="container liste_categorie">
-			<div class="row row-cols-2 row row-cols-sm-3 row-cols-md-3 row-cols-xl-4 justify-content-center"
+		<div class="liste_categorie">
+			<div class="row row-cols-3 row-cols-md-5 mx-auto text-center justify-content-center mt-5"
 				id="descriptif_cat"></div>
 		</div>
 
@@ -149,7 +146,7 @@
 			}
 		})
 	</script>
-	<script src="js/categorie-obf.js" type="module"></script>
+	<script src="OriginalJS/categorie.js" type="module"></script>
 
 </body>
 

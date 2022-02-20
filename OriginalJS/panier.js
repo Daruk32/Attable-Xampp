@@ -6,6 +6,27 @@ V2.9
 */
 
 
+// Ecoute de l'événement Scroll
+var stickyBandeau = document.getElementById("bandeau");
+var stickyIcone = document.getElementById("panier");
+var divBody = document.getElementById("idBody");
+stickyIcone.style.top = "-2.3%";
+if (divBody != null) {
+	divBody.onscroll = function (e) {
+		// Modifie le bandeau dès la hauteur de scroll atteinte et ajuste le panier
+		if (window.pageYOffset > 60) {
+			stickyBandeau.classList.add("pr-5");
+			stickyIcone.style.top = "-2%";
+		}
+		// Remet en place le panier en dehors de la zone du bandeau
+		else {
+			stickyBandeau.classList.remove("pr-5");
+			stickyIcone.style.top = "-2.3%";
+		}
+	};
+}
+
+
 //fonction de calcul du total du panier
 window.panier = function panier() {
 	var total = 0;
