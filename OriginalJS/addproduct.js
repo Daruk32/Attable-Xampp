@@ -37,19 +37,55 @@ document.getElementById("namebox").onclick = function (e) {
     input.click();
 }
 
-var categoryArray = new Array;
+
 //Process valeurs catégories
+var select = document.getElementById("categ");
+var categoryArray = new Array;
 firebase.database().ref("categories/").on('value', function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
         var item_id = childSnapshot.val().idC;
         var item_name = childSnapshot.val().nom;
         categoryArray[item_id] = item_name;
     });
-    var select = document.getElementById("categ");
     for (index in categoryArray) {
         select.options[select.options.length] = new Option(categoryArray[index], index);
     }
 });
+
+
+//Process valeurs des références produits
+select.addEventListener("change", function () {
+    // Récupération de la valeur sélectionnée de la catégorie
+    const referenceSelected = this.options[this.selectedIndex].innerHTML;
+
+    // Tableau des références de la catégorie
+    var referenceProductArray = [];
+    // Initialisation de l'index du même tableau
+    var indexreferenceProductArray = 0;
+
+    // Insertion des références de la catégorie sélectionnée dans le tableau
+    firebase.database().ref("products/").on('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            if (childSnapshot.val().category == referenceSelected) {
+                var itemReferenceSelected = childSnapshot.val().id;
+                referenceProductArray[indexreferenceProductArray] = itemReferenceSelected;
+                indexreferenceProductArray++;
+            }
+        });
+
+        // Insertion des valeurs du tableau de la catégorie sélectionnée dans le dropdown
+        let selectProductDropDown = document.getElementById("dropdownRefProduct");
+        selectProductDropDown.length = 0;
+        for (index in referenceProductArray) {
+            selectProductDropDown.options[selectProductDropDown.options.length] = new Option(referenceProductArray[index], index);
+        }
+
+        // Information de la référence libre suivante pour la catégorie sélectionnée
+        document.getElementById("id").placeholder = parseFloat(referenceProductArray.at(-1))+1;
+    });
+});
+
+
 
 
 //Récupération des datas du produit renseigné

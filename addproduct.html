@@ -52,7 +52,7 @@
 
 	<section>
 
-
+		<!-- Barre de navigation -->
 		<div class="container-fluid" id="top">
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="navbar-brand" id="logo">
@@ -88,6 +88,7 @@
 
 		<br>
 
+		<!-- Liens des CRUD -->
 		<div class="row text-center">
 			<div class="col-md-6">
 				<a href="admin.php">
@@ -117,6 +118,7 @@
 
 		<br>
 
+		<!-- Gestion d'un nouveau produit -->
 		<div class="container">
 			<div class="row">
 				<div class="col-md-9 joinform">
@@ -130,9 +132,19 @@
 							id="UpProgress"></label>
 					</div>
 					<hr>
-					<div class="form-group">
-						<label for="id">Référence du produit</label>
-						<input type="number" class="form-control w-100" id="id" name="control" required>
+					<div class="form-group col-md-4 text-center mx-auto">
+						<label for="category">Catégorie</label>
+						<select name="category" class="form-select" id="categ" required></select>
+					</div>
+					<div class="row">
+						<div class="form-group col-6">
+							<label for="dropdownRefProduct">Liste des références existantes</label>
+							<select name="referenceProduct" class="form-select" id="dropdownRefProduct"></select>
+						</div>
+						<div class="form-group col-6">
+							<label for="id">Référence du produit</label>
+							<input type="number" class="form-control w-100" placeholder="Proposition libre suivante" id="id" name="control" required>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="product-name">Nom du produit</label>
@@ -156,18 +168,14 @@
 							required>
 					</div>
 					<div class="row">
-						<div class="form-group col-md-4 text-center">
+						<div class="form-group col-md-6 text-center">
 							<label for="price">Prix du produit</label>
 							<input type="number" class="text-center form-control" id="price" name="control"
 								placeholder="..,.. €" required>
 						</div>
-						<div class="form-group col-md-4 text-center">
+						<div class="form-group col-md-6 text-center">
 							<label for="quantity">Quantité de produit</label>
 							<input type="number" class="text-center form-control" id="quantity" name="control" required>
-						</div>
-						<div class="form-group col-md-4 text-center">
-							<label for="category">Catégorie 1</label>
-							<select name="category" class="form-select" id="categ" required></select>
 						</div>
 					</div>
 				</div>
@@ -256,7 +264,7 @@
 	</script>
 
 	<!-- Scripts -->
-	<script src="js/addproduct-obf.js" type="text/javascript"></script>
+	<script src="OriginalJS/addproduct.js" type="text/javascript"></script>
 
 </body>
 
