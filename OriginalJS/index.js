@@ -17,7 +17,8 @@ firebase.database().ref("categories/").on('value', function (snapshot) {
         var ajoutC = { 'id': productID, 'name': productName, 'valeur': productValue, 'url': productLink };
         categoriesArray.push(ajoutC);
     });
-    localStorage.setItem("categoriesSelected", JSON.stringify(categoriesArray));
+    //localStorage.setItem("categoriesSelected", JSON.stringify(categoriesArray));
+    localStorage.setItem("categoriesSelected", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(categoriesArray))));
 
     //Création de la div mère
     var section = document.getElementById('tab_categs');

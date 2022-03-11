@@ -32,7 +32,9 @@ window.panier = function panier() {
 	var total = 0;
 	var nb_article = 0;
 	if (localStorage.getItem("list_achat") != null) {
-		var commande = JSON.parse(localStorage.getItem("list_achat"))
+		//var commande = JSON.parse(localStorage.getItem("list_achat"))
+		var commande = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
+		console.log(commande);
 		if (commande == "") {
 			total = 0;
 			nb_article = 0;
@@ -52,16 +54,20 @@ window.panier = function panier() {
 	if (document.getElementById("sous_total") != null) {
 		document.getElementById("sous_total").innerHTML = total + " €";
 	}
-	localStorage.setItem("Somme", JSON.stringify(total));
+	//localStorage.setItem("Somme", JSON.stringify(total));
+	localStorage.setItem("Somme", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(total))));
+
 	return total;
 }
 
 //Fonction pour supprimer une ligne du tableau de commande
 window.supp = function supp(article) {
 	if (localStorage.getItem("list_achat") != null) {
-		var lotcommande = JSON.parse(localStorage.getItem("list_achat"));
+		//var lotcommande = JSON.parse(localStorage.getItem("list_achat"));
+		var lotcommande = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
 		delete lotcommande[article];
-		localStorage.setItem("list_achat", JSON.stringify(lotcommande))
+		//localStorage.setItem("list_achat", JSON.stringify(lotcommande))
+		localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(lotcommande)));
 		location.reload();
 	}
 }
@@ -73,7 +79,8 @@ window.crea_panier = function crea_panier() {
 		document.getElementById("cart_tablebody").innerHTML = "";
 	}
 	else {
-		var liste_panier = JSON.parse(localStorage.getItem("list_achat"));
+		//var liste_panier = JSON.parse(localStorage.getItem("list_achat"));
+		var liste_panier = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
 		for (let i in liste_panier) {
 			if (liste_panier[i].quantity > 0) {
 				var table1 = document.getElementById("cart_tablebody");
@@ -119,7 +126,8 @@ window.valid_command = function valid_command() {
 	var fullDate = date + ' ' + hours;
 
 	if (localStorage.getItem("list_achat") != null) {
-		var liste_panier = JSON.parse(localStorage.getItem("list_achat"));
+		var liste_panier = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
+		//var liste_panier = JSON.parse(localStorage.getItem("list_achat"));
 
 		var m1 = "<a href='mailto:attable@gmail.com?subject=Votre commande - N° Commande&body=Identifiant client :%0ADate : " + fullDate + "%0A%0ABonjour,%0A%0AVoici le récapitulatif de votre commande :%0A%0A";
 		var m2 = "|-------------------------------------------------------------------------------------|%0A";
@@ -132,7 +140,8 @@ window.valid_command = function valid_command() {
 			}
 		}
 		var m6 = "|-------------------------------------------------------------------------------------|%0A";
-		var m7 = "%0A%0AVotre total : " + JSON.parse(localStorage.getItem("Somme")) + "€%0A";
+		//var m7 = "%0A%0AVotre total : " + JSON.parse(localStorage.getItem("Somme")) + "€%0A";
+		var m7 = "%0A%0AVotre total : " + JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("Somme")))) + "€%0A";
 		var m8 = "%0A%0A Merci pour votre commande !%0A%0ACordialement,%0A%0AAssociation Attable, le Collectif du goût'>Passer la commande</a>";
 		document.getElementById("valid-command").innerHTML = m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8;
 
@@ -184,7 +193,8 @@ window.generate = function generate() {
 	var head = [['Article', 'Prix', 'Quantité']]
 
 	var body = [];
-	var liste_panier = JSON.parse(localStorage.getItem("list_achat"));
+	//var liste_panier = JSON.parse(localStorage.getItem("list_achat"));
+	var liste_panier = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
 	for (let i in liste_panier) {
 		if (liste_panier[i].quantity > 0) {
 			body.push([liste_panier[i].name, liste_panier[i].price + " €", liste_panier[i].quantity]);
@@ -195,7 +205,8 @@ window.generate = function generate() {
 
 	//Montant total
 	var amount_down = 70 + (body.length + 1) * 10;
-	doc.text(155, amount_down, 'Montant total : ' + JSON.parse(localStorage.getItem("Somme")) + "€");
+	//doc.text(155, amount_down, 'Montant total : ' + JSON.parse(localStorage.getItem("Somme")) + "€");
+	doc.text(155, amount_down, 'Montant total : ' + JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("Somme")))) + "€");
 
 	//doc.save('Ma Commande.pdf');
 	window.open(doc.output('bloburl'), '_blank');

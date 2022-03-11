@@ -10,7 +10,9 @@ V2.9
 
 //V3-BackEnd - Fonction de génération du bandeau des pages - categorie.html + panier.html
 window.bandeau = function bandeau() {
-    var categorieList = JSON.parse(localStorage.getItem("categoriesSelected"));
+    //var categorieList = JSON.parse(localStorage.getItem("categoriesSelected"));
+    var categorieList = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("categoriesSelected"))));
+
     var bande = document.getElementById("bande");
 
     categorieList.forEach(function (item) {

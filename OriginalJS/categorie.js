@@ -100,7 +100,9 @@ firebase.database().ref("products/").on('value', function (snapshot) {
         productsOneCategorieSelected.forEach(function (item) {
             let valeur;
             if (localStorage.getItem("list_achat") != null) {
-                var controle = JSON.parse(localStorage.getItem("list_achat"));
+
+                var controle = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
+                //var controle = JSON.parse(localStorage.getItem("list_achat"));
                 for (let iListe in controle) {
                     if (item.id == controle[iListe].id) {
                         valeur = controle[iListe].quantity;
@@ -247,7 +249,8 @@ function changeCategorie(number) {
         productsOneCategorieSelected.forEach(function (item) {
             let valeur;
             if (localStorage.getItem("list_achat") != null) {
-                var controle = JSON.parse(localStorage.getItem("list_achat"));
+                var controle = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
+                //var controle = JSON.parse(localStorage.getItem("list_achat"));                
                 for (let iListe in controle) {
                     if (item.id == controle[iListe].id) {
                         valeur = controle[iListe].quantity;
@@ -375,7 +378,8 @@ function changeCategorie(number) {
 
 
 //V3-BackEnd - Fonction de génération du bandeau des pages - categorie.html + panier.html
-var categorieList = JSON.parse(localStorage.getItem("categoriesSelected"));
+//var categorieList = JSON.parse(localStorage.getItem("categoriesSelected"));
+var categorieList = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("categoriesSelected"))));
 var bande = document.getElementById("bande");
 
 categorieList.forEach(function (item) {
@@ -406,7 +410,8 @@ window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
 
     //Met à jour et affiche la quantité de chaque produit
     if (localStorage.getItem("list_achat") != null) {
-        var controle = JSON.parse(localStorage.getItem("list_achat"));
+        var controle = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
+        //var controle = JSON.parse(localStorage.getItem("list_achat"));    
         for (let i in controle) {
             if (item.id != controle[i].id) {
                 valeur = "";
@@ -556,7 +561,8 @@ window.plus = function plus(idProduit, indexProduit) {
         count++;
         document.getElementById("count" + idProduit).value = count;
         liste[idProduit] = { id: idProduit, url: srcProduit, name: nameProduit, price: prixProduit, quantity: count };
-        localStorage.setItem("list_achat", JSON.stringify(liste));
+        //localStorage.setItem("list_achat", JSON.stringify(liste));
+        localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(liste))));
         if (document.getElementById("count2" + indexProduit) != null) {
             document.getElementById("count2" + indexProduit).value = count;
         }
@@ -564,13 +570,15 @@ window.plus = function plus(idProduit, indexProduit) {
     }
     //S'il existe déjà :
     else {
-        liste = JSON.parse(localStorage.getItem("list_achat"));
+        //liste = JSON.parse(localStorage.getItem("list_achat"));
+        liste = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
         for (let key in liste) {
             if (idProduit == liste[key].id) {
                 count = liste[key].quantity;
                 count++;
                 liste[key].quantity = count;
-                localStorage.setItem("list_achat", JSON.stringify(liste));
+                //localStorage.setItem("list_achat", JSON.stringify(liste));
+                localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(liste))));
                 document.getElementById("count" + idProduit).value = count;
                 if (document.getElementById("count2" + indexProduit) != null) {
                     document.getElementById("count2" + indexProduit).value = count;
@@ -582,7 +590,8 @@ window.plus = function plus(idProduit, indexProduit) {
                 count = 0;
                 count++;
                 liste[idProduit] = { id: idProduit, url: srcProduit, name: nameProduit, price: prixProduit, quantity: count };
-                localStorage.setItem("list_achat", JSON.stringify(liste));
+                //localStorage.setItem("list_achat", JSON.stringify(liste));
+                localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(liste))));
                 document.getElementById("count" + idProduit).value = count;
                 if (document.getElementById("count2" + indexProduit) != null) {
                     document.getElementById("count2" + indexProduit).value = count;
@@ -611,7 +620,8 @@ window.minus = function minus(idProduit, indexProduit) {
         return false;
     }
     var id = produit.dataset.id;
-    liste = JSON.parse(localStorage.getItem("list_achat"));
+    //liste = JSON.parse(localStorage.getItem("list_achat"));
+    liste = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))))
     for (let key in liste) {
         //Diminue la quantité du produit tant qu'elle est >0.
         if (idProduit == liste[key].id) {
@@ -619,14 +629,16 @@ window.minus = function minus(idProduit, indexProduit) {
             if (comptage2 > 1) {
                 comptage2--;
                 liste[key].quantity = comptage2;
-                localStorage.setItem("list_achat", JSON.stringify(liste));
+                //localStorage.setItem("list_achat", JSON.stringify(liste));
+                localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(liste))));
             }
             else if (comptage2 == 1) {
                 document.getElementById("moins" + idProduit).style.visibility = 'hidden';
                 document.getElementById("count" + idProduit).style.visibility = 'hidden';
                 comptage2 = 0;
                 liste[key].quantity = comptage2;
-                localStorage.setItem("list_achat", JSON.stringify(liste));
+                //localStorage.setItem("list_achat", JSON.stringify(liste));
+                localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(liste))));
             }
         }
         else {
@@ -648,7 +660,8 @@ window.paniercateg = function paniercateg() {
     var total = 0;
     var nb_article = 0;
     if (localStorage.getItem("list_achat") != null) {
-        var commande = JSON.parse(localStorage.getItem("list_achat"))
+        //var commande = JSON.parse(localStorage.getItem("list_achat"));
+        var commande = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
         if (commande == "") {
             total = 0;
             nb_article = 0;
