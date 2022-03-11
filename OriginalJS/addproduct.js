@@ -81,7 +81,8 @@ select.addEventListener("change", function () {
         }
 
         // Information de la référence libre suivante pour la catégorie sélectionnée
-        document.getElementById("id").placeholder = parseFloat(referenceProductArray.at(-1))+1;
+        document.getElementById("id").placeholder = parseFloat(referenceProductArray.at(-1)) + 1;
+        document.getElementById("id").value = "";
     });
 });
 
@@ -167,10 +168,13 @@ document.getElementById("AddProduct").onclick = function () {
     Clear();
 }
 
+
+
 //Sélection d'un produit
 document.getElementById("SelectProduct").onclick = function () {
     Ready();
     firebase.database().ref("products/" + idP).on('value', function (snapshot) {
+        // Message d'erreur si problème avec référence produit
         if (snapshot.val() == null || idP == "") {
             Swal.fire({
                 title: '???',
@@ -179,6 +183,7 @@ document.getElementById("SelectProduct").onclick = function () {
                 confirmButtonText: 'Où me suis-je trompé ?'
             });
         }
+        // Affichage des informations du produit dans les champs
         else {
             document.getElementById("myimg").src = snapshot.val().Link;
             document.getElementById("id").value = snapshot.val().id;
@@ -188,7 +193,36 @@ document.getElementById("SelectProduct").onclick = function () {
             document.getElementById("descriptive").value = snapshot.val().descriptive;
             document.getElementById("price").value = snapshot.val().prix;
             document.getElementById("quantity").value = snapshot.val().quantity;
-            document.getElementById("categ").value = snapshot.val().category;
+            for (let i = 0; i < select.length; i++) {
+                if (snapshot.val().category == select[i].text) {
+                    select.selectedIndex = i;
+                }
+            }
+
+            // Insertion des listes de références existantes
+            const referenceSelected2 = select.options[select.selectedIndex].innerHTML;
+            // Tableau des références de la catégorie
+            var referenceProductArray = [];
+            // Initialisation de l'index du même tableau
+            var indexreferenceProductArray = 0;
+            // Insertion des références de la catégorie sélectionnée dans le tableau
+            firebase.database().ref("products/").on('value', function (snapshot) {
+                snapshot.forEach(function (childSnapshot) {
+                    if (childSnapshot.val().category == referenceSelected2) {
+                        var itemReferenceSelected = childSnapshot.val().id;
+                        referenceProductArray[indexreferenceProductArray] = itemReferenceSelected;
+                        indexreferenceProductArray++;
+                    }
+                });
+                // Insertion des valeurs du tableau de la catégorie sélectionnée dans le dropdown
+                let selectProductDropDown = document.getElementById("dropdownRefProduct");
+                selectProductDropDown.length = 0;
+                for (index in referenceProductArray) {
+                    selectProductDropDown.options[selectProductDropDown.options.length] = new Option(referenceProductArray[index], index);
+                }
+            });
+
+            // Message de confirmation
             Swal.fire({
                 title: 'Voilà !',
                 text: 'Votre produit',
@@ -198,6 +232,8 @@ document.getElementById("SelectProduct").onclick = function () {
         }
     });
 }
+
+
 
 //MAJ d'un produit
 document.getElementById("UpdateProduct").onclick = function () {
