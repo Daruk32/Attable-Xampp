@@ -169,7 +169,7 @@ document.getElementById("AddProduct").onclick = function () {
 
 
 
-//Sélection d'un produit
+//Sélection d'un produit à partir du bouton
 document.getElementById("SelectProduct").onclick = function () {
     Ready();
     firebase.database().ref("products/" + idP).on('value', function (snapshot) {
@@ -231,7 +231,48 @@ document.getElementById("SelectProduct").onclick = function () {
         }
     });
 }
+//Sélection d'un produit à partir du dropdown des références
+var dropdownReferences = document.getElementById("dropdownRefProduct");
+dropdownReferences.addEventListener("change", function () {
+    const valueReference = parseFloat(this.options[this.selectedIndex].innerHTML);
+    document.getElementById("id").value = valueReference;
+    Ready();
+    firebase.database().ref("products/" + valueReference).on('value', function (snapshot) {
+        // Message d'erreur si problème avec référence produit
+        if (snapshot.val() == null || idP == "") {
+            Swal.fire({
+                title: '???',
+                text: "Ce produit n'existe pas !",
+                icon: 'error',
+                confirmButtonText: 'Où me suis-je trompé ?'
+            });
+        }
+        // Affichage des informations du produit dans les champs
+        else {
+            document.getElementById("myimg").src = snapshot.val().Link;
+            document.getElementById("id").value = valueReference;
+            document.getElementById("name").value = snapshot.val().libelle;
+            document.getElementById("legend_P1").value = snapshot.val().texte;
+            document.getElementById("short_legend").value = snapshot.val().short_legend;
+            document.getElementById("descriptive").value = snapshot.val().descriptive;
+            document.getElementById("price").value = snapshot.val().prix;
+            document.getElementById("quantity").value = snapshot.val().quantity;
+            for (let i = 0; i < select.length; i++) {
+                if (snapshot.val().category == select[i].text) {
+                    select.selectedIndex = i;
+                }
+            };
 
+            // Message de confirmation
+            Swal.fire({
+                title: 'Voilà !',
+                text: 'Votre produit',
+                icon: 'info',
+                confirmButtonText: 'Continuer'
+            });
+        }
+    });
+});
 
 
 //MAJ d'un produit
