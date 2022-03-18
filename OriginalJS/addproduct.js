@@ -68,7 +68,8 @@ select.addEventListener("change", function () {
         snapshot.forEach(function (childSnapshot) {
             if (childSnapshot.val().category == referenceSelected) {
                 var itemReferenceSelected = childSnapshot.val().id;
-                referenceProductArray[indexreferenceProductArray] = itemReferenceSelected;
+                var nameReferenceSelected = childSnapshot.val().libelle;
+                referenceProductArray[indexreferenceProductArray] = itemReferenceSelected + " - " + nameReferenceSelected;
                 indexreferenceProductArray++;
             }
         });
