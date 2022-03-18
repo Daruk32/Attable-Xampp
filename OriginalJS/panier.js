@@ -34,7 +34,6 @@ window.panier = function panier() {
 	if (localStorage.getItem("list_achat") != null) {
 		//var commande = JSON.parse(localStorage.getItem("list_achat"))
 		var commande = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
-		console.log(commande);
 		if (commande == "") {
 			total = 0;
 			nb_article = 0;

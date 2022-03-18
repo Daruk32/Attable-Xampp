@@ -7,15 +7,15 @@ V2.9
 
 
 //Insertion de la date de la MAJ de la BDD
-function BddMaj() {
-    var today = new Date();
-    var idD = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString() + today.getHours().toString() + today.getMinutes().toString() + today.getSeconds().toString();
-    var dateMaj = today.toString();
-    firebase.database().ref('DateMaj/' + idD).set({
-        IDD: idD,
-        Date: dateMaj
-    });
-}
+// function BddMaj() {
+//     var today = new Date();
+//     var idD = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString() + today.getHours().toString() + today.getMinutes().toString() + today.getSeconds().toString();
+//     var dateMaj = today.toString();
+//     firebase.database().ref('DateMaj/' + idD).set({
+//         IDD: idD,
+//         Date: dateMaj
+//     });
+// }
 
 
 //Process Image
@@ -153,8 +153,7 @@ document.getElementById("AddProduct").onclick = function () {
                     quantity: quantityP,
                     category: categorieP
                 });
-            }
-            );
+            });
         });
 
 
@@ -164,7 +163,7 @@ document.getElementById("AddProduct").onclick = function () {
         icon: 'success',
         confirmButtonText: 'Cool'
     });
-    BddMaj();
+    // BddMaj();
     Clear();
 }
 
@@ -287,7 +286,7 @@ document.getElementById("UpdateProduct").onclick = function () {
             )
         }
     });
-    BddMaj();
+    // BddMaj();
 }
 
 
@@ -330,5 +329,5 @@ document.getElementById("DeleteProduct").onclick = function () {
             )
         }
     });
-    BddMaj();
+    // BddMaj();
 }
