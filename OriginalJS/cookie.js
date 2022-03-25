@@ -7,10 +7,10 @@ V2.9
 
 
 //création du cookie
-function createCookie(name, value, days) {
-	if (days) {
+function createCookie(name, value, hours) {
+	if (hours) {
 		var date = new Date();
-		date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+		date.setTime(date.getTime() + (hours * 24 * 60 * 60 * 1000));
 		var expires = "; expires=" + date.toGMTString();
 	}
 	else var expires = "";

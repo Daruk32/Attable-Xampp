@@ -88,12 +88,8 @@ function login() {
   var ids = [email, password];
   var ids_json = JSON.stringify(ids);
 
-  if (inputElements.checked) {
-    createCookie("info_cnx", CryptoJS.enc.Utf16.parse(ids_json), 3);
-  }
-  else {
-    eraseCookie("info_cnx");
-  }
+  createCookie("info_cnx", CryptoJS.enc.Utf16.parse(ids_json), 1);
+
 
   var inputRemember = document.getElementById('rememberMe');
   if (inputRemember.checked) {
@@ -169,3 +165,10 @@ function putInfos() {
   }
 }
 
+let loginFormulaire = document.getElementById('loginForm');
+if (readCookie("info_rmb") != null) {
+  loginFormulaire.autocomplete = true;
+}
+else {
+  loginFormulaire.autocomplete = false;
+}
