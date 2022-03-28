@@ -348,7 +348,7 @@ function changeCategorie(number) {
 
  
             var div111Back = document.createElement('div');
-            div111Back.className = "card frontside";
+            div111Back.className = "backside";
             div111.appendChild(div111Back);
 
             var div111Back1 = document.createElement('div');
