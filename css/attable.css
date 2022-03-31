@@ -213,7 +213,7 @@ footer {
 }
 #bande li{
 	display:inline-block !important;
-    font-size: 1vw;
+    font-size: calc(0.3rem + 0.4vw);
     white-space: pre;
     margin: auto;
     width: 12.5% !important;

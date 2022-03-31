@@ -72,7 +72,7 @@
 
 
 
-	<section id="main">
+	<section id="main" class="mb-5">
 
 		<nav class="navbar navbar-expand-lg" id="bandeau">
 			<div class="container-fluid pr-lg-5">
@@ -80,12 +80,15 @@
 			</div>
 		</nav>
 
+		<!--Div d'affichage du produit choisi depuis la liste générée ci-dessous / Voir tableau.js-->
+		<div id="fiche_produit" class="container text-center w-50"></div>
+
 		<!--Div de génération des produits de la catégorie choisie / Voir tableau.js-->
 		<div class="container-fluid mt-3">
 			<div class="flex-container" id="descriptif_cat"></div>
 		</div>
 
-		<div id="info_categorie" class="text-center mb-4">
+		<div id="info_categorie" class="text-center my-5">
 			Venez en magasin car il y a des arrivées fréquentes, tous les produits et prix ne sont pas visibles sur
 			notre site, images non contractuelles !
 		</div>
@@ -136,7 +139,7 @@
 	<script id='MainScript' type="module">
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
-				document.getElementById("lesids").src="images/login.png";
+				document.getElementById("lesids").src = "images/login.png";
 				document.getElementById("lepanier").src = "images/logo_panier2.png";
 			}
 			else {

@@ -166,9 +166,13 @@ firebase.database().ref("products/").on('value', function (snapshot) {
 
             var div111Front11p = document.createElement('p');
             div111Front11p.className = "card-text";
-            div111Front11p.innerHTML = item.short_legend;
+            if (item.prix == 0 || item.prix == "") {
+                div111Front11p.innerHTML = item.short_legend + "<br>" + "Prix : &Agrave; voir en magasin";
+            }
+            else {
+                div111Front11p.innerHTML = item.prix + " €";
+            }      
             div111Front1.appendChild(div111Front11p);
-
  
             var div111Back = document.createElement('div');
             div111Back.className = "backside";
@@ -202,9 +206,22 @@ firebase.database().ref("products/").on('value', function (snapshot) {
             }
             div111Back11.appendChild(div111Back111);
 
+
+            var div111Back11a = document.createElement("a");
+            div111Back11a.className = "btn btn-primary my-5";
+            div111Back11a.innerHTML = "En voir plus ";
+            div111Back11a.href = "#main";
+            div111Back11a.addEventListener("click", function (e) {
+                fiche_detaillee(item, indexProduit);
+            }, false);
+            div111Back11.appendChild(div111Back11a);
+            var div111Back11ai = document.createElement("i");
+            div111Back11ai.className = "fa fa-plus";
+            div111Back11a.appendChild(div111Back11ai);
+
+
             var div13 = document.createElement('div')
             div13.id = "modul_quantity";
-            div13.className = "card-footer";
             div111Back11.appendChild(div13);
             var input131 = document.createElement('input')
             input131.setAttribute("type", "button");
@@ -343,10 +360,15 @@ function changeCategorie(number) {
 
             var div111Front11p = document.createElement('p');
             div111Front11p.className = "card-text";
-            div111Front11p.innerHTML = item.short_legend;
+            if (item.prix == 0 || item.prix == "") {
+                div111Front11p.innerHTML = item.short_legend + "<br>" + "Prix : &Agrave; voir en magasin";
+            }
+            else {
+                div111Front11p.innerHTML = item.prix + " €";
+            }      
             div111Front1.appendChild(div111Front11p);
 
- 
+
             var div111Back = document.createElement('div');
             div111Back.className = "backside";
             div111.appendChild(div111Back);
@@ -379,9 +401,22 @@ function changeCategorie(number) {
             }
             div111Back11.appendChild(div111Back111);
 
+
+            var div111Back11a = document.createElement("a");
+            div111Back11a.className = "btn btn-primary my-5";
+            div111Back11a.innerHTML = "En voir plus ";
+            div111Back11a.href = "#main";
+            div111Back11a.addEventListener("click", function (e) {
+                fiche_detaillee(item, indexProduit);
+            }, false);
+            div111Back11.appendChild(div111Back11a);
+            var div111Back11ai = document.createElement("i");
+            div111Back11ai.className = "fa fa-plus";
+            div111Back11a.appendChild(div111Back11ai);
+
+
             var div13 = document.createElement('div')
             div13.id = "modul_quantity";
-            div13.className = "card-footer";
             div111Back11.appendChild(div13);
             var input131 = document.createElement('input')
             input131.setAttribute("type", "button");
@@ -454,7 +489,146 @@ categorieList.forEach(function (item) {
 });
 
 
+//Fonction de génération de la fiche détaillée du produit
+window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
+    document.getElementById("fiche_produit").innerHTML = "";
+    var ficheProduit = document.getElementById("fiche_produit");
 
+    var valeur;
+
+    document.getElementById('fiche_produit').style.display = 'block';
+
+    //Met à jour et affiche la quantité de chaque produit
+    if (localStorage.getItem("list_achat") != null) {
+        var controle = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
+        //var controle = JSON.parse(localStorage.getItem("list_achat"));    
+        for (let i in controle) {
+            if (item.id != controle[i].id) {
+                valeur = "";
+            }
+            else {
+                valeur = controle[i].quantity;
+            }
+        }
+    }
+    else {
+        var valeur = "";
+    }
+
+    if (item.prix == 0) {
+        var champs_prix = "Prix : &Agrave; voir en magasin";
+    }
+    else {
+        var champs_prix = "Prix :&nbsp;" + item.prix + " €";
+    }
+
+    //table
+    var table1 = document.createElement('table')
+    table1.className = "table w-100";
+    table1.id = "deta-tab";
+    ficheProduit.appendChild(table1);
+    //tr1
+    var tr1 = document.createElement('tr')
+    table1.appendChild(tr1);
+    //td11
+    var td11 = document.createElement('td')
+    td11.id = "description_produit2";
+    td11.className = "text-center";
+    td11.colSpan = "2";
+    tr1.appendChild(td11);
+    //p111
+    var p111 = document.createElement('p')
+    td11.innerHTML = item.name;
+    td11.appendChild(p111);
+    //tr2
+    var tr2 = document.createElement('tr')
+    table1.appendChild(tr2);
+    //td21
+    var td21 = document.createElement('td')
+    td21.rowSpan = "2";
+    tr2.appendChild(td21);
+    //div211
+    var div211 = document.createElement('div')
+    div211.className = "example";
+    div211.id = "description_produit";
+    td21.appendChild(div211);
+    //div2111
+    var div2111 = document.createElement('div')
+    div2111.className = "overlay";
+    div2111.innerHTML = "🔎";
+    div211.appendChild(div2111);
+    //img2112
+    var img2112 = document.createElement('img')
+    img2112.src = item.url;
+    img2112.className = "cats";
+    div211.appendChild(img2112);
+    //td22
+    var td22 = document.createElement('td')
+    td22.className = "text-center";
+    tr2.appendChild(td22);
+    //p221
+    var p221 = document.createElement('p')
+    p221.innerHTML = item.descriptive;
+    td22.appendChild(p221);
+    //tr3
+    var tr3 = document.createElement('tr')
+    table1.appendChild(tr3);
+    //td31
+    var td31 = document.createElement('td')
+    td31.className = "text-center";
+    tr3.appendChild(td31);
+    //span311
+    var span311 = document.createElement('span')
+    span311.id = "id_prix_produit";
+    span311.innerHTML = champs_prix;
+    td31.appendChild(span311);
+    //tr4
+    var tr4 = document.createElement('tr')
+    table1.appendChild(tr4);
+    //td41
+    var td41 = document.createElement('td')
+    td41.colspan = "2";
+    tr4.appendChild(td41);
+    //div411
+    var div411 = document.createElement('div')
+    div411.id = "modul_quantity";
+    td41.appendChild(div411);
+    //input4111
+    var input4111 = document.createElement('input')
+    input4111.className = "bmoins add-to-cart";
+    input4111.type = "button";
+    input4111.value = "-";
+    input4111.id = "moins" + indexProduit;
+    input4111.addEventListener("click", function (e) {
+        minus(item.id, indexProduit);
+    }, false);
+    div411.appendChild(input4111);
+    //input4112
+    var input4112 = document.createElement('input')
+    input4112.className = "affich_valeur";
+    input4112.value = document.getElementById("count" + item.id).value;
+    input4112.id = "count2" + indexProduit;
+    input4112.disabled = true;
+    div411.appendChild(input4112);
+    //input4113
+    var input4113 = document.createElement('input')
+    input4113.className = "bplus add-to-cart";
+    input4113.type = "button";
+    input4113.value = "+";
+    input4113.id = "plus" + indexProduit;
+    input4113.addEventListener("click", function (e) {
+        plus(item.id, indexProduit);
+    }, false);
+    div411.appendChild(input4113);
+
+    if (item.prix == 0 || item.prix == "") {
+        document.getElementById("plus" + indexProduit).style.visibility = 'hidden';
+    }
+
+    $(document).ready(function () {
+        $('.example').izoomify();
+    });
+}
 
 
 var liste = {};
