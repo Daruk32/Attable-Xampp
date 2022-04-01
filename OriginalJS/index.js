@@ -39,10 +39,11 @@ firebase.database().ref("categories/").on('value', function (snapshot) {
         //Div categ contenant divimg et divtext
         var divcateg = document.createElement('div');
         divcateg.className = "card card_cat m-2 p-0";
+        divcateg.id = "item-box";
         divfille.appendChild(divcateg);
         //divimg contenant l'image de la catégorie
         var divimg = document.createElement('div');
-        divimg.className = "card border-0 p-0 text-center";
+        divimg.className = "card border-0 p-0 text-center is-loading";
         divimg.id = "index-box";
         divimg.addEventListener("click", function (e) {
             window.location.href = "categorie.html?categorie=" + item.name;
@@ -54,6 +55,10 @@ firebase.database().ref("categories/").on('value', function (snapshot) {
         image_categorie.src = item.url;
         image_categorie.alt = '...';
         divimg.appendChild(image_categorie);
+        $('#index-box').imagesLoaded()
+            .done(function (instance) {
+                divimg.classList.remove("is-loading");
+            });
         //divtext contenant le texte de la catégorie
         var divtext = document.createElement('div');
         divtext.className = "card-body py-2";

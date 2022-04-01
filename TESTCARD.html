@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Tableau des catégories</title>
+
+	<!-- Styles CSS -->
+	<link rel="stylesheet" href="css/booststrap.css">
+	<link rel="stylesheet" href="css/attable.css">
+
+	<!-- Icônes Fontawesome -->
+	<link rel="stylesheet" href="css/fontawesome-free-5.15.4-web/css/all.css">
+
+	<!-- Bootstrap core JS-->
+	<script src="bootstrap/jquery-3.3.1.slim.min.js"></script>
+	<script src="bootstrap/3.4.1-jquery.min.js"></script>
+	<script src="bootstrap/tableExport.min.js"></script>
+	<script src="bootstrap/popper.min.js"></script>
+	<link rel="stylesheet" href="bootstrap/4.3.1-bootstrap.min.css">
+	<script src="bootstrap/4.3.1-bootstrap.min.js"></script>
+	<!-- Bootstrap Table -->
+	<link rel="stylesheet" href="bootstrap/bootstrap-table.min.css">
+	<script src="bootstrap/bootstrap-table.min.js"></script>
+	<script src="bootstrap/bootstrap-table-locale-all.min.js"></script>
+	<script src="bootstrap/bootstrap-table-export.min.js"></script>
+	<script src="bootstrap/bootstrap-table-print.min.js"></script>
+
+	<!-- Data crypto -->
+	<script src="js/cryptoJS-obf.js" type="text/javascript"></script>
+
+	<!-- Scripts -->
+	<script src="OriginalJS/cookie.js" type="text/javascript"></script>
+	<script src="OriginalJS/crypto.js" type="text/javascript"></script>
+	<script src="OriginalJS/valid.js" type="text/javascript"></script>
+	<script src="OriginalJS/panier.js" type="module"></script>
+
+</head>
+
+<body onload="redirAdmin()">
+
+	<div class="container-fluid" id="top">
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class="navbar-brand" id="logo">
+				<a href="index.html"><img src="images/attable_logo2.png" class="img-fluid" alt="monlogo" id="leLogo">
+				</a>
+
+				<a href="noustrouver.html" id="locationSite">
+					<i class="fas fa-map-marked-alt" id="logoLocationSite"></i>
+				</a>
+			</div>
+
+			<div id="titre_page" class="collapse navbar-collapse justify-content-center">
+				<div>Tableau des catégories</div>
+			</div>
+
+			<div class="d-flex flex-row-reverse">
+				<div id="panier" class="ml-auto">
+					<a href="panier.html">
+						<span id="total_articles">0</span>
+						<img alt="" id="lepanier">
+						<span id="total_commande">0 €</span>
+					</a>
+				</div>
+				<div id="authentification">
+					<a id="authAdmin">
+						<img alt="" id="lesids">
+					</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+	<br>
+
+	<div class="container-fluid">
+        <div class="flex-container">
+            <div class="item" data-string="Marie">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+
+                        <div class="card frontside">
+                            <div class="card-body text-center">
+                                <img class="card-img-top img-fluid" src="918836_teaser_picture_1634547207.jpg"
+                                    alt="card image">
+                                <span class="badge-box"> <i class="fa fa-check"></i><i class="fa fa-plus "></i><i
+                                        class="fa fa-behance "></i> <img class="badge-box-img" src="react_30.png"
+                                        alt=""><img class="badge-box-img" src="bootstrap_30.png" alt=""> </span>
+                                <h4 class="card-title">Marie 1</h4>
+                                <p class="card-text">This is basic card with image on top, title, description and
+                                    button.This is basic card with image on top, title, description and button.This is
+                                    basic
+                                    card with image on top, title, description and button.This is basic card with image
+                                    on
+                                    top, title, description and button.This is basic card with image on top, title,
+                                    description and button.This is basic card with image on top, title, description and
+                                    button.This is basic card with image on top, title, description and button.This is
+                                    basic
+                                    card with image on top, title, description and button.This is basic card with image
+                                    on
+                                    top, title, description and button.This is basic card with image on top, title,
+                                    description and button.This is basic card with image on top, title, description and
+                                    button.This is basic card with image on top, title, description and button.This is
+                                    basic
+                                    card with image on top, title, description and button.This is basic card with image
+                                    on
+                                    top, title, description and button.This is basic card with image on top, title,
+                                    description and button.This is basic card with image on top, title, description and
+                                    button.</p>
+                                <a href="#" class="btn btn-bas"><i class="fa fa-plus"></i> En voir plus</a>
+                            </div>
+                        </div>
+
+                        <div class="backside">
+                            <div class="card ">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">Marie 17h 58</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and
+                                        button.This is basic card with image on top, title, description and button.This
+                                        is
+                                        basic card with image on top, title, description and button.This is basic card
+                                        with
+                                        image on top, title, description and button.This is basic card with image on
+                                        top,
+                                        title, description and button.This is basic card with image on top, title,
+                                        description and button.This is basic card with image on top, title, description
+                                        and
+                                        button.This is basic card with image on top, title, description and button.This
+                                        is
+                                        basic card with image on top, title, description and button.</p>
+
+                                    <div class="center-social-icon flexCenter">
+                                        <a class="social-icon flexCenter" target="_blank" href="#">
+                                            <i class="fa fa-facebook-official"></i>
+                                        </a>
+                                        <a class="social-icon flexCenter" target="_blank" href="#">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                        <a class="social-icon flexCenter" target="_blank" href="#">
+                                            <i class="fa fa-whatsapp"></i>
+                                        </a>
+                                        <a class="social-icon flexCenter" target="_blank" href="#">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- fin conteneur flex-->
+    </div>
+	
+
+
+
+
+
+
+	<footer class="py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="quisommesnous.html">Qui sommes nous</a></li>
+						<li><a href="noustrouver.html">Nous trouver</a></li>
+						<li><a href="panier.html">Commande</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-4 text-center ancre">
+					<a href="#top">
+						<i id='icon-footer' class="fas fa-angle-up"></i>
+					</a>
+					<div class="m-0 text-center" id="copyAt">Copyright &copy; ATTABLE 2021</div>
+				</div>
+
+				<div class="col-sm-4 links" id="menu">
+					<ul id="menus">
+						<li><a href="newsletter.html">Mailing List</a></li>
+						<li><a href="mentionslegales.html">Mentions légales</a></li>
+						<li><a href="cgu.html">CGU</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+	<script src="js/firesrc-obf.js" type="text/javascript"></script>
+
+	<script id='MainScript' type="module">
+		firebase.auth().onAuthStateChanged((user) => {
+			if (!user) {
+				location.replace("authentification.html");
+			}
+			else {
+				document.getElementById("lesids").src="images/login2.png";
+				document.getElementById("lepanier").src = "images/logo_panier3.png";
+			}
+		})
+	</script>
+	
+	<!-- Scripts -->
+	<script src="OriginalJS/filter.js" type="module"></script>
+
+
+
+</body>
+
+</html>

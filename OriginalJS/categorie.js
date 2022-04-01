@@ -126,55 +126,116 @@ firebase.database().ref("products/").on('value', function (snapshot) {
             let valeur = tabValueAchat[iTest];
             iTest = iTest + 1;
 
-            var div1 = document.createElement('div')
-            div1.className = "un_produit";
+            var div1 = document.createElement('div');
+            div1.className = "item";
             categorie_page.appendChild(div1);
 
-            var a11 = document.createElement('a')
-            a11.className = "card card_categs border-0 p-0 w-100";
-            a11.href = '#main';
-            div1.appendChild(a11);
+            var div11 = document.createElement('div');
+            div11.className = "image-flip";
+            div1.appendChild(div11);
+            div11.ontouchstart = 'document.getElementsByClassName("image-flip")[iTest-1].classList.toggle("hover")';
 
-            var img111 = document.createElement('img')
-            img111.className = "card-img-top border-0 h-100 w-auto mx-auto produit";
-            img111.src = item.url;
-            img111.alt = "...";
-            img111.addEventListener("click", function (e) {
-                fiche_detaillee(item, indexProduit);
-            }, false);
-            a11.appendChild(img111);
+            var div111 = document.createElement('div');
+            div111.className = "mainflip";
+            div11.appendChild(div111);
 
+            var div111Front = document.createElement('div');
+            div111Front.className = "card frontside";
+            div111.appendChild(div111Front);
+
+            var div111Front1 = document.createElement('div');
+            div111Front1.className = "card-body text-center";
+            div111Front1.id = "cardImage";
+            div111Front.appendChild(div111Front1);
+
+            var div111Front11li = document.createElement('div');
+            div111Front11li.className = "is-loading";
+            div111Front11li.id = "imgLoading";
+            div111Front1.appendChild(div111Front11li);
+            var div111Front11img = document.createElement('img');
+            div111Front11img.className = "card-img-top img-fluid";
+            div111Front11img.src = item.url;
+            div111Front11img.alt = item.name;
             if (item.promo == true) {
-                var img112 = document.createElement('img');
-                img112.src = "images/promo.png";
-                img112.className = "position-absolute w-25 ml-5";
-                a11.appendChild(img112);
+                var div111Front11img2 = document.createElement('img');
+                div111Front11img2.src = "images/promo.png";
+                div111Front11img2.className = "position-absolute w-25 ml-5";
+                div111Front1.appendChild(div111Front11img2);
             }
+            div111Front11li.appendChild(div111Front11img);
 
-            var div12 = document.createElement('div')
-            div12.className = "card-body text-center";
-            div1.appendChild(div12);
 
-            var h5121 = document.createElement('h5')
-            h5121.className = "fw-bolder legend_produit";
-            h5121.innerHTML = item.name;
-            div12.appendChild(h5121);
+            $('#imgLoading').imagesLoaded()
+                .done(function (instance) {
+                    div111Front11li.classList.remove("is-loading");
+                });
 
-            var div122 = document.createElement('div')
-            div122.id = "info-prix";
+
+
+            var div111Front11h4 = document.createElement('h4');
+            div111Front11h4.className = "card-title";
+            div111Front11h4.innerHTML = item.name;
+            div111Front1.appendChild(div111Front11h4);
+
+            var div111Front11p = document.createElement('p');
+            div111Front11p.className = "card-text";
             if (item.prix == 0 || item.prix == "") {
-                div122.innerHTML = "Prix : &Agrave; voir en magasin";
+                div111Front11p.innerHTML = item.short_legend + "<br>" + "Prix : &Agrave; voir en magasin";
             }
             else {
-                div122.innerHTML = item.prix + " €";
+                div111Front11p.innerHTML = item.prix + " €";
             }
-            div12.appendChild(div122);
+            div111Front1.appendChild(div111Front11p);
+
+            var div111Back = document.createElement('div');
+            div111Back.className = "backside";
+            div111.appendChild(div111Back);
+
+            var div111Back1 = document.createElement('div');
+            div111Back1.className = "card ";
+            div111Back.appendChild(div111Back1);
+
+            var div111Back11 = document.createElement('div');
+            div111Back11.className = "card-body text-center";
+            div111Back1.appendChild(div111Back11);
+
+            var div111Back11h4 = document.createElement('h4');
+            div111Back11h4.className = "card-title";
+            div111Back11h4.innerHTML = item.name;
+            div111Back11.appendChild(div111Back11h4);
+
+            var div111Back11p = document.createElement('p');
+            div111Back11p.className = "card-text";
+            div111Back11p.innerHTML = item.descriptive;
+            div111Back11.appendChild(div111Back11p);
+
+            var div111Back111 = document.createElement('div')
+            div111Back111.id = "info-prix";
+            if (item.prix == 0 || item.prix == "") {
+                div111Back111.innerHTML = "Prix : &Agrave; voir en magasin";
+            }
+            else {
+                div111Back111.innerHTML = item.prix + " €";
+            }
+            div111Back11.appendChild(div111Back111);
+
+
+            var div111Back11a = document.createElement("a");
+            div111Back11a.className = "btn btn-primary my-5";
+            div111Back11a.innerHTML = "En voir plus ";
+            div111Back11a.href = "#main";
+            div111Back11a.addEventListener("click", function (e) {
+                fiche_detaillee(item, indexProduit);
+            }, false);
+            div111Back11.appendChild(div111Back11a);
+            var div111Back11ai = document.createElement("i");
+            div111Back11ai.className = "fa fa-plus";
+            div111Back11a.appendChild(div111Back11ai);
+
 
             var div13 = document.createElement('div')
             div13.id = "modul_quantity";
-            div13.className = "card-footer";
-            div1.appendChild(div13);
-
+            div111Back11.appendChild(div13);
             var input131 = document.createElement('input')
             input131.setAttribute("type", "button");
             input131.className = "bmoins add-to-cart";
@@ -191,7 +252,6 @@ firebase.database().ref("products/").on('value', function (snapshot) {
                 minus(item.id);
             }, false);
             div13.appendChild(input131);
-
             var input132 = document.createElement('input')
             input132.setAttribute("type", "button");
             input132.className = "affich_valeur";
@@ -205,7 +265,6 @@ firebase.database().ref("products/").on('value', function (snapshot) {
                 input132.style.visibility = "hidden";
             }
             div13.appendChild(input132);
-
             var input133 = document.createElement('input')
             input133.setAttribute("type", "button");
             input133.className = "bplus add-to-cart";
@@ -274,55 +333,117 @@ function changeCategorie(number) {
             let valeur = tabValueAchat[iTest];
             iTest = iTest + 1;
 
-            var div1 = document.createElement('div')
-            div1.className = "card un_produit";
+            var div1 = document.createElement('div');
+            div1.className = "item";
             categorie_page.appendChild(div1);
 
-            var a11 = document.createElement('a')
-            a11.className = "card card_categs border-0 p-0 text-center";
-            a11.href = '#main';
-            div1.appendChild(a11);
+            var div11 = document.createElement('div');
+            div11.className = "image-flip";
+            div1.appendChild(div11);
+            div11.ontouchstart = 'document.getElementsByClassName("image-flip")[iTest-1].classList.toggle("hover")';
 
-            var img111 = document.createElement('img')
-            img111.className = "card-img-top h-100 w-auto mx-auto produit";
-            img111.src = item.url;
-            img111.alt = "...";
-            img111.addEventListener("click", function (e) {
-                fiche_detaillee(item, indexProduit);
-            }, false);
-            a11.appendChild(img111);
+            var div111 = document.createElement('div');
+            div111.className = "mainflip";
+            div11.appendChild(div111);
 
+            var div111Front = document.createElement('div');
+            div111Front.className = "card frontside";
+            div111.appendChild(div111Front);
+
+            var div111Front1 = document.createElement('div');
+            div111Front1.className = "card-body text-center";
+            div111Front1.id = "cardImage";
+            div111Front.appendChild(div111Front1);
+
+            var div111Front11li = document.createElement('div');
+            div111Front11li.className = "is-loading";
+            div111Front11li.id = "imgLoading";
+            div111Front1.appendChild(div111Front11li);
+            var div111Front11img = document.createElement('img');
+            div111Front11img.className = "card-img-top img-fluid";
+            div111Front11img.src = item.url;
+            div111Front11img.alt = item.name;
             if (item.promo == true) {
-                var img112 = document.createElement('img');
-                img112.src = "images/promo.png";
-                img112.className = "position-absolute w-25 ml-5";
-                a11.appendChild(img112);
+                var div111Front11img2 = document.createElement('img');
+                div111Front11img2.src = "images/promo.png";
+                div111Front11img2.className = "position-absolute w-25 ml-5";
+                div111Front1.appendChild(div111Front11img2);
             }
+            div111Front11li.appendChild(div111Front11img);
 
-            var div12 = document.createElement('div')
-            div12.className = "card-body text-center";
-            div1.appendChild(div12);
 
-            var h5121 = document.createElement('h5')
-            h5121.className = "fw-bolder legend_produit";
-            h5121.innerHTML = item.name;
-            div12.appendChild(h5121);
 
-            var div122 = document.createElement('div')
-            div122.id = "info-prix";
+            $('#imgLoading').imagesLoaded()
+                .done(function (instance) {
+                    div111Front11li.classList.remove("is-loading");
+                });
+
+
+            var div111Front11h4 = document.createElement('h4');
+            div111Front11h4.className = "card-title";
+            div111Front11h4.innerHTML = item.name;
+            div111Front1.appendChild(div111Front11h4);
+
+            var div111Front11p = document.createElement('p');
+            div111Front11p.className = "card-text";
             if (item.prix == 0 || item.prix == "") {
-                div122.innerHTML = "Prix : &Agrave; voir en magasin";
+                div111Front11p.innerHTML = item.short_legend + "<br>" + "Prix : &Agrave; voir en magasin";
             }
             else {
-                div122.innerHTML = item.prix + " €";
+                div111Front11p.innerHTML = item.prix + " €";
             }
-            div12.appendChild(div122);
+            div111Front1.appendChild(div111Front11p);
+
+
+            var div111Back = document.createElement('div');
+            div111Back.className = "backside";
+            div111.appendChild(div111Back);
+
+            var div111Back1 = document.createElement('div');
+            div111Back1.className = "card ";
+            div111Back.appendChild(div111Back1);
+
+            var div111Back11 = document.createElement('div');
+            div111Back11.className = "card-body text-center";
+            div111Back1.appendChild(div111Back11);
+
+            var div111Back11h4 = document.createElement('h4');
+            div111Back11h4.className = "card-title";
+            div111Back11h4.innerHTML = item.name;
+            div111Back11.appendChild(div111Back11h4);
+
+            var div111Back11p = document.createElement('p');
+            div111Back11p.className = "card-text";
+            div111Back11p.innerHTML = item.descriptive;
+            div111Back11.appendChild(div111Back11p);
+
+            var div111Back111 = document.createElement('div')
+            div111Back111.id = "info-prix";
+            if (item.prix == 0 || item.prix == "") {
+                div111Back111.innerHTML = "Prix : &Agrave; voir en magasin";
+            }
+            else {
+                div111Back111.innerHTML = item.prix + " €";
+            }
+            div111Back11.appendChild(div111Back111);
+
+
+            var div111Back11a = document.createElement("a");
+            div111Back11a.className = "btn btn-primary my-5";
+            div111Back11a.innerHTML = "En voir plus ";
+            div111Back11a.href = "#main";
+            div111Back11a.addEventListener("click", function (e) {
+                fiche_detaillee(item, indexProduit);
+            }, false);
+            div111Back11.appendChild(div111Back11a);
+            var div111Back11ai = document.createElement("i");
+            div111Back11ai.className = "fa fa-plus";
+            div111Back11a.appendChild(div111Back11ai);
+
 
             var div13 = document.createElement('div')
             div13.id = "modul_quantity";
-            div13.className = "card-footer";
-            div1.appendChild(div13);
-
+            div111Back11.appendChild(div13);
             var input131 = document.createElement('input')
             input131.setAttribute("type", "button");
             input131.className = "bmoins add-to-cart";
@@ -336,10 +457,9 @@ function changeCategorie(number) {
             input131.id = "moins" + item.id;
             input131.dataset.id = item.id;
             input131.addEventListener("click", function (e) {
-                minus(item.id, indexProduit);
+                minus(item.id);
             }, false);
             div13.appendChild(input131);
-
             var input132 = document.createElement('input')
             input132.setAttribute("type", "button");
             input132.className = "affich_valeur";
@@ -353,7 +473,6 @@ function changeCategorie(number) {
                 input132.style.visibility = "hidden";
             }
             div13.appendChild(input132);
-
             var input133 = document.createElement('input')
             input133.setAttribute("type", "button");
             input133.className = "bplus add-to-cart";
@@ -361,7 +480,7 @@ function changeCategorie(number) {
             input133.id = "plus" + item.id;
             input133.dataset.id = item.id;
             input133.addEventListener("click", function (e) {
-                plus(item.id, indexProduit);
+                plus(item.id);
             }, false);
             div13.appendChild(input133);
 
@@ -373,7 +492,6 @@ function changeCategorie(number) {
 
         });
     }
-    document.getElementById('fiche_produit').style.display = 'none';
 }
 
 
@@ -395,8 +513,6 @@ categorieList.forEach(function (item) {
     acat.innerHTML = item.name;
     divbandeau.appendChild(acat);
 });
-
-
 
 
 //Fonction de génération de la fiche détaillée du produit
@@ -539,8 +655,6 @@ window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
         $('.example').izoomify();
     });
 }
-
-
 
 
 var liste = {};
