@@ -748,7 +748,31 @@ thead th:nth-child(54) {
 }
 
 
+/* ------------------------------------------------------------ Chargement des images ----------------------------------------- */
 
 
+#cardImage div, #item-box div {
+	display: block;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
 
+#cardImage div img, #item-box div img {
+  -webkit-transition: opacity 0.4s;
+     -moz-transition: opacity 0.4s;
+      -ms-transition: opacity 0.4s;
+          transition: opacity 0.4s;
+}
 
+#cardImage div.is-loading, #item-box div.is-loading {
+  background-color: black;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/loading.gif');
+}
+
+#cardImage div.is-loading img, #item-box div.is-loading img {
+  opacity: 0;
+}
+
+#cardImage div.is-broken img, #item-box div.is-broken img {
+	opacity: 1;
+  }

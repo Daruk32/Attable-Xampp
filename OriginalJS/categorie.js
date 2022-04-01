@@ -145,8 +145,13 @@ firebase.database().ref("products/").on('value', function (snapshot) {
 
             var div111Front1 = document.createElement('div');
             div111Front1.className = "card-body text-center";
+            div111Front1.id = "cardImage";
             div111Front.appendChild(div111Front1);
 
+            var div111Front11li = document.createElement('div');
+            div111Front11li.className = "is-loading";
+            div111Front11li.id = "imgLoading";
+            div111Front1.appendChild(div111Front11li);
             var div111Front11img = document.createElement('img');
             div111Front11img.className = "card-img-top img-fluid";
             div111Front11img.src = item.url;
@@ -157,7 +162,15 @@ firebase.database().ref("products/").on('value', function (snapshot) {
                 div111Front11img2.className = "position-absolute w-25 ml-5";
                 div111Front1.appendChild(div111Front11img2);
             }
-            div111Front1.appendChild(div111Front11img);
+            div111Front11li.appendChild(div111Front11img);
+
+
+            $('#imgLoading').imagesLoaded()
+                .done(function (instance) {
+                    div111Front11li.classList.remove("is-loading");
+                });
+
+
 
             var div111Front11h4 = document.createElement('h4');
             div111Front11h4.className = "card-title";
@@ -171,9 +184,9 @@ firebase.database().ref("products/").on('value', function (snapshot) {
             }
             else {
                 div111Front11p.innerHTML = item.prix + " €";
-            }      
+            }
             div111Front1.appendChild(div111Front11p);
- 
+
             var div111Back = document.createElement('div');
             div111Back.className = "backside";
             div111.appendChild(div111Back);
@@ -339,8 +352,13 @@ function changeCategorie(number) {
 
             var div111Front1 = document.createElement('div');
             div111Front1.className = "card-body text-center";
+            div111Front1.id = "cardImage";
             div111Front.appendChild(div111Front1);
 
+            var div111Front11li = document.createElement('div');
+            div111Front11li.className = "is-loading";
+            div111Front11li.id = "imgLoading";
+            div111Front1.appendChild(div111Front11li);
             var div111Front11img = document.createElement('img');
             div111Front11img.className = "card-img-top img-fluid";
             div111Front11img.src = item.url;
@@ -351,7 +369,15 @@ function changeCategorie(number) {
                 div111Front11img2.className = "position-absolute w-25 ml-5";
                 div111Front1.appendChild(div111Front11img2);
             }
-            div111Front1.appendChild(div111Front11img);
+            div111Front11li.appendChild(div111Front11img);
+
+
+
+            $('#imgLoading').imagesLoaded()
+                .done(function (instance) {
+                    div111Front11li.classList.remove("is-loading");
+                });
+
 
             var div111Front11h4 = document.createElement('h4');
             div111Front11h4.className = "card-title";
@@ -365,7 +391,7 @@ function changeCategorie(number) {
             }
             else {
                 div111Front11p.innerHTML = item.prix + " €";
-            }      
+            }
             div111Front1.appendChild(div111Front11p);
 
 
