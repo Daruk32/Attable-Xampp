@@ -71,6 +71,19 @@ select.addEventListener("change", function () {
                 var nameReferenceSelected = childSnapshot.val().libelle;
                 referenceProductArray[indexreferenceProductArray] = itemReferenceSelected + " - " + nameReferenceSelected;
                 indexreferenceProductArray++;
+
+                document.getElementById("myimg").src = childSnapshot.val().Link;
+                document.getElementById("name").value = childSnapshot.val().libelle;
+                document.getElementById("legend_P1").value = childSnapshot.val().texte;
+                document.getElementById("short_legend").value = childSnapshot.val().short_legend;
+                document.getElementById("descriptive").value = childSnapshot.val().descriptive;
+                document.getElementById("price").value = childSnapshot.val().prix;
+                document.getElementById("quantity").value = childSnapshot.val().quantity;
+                for (let i = 0; i < select.length; i++) {
+                    if (childSnapshot.val().category == select[i].text) {
+                        select.selectedIndex = i;
+                    }
+                }
             }
         });
 
