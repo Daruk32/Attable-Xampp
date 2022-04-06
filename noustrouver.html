@@ -31,6 +31,20 @@
 	<script src="js/gen_dyna-obf.js" type="module"></script>
 	<script src="js/panier-obf.js" type="module"></script>
 
+	<!-- Ajout Leaflet -->
+	<!-- 
+probablement pas besoin, laissé si bug futurs apparaissent, était utilisé en même temps que le 1.7.1
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+        -->
+	<link rel="stylesheet" href="assets/leaflet/1.7.1/leaflet.css" />
+	<link rel="stylesheet" href="assets/leaflet/leaflet-routing-machine/3.2.12/leaflet-routing-machine.css" />
+	<!-- css bootstrap obligé pour avoir la fonction de supprimer un waypoint ... -->
+	<link rel="stylesheet" href="assets/leaflet/addon/iti_leaflet_adeplacer.css">
+	<!-- Ajout Leaflet -->
+	<!-- ajout choix des geolocalisateurs et personnification de la page  -->
+	<link rel="stylesheet" href="css/nous_trouver.css">
+	<!-- ajout choix des geolocalisateurs -->
+
 </head>
 
 <body onload="panier(), redirAdmin()">
@@ -58,27 +72,72 @@
 						<span id="total_commande">0 €</span>
 					</a>
 				</div>
+				<!-- bug : lien plus cliquable suite leaflet, masquage via nous_trouver.css -->
 				<div id="authentification">
 					<a id="authAdmin">
 						<img alt="" id="lesids">
 					</a>
 				</div>
+
 			</div>
 		</nav>
 	</div>
 
 	<section id="main">
 
-		<div class="container" id="noutrouver">
-			<p class="text-center">Nous nous situons à La Gravière 69110 Sainte-Foy-Lès-Lyon.<br>Nous sommes ouvert de
-				9h00 à 19h00<br>Du lundi au samedi jours férié inclus.</p>
+		<div class=" container-fluid" id="noutrouver">
 
-			<div class="embed-responsive embed-responsive-16by9" id='map_iframe'>
-				<iframe class="embed-responsive-item"
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11139.462742492851!2d4.769466646723363!3d45.733788365679736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ec06c4d3adbd%3A0x9b9ad92e52f69b48!2sLa%20Gravi%C3%A8re%2C%2069110%20Sainte-Foy-l%C3%A8s-Lyon!5e0!3m2!1sfr!2sfr!4v1616693238023!5m2!1sfr!2sfr"
-					allowfullscreen="" loading="lazy"></iframe>
+			<!-- Ajout choix localisation -->
+			<div class="wrapper">
+				<div id="left">
+					<p class="text-left">Nous nous situons sur l'esplanade du quartier de la Gravière sur
+						Sainte-Foy-Lès-Lyon.<br>Nous sommes ouvert de
+						9h00 à 19h00. <br>Du lundi au samedi, jours férié inclus, on peut déborder parfois. <br>
+						Passez nous voir, on ne sait jamais 😀 .</p>
+				</div>
+				<div id="right">
+					<ul>
+						<li id="li_leaflet_choice">
+							<img src="assets/leaflet/addon/leaflet.png" alt="">
+							<span>
+								<strong>Leaflet</strong>
+								<p>Respect de la vie privée </p>
+							</span>
+						</li>
+
+						<li id="li_google_choice">
+							<img src="assets/leaflet/addon/Google_Maps_icon_(2015-2020).svg.png" alt="">
+							<span>
+								<strong>&nbsp;Maps</strong>
+								<p>Pour les afficonados </p>
+							</span>
+						</li>
+
+					</ul>
+				</div>
 			</div>
-			<div>
+			<!-- Ajout choix localisation -->
+			<div class="centrer">
+				<div class="embed-responsive embed-responsive-16by9" id='iframe'>
+					<iframe class="embed-responsive-item"
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11139.462742492851!2d4.769466646723363!3d45.733788365679736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ec06c4d3adbd%3A0x9b9ad92e52f69b48!2sLa%20Gravi%C3%A8re%2C%2069110%20Sainte-Foy-l%C3%A8s-Lyon!5e0!3m2!1sfr!2sfr!4v1616693238023!5m2!1sfr!2sfr"
+						allowfullscreen="" loading="lazy"></iframe>
+				</div>
+
+				<!-- Ajout Leaflet -->
+
+				<div id="map_leaflet" class="embed-responsive embed-responsive-16by9">
+				</div>
+				<center>
+					<span id="map_leaflet_link_umap" class="square individual " style="background-color: inherit">
+						<a class="before after" href="//umap.openstreetmap.fr/fr/map/parking-esplanade_742065">Voir en
+							plein écran la liste des parkings disponibles</a>
+					</span>
+				</center>
+			</div>
+		</div>
+		<!-- Ajout Leaflet -->
+
 
 	</section>
 
@@ -120,10 +179,12 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 	<script src="js/firesrc-obf.js" type="text/javascript"></script>
 
+
+
 	<script id='MainScript' type="module">
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
-				document.getElementById("lesids").src="images/login.png";
+				document.getElementById("lesids").src = "images/login.png";
 				document.getElementById("lepanier").src = "images/logo_panier2.png";
 			}
 			else {
@@ -132,7 +193,32 @@
 			}
 		})
 	</script>
-	
+	<!-- Ajout Leaflet -->
+	<script src="assets/leaflet/1.7.1/leaflet.js"></script>
+	<script src="assets/leaflet/leaflet-control-geocoder/2.4.0/Control.Geocoder.js"></script>
+	<script src="assets/leaflet/leaflet-routing-machine/3.2.12/leaflet-routing-machine.js"></script>
+	<script src="assets/leaflet/addon/iti_leaflet_map_configuration.js"></script>
+	<!-- Ajout Leaflet -->
+	<!-- Ajout choix localisation -->
+	<script>
+	//	$("#iframe").hide();
+		$("#li_google_choice").click(function () {
+			$("#iframe").show();//celle de google
+			$("#map_leaflet").hide();
+			$("#map_leaflet_link_umap").hide();
+			// console.log("li_google_choice");
+		});
+
+		$("#li_leaflet_choice").click(function () {
+			$("#iframe").hide();
+			$("#map_leaflet").show();
+			$("#map_leaflet_link_umap").show();
+
+			// console.log("iframe_leaflet_choice");
+		});
+	</script>
+	<!-- Ajout choix localisation -->
+
 </body>
 
 </html>
