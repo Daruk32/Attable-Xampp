@@ -21,12 +21,9 @@
 	<script src="bootstrap/popper.min.js"></script>
 	<link rel="stylesheet" href="bootstrap/4.3.1-bootstrap.min.css">
 	<script src="bootstrap/4.3.1-bootstrap.min.js"></script>
-	<!-- Bootstrap Table -->
-	<link rel="stylesheet" href="bootstrap/bootstrap-table.min.css">
-	<script src="bootstrap/bootstrap-table.min.js"></script>
 
 	<!-- Data crypto -->
-	<script src="js/cryptoJS-obf.js" type="text/javascript"></script>
+	<script src="OriginalJS/cryptoJS.js" type="text/javascript"></script>
 
 	<!-- Scripts -->
 	<script src="js/cookie-obf.js" type="text/javascript"></script>
@@ -36,7 +33,7 @@
 
 </head>
 
-<body onload="panier(), redirAdmin(), convertJsonStorage(), exportProducts(), ExpSuppliers(), ExpCategories(), productsArrayToPhp()">
+<body onload="panier(), redirAdmin(), productsArrayToPhp()">
 
 <div class="container-fluid" id="top">
 		<nav class="navbar navbar-expand-lg navbar-light">
@@ -118,6 +115,17 @@
 
 	<br><br>
 
+	<hr>
+
+	<div class="text-center">
+		<h4>Sauvegarde des tableaux de données Firebase dans le file bdd.json</h4>
+		<button id='importFilesBdd'>Download</button>
+	</div>
+
+	<hr>
+
+	<br><br>
+
 	<div class="text-center">
 		<button onclick="logout()">Déconnexion</button>
 	</div>
@@ -163,7 +171,7 @@
 	<script src="js/firesrc-obf.js" type="text/javascript"></script>
 
 	<!-- Scripts -->
-	<script src="js/data-obf.js" type="module"></script>
+	<script src="OriginalJS/data.js" type="module"></script>
 	<script id='MainScript' type="module">
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
