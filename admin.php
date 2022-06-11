@@ -171,7 +171,7 @@
 	<script src="js/firesrc-obf.js" type="text/javascript"></script>
 
 	<!-- Scripts -->
-	<script src="OriginalJS/data.js" type="module"></script>
+	<script src="js/data-obf.js" type="module"></script>
 	<script id='MainScript' type="module">
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
