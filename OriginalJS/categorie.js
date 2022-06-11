@@ -288,6 +288,8 @@ firebase.database().ref("products/").on('value', function (snapshot) {
 
 //Fonction de génération des 5 images/textes des catégories depuis le bandeau
 function changeCategorie(number) {
+    document.getElementById("fiche_produit").innerHTML = "";
+    document.getElementById("fiche_produit").style.visibility = "hidden";
     var categorie_page = document.getElementById("descriptif_cat");
     document.getElementById("descriptif_cat").innerHTML = "";
 
@@ -518,6 +520,8 @@ categorieList.forEach(function (item) {
 //Fonction de génération de la fiche détaillée du produit
 window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
     document.getElementById("fiche_produit").innerHTML = "";
+    document.getElementById("fiche_produit").style.visibility = "visible";
+
     var ficheProduit = document.getElementById("fiche_produit");
 
     var valeur;
