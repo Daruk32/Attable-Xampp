@@ -50,7 +50,7 @@ h3 {
 /* ------------------------------------------Les éléments du header------------------------------------------------------ */
 #top {
  	background-color: var(--colorGreen);
- 	height: 6rem;
+ 	height: 6.5rem;
 	box-shadow: -2px 7px 10px 5px var(--colorGreen);
 	margin-top: -20px;
 }
@@ -213,10 +213,8 @@ footer {
 }
 #bande li{
 	display:inline-block !important;
-    font-size: calc(0.3rem + 0.4vw);
     white-space: pre;
     margin: auto;
-    width: 12.5% !important;
 }
 
 
@@ -225,7 +223,6 @@ footer {
 }
 #bande a{
 	text-decoration:none;
-	padding:0.5vw 1vw;
 	color:black;
     border:2px solid var(--orange);
 	border-radius: 0.4vw;
@@ -776,3 +773,51 @@ thead th:nth-child(54) {
 #cardImage div.is-broken img, #item-box div.is-broken img {
 	opacity: 1;
   }
+
+
+
+/* ------------------------------------------------------------ Responsivité ----------------------------------------- */
+/* Bandeau */
+@media all and (max-width: 576px) {
+	#bande li{
+		font-size: calc(0.3rem + 0.7vw);
+		width: 25% !important;
+	}
+
+	#bande a{
+		padding:0.5vw 1vw;
+	}
+}
+
+@media all and (min-width: 576px) and (max-width: 768px) {
+	#bande li{
+		font-size: calc(0.5rem + 0.6vw);
+		width: 25% !important;
+	}
+
+	#bande a{
+		padding:0.5vw 1vw;
+	}
+}
+
+@media all and (min-width: 768px) and (max-width: 992px) {
+	#bande li{
+		font-size: calc(0.3rem + 0.4vw);
+		width: 20% !important;
+	}
+
+	#bande a{
+		padding:0.5vw 1vw;
+	}
+}
+
+@media all and (min-width: 992px) {
+	#bande li{
+		font-size: calc(0.3rem + 0.4vw);
+		width: 12.5% !important;
+	}
+
+	#bande a{
+		padding:0.5vw 1vw;
+	}
+}

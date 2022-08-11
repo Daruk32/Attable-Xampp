@@ -16,7 +16,7 @@ if (divBody != null) {
 		// Modifie le bandeau dès la hauteur de scroll atteinte et ajuste le panier
 		if (window.pageYOffset > 60) {
 			stickyBandeau.classList.add("pr-5");
-			stickyIcone.style.top = "-2%";
+			stickyIcone.style.top = "-3%";
 		}
 		// Remet en place le panier en dehors de la zone du bandeau
 		else {

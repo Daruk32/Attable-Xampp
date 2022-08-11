@@ -15,7 +15,7 @@ divBody.onscroll = function (e) {
     // Modifie le bandeau dès la hauteur de scroll atteinte et ajuste le panier
     if (window.pageYOffset > 60) {
         stickyBandeau.classList.add("pr-5");
-        stickyIcone.style.top = "-2%";
+        stickyIcone.style.top = "-3%";
     }
     // Remet en place le panier en dehors de la zone du bandeau
     else {
@@ -225,7 +225,7 @@ firebase.database().ref("products/").on('value', function (snapshot) {
             div111Back11a.innerHTML = "En voir plus ";
             div111Back11a.href = "#main";
             div111Back11a.addEventListener("click", function (e) {
-                fiche_detaillee(item, indexProduit);
+                fiche_detaillee(item, item.id);
             }, false);
             div111Back11.appendChild(div111Back11a);
             var div111Back11ai = document.createElement("i");
@@ -435,7 +435,7 @@ function changeCategorie(number) {
             div111Back11a.innerHTML = "En voir plus ";
             div111Back11a.href = "#main";
             div111Back11a.addEventListener("click", function (e) {
-                fiche_detaillee(item, indexProduit);
+                fiche_detaillee(item, item.id);
             }, false);
             div111Back11.appendChild(div111Back11a);
             var div111Back11ai = document.createElement("i");
@@ -554,7 +554,7 @@ window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
 
     //table
     var table1 = document.createElement('table')
-    table1.className = "table w-100";
+    table1.className = "table w-100 zoom"+ indexProduit;
     table1.id = "deta-tab";
     ficheProduit.appendChild(table1);
     //tr1
@@ -636,7 +636,14 @@ window.fiche_detaillee = function fiche_detaillee(item, indexProduit) {
     //input4112
     var input4112 = document.createElement('input')
     input4112.className = "affich_valeur";
-    input4112.value = document.getElementById("count" + item.id).value;
+    var detailValue;
+    if (document.getElementById("count" + item.id).value === 0) {
+        detailValue = "0";
+    }
+    else {
+        detailValue = document.getElementById("count" + item.id).value;
+    }
+    input4112.value = detailValue;
     input4112.id = "count2" + indexProduit;
     input4112.disabled = true;
     div411.appendChild(input4112);
@@ -679,36 +686,36 @@ window.plus = function plus(idProduit, indexProduit) {
         count++;
         document.getElementById("count" + idProduit).value = count;
         liste[idProduit] = { id: idProduit, url: srcProduit, name: nameProduit, price: prixProduit, quantity: count };
-        //localStorage.setItem("list_achat", JSON.stringify(liste));
+
         localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(liste))));
         if (document.getElementById("count2" + indexProduit) != null) {
             document.getElementById("count2" + indexProduit).value = count;
         }
-        //createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(new_apport)), 15);
+
     }
     //S'il existe déjà :
     else {
-        //liste = JSON.parse(localStorage.getItem("list_achat"));
+
         liste = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))));
         for (let key in liste) {
             if (idProduit == liste[key].id) {
                 count = liste[key].quantity;
                 count++;
                 liste[key].quantity = count;
-                //localStorage.setItem("list_achat", JSON.stringify(liste));
+
                 localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(liste))));
                 document.getElementById("count" + idProduit).value = count;
                 if (document.getElementById("count2" + indexProduit) != null) {
                     document.getElementById("count2" + indexProduit).value = count;
                 }
             }
+            
             // Ajout d'un nouvel article à la liste initialement générée.
-
             else if (document.getElementById('count' + idProduit).value == "" || document.getElementById('count' + idProduit).value == "undefined") {
                 count = 0;
                 count++;
                 liste[idProduit] = { id: idProduit, url: srcProduit, name: nameProduit, price: prixProduit, quantity: count };
-                //localStorage.setItem("list_achat", JSON.stringify(liste));
+
                 localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(liste))));
                 document.getElementById("count" + idProduit).value = count;
                 if (document.getElementById("count2" + indexProduit) != null) {
@@ -718,11 +725,12 @@ window.plus = function plus(idProduit, indexProduit) {
         }
     }
     if (document.getElementById("count2" + idProduit) != null) {
-        document.getElementById("count2" + idProduit).innerHTML = count;
+        document.getElementById("count2" + idProduit).value = count;
     }
     else {
         count++;
     }
+
     document.getElementById("count" + idProduit).style.visibility = 'visible';
     document.getElementById("moins" + idProduit).style.visibility = 'visible';
     //Ici, pour mettre à jour le nombre d'éléments dans le widget panier.
@@ -733,40 +741,33 @@ window.plus = function plus(idProduit, indexProduit) {
 
 //Fonction Retire quantité d'untel produit
 window.minus = function minus(idProduit, indexProduit) {
-    var produit = document.getElementById('moins' + idProduit);
-    if (produit == null) {
-        return false;
-    }
-    var id = produit.dataset.id;
-    //liste = JSON.parse(localStorage.getItem("list_achat"));
     liste = JSON.parse(CryptoJS.enc.Utf16.stringify(JSON.parse(localStorage.getItem("list_achat"))))
     for (let key in liste) {
         //Diminue la quantité du produit tant qu'elle est >0.
         if (idProduit == liste[key].id) {
-            var comptage2 = document.getElementById('count' + idProduit).value;
-            if (comptage2 > 1) {
-                comptage2--;
-                liste[key].quantity = comptage2;
-                //localStorage.setItem("list_achat", JSON.stringify(liste));
+            var compteMoins = document.getElementById('count' + idProduit).value;
+            if (compteMoins > 1) {
+                compteMoins--;
+                liste[key].quantity = compteMoins;
                 localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(liste))));
             }
-            else if (comptage2 == 1) {
+            else if (compteMoins == 1) {
                 document.getElementById("moins" + idProduit).style.visibility = 'hidden';
                 document.getElementById("count" + idProduit).style.visibility = 'hidden';
-                comptage2 = 0;
-                liste[key].quantity = comptage2;
-                //localStorage.setItem("list_achat", JSON.stringify(liste));
+                compteMoins = 0;
+                liste[key].quantity = compteMoins;
                 localStorage.setItem("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(JSON.stringify(liste))));
             }
         }
         else {
-            var comptage2 = document.getElementById('count' + idProduit).value;
+            var compteMoins = document.getElementById('count' + idProduit).value;
         }
-        document.getElementById("count" + idProduit).value = comptage2;
-        if (document.getElementById("count2" + indexProduit) != null) {
-            document.getElementById("count2" + indexProduit).value = comptage2;
+
+        document.getElementById("count" + idProduit).value = compteMoins;
+
+        if (document.getElementById("count2" + idProduit) != null) {
+            document.getElementById("count2" + idProduit).value = compteMoins;
         }
-        //createCookie("list_achat", JSON.stringify(CryptoJS.enc.Utf16.parse(new_apport)), 15);
     }
     //Ici, pour mettre à jour le nombre d'éléments dans le widget panier.
     paniercateg();
